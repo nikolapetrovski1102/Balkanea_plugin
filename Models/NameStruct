@@ -1,0 +1,21 @@
+<?php 
+namespace Models;
+class NameStruct
+{
+	public string $bathroom;
+	public string $bedding_type;
+	public string $main_name;
+
+	/*public function __construct(
+		string $bathroom,
+		string $beddingType,
+		string $mainName
+	) {
+		$this->bathroom = $bathroom;
+		$this->beddingType = $beddingType;
+		$this->mainName = $mainName;
+	}*/
+}
+
+
+?>

@@ -1,0 +1,30 @@
+{
+    "name": "brick/reflection",
+    "description": "Low-level tools to extend PHP reflection capabilities",
+    "type": "library",
+    "keywords": [
+        "Brick",
+        "Reflection"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^8.0",
+        "doctrine/annotations": "^1.10.4",
+        "brick/varexporter": "^0.3.7"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0",
+        "php-coveralls/php-coveralls": "^2.0",
+        "vimeo/psalm": "5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Brick\\Reflection\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Brick\\Reflection\\Tests\\": "tests/"
+        }
+    }
+}

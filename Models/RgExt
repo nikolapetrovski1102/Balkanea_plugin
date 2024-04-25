@@ -1,0 +1,47 @@
+<?php 
+namespace Models;
+class RgExt
+{
+	public int $balcony;
+	public int $bathroom;
+	public int $bedding;
+	public int $bedrooms;
+	public int $capacity;
+	public int $class;
+	public int $club;
+	public int $family;
+	public int $floor;
+	public int $quality;
+	public int $sex;
+	public int $view;
+
+/*	public function __construct(
+		int $balcony,
+		int $bathroom,
+		int $bedding,
+		int $bedrooms,
+		int $capacity,
+		int $class,
+		int $club,
+		int $family,
+		int $floor,
+		int $quality,
+		int $sex,
+		int $view
+	) {
+		$this->balcony = $balcony;
+		$this->bathroom = $bathroom;
+		$this->bedding = $bedding;
+		$this->bedrooms = $bedrooms;
+		$this->capacity = $capacity;
+		$this->class = $class;
+		$this->club = $club;
+		$this->family = $family;
+		$this->floor = $floor;
+		$this->quality = $quality;
+		$this->sex = $sex;
+		$this->view = $view;
+	}*/
+}
+
+?>

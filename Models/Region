@@ -1,0 +1,26 @@
+<?php 
+namespace Models;
+class Region
+{
+	public string $country_code;
+	public string $iata;
+	public int $id;
+	public string $name;
+	public string $type;
+
+	/*public function __construct(
+		string $countryCode,
+		string $iata,
+		int $id,
+		string $name,
+		string $type
+	) {
+		$this->countryCode = $countryCode;
+		$this->iata = $iata;
+		$this->id = $id;
+		$this->name = $name;
+		$this->type = $type;
+	}*/
+}
+
+?>

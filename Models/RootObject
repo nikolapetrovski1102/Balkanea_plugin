@@ -1,0 +1,23 @@
+<?php 
+namespace Models;
+class RootObject
+{
+	public Data $data;
+	public string $debug;
+	public string $error;
+	public string $status;
+
+	/*public function __construct(
+		Data $data,
+		null $debug,
+		null $error,
+		string $status
+	) {
+		$this->data = $data;
+		$this->debug = $debug;
+		$this->error = $error;
+		$this->status = $status;
+	}*/
+}
+
+?>
