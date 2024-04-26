@@ -1,7 +1,5 @@
 {
     "require": {
-        "netresearch/jsonmapper": "^2.0",
-        "brick/json-mapper": "^0.1.1",
-        "jms/serializer": "^3.30"
+        "netresearch/jsonmapper": "^2.0"
     }
 }
