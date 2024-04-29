@@ -23,20 +23,30 @@
     $response = curl_exec($ch);
  
     $data2 = json_decode($response, true);
+    $data2 = $data2['data'];
 
     $current_date_time = date('Y-m-d H:i:s');
 
     $post_content = '';
-    $post_title = $data2['data']['name'];
-    $post_excerpt = $data2['data']['metapolicy_extra_info'];
-    $address = $data2['data']['address'];
-    $star_rating = $data2['data']['star_rating'];
-    $latitude = $data2['data']['latitude'];
-    $longitude = $data2['data']['longitude'];
+    $post_excerpt = '';
+    $post_title = $data2['name'];
+    $address = $data2['address'];
+    $star_rating = $data2['star_rating'];
+    $latitude = $data2['latitude'];
+    $longitude = $data2['longitude'];
+    $post_id_name = $data2['id'];
+    $img_urls = '';
 
-    foreach ($data2['data']['description_struct'] as $content){
-        foreach ($content['paragraphs'] as $paragraph){
-            $post_content .= $paragraph . '<br><br>';
+    foreach ($data2['description_struct'] as $content){
+        if ($content['title'] == 'Location'){
+            foreach ($content['paragraphs'] as $paragraph){
+                $post_excerpt .= $paragraph . '<br><br>';
+            }
+        }
+        else{
+            foreach ($content['paragraphs'] as $paragraph){
+                $post_content .= $paragraph . '<br><br>';
+            }
         }
     }
 
@@ -54,7 +64,7 @@
                 'comment_status' => 'open',
                 'ping_status' => 'open',
                 'post_password' => '',
-                'post_name' => $post_title,
+                'post_name' => $post_id_name,
                 'to_ping' => '',
                 'pinged' => '',
                 'post_modified' => $current_date_time,
@@ -95,6 +105,44 @@
             'is_featured' => 'off'
         )
     );
+
+    try {
+    $counter = 0;
+    foreach ($data2['images'] as $img){
+        $img_url = str_replace('{size}', '640x400', $img);
+        $counter++;
+        $wpdb->insert(
+            $prefix . '_posts',
+            array(
+                'post_author' => 14,
+                'post_date' => $current_date_time,
+                'post_date_gmt' => $current_date_time,
+                'post_content' => '',
+                'post_title' => $post_title . ' (' . $counter . ')',
+                'post_excerpt' => '',
+                'post_status' => 'inherit',
+                'comment_status' => 'open',
+                'ping_status' => 'closed',
+                'post_password' => '',
+                'post_name' => $post_id_name . ' ' . $counter,
+                'to_ping' => '',
+                'pinged' => '',
+                'post_modified' => $current_date_time,
+                'post_modified_gmt' => $current_date_time,
+                'post_content_filtered' => '',
+                'post_parent' => $post_id,
+                'guid' => $img_url,
+                'menu_order' => 0,
+                'post_type' => 'attachment',
+                'post_mime_type' => 'image/jpeg',
+                'comment_count' => 0
+            )
+        );
+    }
+        echo 'Data inserted successfully';
+    } catch (Exception $e) {
+        echo 'Caught exception: ',  $e->getMessage(), "\n";
+    }
 
     curl_close($ch);
 
