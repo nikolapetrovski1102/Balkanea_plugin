@@ -105,10 +105,6 @@ function getHotelDetails($hotel_data, $headers){
 
     curl_close($ci);
 
-    print_r('<pre>');
-    print_r($response);
-    print_r('</pre>');
-
     if ($response === false)
         return curl_error($ci);
     else

@@ -143,6 +143,9 @@
         echo 'Caught exception: ',  $e->getMessage(), "\n";
     }
 
+    $prices = array();
+    $price_avg = 0;
+    $price_min = 0;
 
     try{
         $counter = 0;
@@ -151,6 +154,7 @@
             $room_name = $rooms['room_name'];
             $meal = $rooms['meal'];
             $daily_price = $rooms['daily_prices'][0];
+            array_push($prices, (int)$daily_price);
             $counter++;
             $wpdb->insert(
                 $prefix . 'st_room_availability',
@@ -186,5 +190,93 @@
         echo 'Caught exception: ',  $e->getMessage(), "\n";
     }
 
+    $price_avg = array_sum($prices) / count($prices);
 
+    $price_min = min($prices);
+
+    // try {
+    //     $counter = 0;
+    //     foreach ($hotel['images'] as $img){
+    //     $img_url = str_replace('{size}', '640x400', $img);
+    //     $counter++;
+    //     $wpdb->insert(
+    //         $prefix . 'posts',
+    //         array(
+    //             'post_author' => 14,
+    //             'post_date' => $current_date_time,
+    //             'post_date_gmt' => $current_date_time,
+    //             'post_content' => '',
+    //             'post_title' => $post_title . ' (' . $counter . ')',
+    //             'post_excerpt' => '',
+    //             'post_status' => 'inherit',
+    //             'comment_status' => 'open',
+    //             'ping_status' => 'closed',
+    //             'post_password' => '',
+    //             'post_name' => $post_id_name . '-' . $counter,
+    //             'to_ping' => '',
+    //             'pinged' => '',
+    //             'post_modified' => $current_date_time,
+    //             'post_modified_gmt' => $current_date_time,
+    //             'post_content_filtered' => '',
+    //             'post_parent' => $post_id,
+    //             'guid' => $img_url,
+    //             'menu_order' => 0,
+    //             'post_type' => 'attachment',
+    //             'post_mime_type' => 'image/jpeg',
+    //             'comment_count' => 0
+    //         )
+    //     );
+    // }
+    //     echo '<br>Data inserted successfully';
+    // } catch (Exception $e) {
+    //     echo 'Caught exception: ',  $e->getMessage(), "\n";
+    // }
+
+    $meta_values = array(
+        'rate_review' => 0,
+        'price_avg' => $price_avg,
+        'min_price' => $price_min,
+        'meta_value' => 'classic-editor',
+        '_edit_lock' => '1720094804:14',
+        '_edit_last' => 14,
+        '_tve_js_modules_gutenberg' => 'a:0:{}',
+        'st_google_map' => 'a:4:{s:3:"lat";s:17:"' . $latitude . '";s:3:"lng";s:17:"' . $longitude . '";s:4:"zoom";s:2:"13";s:4:"type";s:0:"";}',
+        'multi_location' => '_14848_,_15095_',
+        'address' => $address,
+        'is_featured' => 'off',
+        'st_hotel_external_booking' => 'off',
+        'hotel_star' => $star_rating,
+        'is_auto_caculate' => 'on',
+        'allow_full_day' => 'on',
+        'check_in_time' => '12:00 - 20:00',
+        'check_out_time' => '10:00',
+        'hotel_booking_period' => 0,
+        'min_book_room' => 0,
+        'id_location' => '',
+        'location_id' => '',
+        'map_lat' => $latitude,
+        'map_lng' => $longitude,
+        'map_zoom' => 13,
+        'map_type' => '',
+    );
+
+    insertMetaValues($wpdb, $prefix, $post_id, $meta_values);
+
+    function insertMetaValues($wpdb, $prefix, $post_id, $meta_values){
+        try{
+            foreach ($meta_values as $meta_key => $meta_value) {
+                $wpdb->insert(
+                    $prefix . 'postmeta',
+                    array(
+                        'post_id' => $post_id,
+                        'meta_key' => $meta_key,
+                        'meta_value' => $meta_value,
+                    )
+                );
+            }    
+        }
+        catch(Exception $e){
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+        }
+    }
 ?>
