@@ -27,6 +27,10 @@
     // Getting price of a hotel api
     $response_hotel = getHotelPrice($data_hotel, $headers);
 
+    if ($response_hotel['data'] == null || $response_hotel['data']['hotels'] == null) {
+        exit('No data found for <strong>' . $response_hotel['debug']['request']['id'] . '</strong>');
+    }
+
     $checkin = $response_hotel['debug']['request']['checkin'];
     $checkout = $response_hotel['debug']['request']['checkin'];
 
@@ -39,11 +43,51 @@
 
     $hotel = getHotelDetails($response_hotel['data']['hotels'][0]['id'], $headers);
 
-    $post_exists = $wpdb->get_row("SELECT ID FROM " . $prefix . "posts WHERE post_name = '" . $hotel['id'] . "'");
+    $amenity_array = array();
+
+    print_r('<pre>');
+
+    if ($hotel != null) {
+        
+        foreach ($hotel['amenity_groups'] as $group) {
+            foreach ($group['amenities'] as $amenity) {
+
+                if ($amenity == '24-hour reception')
+                    $amenity = '24-hour front desk';
+                else if ($amenity == 'Free Wi-Fi')
+                    $amenity = 'Free WiFi';
+
+                $query_terms = $wpdb->prepare("SELECT term_id FROM " . $prefix . "terms WHERE name LIKE %s", '%' . $wpdb->esc_like($amenity) . '%');
+                $amenity_found_terms = $wpdb->get_results($query_terms);
+
+                if ($amenity_found_terms) {
+                    foreach ($amenity_found_terms as $term) {
+                        $query_term_taxonomy = $wpdb->prepare("SELECT term_taxonomy_id FROM " . $prefix . "term_taxonomy WHERE term_id = %d AND taxonomy = 'hotel-facilities'", $term->term_id);
+                        $amenity_found_term_taxonomy = $wpdb->get_results($query_term_taxonomy);
+
+                        if ($amenity_found_term_taxonomy) {
+                            foreach ($amenity_found_term_taxonomy as $taxonomy) {
+                                print_r($taxonomy->term_taxonomy_id . ' found </br>');
+                                array_push($amenity_array, $taxonomy->term_taxonomy_id);
+                            }
+                        } else {
+                            print_r('Term taxonomy not found for term_id: ' . $term->term_id . '</br>');
+                        }
+                    }
+                } else {
+                    print_r($amenity . ' not found </br>');
+                }
+            }
+        }
+    }
+
+    print_r('</pre>');
+
+
+    $post_exists = $wpdb->get_row("SELECT post_title FROM " . $prefix . "posts WHERE post_name = '" . $hotel['id'] . "'");
 
     if ($post_exists) {
-        echo '<br>Post ' . $post_exists . ' exists<br>';
-        return -1;
+        exit('Post ' . $hotel['id'] . ' already exists');
     }
 
     $current_date_time = date('Y-m-d H:i:s');
@@ -74,7 +118,6 @@
 
     $post_id;
 
-    // Insert the Hotel
     try {
         $wpdb->insert(
             $prefix . 'posts',
@@ -116,112 +159,9 @@
     }
 
     $prices = array();
+
     $price_avg = 0;
     $price_min = 0;
-
-    // $rooms_array = array();
-
-    // // Insert hotel room in posts table
-    // try {
-    //     $response_hotel = $response_hotel['data']['hotels'][0];
-    //     foreach ($response_hotel['rates'] as $rooms) {
-    //         $room_name = $rooms['room_name'];
-    //         $meal = $rooms['meal'];
-    //         $daily_price = $rooms['daily_prices'][0];
-    
-    //         array_push($prices, (int)$daily_price);
-    
-    //         $result = $wpdb->insert(
-    //             $prefix . 'posts',
-    //             array(
-    //                 'post_author' => 14,
-    //                 'post_date' => $current_date_time,
-    //                 'post_date_gmt' => $current_date_time,
-    //                 'post_content' => $post_content,
-    //                 'post_title' => $room_name,
-    //                 'post_excerpt' => '',
-    //                 'post_status' => 'draft',
-    //                 'comment_status' => 'open',
-    //                 'ping_status' => 'closed',
-    //                 'post_password' => '',
-    //                 'post_name' => $post_id_name . '-' . $room_name,
-    //                 'to_ping' => '',
-    //                 'pinged' => '',
-    //                 'post_modified' => $current_date_time,
-    //                 'post_modified_gmt' => $current_date_time,
-    //                 'post_content_filtered' => '',
-    //                 'post_parent' => 0,
-    //                 'guid' => '',
-    //                 'menu_order' => 0,
-    //                 'post_type' => 'hotel_room',
-    //                 'post_mime_type' => '',
-    //                 'comment_count' => 0
-    //             )
-    //         );
-    
-    //         if ($result === false) {
-    //             error_log('wpdb last error: ' . $wpdb->last_error);
-    //         } else {
-    //             $post_room_id = $wpdb->insert_id;
-    //             array_push($rooms_array, $post_room_id);
-    //             echo 'Inserted post ID: ' . $post_room_id . '<br>';
-    //         }
-    //     }
-    
-    // } catch (Exception $e) {
-    //     echo 'Caught exception: ',  $e->getMessage(), "\n";
-    // }
-
-    // $price_avg = array_sum($prices) / count($prices);
-
-    // $price_min = min($prices);
-
-
-    //     try {
-            
-    //         $response_hotel = $response_hotel['data']['hotels'][0];
-    //         $counter = 0;
-    //         foreach ($response_hotel['rates'] as $rooms){
-    //             $room_name = $rooms['room_name'];
-    //             $meal = $rooms['meal'];
-    //             $daily_price = $rooms['daily_prices'][0];
-                
-    //             array_push($prices, (int)$daily_price);
-
-    //             $counter ++;
-
-    //             $wpdb->insert(
-    //                 $prefix . 'hotel_room',
-    //                 array(
-    //                     'post_id' => $post_room_id,
-    //                     'room_parent' => $post_id,
-    //                     'multi_location' => '',
-    //                     'id_location' => '',
-    //                     'address' => $address,
-    //                     'allow_full_day' => 'off',
-    //                     'price' => $daily_price,
-    //                     'post_title' => $room_name,
-    //                     'number_room' => $counter,
-    //                     'discount_rate' => '',
-    //                     'adult_number' => 2,
-    //                     'child_number' => 0,
-    //                     'status' => 'draft',
-    //                     'adult_price' => '',
-    //                     'child_price' => '',
-    //                 )
-    //             );
-    //         }
-
-    //         if ($wpdb->last_error){
-    //             echo 'wpdb last error: ' . $wpdb->last_error . '<br>';
-    //             error_log('wpdb last error: ' . $wpdb->last_error);
-    //         }
-    //         else
-    //             echo '<br>Data for posts inserted successfully<br>';
-
-    // } catch (Exception $e) {
-    //     echo 'Caught exception: ',  $e->getMessage(), "\n";
-    // }
 
     $rooms_array = array();
 
@@ -236,7 +176,6 @@
 
             array_push($prices, (int)$daily_price);
 
-            // Insert hotel room in posts table
             $result = $wpdb->insert(
                 $prefix . 'posts',
                 array(
@@ -273,7 +212,6 @@
                 
                 $counter++;
                 
-                // Insert room details into hotel_room table
                 $wpdb->insert(
                     $prefix . 'hotel_room',
                     array(
@@ -388,47 +326,103 @@
 
     $post_image_array_ids = '';
 
-    // try {
-    //     $counter = 0;
-    //     foreach ($hotel['images'] as $img){
-    //     $img_url = str_replace('{size}', '640x400', $img);
-    //     $counter++;
-    //     $wpdb->insert(
-    //         $prefix . 'posts',
-    //         array(
-    //             'post_author' => 14,
-    //             'post_date' => $current_date_time,
-    //             'post_date_gmt' => $current_date_time,
-    //             'post_content' => '',
-    //             'post_title' => $post_title . ' (' . $counter . ')',
-    //             'post_excerpt' => '',
-    //             'post_status' => 'inherit',
-    //             'comment_status' => 'open',
-    //             'ping_status' => 'closed',
-    //             'post_password' => '',
-    //             'post_name' => $post_id_name . '-' . $counter,
-    //             'to_ping' => '',
-    //             'pinged' => '',
-    //             'post_modified' => $current_date_time,
-    //             'post_modified_gmt' => $current_date_time,
-    //             'post_content_filtered' => '',
-    //             'post_parent' => $post_id,
-    //             'guid' => $img_url,
-    //             'menu_order' => 0,
-    //             'post_type' => 'attachment',
-    //             'post_mime_type' => 'image/jpeg',
-    //             'comment_count' => 0
-    //         )
-    //     );
-
-    //     $post_image_array_ids .= $wpdb->insert_id . ',';
-
-    // }
-    //     echo '<br>Data inserted successfully';
-    //     $post_image_array_ids = rtrim($post_image_array_ids, ',');
-    // } catch (Exception $e) {
-    //     echo 'Caught exception: ',  $e->getMessage(), "\n";
-    // }
+    try {
+        $directory = '/home/balkanea/public_html/wp-content/uploads/2024/07';
+        $image_origin_url = 'https://balkanea.com/wp-content/uploads/2024/07/';
+        $counter = 0;
+        $post_image_array_ids = '';
+    
+        foreach ($hotel['images'] as $img) {
+            if (!file_exists($directory)) {
+                mkdir($directory, 0777, true);
+            }
+    
+            $img_url = str_replace('{size}', '640x400', $img);
+    
+            $image_path = $directory . '/' . basename($img_url);
+            file_put_contents($image_path, file_get_contents($img_url));
+    
+            $image_guid = $image_origin_url . basename($img_url);
+    
+            $counter++;
+            $wpdb->insert(
+                $prefix . 'posts',
+                array(
+                    'post_author' => 14,
+                    'post_date' => $current_date_time,
+                    'post_date_gmt' => $current_date_time,
+                    'post_content' => '',
+                    'post_title' => $post_title . ' (' . $counter . ')',
+                    'post_excerpt' => '',
+                    'post_status' => 'inherit',
+                    'comment_status' => 'open',
+                    'ping_status' => 'closed',
+                    'post_password' => '',
+                    'post_name' => $post_id_name . '-' . $counter,
+                    'to_ping' => '',
+                    'pinged' => '',
+                    'post_modified' => $current_date_time,
+                    'post_modified_gmt' => $current_date_time,
+                    'post_content_filtered' => '',
+                    'post_parent' => $post_id,
+                    'guid' => $image_guid,
+                    'menu_order' => 0,
+                    'post_type' => 'attachment',
+                    'post_mime_type' => 'image/jpeg',
+                    'comment_count' => 0
+                )
+            );
+    
+            $post_image_array_ids .= $wpdb->insert_id . ',';
+    
+            $photo_metadata = array(
+                'width' => 640,
+                'height' => 400,
+                'file' => '2024/07/' . basename($image_path),
+                'filesize' => filesize($image_path),
+                'sizes' => array(),
+                'image_meta' => array(
+                    'aperture' => '0',
+                    'credit' => '',
+                    'camera' => '',
+                    'caption' => '',
+                    'created_timestamp' => '0',
+                    'copyright' => '',
+                    'focal_length' => '0',
+                    'iso' => '0',
+                    'shutter_speed' => '0',
+                    'title' => '',
+                    'orientation' => '1',
+                    'keywords' => array()
+                )
+            );
+    
+            $photo_metadata_serialized = serialize($photo_metadata);
+            
+            $wpdb->insert(
+                $prefix . 'postmeta',
+                array(
+                    'post_id' => $wpdb->insert_id,
+                    'meta_key' => '_wp_attached_file',
+                    'meta_value' => '2024/07/' . basename($image_path)
+                )
+            );
+    
+            $wpdb->insert(
+                $prefix . 'postmeta',
+                array(
+                    'post_id' => $wpdb->insert_id,
+                    'meta_key' => '_wp_attachment_metadata',
+                    'meta_value' => $photo_metadata_serialized
+                )
+            );
+        }
+    
+        echo '<br>Data inserted successfully';
+        $post_image_array_ids = rtrim($post_image_array_ids, ',');
+    } catch (Exception $e) {
+        echo 'Caught exception: ', $e->getMessage(), "\n";
+    }    
 
     $meta_values = array(
         'rate_review' => 0,
@@ -484,6 +478,24 @@
     }
     catch(Exception $e){
         echo 'Caught exception: ',  $e->getMessage(), "\n";
+    }
+
+    try{
+        foreach ($amenity_array as $hotel_facility_number) {
+        $wpdb->insert(
+            $prefix . 'term_relationships',
+                array(
+                    'object_id' => $post_id,
+                    'term_taxonomy_id' => $hotel_facility_number,
+                    'term_order' => 0
+                )
+            );
+        }
+
+        echo '<br>hotel facilities inserted successfully';
+
+    }catch(Exception $ex){
+        echo 'Caught exception: ',  $ex->getMessage(), "\n";
     }
 
 ?>
