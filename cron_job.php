@@ -1,5 +1,12 @@
 <?php
 
+<<<<<<< Updated upstream
+=======
+use Models\Amenity;
+use Models\Posts_hotel;
+use Models\St_Hotel;
+
+>>>>>>> Stashed changes
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
@@ -246,7 +253,20 @@
     }
 
 
-    try{
+    //ST_Hotel
+$st_hotel = new St_Hotel($wpdb);
+
+$st_hotel->post_id = (int) $post_id;
+$st_hotel->address = $address;
+$st_hotel->rate_review = 0;
+$st_hotel->hotel_star = $star_rating;
+$st_hotel->price_avg = $price_avg;
+$st_hotel->min_price = $price_min;
+$st_hotel->map_lat = $latitude;
+$st_hotel->map_lng = $longitude;
+
+$st_hotel->create();
+   /* try{
         $wpdb->insert(
             $prefix . 'st_hotel',
             array(
@@ -275,7 +295,7 @@
     }
     catch (Exception $e) {
         echo 'Caught exception: ',  $e->getMessage(), "\n";
-    }
+    }*/
 
     // try{
     //     $counter = 0;
