@@ -2,7 +2,9 @@
 
 namespace Models;
 
-class Posts_hotel
+use Models\HotelRoom;
+
+class Posts_room
 {
     private $wpdb;
     private $table = 'posts';
@@ -37,9 +39,8 @@ class Posts_hotel
         $this->post_author = 14;
         $this->comment_status = 'open';
         $this->ping_status = 'open';
-        $this->post_parent = 0;
         $this->menu_order = 0;
-        $this->post_type = 'st_hotel';
+        $this->post_type = 'hotel_room';
         $this->comment_count = 0;
     }
 
@@ -147,11 +148,11 @@ class Posts_hotel
 
     public function get()
     {
-        if (!is_string($this->post_title)) {
-            throw new \Exception("post_title must be a string");
+        if (!is_string($this->post_name)) {
+            throw new \Exception("post_name must be a string");
         }
     
-        $query = $this->wpdb->prepare("SELECT * FROM " . $this->wpdb->prefix . $this->table . " WHERE post_title = %s", $this->post_title);
+        $query = $this->wpdb->prepare("SELECT * FROM " . $this->wpdb->prefix . $this->table . " WHERE post_name = %s", $this->post_name);
         $result = $this->wpdb->get_row($query);
 
         return $result;
