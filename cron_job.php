@@ -1,10 +1,15 @@
 <?php
 
+use Models\Amenity;
+use Models\Posts_hotel;
+
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
 
     $path = $_SERVER['DOCUMENT_ROOT']; 
+    include './Models/Amenity.php';
+    include './Models/Posts_hotel.php';
     include './data/data.php';
     include './data/track_data.php';
     include './HttpRequests.php';
@@ -43,52 +48,7 @@
 
     $hotel = getHotelDetails($response_hotel['data']['hotels'][0]['id'], $headers);
 
-    $amenity_array = array();
-
-    print_r('<pre>');
-
-    if ($hotel != null) {
-        
-        foreach ($hotel['amenity_groups'] as $group) {
-            foreach ($group['amenities'] as $amenity) {
-
-                if ($amenity == '24-hour reception')
-                    $amenity = '24-hour front desk';
-                else if ($amenity == 'Free Wi-Fi')
-                    $amenity = 'Free WiFi';
-
-                $query_terms = $wpdb->prepare("SELECT term_id FROM " . $prefix . "terms WHERE name LIKE %s", '%' . $wpdb->esc_like($amenity) . '%');
-                $amenity_found_terms = $wpdb->get_results($query_terms);
-
-                if ($amenity_found_terms) {
-                    foreach ($amenity_found_terms as $term) {
-                        $query_term_taxonomy = $wpdb->prepare("SELECT term_taxonomy_id FROM " . $prefix . "term_taxonomy WHERE term_id = %d AND taxonomy = 'hotel-facilities'", $term->term_id);
-                        $amenity_found_term_taxonomy = $wpdb->get_results($query_term_taxonomy);
-
-                        if ($amenity_found_term_taxonomy) {
-                            foreach ($amenity_found_term_taxonomy as $taxonomy) {
-                                print_r($taxonomy->term_taxonomy_id . ' found </br>');
-                                array_push($amenity_array, $taxonomy->term_taxonomy_id);
-                            }
-                        } else {
-                            print_r('Term taxonomy not found for term_id: ' . $term->term_id . '</br>');
-                        }
-                    }
-                } else {
-                    print_r($amenity . ' not found </br>');
-                }
-            }
-        }
-    }
-
-    print_r('</pre>');
-
-
-    $post_exists = $wpdb->get_row("SELECT post_title FROM " . $prefix . "posts WHERE post_name = '" . $hotel['id'] . "'");
-
-    if ($post_exists) {
-        exit('Post ' . $hotel['id'] . ' already exists');
-    }
+    $posts_hotel = new Posts_hotel($wpdb);
 
     $current_date_time = date('Y-m-d H:i:s');
 
@@ -118,45 +78,38 @@
 
     $post_id;
 
-    try {
-        $wpdb->insert(
-            $prefix . 'posts',
-            array(
-                'post_author' => 14,
-                'post_date' => $current_date_time,
-                'post_date_gmt' => $current_date_time,
-                'post_content' => $post_content,
-                'post_title' => $post_title,
-                'post_excerpt' => $post_excerpt,
-                'post_status' => 'draft',
-                'comment_status' => 'open',
-                'ping_status' => 'open',
-                'post_password' => '',
-                'post_name' => $post_id_name,
-                'to_ping' => '',
-                'pinged' => '',
-                'post_modified' => $current_date_time,
-                'post_modified_gmt' => $current_date_time,
-                'post_content_filtered' => '',
-                'post_parent' => 0,
-                'guid' => '',
-                'menu_order' => 0,
-                'post_type' => 'st_hotel',
-                'post_mime_type' => '',
-                'comment_count' => 0
-            )
-        );
-        if ($wpdb->last_error)
-            throw new Exception($wpdb->last_error);
-        else
-            echo '<br>Data for posts inserted successfully<br>';
+    $posts_hotel->post_content = $post_content;
+    $posts_hotel->post_title = $hotel['name'];;
+    $posts_hotel->post_excerpt = $post_excerpt;
+    $posts_hotel->post_status = 'draft';
+    $posts_hotel->post_password = '';
+    $posts_hotel->post_name = $post_id_name;
+    $posts_hotel->to_ping = '';
+    $posts_hotel->pinged = '';
+    $posts_hotel->post_content_filtered = '';
+    $posts_hotel->guid = '';
+    $posts_hotel->post_mime_type = '';
 
-        $post_id = $wpdb->insert_id;
-        echo 'Inserted post ID: ' . $post_id . '<br>';
+    $post_id = $posts_hotel->get();
 
-    } catch (Exception $e) {
-        echo 'Caught exception: ',  $e->getMessage(), "\n";
+    if ($post_id){
+        $post_id = $post_id->ID;
+        $posts_hotel->id = $post_id;
+        $post_response = $posts_hotel->update();
     }
+    else{
+        $post_id = $posts_hotel->create();
+    }
+
+    // Creating instance of Amenity model
+    $amenities_model = new Amenity($wpdb);
+
+    // Assigning values
+    $amenities_model->amenities = $hotel['amenity_groups'];
+    $amenities_model->post_id = $post_id;
+
+    // Getting amenities and inserting into database
+    $amenities = $amenities_model->getAmenities();
 
     $prices = array();
 
@@ -478,24 +431,6 @@
     }
     catch(Exception $e){
         echo 'Caught exception: ',  $e->getMessage(), "\n";
-    }
-
-    try{
-        foreach ($amenity_array as $hotel_facility_number) {
-        $wpdb->insert(
-            $prefix . 'term_relationships',
-                array(
-                    'object_id' => $post_id,
-                    'term_taxonomy_id' => $hotel_facility_number,
-                    'term_order' => 0
-                )
-            );
-        }
-
-        echo '<br>hotel facilities inserted successfully';
-
-    }catch(Exception $ex){
-        echo 'Caught exception: ',  $ex->getMessage(), "\n";
     }
 
 ?>
