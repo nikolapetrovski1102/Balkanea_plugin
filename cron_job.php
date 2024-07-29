@@ -17,6 +17,7 @@ use Models\St_Hotel;
     include './Models/PostsRoom.php';
     include './Models/HotelRoom.php';
     include './Models/PostMetaValues.php';
+    include './Models/St_Hotel.php';
     include './data/data.php';
     include './data/track_data.php';
     include './HttpRequests.php';
@@ -197,7 +198,10 @@ use Models\St_Hotel;
     $st_hotel->map_lat = $latitude;
     $st_hotel->map_lng = $longitude;
 
-    $st_hotel->create();
+    if ($st_hotel->get())
+        $st_hotel->update();
+    else
+        $st_hotel->create();
    /* try{
         $wpdb->insert(
             $prefix . 'st_hotel',

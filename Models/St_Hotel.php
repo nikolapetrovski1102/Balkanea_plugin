@@ -115,9 +115,9 @@ class St_Hotel
     }
 
     // Get Hotel
-    public function get($post_id)
+    public function get()
     {
-        $query = $this->wpdb->prepare("SELECT * FROM " . $this->wpdb->prefix . $this->table . " WHERE post_id = %d", $post_id);
+        $query = $this->wpdb->prepare("SELECT * FROM " . $this->wpdb->prefix . $this->table . " WHERE post_id = %d", $this->post_id);
         
         try {
             $result = $this->wpdb->get_row($query);
