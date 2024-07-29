@@ -1,10 +1,11 @@
 <?php
 
 use Models\Amenity;
-use Models\PostsHotel;
-use Models\PostsRoom;
 use Models\HotelRoom;
 use Models\PostMetaValues;
+use Models\PostsHotel;
+use Models\PostsRoom;
+use Models\St_Hotel;
 
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
@@ -184,36 +185,49 @@ use Models\PostMetaValues;
     }
 
 
-    // try{
-    //     $wpdb->insert(
-    //         $prefix . 'st_hotel',
-    //         array(
-    //             'post_id' => (int)$post_id,
-    //             'multi_location' => '_14848_,_15095_',
-    //             'id_location' => '',
-    //             'address' => $address,
-    //             'allow_full_day' => 'on',
-    //             'rate_review' => 0,
-    //             'hotel_star' => $star_rating,
-    //             'price_avg' => $price_avg,
-    //             'min_price' => $price_min,
-    //             'hotel_booking_period' => 0,
-    //             'map_lat' => $latitude,
-    //             'map_lng' => $longitude,
-    //             'is_sale_schedule' => NULL,
-    //             'post_origin' => NULL,
-    //             'is_featured' => 'off'
-    //         )
-    //     );
-    //     if ($wpdb->last_error) {
-    //         throw new Exception($wpdb->last_error);
-    //     }
-    //     else
-    //         echo '<br>Data for st_hotel inserted successfully<br>';
-    // }
-    // catch (Exception $e) {
-    //     echo 'Caught exception: ',  $e->getMessage(), "\n";
-    // }
+    //ST_Hotel
+    $st_hotel = new St_Hotel($wpdb);
+
+    $st_hotel->post_id = (int) $post_id;
+    $st_hotel->address = $address;
+    $st_hotel->rate_review = 0;
+    $st_hotel->hotel_star = $star_rating;
+    $st_hotel->price_avg = $price_avg;
+    $st_hotel->min_price = $price_min;
+    $st_hotel->map_lat = $latitude;
+    $st_hotel->map_lng = $longitude;
+
+    $st_hotel->create();
+   /* try{
+        $wpdb->insert(
+            $prefix . 'st_hotel',
+            array(
+                'post_id' => (int)$post_id,
+                'multi_location' => '_14848_,_15095_',
+                'id_location' => '',
+                'address' => $address,
+                'allow_full_day' => 'on',
+                'rate_review' => 0,
+                'hotel_star' => $star_rating,
+                'price_avg' => $price_avg,
+                'min_price' => $price_min,
+                'hotel_booking_period' => 0,
+                'map_lat' => $latitude,
+                'map_lng' => $longitude,
+                'is_sale_schedule' => NULL,
+                'post_origin' => NULL,
+                'is_featured' => 'off'
+            )
+        );
+        if ($wpdb->last_error) {
+            throw new Exception($wpdb->last_error);
+        }
+        else
+            echo '<br>Data for st_hotel inserted successfully<br>';
+    }
+    catch (Exception $e) {
+        echo 'Caught exception: ',  $e->getMessage(), "\n";
+    }*/
 
     // try{
     //     $counter = 0;
