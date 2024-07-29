@@ -82,10 +82,12 @@ function getHotelPrice($data_hotel, $headers) {
 }
 
 function getHotelDetails($hotel_data, $headers){
+    $hotel_id = checkHotel($hotel_data);
+
     $url = 'https://api.worldota.net/api/b2b/v3/hotel/info/';
 
     $data_hotel = array(
-        'id' => $hotel_data,
+        'id' => $hotel_id,
         'language' => 'en'
     );
 

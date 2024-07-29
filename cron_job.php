@@ -1,17 +1,22 @@
 <?php
 
-<<<<<<< Updated upstream
-=======
 use Models\Amenity;
-use Models\Posts_hotel;
+use Models\HotelRoom;
+use Models\PostMetaValues;
+use Models\PostsHotel;
+use Models\PostsRoom;
 use Models\St_Hotel;
 
->>>>>>> Stashed changes
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
 
     $path = $_SERVER['DOCUMENT_ROOT']; 
+    include './Models/Amenity.php';
+    include './Models/PostsHotel.php';
+    include './Models/PostsRoom.php';
+    include './Models/HotelRoom.php';
+    include './Models/PostMetaValues.php';
     include './data/data.php';
     include './data/track_data.php';
     include './HttpRequests.php';
@@ -32,72 +37,21 @@ use Models\St_Hotel;
     );
 
     // Getting price of a hotel api
-    $response_hotel = getHotelPrice($data_hotel, $headers);
+    // $response_hotel = getHotelPrice($data_hotel, $headers);
 
-    if ($response_hotel['data'] == null || $response_hotel['data']['hotels'] == null) {
-        exit('No data found for <strong>' . $response_hotel['debug']['request']['id'] . '</strong>');
-    }
+    // if ($response_hotel['data'] == null || $response_hotel['data']['hotels'] == null) {
+    //     exit('No data found for <strong>' . $response_hotel['debug']['request']['id'] . '</strong>');
+    // }
 
-    $checkin = $response_hotel['debug']['request']['checkin'];
-    $checkout = $response_hotel['debug']['request']['checkin'];
+    // $checkin = $response_hotel['debug']['request']['checkin'];
+    // $checkout = $response_hotel['debug']['request']['checkin'];
 
-    $timestamp_checkout = strtotime($checkout);
-    $timestamp_checkin = strtotime($checkin);
+    // $timestamp_checkout = strtotime($checkout);
+    // $timestamp_checkin = strtotime($checkin);
 
-    $room_name = '';
-    $meal = '';
-    $daily_price = 0;
+    $hotel = getHotelDetails($data_hotel, $headers);
 
-    $hotel = getHotelDetails($response_hotel['data']['hotels'][0]['id'], $headers);
-
-    $amenity_array = array();
-
-    print_r('<pre>');
-
-    if ($hotel != null) {
-        
-        foreach ($hotel['amenity_groups'] as $group) {
-            foreach ($group['amenities'] as $amenity) {
-
-                if ($amenity == '24-hour reception')
-                    $amenity = '24-hour front desk';
-                else if ($amenity == 'Free Wi-Fi')
-                    $amenity = 'Free WiFi';
-
-                $query_terms = $wpdb->prepare("SELECT term_id FROM " . $prefix . "terms WHERE name LIKE %s", '%' . $wpdb->esc_like($amenity) . '%');
-                $amenity_found_terms = $wpdb->get_results($query_terms);
-
-                if ($amenity_found_terms) {
-                    foreach ($amenity_found_terms as $term) {
-                        $query_term_taxonomy = $wpdb->prepare("SELECT term_taxonomy_id FROM " . $prefix . "term_taxonomy WHERE term_id = %d AND taxonomy = 'hotel-facilities'", $term->term_id);
-                        $amenity_found_term_taxonomy = $wpdb->get_results($query_term_taxonomy);
-
-                        if ($amenity_found_term_taxonomy) {
-                            foreach ($amenity_found_term_taxonomy as $taxonomy) {
-                                print_r($taxonomy->term_taxonomy_id . ' found </br>');
-                                array_push($amenity_array, $taxonomy->term_taxonomy_id);
-                            }
-                        } else {
-                            print_r('Term taxonomy not found for term_id: ' . $term->term_id . '</br>');
-                        }
-                    }
-                } else {
-                    print_r($amenity . ' not found </br>');
-                }
-            }
-        }
-    }
-
-    print_r('</pre>');
-
-
-    $post_exists = $wpdb->get_row("SELECT post_title FROM " . $prefix . "posts WHERE post_name = '" . $hotel['id'] . "'");
-
-    if ($post_exists) {
-        exit('Post ' . $hotel['id'] . ' already exists');
-    }
-
-    $current_date_time = date('Y-m-d H:i:s');
+    $posts_hotel = new PostsHotel($wpdb);
 
     $post_content = '';
     $post_excerpt = '';
@@ -125,44 +79,37 @@ use Models\St_Hotel;
 
     $post_id;
 
-    try {
-        $wpdb->insert(
-            $prefix . 'posts',
-            array(
-                'post_author' => 14,
-                'post_date' => $current_date_time,
-                'post_date_gmt' => $current_date_time,
-                'post_content' => $post_content,
-                'post_title' => $post_title,
-                'post_excerpt' => $post_excerpt,
-                'post_status' => 'draft',
-                'comment_status' => 'open',
-                'ping_status' => 'open',
-                'post_password' => '',
-                'post_name' => $post_id_name,
-                'to_ping' => '',
-                'pinged' => '',
-                'post_modified' => $current_date_time,
-                'post_modified_gmt' => $current_date_time,
-                'post_content_filtered' => '',
-                'post_parent' => 0,
-                'guid' => '',
-                'menu_order' => 0,
-                'post_type' => 'st_hotel',
-                'post_mime_type' => '',
-                'comment_count' => 0
-            )
-        );
-        if ($wpdb->last_error)
-            throw new Exception($wpdb->last_error);
-        else
-            echo '<br>Data for posts inserted successfully<br>';
+    $posts_hotel->post_content = $post_content;
+    $posts_hotel->post_title = $hotel['name'];;
+    $posts_hotel->post_excerpt = $post_excerpt;
+    $posts_hotel->post_status = 'draft';
+    $posts_hotel->post_password = '';
+    $posts_hotel->post_name = $post_id_name;
+    $posts_hotel->to_ping = '';
+    $posts_hotel->pinged = '';
+    $posts_hotel->post_content_filtered = '';
+    $posts_hotel->guid = '';
+    $posts_hotel->post_mime_type = '';
 
-        $post_id = $wpdb->insert_id;
-        echo 'Inserted post ID: ' . $post_id . '<br>';
+    $post_id = $posts_hotel->get();
 
-    } catch (Exception $e) {
-        echo 'Caught exception: ',  $e->getMessage(), "\n";
+    if ($post_id){
+        $post_id = $post_id->ID;
+        $posts_hotel->id = $post_id;
+        $post_response = $posts_hotel->update();
+    }
+    else{
+        $post_id = $posts_hotel->create();
+
+        // Creating instance of Amenity model
+        $amenities_model = new Amenity($wpdb);
+
+        // Assigning values
+        $amenities_model->amenities = $hotel['amenity_groups'];
+        $amenities_model->post_id = $post_id;
+
+        // Getting amenities and inserting into database
+        $amenities = $amenities_model->getAmenities();
     }
 
     $prices = array();
@@ -170,75 +117,60 @@ use Models\St_Hotel;
     $price_avg = 0;
     $price_min = 0;
 
-    $rooms_array = array();
+    $posts_room = new PostsRoom($wpdb);
 
     try {
-        $response_hotel = $response_hotel['data']['hotels'][0];
+        // $response_hotel = $response_hotel['data']['hotels'][0]['rates'];
         $counter = 0;
         
-        foreach ($response_hotel['rates'] as $rooms) {
-            $room_name = $rooms['room_name'];
-            $meal = $rooms['meal'];
-            $daily_price = $rooms['daily_prices'][0];
+        foreach ($hotel['room_groups'] as $room) {
 
-            array_push($prices, (int)$daily_price);
+            $posts_room->post_title = $room['name_struct']['main_name'];
+            $posts_room->post_content = $post_content;
+            $posts_room->post_excerpt = $post_excerpt;
+            $posts_room->post_status = 'draft';
+            $posts_room->post_password = '';
+            $posts_room->post_name = $post_id_name . '-' . $room['name_struct']['main_name'];
+            $posts_room->to_ping = '';
+            $posts_room->pinged = '';
+            $posts_room->post_content_filtered = '';
+            $posts_room->post_parent = $post_id;
+            $posts_room->guid = '';
+            $posts_room->post_mime_type = '';
 
-            $result = $wpdb->insert(
-                $prefix . 'posts',
-                array(
-                    'post_author' => 14,
-                    'post_date' => $current_date_time,
-                    'post_date_gmt' => $current_date_time,
-                    'post_content' => $post_content,
-                    'post_title' => $room_name,
-                    'post_excerpt' => '',
-                    'post_status' => 'draft',
-                    'comment_status' => 'open',
-                    'ping_status' => 'closed',
-                    'post_password' => '',
-                    'post_name' => $post_id_name . '-' . $room_name,
-                    'to_ping' => '',
-                    'pinged' => '',
-                    'post_modified' => $current_date_time,
-                    'post_modified_gmt' => $current_date_time,
-                    'post_content_filtered' => '',
-                    'post_parent' => $post_id,
-                    'guid' => '',
-                    'menu_order' => 0,
-                    'post_type' => 'hotel_room',
-                    'post_mime_type' => '',
-                    'comment_count' => 0
-                )
-            );
+            $posts_room_exsists = $posts_room->get();
 
-            if ($result === false) {
-                error_log('wpdb last error: ' . $wpdb->last_error);
-            } else {
-                $post_room_id = $wpdb->insert_id;
-                echo 'Inserted post ID: ' . $post_room_id . '<br>';
-                
-                $counter++;
-                
-                $wpdb->insert(
-                    $prefix . 'hotel_room',
-                    array(
-                        'post_id' => $post_room_id,
-                        'room_parent' => $post_id,
-                        'multi_location' => '',
-                        'id_location' => '',
-                        'address' => $address,
-                        'allow_full_day' => 'off',
-                        'price' => $daily_price,
-                        'number_room' => $counter,
-                        'discount_rate' => '',
-                        'adult_number' => 2,
-                        'child_number' => 0,
-                        'status' => 'draft',
-                        'adult_price' => '',
-                        'child_price' => '',
-                    )
-                );
+            if ($posts_room_exsists){
+                $posts_room->id = $posts_room_exsists->ID;
+                $posts_room->update();
             }
+            else{
+                $posts_room->create();
+            }
+
+            $hotel_room_model = new HotelRoom($wpdb);
+
+            $hotel_room_model->post_id = $post_id == null ? $posts_room->id : $post_id;
+            $hotel_room_model->room_parent = $post_id;
+            $hotel_room_model->multi_location = '';
+            $hotel_room_model->id_location = '';
+            $hotel_room_model->address = $address;
+            $hotel_room_model->allow_full_day = 'on';
+            $hotel_room_model->price = 0;
+            $hotel_room_model->number_room = $room['rg_ext']['capacity'] == 0 ? 1 : $room['rg_ext']['capacity'];
+            $hotel_room_model->discount_rate = '';
+            $hotel_room_model->adult_number = 2;
+            $hotel_room_model->child_number = 0;
+            $hotel_room_model->status = 'draft';
+            $hotel_room_model->adult_price = 0;
+            $hotel_room_model->child_price = 0;
+
+            $hotel_room = $hotel_room_model->get();
+
+            if ($hotel_room)
+                $hotel_room_model->update();
+            else
+                $hotel_room_model->create();
         }
 
         if ($wpdb->last_error) {
@@ -254,18 +186,18 @@ use Models\St_Hotel;
 
 
     //ST_Hotel
-$st_hotel = new St_Hotel($wpdb);
+    $st_hotel = new St_Hotel($wpdb);
 
-$st_hotel->post_id = (int) $post_id;
-$st_hotel->address = $address;
-$st_hotel->rate_review = 0;
-$st_hotel->hotel_star = $star_rating;
-$st_hotel->price_avg = $price_avg;
-$st_hotel->min_price = $price_min;
-$st_hotel->map_lat = $latitude;
-$st_hotel->map_lng = $longitude;
+    $st_hotel->post_id = (int) $post_id;
+    $st_hotel->address = $address;
+    $st_hotel->rate_review = 0;
+    $st_hotel->hotel_star = $star_rating;
+    $st_hotel->price_avg = $price_avg;
+    $st_hotel->min_price = $price_min;
+    $st_hotel->map_lat = $latitude;
+    $st_hotel->map_lng = $longitude;
 
-$st_hotel->create();
+    $st_hotel->create();
    /* try{
         $wpdb->insert(
             $prefix . 'st_hotel',
@@ -340,13 +272,15 @@ $st_hotel->create();
     //     echo 'Caught exception: ',  $e->getMessage(), "\n";
     // }
 
-    $price_avg = array_sum($prices) / count($prices);
+    // $price_avg = array_sum($prices) / count($prices);
 
-    $price_min = min($prices);
+    // $price_min = min($prices);
 
-    $post_image_array_ids = '';
+    // $post_image_array_ids = '';
 
     try {
+        $current_date_time = date('Y-m-d H:i:s');
+
         $directory = '/home/balkanea/public_html/wp-content/uploads/2024/07';
         $image_origin_url = 'https://balkanea.com/wp-content/uploads/2024/07/';
         $counter = 0;
@@ -444,7 +378,10 @@ $st_hotel->create();
         echo 'Caught exception: ', $e->getMessage(), "\n";
     }    
 
-    $meta_values = array(
+    $post_meta = new PostMetaValues($wpdb);
+
+    $post_meta->post_id= $post_id;
+    $post_meta->meta_values = array(
         'rate_review' => 0,
         'price_avg' => $price_avg,
         'min_price' => $price_min,
@@ -476,7 +413,7 @@ $st_hotel->create();
         '_yoast_wpseo_metadesc' => $post_excerpt,
         '_yoast_wpseo_linkdex' => 71,
         '_yoast_wpseo_content_score' => 60,
-        '_yoast_wpseo_estimated-reading-time-minutes' => 2,
+        '_yoast_wpseo_estimated-reading-time-minutes' => NULL,
         'hotel_layout_style' => 5,
         'hotel_policy' => 'a:1:{i:0;a:2:{s:5:"title";s:0:"";s:18:"policy_description";s:' . strlen($hotel['metapolicy_extra_info']) . ':"' . $hotel['metapolicy_extra_info'] . '";}}',
         '_thumbnail_id' => $post_image_array_ids != null ? explode(",", $post_image_array_ids)[0] : '',
@@ -484,38 +421,10 @@ $st_hotel->create();
         '_wp_old_date' => date('YYYY-mm-dd')
     );
 
-    try{
-        foreach ($meta_values as $meta_key => $meta_value) {
-            $wpdb->insert(
-                $prefix . 'postmeta',
-                array(
-                    'post_id' => $post_id,
-                    'meta_key' => $meta_key,
-                    'meta_value' => $meta_value,
-                )
-            );
-        }    
-    }
-    catch(Exception $e){
-        echo 'Caught exception: ',  $e->getMessage(), "\n";
-    }
+    if ($post_meta->get())
+        $post_meta->update();
+    else
+        $post_meta->create();
 
-    try{
-        foreach ($amenity_array as $hotel_facility_number) {
-        $wpdb->insert(
-            $prefix . 'term_relationships',
-                array(
-                    'object_id' => $post_id,
-                    'term_taxonomy_id' => $hotel_facility_number,
-                    'term_order' => 0
-                )
-            );
-        }
-
-        echo '<br>hotel facilities inserted successfully';
-
-    }catch(Exception $ex){
-        echo 'Caught exception: ',  $ex->getMessage(), "\n";
-    }
 
 ?>
