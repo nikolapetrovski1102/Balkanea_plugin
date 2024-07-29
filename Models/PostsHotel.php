@@ -2,7 +2,7 @@
 
 namespace Models;
 
-class Posts_hotel
+class PostsHotel
 {
     private $wpdb;
     private $table = 'posts';

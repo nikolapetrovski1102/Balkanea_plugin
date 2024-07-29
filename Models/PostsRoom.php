@@ -4,7 +4,7 @@ namespace Models;
 
 use Models\HotelRoom;
 
-class Posts_room
+class PostsRoom
 {
     private $wpdb;
     private $table = 'posts';
