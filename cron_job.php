@@ -2,10 +2,12 @@
 
 use Models\Amenity;
 use Models\HotelRoom;
+use Models\ImageInserter;
 use Models\PostMetaValues;
 use Models\PostsHotel;
 use Models\PostsRoom;
 use Models\St_Hotel;
+use data\HotelFlag;
 
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
@@ -18,8 +20,10 @@ use Models\St_Hotel;
     include './Models/HotelRoom.php';
     include './Models/PostMetaValues.php';
     include './Models/St_Hotel.php';
+    include './Models/ImageInsert.php';
     include './data/data.php';
     include './data/track_data.php';
+    include './data/HotelFlag.php';
     include './HttpRequests.php';
     include_once $path . '/wp-load.php';
 
@@ -94,8 +98,7 @@ use Models\St_Hotel;
 
     $post_id = $posts_hotel->get();
 
-    if ($post_id){
-        $post_id = $post_id->ID;
+    if (HotelFlag::isHotelFound()){
         $posts_hotel->id = $post_id;
         $post_response = $posts_hotel->update();
     }
@@ -202,36 +205,6 @@ use Models\St_Hotel;
         $st_hotel->update();
     else
         $st_hotel->create();
-   /* try{
-        $wpdb->insert(
-            $prefix . 'st_hotel',
-            array(
-                'post_id' => (int)$post_id,
-                'multi_location' => '_14848_,_15095_',
-                'id_location' => '',
-                'address' => $address,
-                'allow_full_day' => 'on',
-                'rate_review' => 0,
-                'hotel_star' => $star_rating,
-                'price_avg' => $price_avg,
-                'min_price' => $price_min,
-                'hotel_booking_period' => 0,
-                'map_lat' => $latitude,
-                'map_lng' => $longitude,
-                'is_sale_schedule' => NULL,
-                'post_origin' => NULL,
-                'is_featured' => 'off'
-            )
-        );
-        if ($wpdb->last_error) {
-            throw new Exception($wpdb->last_error);
-        }
-        else
-            echo '<br>Data for st_hotel inserted successfully<br>';
-    }
-    catch (Exception $e) {
-        echo 'Caught exception: ',  $e->getMessage(), "\n";
-    }*/
 
     // try{
     //     $counter = 0;
@@ -282,107 +255,120 @@ use Models\St_Hotel;
 
     // $post_image_array_ids = '';
 
-    try {
-        $current_date_time = date('Y-m-d H:i:s');
+    $post_images = new ImageInserter($wpdb);
 
-        $directory = '/home/balkanea/public_html/wp-content/uploads/2024/07';
-        $image_origin_url = 'https://balkanea.com/wp-content/uploads/2024/07/';
-        $counter = 0;
-        $post_image_array_ids = '';
+    $post_images->hotel = $hotel;
+    $post_images->post_title = $post_title;
+    $post_images->post_id_name = $post_id_name;
+    $post_images->post_id = $post_id;
+    $post_images->provider = 'RateHawk';
+
+    $post_image_array_ids = $post_images->insertImages();
+
+    // try {
+    //     $current_date_time = date('Y-m-d H:i:s');
+
+    //     $directory = '/home/balkanea/public_html/wp-content/uploads/2024/07';
+    //     $image_origin_url = 'https://balkanea.com/wp-content/uploads/2024/07/';
+    //     $counter = 0;
+    //     $post_image_array_ids = '';
     
-        foreach ($hotel['images'] as $img) {
-            if (!file_exists($directory)) {
-                mkdir($directory, 0777, true);
-            }
+    //     foreach ($hotel['images'] as $img) {
+    //         if (!file_exists($directory)) {
+    //             mkdir($directory, 0777, true);
+    //         }
     
-            $img_url = str_replace('{size}', '640x400', $img);
+    //         $img_url = str_replace('{size}', '640x400', $img);
     
-            $image_path = $directory . '/' . basename($img_url);
-            file_put_contents($image_path, file_get_contents($img_url));
+    //         $image_path = $directory . '/' . basename($img_url);
+    //         file_put_contents($image_path, file_get_contents($img_url));
     
-            $image_guid = $image_origin_url . basename($img_url);
+    //         $image_guid = $image_origin_url . basename($img_url);
     
-            $counter++;
-            $wpdb->insert(
-                $prefix . 'posts',
-                array(
-                    'post_author' => 14,
-                    'post_date' => $current_date_time,
-                    'post_date_gmt' => $current_date_time,
-                    'post_content' => '',
-                    'post_title' => $post_title . ' (' . $counter . ')',
-                    'post_excerpt' => '',
-                    'post_status' => 'inherit',
-                    'comment_status' => 'open',
-                    'ping_status' => 'closed',
-                    'post_password' => '',
-                    'post_name' => $post_id_name . '-' . $counter,
-                    'to_ping' => '',
-                    'pinged' => '',
-                    'post_modified' => $current_date_time,
-                    'post_modified_gmt' => $current_date_time,
-                    'post_content_filtered' => '',
-                    'post_parent' => $post_id,
-                    'guid' => $image_guid,
-                    'menu_order' => 0,
-                    'post_type' => 'attachment',
-                    'post_mime_type' => 'image/jpeg',
-                    'comment_count' => 0
-                )
-            );
+    //         $counter++;
+    //         $wpdb->insert(
+    //             $prefix . 'posts',
+    //             array(
+    //                 'post_author' => 14,
+    //                 'post_date' => $current_date_time,
+    //                 'post_date_gmt' => $current_date_time,
+    //                 'post_content' => '',
+    //                 'post_title' => $post_title . ' (' . $counter . ')',
+    //                 'post_excerpt' => '',
+    //                 'post_status' => 'inherit',
+    //                 'comment_status' => 'open',
+    //                 'ping_status' => 'closed',
+    //                 'post_password' => '',
+    //                 'post_name' => $post_id_name . '-' . $counter,
+    //                 'to_ping' => '',
+    //                 'pinged' => '',
+    //                 'post_modified' => $current_date_time,
+    //                 'post_modified_gmt' => $current_date_time,
+    //                 'post_content_filtered' => '',
+    //                 'post_parent' => $post_id,
+    //                 'guid' => $image_guid,
+    //                 'menu_order' => 0,
+    //                 'post_type' => 'attachment',
+    //                 'post_mime_type' => 'image/jpeg',
+    //                 'comment_count' => 0
+    //             )
+    //         );
     
-            $post_image_array_ids .= $wpdb->insert_id . ',';
+    //         $post_image_array_ids .= $wpdb->insert_id . ',';
     
-            $photo_metadata = array(
-                'width' => 640,
-                'height' => 400,
-                'file' => '2024/07/' . basename($image_path),
-                'filesize' => filesize($image_path),
-                'sizes' => array(),
-                'image_meta' => array(
-                    'aperture' => '0',
-                    'credit' => '',
-                    'camera' => '',
-                    'caption' => '',
-                    'created_timestamp' => '0',
-                    'copyright' => '',
-                    'focal_length' => '0',
-                    'iso' => '0',
-                    'shutter_speed' => '0',
-                    'title' => '',
-                    'orientation' => '1',
-                    'keywords' => array()
-                )
-            );
+    //         $photo_metadata = array(
+    //             'width' => 640,
+    //             'height' => 400,
+    //             'file' => '2024/07/' . basename($image_path),
+    //             'filesize' => filesize($image_path),
+    //             'sizes' => array(),
+    //             'image_meta' => array(
+    //                 'aperture' => '0',
+    //                 'credit' => '',
+    //                 'camera' => '',
+    //                 'caption' => '',
+    //                 'created_timestamp' => '0',
+    //                 'copyright' => '',
+    //                 'focal_length' => '0',
+    //                 'iso' => '0',
+    //                 'shutter_speed' => '0',
+    //                 'title' => '',
+    //                 'orientation' => '1',
+    //                 'keywords' => array()
+    //             )
+    //         );
     
-            $photo_metadata_serialized = serialize($photo_metadata);
+    //         $photo_metadata_serialized = serialize($photo_metadata);
             
-            $wpdb->insert(
-                $prefix . 'postmeta',
-                array(
-                    'post_id' => $wpdb->insert_id,
-                    'meta_key' => '_wp_attached_file',
-                    'meta_value' => '2024/07/' . basename($image_path)
-                )
-            );
+    //         $wpdb->insert(
+    //             $prefix . 'postmeta',
+    //             array(
+    //                 'post_id' => $wpdb->insert_id,
+    //                 'meta_key' => '_wp_attached_file',
+    //                 'meta_value' => '2024/07/' . basename($image_path)
+    //             )
+    //         );
     
-            $wpdb->insert(
-                $prefix . 'postmeta',
-                array(
-                    'post_id' => $wpdb->insert_id,
-                    'meta_key' => '_wp_attachment_metadata',
-                    'meta_value' => $photo_metadata_serialized
-                )
-            );
-        }
+    //         $wpdb->insert(
+    //             $prefix . 'postmeta',
+    //             array(
+    //                 'post_id' => $wpdb->insert_id,
+    //                 'meta_key' => '_wp_attachment_metadata',
+    //                 'meta_value' => $photo_metadata_serialized
+    //             )
+    //         );
+    //     }
     
-        echo '<br>Data inserted successfully';
-        $post_image_array_ids = rtrim($post_image_array_ids, ',');
-    } catch (Exception $e) {
-        echo 'Caught exception: ', $e->getMessage(), "\n";
-    }    
+    //     echo '<br>Data inserted successfully';
+    //     $post_image_array_ids = rtrim($post_image_array_ids, ',');
+    // } catch (Exception $e) {
+    //     echo 'Caught exception: ', $e->getMessage(), "\n";
+    // }    
 
     $post_meta = new PostMetaValues($wpdb);
+
+    print_r('post images array');
+    print_r($post_image_array_ids . '<br>');
 
     $post_meta->post_id= $post_id;
     $post_meta->meta_values = array(

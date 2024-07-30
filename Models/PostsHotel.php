@@ -154,7 +154,10 @@ class PostsHotel
         $query = $this->wpdb->prepare("SELECT * FROM " . $this->wpdb->prefix . $this->table . " WHERE post_title = %s", $this->post_title);
         $result = $this->wpdb->get_row($query);
 
-        return $result;
+        if ($result)
+            \data\HotelFlag::setHotelFlag();
+
+        return $result != null ? $result->ID : $result;
     }
 }
 ?>
