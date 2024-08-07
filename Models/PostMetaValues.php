@@ -63,6 +63,11 @@ class PostMetaValues
     {
         try {
             foreach ($this->meta_values as $meta_key => $meta_value) {
+                if ($meta_key == '_wp_old_slug'){
+                    print_r($meta_key . '<br>');
+                    print_r($meta_value . '<br>');
+                }
+                
                 $data = ['meta_value' => $meta_value];
                 $where = [
                     'post_id' => $this->post_id,

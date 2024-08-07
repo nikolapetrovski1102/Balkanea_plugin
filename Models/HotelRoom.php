@@ -67,9 +67,35 @@ class HotelRoom
 
         try {
             $result = $this->wpdb->insert($this->wpdb->prefix . $this->table, $data, $format);
+
             if ($this->wpdb->last_error) {
                 throw new \Exception($this->wpdb->last_error);
             }
+
+            $this->wpdb->insert(
+                $this->wpdb->prefix . 'st_room_availability',
+                array(
+                    'post_id' => $this->post_id,
+                    'check_in' => strtotime('today'),
+                    'check_out' => strtotime('today' . ' +1 year'),
+                    'number' => 9999,
+                    'post_type' => 'hotel_room',
+                    'price' => 0,
+                    'status' => 'available',
+                    'priority' => NULL,
+                    'number_booked' => 0,
+                    'parent_id' => $this->room_parent,
+                    'allow_full_day' => 'on',
+                    'number_end' => NULL,
+                    'booking_period' => 0,
+                    'is_base' => 0,
+                    'adult_number' => 2,
+                    'child_number' => 0,
+                    'adult_price' => 0,
+                    'child_price' => 0,
+                )
+            );
+
             return $result !== false;
         } catch (\Exception $ex) {
             echo 'Caught exception: ', $ex->getMessage(), "\n";

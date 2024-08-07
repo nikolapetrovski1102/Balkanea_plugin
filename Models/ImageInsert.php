@@ -7,8 +7,8 @@ class ImageInserter {
     public $post_id_name;
     public $post_id;
     public $hotel;
+    public $directory_url;
     public $provider;
-
     private $image_path;
     private $image_guid;
     public function __construct($wpdb) {
@@ -16,8 +16,11 @@ class ImageInserter {
     }
 
     public function insertImages() {
-        $directory = "/home/balkanea/public_html/wp-content/uploads/" . self::sanitizeFileName($this->provider) . '/' . self::sanitizeFileName($this->hotel['name']);
-        $image_origin_url = "https://balkanea.com/wp-content/uploads/" . self::sanitizeFileName($this->provider) . '/' . self::sanitizeFileName($this->hotel['name']) . '/';
+
+        print_r($this->directory_url . '<br>');
+
+        $directory = "/home/balkanea/public_html/wp-content/uploads/" . self::sanitizeFileName($this->provider) . '/' . $this->directory_url;
+        $image_origin_url = "https://balkanea.com/wp-content/uploads/" . self::sanitizeFileName($this->provider) . '/' . $this->directory_url . '/';
         $counter = 0;
         $post_image_array_ids = '';
 
@@ -26,8 +29,6 @@ class ImageInserter {
                 $img_url = self::getImageUrl($img);
 
                 $image_url_exsists = self::imageUrlExsist($image_origin_url . basename($img_url));
-
-                print_r($image_url_exsists . '<br>');
 
                 if (!file_exists($directory . '/' . basename($img))) {
                     $this->createDirectory($directory);
@@ -52,9 +53,6 @@ class ImageInserter {
 
             echo '<br>Images inserted successfully';
             $post_image_array_ids = rtrim($post_image_array_ids, ',');
-
-            print_r('Images inserted successfully: <br>');
-            print_r($post_image_array_ids);
 
             return $post_image_array_ids;
 
@@ -123,7 +121,7 @@ class ImageInserter {
         return array(
             'width' => 640,
             'height' => 400,
-            'file' =>   self::sanitizeFileName($this->provider) . '/' . self::sanitizeFileName($this->hotel['name']) . '/'. basename($this->image_path),
+            'file' =>   self::sanitizeFileName($this->provider) . '/' . $this->directory_url . '/'. basename($this->image_path),
             'filesize' => filesize($this->image_path),
             'sizes' => array(),
             'image_meta' => array(
@@ -143,7 +141,7 @@ class ImageInserter {
         );
     }
 
-    private function insertPostMeta( $photo_metadata) {
+    private function insertPostMeta( $photo_metadata ) {
         $photo_metadata_serialized = serialize($photo_metadata);
 
         $this->wpdb->insert(
@@ -151,7 +149,7 @@ class ImageInserter {
             array(
                 'post_id' => $this->wpdb->insert_id,
                 'meta_key' => '_wp_attached_file',
-                'meta_value' =>  self::sanitizeFileName($this->provider) . '/' . self::sanitizeFileName($this->hotel['name']) . '/'. basename($this->image_path)
+                'meta_value' =>  self::sanitizeFileName($this->provider) . '/' . $this->directory_url . '/'. basename($this->image_path)
             )
         );
 
