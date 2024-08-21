@@ -56,33 +56,33 @@ class Amenity
     {
         $amenities = [];
 
-            foreach ($this->amenities as $amenity) {
+        foreach ($this->amenities as $amenity) {
 
-                print_r($amenity . '<br>');
+            print_r($amenity . '<br>');
 
-                if ($amenity == '24-hour reception')
-                    $amenity = '24-hour front desk';
-                else if ($amenity == 'Free Wi-Fi')
-                    $amenity = 'Free WiFi';
+            if ($amenity == '24-hour reception')
+                $amenity = '24-hour front desk';
+            else if ($amenity == 'Free Wi-Fi')
+                $amenity = 'Free WiFi';
 
-                $query_terms = $this->wpdb->prepare("SELECT term_id FROM " . $this->wpdb->prefix . "terms WHERE name LIKE %s", '%' . $this->wpdb->esc_like($amenity) . '%');
-                $amenity_found_terms = $this->wpdb->get_results($query_terms);
+            $query_terms = $this->wpdb->prepare("SELECT term_id FROM " . $this->wpdb->prefix . "terms WHERE name LIKE %s", '%' . $this->wpdb->esc_like($amenity) . '%');
+            $amenity_found_terms = $this->wpdb->get_results($query_terms);
 
-                if ($amenity_found_terms) {
-                    foreach ($amenity_found_terms as $term) {
-                        $query_term_taxonomy = $this->wpdb->prepare("SELECT term_taxonomy_id FROM " . $this->wpdb->prefix . "term_taxonomy WHERE term_id = %d AND taxonomy = 'room-facilities'", $term->term_id);
-                        $amenity_found_term_taxonomy = $this->wpdb->get_results($query_term_taxonomy);
+            if ($amenity_found_terms) {
+                foreach ($amenity_found_terms as $term) {
+                    $query_term_taxonomy = $this->wpdb->prepare("SELECT term_taxonomy_id FROM " . $this->wpdb->prefix . "term_taxonomy WHERE term_id = %d AND taxonomy = 'room-facilities'", $term->term_id);
+                    $amenity_found_term_taxonomy = $this->wpdb->get_results($query_term_taxonomy);
 
-                        if ($amenity_found_term_taxonomy) {
-                            foreach ($amenity_found_term_taxonomy as $taxonomy) {
-                                print_r($taxonomy->term_taxonomy_id . '<br>');
-                                $this->insertAmenity($taxonomy->term_taxonomy_id);
-                                $amenities[] = $taxonomy->term_taxonomy_id;
-                            }
+                    if ($amenity_found_term_taxonomy) {
+                        foreach ($amenity_found_term_taxonomy as $taxonomy) {
+                            print_r($taxonomy->term_taxonomy_id . '<br>');
+                            $this->insertAmenity($taxonomy->term_taxonomy_id);
+                            $amenities[] = $taxonomy->term_taxonomy_id;
                         }
                     }
                 }
             }
+        }
 
         return $amenities;
     }
@@ -90,21 +90,26 @@ class Amenity
     public function insertAmenity($hotel_facility_number)
     {
         try {
-            $this->wpdb->insert(
-                $this->wpdb->prefix . $this->table,
-                [
-                    'object_id' => $this->post_id,
-                    'term_taxonomy_id' => $hotel_facility_number,
-                    'term_order' => 0
-                ]
+            $query = $this->wpdb->prepare(
+                "INSERT INTO {$this->wpdb->prefix}{$this->table} (object_id, term_taxonomy_id, term_order)
+                VALUES (%d, %d, %d)
+                ON DUPLICATE KEY UPDATE term_order = VALUES(term_order)",
+                $this->post_id, $hotel_facility_number, 0
             );
 
-            return '<br>hotel facility inserted successfully';
+            $this->wpdb->query($query);
+
+            if ($this->wpdb->last_error) {
+                throw new \Exception($this->wpdb->last_error);
+            }
+
+            return '<br>hotel facility inserted or updated successfully';
 
         } catch (\Exception $ex) {
             echo 'Caught exception: ', $ex->getMessage(), "\n";
         }
     }
 }
+
 
 ?>

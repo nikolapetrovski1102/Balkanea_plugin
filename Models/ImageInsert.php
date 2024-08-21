@@ -11,8 +11,10 @@ class ImageInserter {
     public $provider;
     private $image_path;
     private $image_guid;
+    private $img_url;
     public function __construct($wpdb) {
         $this->wpdb = $wpdb;
+        $this->img_url = '';
     }
 
     public function insertImages() {
@@ -24,23 +26,36 @@ class ImageInserter {
         $counter = 0;
         $post_image_array_ids = '';
 
+        $counter = 0;
+
         try {
             foreach ($this->hotel['images'] as $img) {
+                $counter++;
+
+                echo 'Directory URL: ' . $this->directory_url . '<br>';
+
+                if (explode('/',$this->directory_url))
+                        $new_image = explode('/',$this->directory_url)[1];
+
+                echo 'new image name: <br>';
+                echo $new_image;
+
                 $img_url = self::getImageUrl($img);
 
-                $image_url_exsists = self::imageUrlExsist($image_origin_url . basename($img_url));
+                $image_url_exsists = self::imageUrlExsist($image_origin_url . $new_image . '.jpg');
 
-                if (!file_exists($directory . '/' . basename($img))) {
+                if (!file_exists($directory . '/' . basename($new_image))) {
                     $this->createDirectory($directory);
-                    $this->image_path = self::downloadImage($directory, $img_url);
+
+                    $this->image_path = self::downloadImage($directory, $img_url, $new_image . '-' . $counter);
                     
                 }
-                if (self::imageUrlExsist($image_origin_url . basename($img_url))) {
+                if (self::imageUrlExsist($image_origin_url . basename($new_image . '.jpg'))) {
                     $post_image_array_ids .= $image_url_exsists . ',';
                 }
                 else{
                     if ($this->image_path) {
-                    $this->image_guid = $image_origin_url . basename($img_url);
+                    $this->image_guid = $image_origin_url . $new_image . '.jpg';
                         $counter++;
                         $this->insertPost($counter);
                         $post_image_array_ids .= $this->wpdb->insert_id . ',';
@@ -71,21 +86,38 @@ class ImageInserter {
         return str_replace('{size}', '640x400', $img);
     }
 
-    private  function downloadImage($directory, $img_url) {
-       $this->image_path = $directory . '/' . basename($img_url);
+    private function downloadImage($directory, $img_url, $new_name = null) {
+        $image_name = $new_name ? $new_name : basename($img_url);
+        $this->image_path = $directory . '/' . $image_name . '.jpg';
+        $this->img_url = $new_name . '.jpg';
         
         if (!file_exists($this->image_path)) {
-            file_put_contents($this->image_path, file_get_contents($img_url));
-            if (file_exists($this->image_path)) {
-                return $this->image_path;
+            $ch = curl_init($img_url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+    
+            $image_data = curl_exec($ch);
+            $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+    
+            if ($image_data && $http_code == 200) {
+                file_put_contents($this->image_path, $image_data);
+                if (file_exists($this->image_path)) {
+                    return $this->image_path;
+                } else {
+                    echo "Failed to save the image: $img_url";
+                    return false;
+                }
             } else {
-                echo "Failed to download image: $img_url";
+                echo "Failed to download image: $img_url. HTTP Code: $http_code";
                 return false;
             }
         }
         
         return $this->image_path;
     }
+
 
     private function insertPost( $counter) {
         $this->wpdb->insert(
