@@ -9,6 +9,7 @@ class ImageInserter {
     public $hotel;
     public $directory_url;
     public $provider;
+    public $default_image;
     private $image_path;
     private $image_guid;
     private $img_url;
@@ -19,6 +20,7 @@ class ImageInserter {
 
     public function insertImages() {
 
+        print_r('Directory URL: <br>');
         print_r($this->directory_url . '<br>');
 
         $directory = "/home/balkanea/public_html/wp-content/uploads/" . self::sanitizeFileName($this->provider) . '/' . $this->directory_url;
@@ -29,16 +31,16 @@ class ImageInserter {
         $counter = 0;
 
         try {
+
+            if (empty($this->hotel['images'])) {
+                $this->hotel['images'][] = $this->default_image;
+            }
+
             foreach ($this->hotel['images'] as $img) {
                 $counter++;
 
-                echo 'Directory URL: ' . $this->directory_url . '<br>';
-
                 if (explode('/',$this->directory_url))
                         $new_image = explode('/',$this->directory_url)[1];
-
-                echo 'new image name: <br>';
-                echo $new_image;
 
                 $img_url = self::getImageUrl($img);
 
@@ -66,7 +68,6 @@ class ImageInserter {
                 }
             }
 
-            echo '<br>Images inserted successfully';
             $post_image_array_ids = rtrim($post_image_array_ids, ',');
 
             return $post_image_array_ids;
@@ -119,7 +120,7 @@ class ImageInserter {
     }
 
 
-    private function insertPost( $counter) {
+    private function insertPost($counter) {
         $this->wpdb->insert(
             $this->wpdb->prefix . 'posts',
             array(

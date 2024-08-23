@@ -20,23 +20,27 @@ class LocationRelationship
 
     public function insertLocationRelationship()
     {
-        try {
-            $query = $this->wpdb->prepare(
-                "INSERT INTO {$this->wpdb->prefix}{$this->table} (post_id, location_from, location_to, post_type, location_type) 
+        foreach ($this->location_from as $location) {
+            
+            try {
+                $query = $this->wpdb->prepare(
+                    "INSERT INTO {$this->wpdb->prefix}{$this->table} (post_id, location_from, location_to, post_type, location_type) 
                 VALUES (%d, %s, %s, %s, %s)",
-                $this->post_id, $this->location_from, $this->location_to, $this->post_type, $this->location_type
-            );
-
-            $this->wpdb->query($query);
-
-            if ($this->wpdb->last_error) {
-                throw new \Exception($this->wpdb->last_error);
+                $this->post_id, $location, $this->location_to, $this->post_type, $this->location_type
+                );
+                
+                $this->wpdb->query($query);
+                
+                if ($this->wpdb->last_error) {
+                    throw new \Exception($this->wpdb->last_error);
+                }
+                
+                return 'Location relationship inserted successfully';
+            
+            } catch (\Exception $ex) {
+                return 'Caught exception: ' . $ex->getMessage() . "\n";
             }
-
-            return 'Location relationship inserted successfully';
-
-        } catch (\Exception $ex) {
-            return 'Caught exception: ' . $ex->getMessage() . "\n";
         }
+
     }
 }

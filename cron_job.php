@@ -7,7 +7,7 @@ use Models\PostMetaValues;
 use Models\PostsHotel;
 use Models\PostsRoom;
 use Models\St_Hotel;
-use Models\RoomAvailability;
+use Models\LocationNested;
 use Models\LocationRelationship;
 use data\HotelFlag;
 
@@ -25,6 +25,7 @@ use data\HotelFlag;
     include './Models/ImageInsert.php';
     include './Models/RoomAvailability.php';
     include './Models/LocationRelationship.php';
+    include './Models/LocationNested.php';
     include './data/data.php';
     include './data/track_data.php';
     include './data/HotelFlag.php';
@@ -45,19 +46,6 @@ use data\HotelFlag;
         'Content-Type: application/json'
     );
 
-    // Getting price of a hotel api
-    // $response_hotel = getHotelPrice($data_hotel, $headers);
-
-    // if ($response_hotel['data'] == null || $response_hotel['data']['hotels'] == null) {
-    //     exit('No data found for <strong>' . $response_hotel['debug']['request']['id'] . '</strong>');
-    // }
-
-    // $checkin = $response_hotel['debug']['request']['checkin'];
-    // $checkout = $response_hotel['debug']['request']['checkin'];
-
-    // $timestamp_checkout = strtotime($checkout);
-    // $timestamp_checkin = strtotime($checkin);
-
     $hotel = getHotelDetails($data_hotel, $headers);
 
     $posts_hotel = new PostsHotel($wpdb);
@@ -71,7 +59,20 @@ use data\HotelFlag;
     $longitude = $hotel['longitude'];
     $post_id_name = $hotel['id'];
     $img_urls = '';
-    
+    $hotel_location = $hotel['region'];
+
+    $location_nested = new LocationNested($wpdb);
+
+    $location_nested->location_id = $hotel_location['id'];
+    $location_nested->location_country = 'GR';
+    $location_nested->parent_id = 56;
+    $location_nested->left_key = 99;
+    $location_nested->right_key = 99;
+    $location_nested->name = $hotel_location['name'];
+    $location_nested->language = 'en';
+    $location_nested->status = 'publish';
+
+    $parent_location_id = $location_nested->create();
 
     foreach ($hotel['description_struct'] as $content){
         if ($content['title'] == 'Location'){
@@ -110,6 +111,11 @@ use data\HotelFlag;
         
         $posts_hotel->id = $post_id;
         $post_response = $posts_hotel->update();
+
+        $amenities_model->amenities = $hotel['amenity_groups'];
+        $amenities_model->post_id = $post_id;
+
+        $amenities = $amenities_model->getAmenities();
     }
     else{
         echo 'Hotel not found in DB<br>';
@@ -123,7 +129,7 @@ use data\HotelFlag;
         $amenities = $amenities_model->getAmenities();
 
         $location_relationships->post_id = $post_id;
-        $location_relationships->location_from = 24396;
+        $location_relationships->location_from = array($parent_location_id, $hotel_location['id']);
         $location_relationships->location_to = 0;
         $location_relationships->post_type = 'st_hotel';
         $location_relationships->location_type = 'multi_location';
@@ -144,7 +150,6 @@ use data\HotelFlag;
     $post_images = new ImageInserter($wpdb);
 
     try {
-        // $response_hotel = $response_hotel['data']['hotels'][0]['rates'];
         $counter = 0;
         
         foreach ($hotel['room_groups'] as $room) {
@@ -169,7 +174,7 @@ use data\HotelFlag;
             $post_images->post_title = $room['name_struct']['main_name'];
             $post_images->post_id_name = $post_id_name;
             $post_images->provider = 'RateHawk';
-
+            $post_images->default_image = $hotel['images'][1];
 
             $post_meta->meta_values = array(
                 'rate_review' => 0,
@@ -197,7 +202,7 @@ use data\HotelFlag;
                 'st_cancel_percent' => 0,
                 'is_meta_payment_gateway_st_submit_form' => 'on',
                 'is_meta_payment_gateway_vina_stripe' => 'on',
-                'multi_location' => '_24396_',
+                'multi_location' => "_$hotel_location_,_$parent_location_id_",
                 '_yoast_wpseo_primary_room_type' => 66,
                 '_yoast_wpseo_primary_room-facilities' => 43,
                 '_yoast_wpseo_focuskw' => $room['name_struct']['main_name'],
@@ -252,7 +257,7 @@ use data\HotelFlag;
 
             $hotel_room_model->post_id = $post_room_id;
             $hotel_room_model->room_parent = $post_id;
-            $hotel_room_model->multi_location = '_24396_';
+            $hotel_room_model->multi_location = "_$hotel_location_,_$parent_location_id_";
             $hotel_room_model->id_location = '';
             $hotel_room_model->address = $address;
             $hotel_room_model->allow_full_day = 'on';
@@ -279,9 +284,6 @@ use data\HotelFlag;
             echo 'wpdb last error: ' . $wpdb->last_error . '<br>';
             error_log('wpdb last error: ' . $wpdb->last_error);
         } else {
-            $room_availability = new RoomAvailability($wpdb);
-
-            $room_availability->insertRoomAvailability($room_id, $post_id);
 
             echo '<br>Data for posts hotel room inserted successfully<br>';
         }
@@ -362,7 +364,7 @@ use data\HotelFlag;
         '_edit_last' => 14,
         '_tve_js_modules_gutenberg' => 'a:0:{}',
         'st_google_map' => 'a:4:{s:3:"lat";s:' . strlen($latitude) . ':"' . $latitude . '";s:3:"lng";s:' . strlen($longitude) . ':"' . $longitude . '";s:4:"zoom";s:2:"13";s:4:"type";s:0:"";}',
-        'multi_location' => '_24396_',
+        'multi_location' => "_$hotel_location_,_$parent_location_id_",
         'address' => $address,
         'is_featured' => 'off',
         'st_hotel_external_booking' => 'off',
@@ -390,7 +392,8 @@ use data\HotelFlag;
         'hotel_policy' => 'a:1:{i:0;a:2:{s:5:"title";s:0:"";s:18:"policy_description";s:' . strlen($hotel['metapolicy_extra_info']) . ':"' . $hotel['metapolicy_extra_info'] . '";}}',
         '_thumbnail_id' => $post_image_array_ids != null ? explode(",", $post_image_array_ids)[0] : '',
         'gallery' => $post_image_array_ids ?? '',
-        '_wp_old_date' => date('YYYY-mm-dd')
+        '_wp_old_date' => date('YYYY-mm-dd'),
+        'provider' => 'RateHawk'
     );
 
     if ($post_meta->get())
