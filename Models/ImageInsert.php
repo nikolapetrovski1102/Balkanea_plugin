@@ -1,5 +1,6 @@
 <?php
 namespace Models;
+
 class ImageInserter {
     private $wpdb;
     public $current_date_time;
@@ -13,24 +14,21 @@ class ImageInserter {
     private $image_path;
     private $image_guid;
     private $img_url;
+
     public function __construct($wpdb) {
         $this->wpdb = $wpdb;
         $this->img_url = '';
     }
 
     public function insertImages() {
-
-        print_r('Directory URL: <br>');
-        print_r($this->directory_url . '<br>');
-
         $directory = "/home/balkanea/public_html/wp-content/uploads/" . self::sanitizeFileName($this->provider) . '/' . $this->directory_url;
         $image_origin_url = "https://balkanea.com/wp-content/uploads/" . self::sanitizeFileName($this->provider) . '/' . $this->directory_url . '/';
         $counter = 0;
         $post_image_array_ids = '';
-
-        $counter = 0;
-
+    
         try {
+            echo '<br>' . $image_origin_url . '<br>';
+            echo '<br>Directory: ' . $this->directory_url . '<br>';
 
             if (empty($this->hotel['images'])) {
                 $this->hotel['images'][] = $this->default_image;
@@ -38,40 +36,42 @@ class ImageInserter {
 
             foreach ($this->hotel['images'] as $img) {
                 $counter++;
-
-                if (explode('/',$this->directory_url))
-                        $new_image = explode('/',$this->directory_url)[1];
+                $new_image_name = basename($this->directory_url) . '-' . $counter . '.jpg'; // New image filename
+    
+                echo '<br>Saving: ' . $new_image_name . '<br>';
 
                 $img_url = self::getImageUrl($img);
 
-                $image_url_exsists = self::imageUrlExsist($image_origin_url . $new_image . '.jpg');
+                // Check if the image already exists
+                $this->createDirectory($directory);
+                $this->image_path = $directory . '/' . $new_image_name;
 
-                if (!file_exists($directory . '/' . basename($new_image))) {
-                    $this->createDirectory($directory);
-
-                    $this->image_path = self::downloadImage($directory, $img_url, $new_image . '-' . $counter);
-                    
+                if (!file_exists($this->image_path)) {
+                    // Download and save the image
+                    $this->downloadImage($img_url, $new_image_name);
                 }
-                if (self::imageUrlExsist($image_origin_url . basename($new_image . '.jpg'))) {
-                    $post_image_array_ids .= $image_url_exsists . ',';
-                }
-                else{
+    
+                // Check if the image URL exists in the database
+                $image_url_exists = self::imageUrlExists($image_origin_url . $new_image_name);
+    
+                if ($image_url_exists) {
+                    $post_image_array_ids .= $image_url_exists . ',';
+                } else {
                     if ($this->image_path) {
-                    $this->image_guid = $image_origin_url . $new_image . '.jpg';
-                        $counter++;
+                        $this->image_guid = $image_origin_url . $new_image_name;
                         $this->insertPost($counter);
                         $post_image_array_ids .= $this->wpdb->insert_id . ',';
-
+    
                         $photo_metadata = self::createPhotoMetadata();
-                        $this->insertPostMeta( $photo_metadata );
+                        $this->insertPostMeta($photo_metadata);
                     }
                 }
             }
-
+    
             $post_image_array_ids = rtrim($post_image_array_ids, ',');
-
+    
             return $post_image_array_ids;
-
+    
         } catch (\Exception $e) {
             echo 'Caught exception: ', $e->getMessage(), "\n";
         }
@@ -83,48 +83,38 @@ class ImageInserter {
         }
     }
 
-    private  function getImageUrl($img) {
+    private function getImageUrl($img) {
         return str_replace('{size}', '640x400', $img);
     }
 
-    private function downloadImage($directory, $img_url, $new_name = null) {
-        $image_name = $new_name ? $new_name : basename($img_url);
-        $this->image_path = $directory . '/' . $image_name . '.jpg';
-        $this->img_url = $new_name . '.jpg';
-        
-        if (!file_exists($this->image_path)) {
-            $ch = curl_init($img_url);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-            curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-    
-            $image_data = curl_exec($ch);
-            $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
-    
-            if ($image_data && $http_code == 200) {
-                file_put_contents($this->image_path, $image_data);
-                if (file_exists($this->image_path)) {
-                    return $this->image_path;
-                } else {
-                    echo "Failed to save the image: $img_url";
-                    return false;
-                }
-            } else {
-                echo "Failed to download image: $img_url. HTTP Code: $http_code";
+    private function downloadImage($img_url, $new_name) {
+        $ch = curl_init($img_url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+
+        $image_data = curl_exec($ch);
+        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        if ($image_data && $http_code == 200) {
+            if (file_put_contents($this->image_path, $image_data) === false) {
+                echo "Failed to save the image: $img_url";
                 return false;
             }
+        } else {
+            echo "Failed to download image: $img_url. HTTP Code: $http_code";
+            return false;
         }
-        
+
         return $this->image_path;
     }
-
 
     private function insertPost($counter) {
         $this->wpdb->insert(
             $this->wpdb->prefix . 'posts',
             array(
-                'post_author' => 14,
+                'post_author' => 6961,
                 'post_date' => date('Y-m-d H:i:s'),
                 'post_date_gmt' => date('Y-m-d H:i:s'),
                 'post_content' => '',
@@ -150,11 +140,11 @@ class ImageInserter {
         );
     }
 
-    private  function createPhotoMetadata() {
+    private function createPhotoMetadata() {
         return array(
             'width' => 640,
             'height' => 400,
-            'file' =>   self::sanitizeFileName($this->provider) . '/' . $this->directory_url . '/'. basename($this->image_path),
+            'file' => self::sanitizeFileName($this->provider) . '/' . $this->directory_url . '/' . basename($this->image_path),
             'filesize' => filesize($this->image_path),
             'sizes' => array(),
             'image_meta' => array(
@@ -174,7 +164,7 @@ class ImageInserter {
         );
     }
 
-    private function insertPostMeta( $photo_metadata ) {
+    private function insertPostMeta($photo_metadata) {
         $photo_metadata_serialized = serialize($photo_metadata);
 
         $this->wpdb->insert(
@@ -182,7 +172,7 @@ class ImageInserter {
             array(
                 'post_id' => $this->wpdb->insert_id,
                 'meta_key' => '_wp_attached_file',
-                'meta_value' =>  self::sanitizeFileName($this->provider) . '/' . $this->directory_url . '/'. basename($this->image_path)
+                'meta_value' => self::sanitizeFileName($this->provider) . '/' . $this->directory_url . '/' . basename($this->image_path)
             )
         );
 
@@ -200,8 +190,7 @@ class ImageInserter {
         return preg_replace('/[^a-zA-Z0-9_-]/', '', str_replace(' ', '_', $name));
     }
 
-    private function imageUrlExsist($image_origin_url){
-        
+    private function imageUrlExists($image_origin_url){
         $query = $this->wpdb->prepare("SELECT ID FROM " . $this->wpdb->prefix . 'posts' . " WHERE guid = %s", $image_origin_url);
         $result = $this->wpdb->get_row($query);
 
@@ -209,8 +198,7 @@ class ImageInserter {
             return strval($result->ID);
         else
             return false;
-
     }
-
 }
+
 ?>

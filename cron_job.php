@@ -9,6 +9,7 @@ use Models\PostsRoom;
 use Models\St_Hotel;
 use Models\LocationNested;
 use Models\LocationRelationship;
+use Models\CurrencyModel;
 use data\HotelFlag;
 
     ini_set('display_errors', 1);
@@ -26,6 +27,7 @@ use data\HotelFlag;
     include './Models/RoomAvailability.php';
     include './Models/LocationRelationship.php';
     include './Models/LocationNested.php';
+    include './Models/CurrencyModel.php';
     include './data/data.php';
     include './data/track_data.php';
     include './data/HotelFlag.php';
@@ -61,13 +63,13 @@ use data\HotelFlag;
     $img_urls = '';
     $hotel_location = $hotel['region'];
 
+    echo '<br>' . $hotel['id'] . '<br>';
+
     $location_nested = new LocationNested($wpdb);
 
     $location_nested->location_id = $hotel_location['id'];
     $location_nested->location_country = 'GR';
     $location_nested->parent_id = 56;
-    $location_nested->left_key = 99;
-    $location_nested->right_key = 99;
     $location_nested->name = $hotel_location['name'];
     $location_nested->language = 'en';
     $location_nested->status = 'publish';
@@ -112,18 +114,25 @@ use data\HotelFlag;
         $posts_hotel->id = $post_id;
         $post_response = $posts_hotel->update();
 
-        $amenities_model->amenities = $hotel['amenity_groups'];
+        $amenities_model->amenities = $hotel['amenity_groups'][0];
         $amenities_model->post_id = $post_id;
 
         $amenities = $amenities_model->getAmenities();
+
+        $location_relationships->post_id = $post_id;
+        $location_relationships->location_from = array($parent_location_id, $hotel_location['id']);
+        $location_relationships->location_to = 0;
+        $location_relationships->post_type = 'st_hotel';
+        $location_relationships->location_type = 'multi_location';
+    
+        $location_relationships->insertLocationRelationship();
     }
     else{
         echo 'Hotel not found in DB<br>';
         
-        
         $post_id = $posts_hotel->create();
 
-        $amenities_model->amenities = $hotel['amenity_groups'];
+        $amenities_model->amenities = $hotel['amenity_groups'][0];
         $amenities_model->post_id = $post_id;
 
         $amenities = $amenities_model->getAmenities();
@@ -135,8 +144,6 @@ use data\HotelFlag;
         $location_relationships->location_type = 'multi_location';
 
         $location_relationships->insertLocationRelationship();
-
-
     }
 
     $prices = array();
@@ -202,7 +209,7 @@ use data\HotelFlag;
                 'st_cancel_percent' => 0,
                 'is_meta_payment_gateway_st_submit_form' => 'on',
                 'is_meta_payment_gateway_vina_stripe' => 'on',
-                'multi_location' => "_$hotel_location_,_$parent_location_id_",
+                'multi_location' => '_'. $hotel_location['id'] . '_,_' . $parent_location_id . '_',
                 '_yoast_wpseo_primary_room_type' => 66,
                 '_yoast_wpseo_primary_room-facilities' => 43,
                 '_yoast_wpseo_focuskw' => $room['name_struct']['main_name'],
@@ -257,7 +264,7 @@ use data\HotelFlag;
 
             $hotel_room_model->post_id = $post_room_id;
             $hotel_room_model->room_parent = $post_id;
-            $hotel_room_model->multi_location = "_$hotel_location_,_$parent_location_id_";
+            $hotel_room_model->multi_location = '_'. $hotel_location['id'] . '_,_' . $parent_location_id . '_';
             $hotel_room_model->id_location = '';
             $hotel_room_model->address = $address;
             $hotel_room_model->allow_full_day = 'on';
@@ -336,7 +343,7 @@ use data\HotelFlag;
 
     $post_image_array_ids = '';
 
-    $post_images = new ImageInserter($wpdb);
+    // $post_images = new ImageInserter($wpdb);
 
     $post_images->hotel = $hotel;
     $post_images->directory_url = $hotel['id'];
@@ -351,10 +358,17 @@ use data\HotelFlag;
 
     $post_image_array_ids = $post_images->insertImages();
     
+    echo '<br>Images inserted successfully: <br>';
+    print_r('<pre>');
+    print_r($post_image_array_ids);
+    print_r('</pre>');
+
     if ($post_image_array_ids == ''){
         $post_image_array_ids = $post_meta->read('gallery')->meta_value;
     }
     
+    echo'<br> multi_location <br> ' . $hotel_location['id'] . ',' . $parent_location_id;
+
     $post_meta->meta_values = array(
         'rate_review' => 0,
         'price_avg' => $price_avg,
@@ -364,15 +378,15 @@ use data\HotelFlag;
         '_edit_last' => 14,
         '_tve_js_modules_gutenberg' => 'a:0:{}',
         'st_google_map' => 'a:4:{s:3:"lat";s:' . strlen($latitude) . ':"' . $latitude . '";s:3:"lng";s:' . strlen($longitude) . ':"' . $longitude . '";s:4:"zoom";s:2:"13";s:4:"type";s:0:"";}',
-        'multi_location' => "_$hotel_location_,_$parent_location_id_",
+        'multi_location' => '_' . $hotel_location['id'] . '_,_' . $parent_location_id . '_',
         'address' => $address,
         'is_featured' => 'off',
         'st_hotel_external_booking' => 'off',
         'hotel_star' => $star_rating,
         'is_auto_caculate' => 'on',
         'allow_full_day' => 'on',
-        'check_in_time' => '12:00 - 20:00',
-        'check_out_time' => '10:00',
+        'check_in_time' => substr($hotel['check_in_time'], 0, -3),
+        'check_out_time' => substr($hotel['check_out_time'], 0, -3),
         'hotel_booking_period' => 0,
         'min_book_room' => 0,
         'id_location' => '',

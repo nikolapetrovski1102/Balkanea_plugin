@@ -19,11 +19,31 @@ global $wpdb;
 $wpdb->show_errors();
 $prefix = $wpdb->prefix;
 
-if (isset($_GET['ids']) && isset($_GET['start']) && isset($_GET['end']) ) {
+function currency_coverter ($current_currency){
+    switch ($current_currency) {
+        case 'USD':
+            return 'US$';
+        case 'EUR':
+            return '€';
+        case 'MKD':
+            return 'MKD';
+        default:
+            return '€';
+    }
+}
+
+if (isset($_GET['ids']) && isset($_GET['start']) && isset($_GET['end']) && isset($_GET['currency']) ) {
 
     $ids = rtrim($_GET['ids'], ',');
     $checkin = $_GET['start'];
     $checkout = $_GET['end'];
+    $adults = intval($_GET['adults']);
+    $children = $_GET['children'];
+    $current_currency = currency_coverter( $_GET['currency'] );
+    $multiplier = 1;
+
+    if ($current_currency == 'MKD')
+        $multiplier = 61.53;
 
     $ids_array = array_map('intval', explode(',', $ids));
 
@@ -47,11 +67,11 @@ if (isset($_GET['ids']) && isset($_GET['start']) && isset($_GET['end']) ) {
             "residency" => "mk",
             "language" => "en",
             "guests" => array(
-                array(
-                    "adults" => 2,
-                    "children" => array()
-                )
-            ),
+                    array(
+                        "adults" => $adults,
+                        "children" => $children == 0 ? array() : array($children)
+                    )
+                ),
             "ids" => $post_names,
             "currency" => "EUR"
         );
@@ -69,6 +89,8 @@ if (isset($_GET['ids']) && isset($_GET['start']) && isset($_GET['end']) ) {
         
         $response = curl_exec($ch);
 
+        curl_close($ch);
+
         $post_names = array_column($results, 'post_name');
         
         $responseData = json_decode($response, true);
@@ -84,11 +106,20 @@ if (isset($_GET['ids']) && isset($_GET['start']) && isset($_GET['end']) ) {
                 }
             )
         );
-        
+
         $found_ids = [];
+
         foreach ($results as $result) {
             if (in_array($result->post_name, $foundIds)) {
-                $found_ids[] = $result->ID;
+                foreach ($responseData['data']['hotels'] as $hotel) {
+                    if ($hotel['id'] == $result->post_name) {
+
+                        $price = $hotel['rates'][0]['daily_prices'][0];
+                        
+                        $found_ids[$result->ID] = $current_currency . ' ' . $price * $multiplier;
+                        break;
+                    }
+                }
             }
         }
 

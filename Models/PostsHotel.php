@@ -34,7 +34,7 @@ class PostsHotel
     public function __construct($wpdb)
     {
         $this->wpdb = $wpdb;
-        $this->post_author = 14;
+        $this->post_author = 6961;
         $this->comment_status = 'open';
         $this->ping_status = 'open';
         $this->post_parent = 0;

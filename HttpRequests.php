@@ -1,9 +1,9 @@
 <?php
 
 function checkHotel($data_hotel) {
-    // Read the state from the file
+    
     $state = json_decode(file_get_contents('region_state.json'), true);
-    // If state is empty, initialize it
+    
     if (!$state) {
         $state = ['last_region_index' => -1, 'last_hotel_index' => -1];
     }

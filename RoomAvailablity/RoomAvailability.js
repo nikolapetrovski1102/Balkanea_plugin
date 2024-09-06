@@ -8,11 +8,16 @@ function getPriceFromUrl() {
     const currentUrl = window.location.href;
     
     const params = getQueryParams(currentUrl);
+    var multiplier = 1;
 
-    // Check for "price" parameter
+    if (params.has('currency')) {
+        const currency = params.get('currency');
+
+        if (currency == 'MKD') { multiplier = 61.53; }
+    }
+
     if (params.has('price')) {
-        const price = params.get('price');
-        console.log(`Price found: €${price}`);
+        const price = params.get('price') * multiplier;
 
         console.log(document.querySelector('#mobile-price .price'));
         console.log(document.querySelector('.form-booking-price .price'));
@@ -31,7 +36,6 @@ function getSeachToggle() {
 
     if (params.has('search')) {
         const price = params.get('search');
-        console.log(`Search found: ${price}`);
 
         setTimeout( () => {
             document.querySelector("#nav-book > div > div > div > div > div > div > form > div.submit-group.button-search-wrapper > button").click();
@@ -59,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if ( document.querySelector('.room-rates') ){
         document.querySelector('.room-rates').style.display = 'none';
-        document.querySelector("#st-content-wrapper > div.container > div > div.row > div.col-12.col-lg-8 > div.st-attributes.st-section-single.stt-attr-room-facilities").style.display = 'none';
     }
 
     if (searchButton === null) throw ("Button not found");
