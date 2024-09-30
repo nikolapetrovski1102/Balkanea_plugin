@@ -1,3 +1,4 @@
+// File path: public_html/wp-content/themes/traveler/js/init
 jQuery(function ($) {
     if ($(".st_template_checkout").length < 1) return;
     var old_order_id = !1;
@@ -31,13 +32,18 @@ jQuery(function ($) {
     }
     /* Start rewrite booking event */
     ;(function ($) {
-        $.fn.STSendAjax = function () {
+        $.fn.STSendAjax = function (order_id, payment_information) {
            
+            
             this.each(function () {
+                console.log(order_id);
+                console.log(JSON.parse(payment_information));
                 var me = $(this);
                 var button = $('.btn-st-checkout-submit', this);
                 var data = me.serializeArray();
                 data.push({name: 'action', value: 'booking_form_direct_submit'});
+                data.push({name : 'partner_order_id', value: order_id});
+                data.push({name: 'payment_information', value: payment_information})
                 me.find('.form-control').removeClass('error');
                 me.find('.form_alert').addClass('hidden');
                 var dataobj = {};
@@ -46,143 +52,181 @@ jQuery(function ($) {
                 }
                 dataobj.order_id = old_order_id;
                 var validate = st_validate_checkout(me);
+                console.log("data obj: ");
+                console.log(dataobj);
                 if (!validate)
                     return !1;
                 button.addClass('loading');
-                $.ajax({
-                    type: 'post',
-                    url: st_params.ajax_url,
-                    data: dataobj,
-                    dataType: 'json',
-                    success: function (data) {
-                     
-                        if( $("input[name=st_payment_gateway]").length > 0 && $("input[name=st_payment_gateway]").val() == 'vina_stripe' && typeof(data.order_id) != 'undefined' && typeof(st_vina_stripe_params) != 'undefined' ){
-                            var stripePublishKey = st_vina_stripe_params.vina_stripe.publishKey;
-                            if(st_vina_stripe_params.vina_stripe.sanbox == 'sandbox'){
-                                stripePublishKey = st_vina_stripe_params.vina_stripe.testPublishKey
-                            }
-                            var stripe = Stripe(stripePublishKey);
-                           
-                            if (typeof(data.payment_intent_client_secret) != 'undefined' && data.payment_intent_client_secret) {
-                                
-                                stripe.handleCardAction(
-                                  data.payment_intent_client_secret
-                                ).then(function(result) {
-                                   
-                                  if (result.error) {
-                                    if (data.redirect_form) {
-                                        setTimeout(function(){
-                                            window.location.href = data.redirect_form;
-                                        }, 3000);
-                                        
+                
+                // $.ajax({
+                //     type: 'post',
+                //     url: 'https://staging.balkanea.com/wp-plugin/APIs/order_booking_form.php',
+                //     data:{
+                //         'data': dataobj,
+                //         'type': 'order_booking_finish'
+                //     },
+                //     success: (succ) => {
+                //         order_status = succ;
+                //         if (order_status !== 'ok'){
+                //             button.removeClass('loading');
+                //             window.history.go(-2);
+                //         }
+                        $.ajax({
+                            type: 'post',
+                            url: st_params.ajax_url,
+                            data: dataobj,
+                            dataType: 'json',
+                            success: function (data) {
+                            
+                                $.ajax({
+                                    type: 'get',
+                                    url: 'https://staging.balkanea.com/wp-plugin/APIs/request_query.php',
+                                    data: {
+                                        data_order_id: data.order_id,
+                                        partner_timestamp: order_id
+                                    },
+                                    success: (succ) => {
+                                        console.log(succ);
+                                    },
+                                    error: (err) => {
+                                        console.log(err);
+                                        throw ("Record not saved");
                                     }
-                                  } else {
-                                   
-                                    $.ajax({
-                                        url: st_params.ajax_url,
-                                        dataType: 'json',
-                                        type: 'POST',
-                                        data: {
-                                            'action' : 'vina_stripe_confirm_server',
-                                            'st_order_id' : data.order_id,
-                                            'payment_intent_id' : result.paymentIntent.id,
-                                            'data_step2' : data,
-                                        },
-                                        beforeSend: function () {
-                                           //handleServerResponse();
-                                        },
-                                        success: function (response_server) {
-                                            console.log(response_server);
-                                        },
-                                        complete: function (jqXHR) {
-                                            var data_response = jqXHR.responseJSON.data;
-                                            if (typeof(data_response.order_id) != 'undefined' && data_response.order_id) {
-                                                old_order_id = data_response.order_id
-                                            }
-                                            if (jqXHR.responseJSON.message) {
-                                                me.find('.form_alert').addClass('alert-danger').removeClass('hidden');
-                                                me.find('.form_alert').html(jqXHR.responseJSON.message)
-                                            }
-                                            if (data_response.redirect) {
-                                                setTimeout(function(){
-                                                    window.location.href = data_response.redirect
-                                                }, 3000);
-                                                
-                                            }
-                                            if (data_response.redirect_form) {
-                                                $('body').append(data_response.redirect_form)
-                                            }
-                                            if (data_response.new_nonce) {
-                                            }
-                                            var widget_id = 'st_recaptchar_' + dataobj.item_id;
-                                            get_new_captcha(me);
-                                            button.removeClass('loading')
-                                        },
-                                    });
-                                  }
-                                });
-                            }  else {
-                                if (typeof(data.order_id) != 'undefined' && data.order_id) {
-                                    old_order_id = data.order_id
-                                }
-                                if (data.message) {
-                                    me.find('.form_alert').addClass('alert-danger').removeClass('hidden');
-                                    me.find('.form_alert').html(data.message)
-                                }
-                                if (typeof(data.order_id) != 'undefined' && data.order_id) {
-                                    old_order_id = data.order_id
-                                }
-                                if (data.message) {
-                                    me.find('.form_alert').addClass('alert-danger').removeClass('hidden');
-                                    me.find('.form_alert').html(data.message)
-                                }
-                                if (data.redirect) {
-                                    setTimeout(function(){
-                                        window.location.href = data.redirect
-                                    }, 3000);
-                                    
-                                }
-                                if (data.redirect_form) {
-                                    $('body').append(data.redirect_form)
-                                }
-                                if (data.new_nonce) {
-                                }
-                                var widget_id = 'st_recaptchar_' + dataobj.item_id;
-                                get_new_captcha(me);
-                                button.removeClass('loading')
+                                })
 
+                                // if( $("input[name=st_payment_gateway]").length > 0 && $("input[name=st_payment_gateway]").val() == 'vina_stripe' && typeof(data.order_id) != 'undefined' && typeof(st_vina_stripe_params) != 'undefined' ){
+                                //     var stripePublishKey = st_vina_stripe_params.vina_stripe.publishKey;
+                                //     if(st_vina_stripe_params.vina_stripe.sanbox == 'sandbox'){
+                                //         stripePublishKey = st_vina_stripe_params.vina_stripe.testPublishKey
+                                //     }
+                                //     var stripe = Stripe(stripePublishKey);
+                                
+                                //     if (typeof(data.payment_intent_client_secret) != 'undefined' && data.payment_intent_client_secret) {
+                                        
+                                //         stripe.handleCardAction(
+                                //         data.payment_intent_client_secret
+                                //         ).then(function(result) {
+                                        
+                                //         if (result.error) {
+                                //             if (data.redirect_form) {
+                                //                 setTimeout(function(){
+                                //                     window.location.href = data.redirect_form;
+                                //                 }, 3000);
+                                                
+                                //             }
+                                //         } else {
+                                        
+                                //             $.ajax({
+                                //                 url: st_params.ajax_url,
+                                //                 dataType: 'json',
+                                //                 type: 'POST',
+                                //                 data: {
+                                //                     'action' : 'vina_stripe_confirm_server',
+                                //                     'st_order_id' : data.order_id,
+                                //                     'payment_intent_id' : result.paymentIntent.id,
+                                //                     'data_step2' : data,
+                                //                 },
+                                //                 beforeSend: function () {
+                                //                 //handleServerResponse();
+                                //                 },
+                                //                 success: function (response_server) {
+                                //                     console.log(response_server);
+                                //                 },
+                                //                 complete: function (jqXHR) {
+                                //                     var data_response = jqXHR.responseJSON.data;
+                                //                     if (typeof(data_response.order_id) != 'undefined' && data_response.order_id) {
+                                //                         old_order_id = data_response.order_id
+                                //                     }
+                                //                     if (jqXHR.responseJSON.message) {
+                                //                         me.find('.form_alert').addClass('alert-danger').removeClass('hidden');
+                                //                         me.find('.form_alert').html(jqXHR.responseJSON.message)
+                                //                     }
+                                //                     if (data_response.redirect) {
+                                //                         setTimeout(function(){
+                                //                             window.location.href = data_response.redirect
+                                //                         }, 3000);
+                                                        
+                                //                     }
+                                //                     if (data_response.redirect_form) {
+                                //                         $('body').append(data_response.redirect_form)
+                                //                     }
+                                //                     if (data_response.new_nonce) {
+                                //                     }
+                                //                     var widget_id = 'st_recaptchar_' + dataobj.item_id;
+                                //                     get_new_captcha(me);
+                                //                     button.removeClass('loading')
+                                //                 },
+                                //             });
+                                //         }
+                                //         });
+                                //     }  else {
+                                //         if (typeof(data.order_id) != 'undefined' && data.order_id) {
+                                //             old_order_id = data.order_id
+                                //         }
+                                //         if (data.message) {
+                                //             me.find('.form_alert').addClass('alert-danger').removeClass('hidden');
+                                //             me.find('.form_alert').html(data.message)
+                                //         }
+                                //         if (typeof(data.order_id) != 'undefined' && data.order_id) {
+                                //             old_order_id = data.order_id
+                                //         }
+                                //         if (data.message) {
+                                //             me.find('.form_alert').addClass('alert-danger').removeClass('hidden');
+                                //             me.find('.form_alert').html(data.message)
+                                //         }
+                                //         if (data.redirect) {
+                                //             setTimeout(function(){
+                                //                 window.location.href = data.redirect
+                                //             }, 3000);
+                                            
+                                //         }
+                                //         if (data.redirect_form) {
+                                //             $('body').append(data.redirect_form)
+                                //         }
+                                //         if (data.new_nonce) {
+                                //         }
+                                //         var widget_id = 'st_recaptchar_' + dataobj.item_id;
+                                //         get_new_captcha(me);
+                                //         button.removeClass('loading')
+
+                                //     }
+                                // } else {
+                                //     if (typeof(data.order_id) != 'undefined' && data.order_id) {
+                                //         old_order_id = data.order_id
+                                //     }
+                                //     if (data.message) {
+                                //         me.find('.form_alert').addClass('alert-danger').removeClass('hidden');
+                                //         me.find('.form_alert').html(data.message)
+                                //     }
+                                //     if (data.redirect) {
+                                //         // window.location.href = data.redirect
+                                //     }
+                                //     if (data.redirect_form) {
+                                //         $('body').append(data.redirect_form)
+                                //     }
+                                //     if (data.new_nonce) {
+                                //     }
+                                //     var widget_id = 'st_recaptchar_' + dataobj.item_id;
+                                //     get_new_captcha(me);
+                                //     button.removeClass('loading')
+                                // }
+                            },
+                            error: function (xhr, status, errorThrown) {
+                                console.log(xhr);
+                                if (xhr.responseJSON.message) {
+                                    me.find('.form_alert').addClass('alert-danger').removeClass('hidden');
+                                    me.find('.form_alert').html(xhr.responseJSON.message);
+                                }
+                                button.removeClass('loading');
+                                get_new_captcha(me)
                             }
-                        } else {
-                            if (typeof(data.order_id) != 'undefined' && data.order_id) {
-                                old_order_id = data.order_id
-                            }
-                            if (data.message) {
-                                me.find('.form_alert').addClass('alert-danger').removeClass('hidden');
-                                me.find('.form_alert').html(data.message)
-                            }
-                            if (data.redirect) {
-                                window.location.href = data.redirect
-                            }
-                            if (data.redirect_form) {
-                                $('body').append(data.redirect_form)
-                            }
-                            if (data.new_nonce) {
-                            }
-                            var widget_id = 'st_recaptchar_' + dataobj.item_id;
-                            get_new_captcha(me);
-                            button.removeClass('loading')
-                        }
-                    },
-                    error: function (xhr, status, errorThrown) {
-                        console.log(xhr);
-                        if (xhr.responseJSON.message) {
-                            me.find('.form_alert').addClass('alert-danger').removeClass('hidden');
-                            me.find('.form_alert').html(xhr.responseJSON.message);
-                        }
-                        button.removeClass('loading');
-                        get_new_captcha(me)
-                    }
-                });
+                        });
+                //     },
+                //     error: (err) => {
+                //         button.removeClass('loading');
+                //         console.log(err);
+                //     }
+                // })
             });
         };
         $.fn.STSendAjaxPackage = function (){
@@ -222,6 +266,7 @@ jQuery(function ($) {
         };
     })(jQuery);
     $('.btn-st-checkout-submit').on('click', function (e) {
+        console.log($("input[name=st_payment_gateway]"));
         e.preventDefault();
         var order_id = '';
         var payment_information = '';
@@ -238,19 +283,17 @@ jQuery(function ($) {
 
         });
         
-        console.log(order_id);
         let json_payment_information = decodeURIComponent(payment_information);
-        console.log(JSON.parse(json_payment_information));
-        // e.preventDefault();
-        // var form = $(this).closest('form');
-        // form.trigger('st_before_checkout');
-        // var payment = $('input[name="st_payment_gateway"]:checked', form).val();
-        // var wait_validate = $('input[name="wait_validate_' + payment + '"]', form).val();
-        // if (wait_validate === 'wait') {
-        //     form.trigger('st_wait_checkout');
-        //     return false;
-        // }
-        // form.STSendAjax();
+        e.preventDefault();
+        var form = $(this).closest('form');
+        form.trigger('st_before_checkout');
+        var payment = $('input[name="st_payment_gateway"]:checked', form).val();
+        var wait_validate = $('input[name="wait_validate_' + payment + '"]', form).val();
+        if (wait_validate === 'wait') {
+            form.trigger('st_wait_checkout');
+            return false;
+        }
+        form.STSendAjax(order_id, json_payment_information);
     });
     /*Checkout package ajax*/
     /* End start rewrite booking event */

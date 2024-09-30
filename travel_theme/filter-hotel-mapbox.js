@@ -534,6 +534,7 @@
         $('.map-content-loading').each(function() {
             $(this).fadeIn();
         });
+
         showLoadingPrices();
         
         var hotel_ids = '';
@@ -541,8 +542,6 @@
         document.querySelectorAll("#modern-search-result > div.row.service-list-wrapper > div > div").forEach( item => {
             hotel_ids += item.getAttribute('data-id') + ',';
         });
-
-        console.log(st_params.ajax_url);
 
         xhr = $.ajax({
             url: st_params.ajax_url,
@@ -559,44 +558,44 @@
                 let guests_adult_number = data['adult_number'];
                 let guests_child_number = data['child_number'];
 
-                let content = doc.content;
-                if ($('.search-result-page.layout5').length) {
-                    content += '<div class="pagination moderm-pagination" id="moderm-pagination">'+ doc.pag +'</div>';
+        //         let content = doc.content;
+        //         if ($('.search-result-page.layout5').length) {
+        //             content += '<div class="pagination moderm-pagination" id="moderm-pagination">'+ doc.pag +'</div>';
 
-                } else {
-                    divPagination.each(function () {
-                        $(this).html(doc.pag);
-                    });
-                }
-                if ($('.search-result-page.layout5').length) {
-                    divResult.each(function () {
-                        $(this).html(content);
-                    });
-                } else {
-                    divResult.each(function () {
-                        $(this).html(doc.content);
-                    });
-                }
+        //         } else {
+        //             divPagination.each(function () {
+        //                 $(this).html(doc.pag);
+        //             });
+        //         }
+        //         if ($('.search-result-page.layout5').length) {
+        //             divResult.each(function () {
+        //                 $(this).html(content);
+        //             });
+        //         } else {
+        //             divResult.each(function () {
+        //                 $(this).html(doc.content);
+        //             });
+        //         }
 
-                if ($('.modern-search-result-popup').length) {
-                    $('.modern-search-result-popup').html(doc.content_popup);
-                    if($('.col-left-map').length){
-                        $('.col-left-map').each(function () {
-                            $(this).getNiceScroll().resize();
-                        })
-                    }
-                }
+        //         if ($('.modern-search-result-popup').length) {
+        //             $('.modern-search-result-popup').html(doc.content_popup);
+        //             if($('.col-left-map').length){
+        //                 $('.col-left-map').each(function () {
+        //                     $(this).getNiceScroll().resize();
+        //                 })
+        //             }
+        //         }
 
-                $('.map-full-height, .full-map-form').each(function () {
-                    var t = $(this);
-                    var data_map = doc.data_map;
-                    if(loadMap && !t.is(':hidden')){
-                        initHalfMapBox(t, data_map.data_map, data_map.map_lat_center, data_map.map_lng_center, '', data_map.map_icon, data.version, data.move_map);
-                    }
+        //         $('.map-full-height, .full-map-form').each(function () {
+        //             var t = $(this);
+        //             var data_map = doc.data_map;
+        //             if(loadMap && !t.is(':hidden')){
+        //                 initHalfMapBox(t, data_map.data_map, data_map.map_lat_center, data_map.map_lng_center, '', data_map.map_icon, data.version, data.move_map);
+        //             }
 
-                });
+        //         });
                 
-                showLoadingPrices();
+                // showLoadingPrices();
                 
                 $.ajax({
                     url: 'https://staging.balkanea.com/wp-plugin/APIs/filter_hotel.php',
@@ -622,10 +621,10 @@
                 
                         const idArray = Object.keys(array_ids);
                         
-                        doc.count = `${idArray.length} hotels found in <span>Greece</span><div id="btn-clear-filter" class="btn-clear-filter" style="display: none;">Clear filter</div>`;
+                        let hotel_count = `${idArray.length} hotels found in <span>Greece</span><div id="btn-clear-filter" class="btn-clear-filter" style="display: none;">Clear filter</div>`;
                 
                         divResultString.each(function () {
-                            $(this).html(doc.count);
+                            $(this).html(hotel_count);
                         });
                 
                         document.querySelectorAll("#modern-search-result > div.row.service-list-wrapper > div > div").forEach(item => {
@@ -640,7 +639,7 @@
                                 
                                 const priceElement = item.querySelector('.price');
                                 if (priceElement) {
-                                    // console.log(item.querySelector('.loading-text'));
+                                    console.log(item.querySelector('.loading-text'));
                                     item.querySelector('.loading-text').style.display = 'none';
                                     var unitElement = item.querySelector('.unit');
                                     priceElement.textContent = `${price}`;
@@ -740,10 +739,10 @@
                 
             },
             complete: function () {
-                // divResult.removeClass('loading');
-                // $('.map-content-loading').each(function() {
-                //     $(this).fadeOut();
-                // });
+                divResult.removeClass('loading');
+                $('.map-content-loading').each(function() {
+                    $(this).fadeOut();
+                });
 
                 var time = 0;
                 divResult.find('img').one("load", function() {

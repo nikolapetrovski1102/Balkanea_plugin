@@ -1,3 +1,4 @@
+// File path: public_html/wp-content/themes/traveler/v3/js
 ;
 (function ($) {
     // Format Date To YYYY-MM-DD
@@ -122,6 +123,7 @@
             url: 'https://staging.balkanea.com/wp-plugin/APIs/order_booking_form.php',
             method: 'post',
             data: {
+                'type': 'order_booking_form',
                 'data': data
             },
             dataType: 'json'

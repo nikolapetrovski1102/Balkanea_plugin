@@ -50,6 +50,11 @@ use data\HotelFlag;
 
     $hotel = getHotelDetails($data_hotel, $headers);
 
+    if (empty($hotel)) {
+        echo '<br>Hotel not found<br>';
+        exit();
+    }
+
     $posts_hotel = new PostsHotel($wpdb);
 
     $post_content = '';

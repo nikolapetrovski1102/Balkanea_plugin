@@ -19,21 +19,13 @@ class CurrencyModel
         return $this->currency;
     }
 
-    public function getOperation(){
-        return $this->operation;
-    }
-
-    public function getMultiplier(){
-        return $this->multiplier;
-    }
-
     public function setCurrency($currency){
         $this->currency = $currency;
         $this->multiplier = self::getMultiplierSwitch();
-        $this->operation = self::getOperationSwitch();
+        $this->operation = self::getOperation();
     }
 
-    private function getOperationSwitch(){
+    private function getOperation(){
         switch ($this->currency) {
             case 'EUR':
                 return '/';
@@ -44,7 +36,7 @@ class CurrencyModel
         }
     }
 
-    public function getMultiplierSwitch(){
+    public function getMultiplier(){
         return $this->multiplier;
     }
 

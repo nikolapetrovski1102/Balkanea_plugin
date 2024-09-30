@@ -1,32 +1,39 @@
 <?php
 
 function checkHotel($data_hotel) {
-    
     $state = json_decode(file_get_contents('region_state.json'), true);
-    
+
     if (!$state) {
         $state = ['last_region_index' => -1, 'last_hotel_index' => -1];
     }
 
-    // Get the array keys
     $regions = array_keys($data_hotel);
     $lastRegionIndex = $state['last_region_index'];
     $lastHotelIndex = $state['last_hotel_index'];
 
-    // Determine the next hotel to process
     $nextHotelIndex = $lastHotelIndex + 1;
-    if ($lastRegionIndex < 0 || $nextHotelIndex >= count($data_hotel[$regions[$lastRegionIndex]])) {
-        // Move to the next region if we've finished the current one
+    
+    if ($lastRegionIndex < 0 || !isset($regions[$lastRegionIndex]) || $nextHotelIndex >= count($data_hotel[$regions[$lastRegionIndex]])) {
         $nextRegionIndex = ($lastRegionIndex + 1) % count($regions);
         $nextHotelIndex = 0;
     } else {
-        // Stay in the current region
         $nextRegionIndex = $lastRegionIndex;
     }
 
-    $nextRegionId = $regions[$nextRegionIndex];
-    $hotelsInRegion = $data_hotel[$nextRegionId];
-    $hotelToProcess = $hotelsInRegion[$nextHotelIndex];
+    if (isset($regions[$nextRegionIndex])) {
+        $nextRegionId = $regions[$nextRegionIndex];
+        $hotelsInRegion = $data_hotel[$nextRegionId];
+
+        if (isset($hotelsInRegion[$nextHotelIndex])) {
+            $hotelToProcess = $hotelsInRegion[$nextHotelIndex];
+        } else {
+            // Hotel index invalid, return null
+            $hotelToProcess = null;
+        }
+    } else {
+        // Region index invalid, return null
+        $hotelToProcess = null;
+    }
 
     // Update the state
     file_put_contents('region_state.json', json_encode([

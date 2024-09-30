@@ -32,7 +32,45 @@ function currency_coverter ($current_currency){
     }
 }
 
-if (isset($_GET['ids']) && isset($_GET['start']) && isset($_GET['end']) && isset($_GET['currency']) ) {
+if (isset($_GET['data_ids']) && isset($_GET['taxonomy'])){
+    
+    $data_ids = $_GET['data_ids'];
+    $term_ids = $_GET['taxonomy'];
+    
+    if (str_contains(',', $term_ids)){
+        $term_id_list = implode(',', $term_ids);
+        $term_id_count = count($term_ids);
+    }
+    else{
+        $term_id_list = $term_ids;
+        $term_id_count = 1;
+    }
+    
+    $all_results = [];
+
+    foreach ($data_ids as $hotel_id){
+        $query = $wpdb->prepare(
+            "SELECT tr.object_id FROM {$prefix}term_relationships AS tr
+            LEFT JOIN {$prefix}term_taxonomy AS tt ON tt.term_taxonomy_id = tr.term_taxonomy_id
+            WHERE tt.term_id IN ($term_id_list)
+            AND tr.object_id = $hotel_id
+            GROUP BY tr.object_id
+            HAVING COUNT(DISTINCT tt.term_id) = $term_id_count;"
+        );
+
+        $results = $wpdb->get_results($query);
+        
+        if (!empty($results)) 
+            $all_results = array_merge($all_results, $results);
+            
+    }
+        
+        
+    echo json_encode($all_results);
+
+}
+    
+else if (isset($_GET['ids']) && isset($_GET['start']) && isset($_GET['end']) && isset($_GET['currency']) ) {
 
     $ids = rtrim($_GET['ids'], ',');
     $checkin = $_GET['start'];
