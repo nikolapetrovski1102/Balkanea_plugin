@@ -7,6 +7,7 @@ use Models\PostMetaValues;
 use Models\PostsHotel;
 use Models\PostsRoom;
 use Models\St_Hotel;
+use Models\RoomAvailability;
 use data\HotelFlag;
 
     ini_set('display_errors', 1);
@@ -21,6 +22,7 @@ use data\HotelFlag;
     include './Models/PostMetaValues.php';
     include './Models/St_Hotel.php';
     include './Models/ImageInsert.php';
+    include './Models/RoomAvailability.php';
     include './data/data.php';
     include './data/track_data.php';
     include './data/HotelFlag.php';
@@ -87,7 +89,7 @@ use data\HotelFlag;
     $posts_hotel->post_content = $post_content;
     $posts_hotel->post_title = $hotel['name'];;
     $posts_hotel->post_excerpt = $post_excerpt;
-    $posts_hotel->post_status = 'draft';
+    $posts_hotel->post_status = 'publish';
     $posts_hotel->post_password = '';
     $posts_hotel->post_name = $post_id_name;
     $posts_hotel->to_ping = '';
@@ -117,6 +119,7 @@ use data\HotelFlag;
 
     $price_avg = 0;
     $price_min = 0;
+    $room_id;
 
     $posts_room = new PostsRoom($wpdb);
     $post_meta = new PostMetaValues($wpdb);
@@ -176,7 +179,7 @@ use data\HotelFlag;
                 'st_cancel_percent' => 0,
                 'is_meta_payment_gateway_st_submit_form' => 'on',
                 'is_meta_payment_gateway_vina_stripe' => 'on',
-                'multi_location' => '_14848_,_15919_',
+                'multi_location' => '__24396__',
                 '_yoast_wpseo_primary_room_type' => 66,
                 '_yoast_wpseo_primary_room-facilities' => 43,
                 '_yoast_wpseo_focuskw' => $room['name_struct']['main_name'],
@@ -231,7 +234,7 @@ use data\HotelFlag;
 
             $hotel_room_model->post_id = $post_room_id;
             $hotel_room_model->room_parent = $post_id;
-            $hotel_room_model->multi_location = '';
+            $hotel_room_model->multi_location = '_24396_';
             $hotel_room_model->id_location = '';
             $hotel_room_model->address = $address;
             $hotel_room_model->allow_full_day = 'on';
@@ -243,6 +246,8 @@ use data\HotelFlag;
             $hotel_room_model->status = 'draft';
             $hotel_room_model->adult_price = 0;
             $hotel_room_model->child_price = 0;
+
+            $room_id = $post_room_id;
 
             $hotel_room = $hotel_room_model->get();
 
@@ -256,6 +261,10 @@ use data\HotelFlag;
             echo 'wpdb last error: ' . $wpdb->last_error . '<br>';
             error_log('wpdb last error: ' . $wpdb->last_error);
         } else {
+            $room_availability = new RoomAvailability($wpdb);
+
+            $room_availability->insertRoomAvailability($room_id, $post_id);
+
             echo '<br>Data for posts hotel room inserted successfully<br>';
         }
 
@@ -316,11 +325,16 @@ use data\HotelFlag;
     $post_images->post_id = $post_id;
     $post_images->provider = 'RateHawk';
 
-    $post_image_array_ids = $post_images->insertImages();
-
     $post_meta = new PostMetaValues($wpdb);
 
     $post_meta->post_id= $post_id;
+
+    $post_image_array_ids = $post_images->insertImages();
+    
+    if ($post_image_array_ids == ''){
+        $post_image_array_ids = $post_meta->read('gallery')->meta_value;
+    }
+    
     $post_meta->meta_values = array(
         'rate_review' => 0,
         'price_avg' => $price_avg,
@@ -330,7 +344,7 @@ use data\HotelFlag;
         '_edit_last' => 14,
         '_tve_js_modules_gutenberg' => 'a:0:{}',
         'st_google_map' => 'a:4:{s:3:"lat";s:' . strlen($latitude) . ':"' . $latitude . '";s:3:"lng";s:' . strlen($longitude) . ':"' . $longitude . '";s:4:"zoom";s:2:"13";s:4:"type";s:0:"";}',
-        'multi_location' => '_14848_,_15095_',
+        'multi_location' => '__24396__',
         'address' => $address,
         'is_featured' => 'off',
         'st_hotel_external_booking' => 'off',
@@ -366,7 +380,5 @@ use data\HotelFlag;
     else
         $post_meta->create();
 
-    
-    exec()
 
 ?>

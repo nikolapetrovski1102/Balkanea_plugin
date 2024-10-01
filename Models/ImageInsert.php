@@ -20,7 +20,7 @@ class ImageInserter {
         print_r($this->directory_url . '<br>');
 
         $directory = "/home/balkanea/public_html/wp-content/uploads/" . self::sanitizeFileName($this->provider) . '/' . $this->directory_url;
-        $image_origin_url = "https://balkanea.com/wp-content/uploads/" . self::sanitizeFileName($this->provider) . '/' . $this->directory_url . '/';
+        $image_origin_url = "https://staging.balkanea.com/wp-content/uploads/" . self::sanitizeFileName($this->provider) . '/' . $this->directory_url . '/';
         $counter = 0;
         $post_image_array_ids = '';
 
@@ -71,21 +71,42 @@ class ImageInserter {
         return str_replace('{size}', '640x400', $img);
     }
 
-    private  function downloadImage($directory, $img_url) {
-       $this->image_path = $directory . '/' . basename($img_url);
-        
+    private function downloadImage($directory, $img_url) {
+        $this->image_path = $directory . '/' . basename($img_url);
+    
+        print_r('Image path: <br>');
+        print_r($this->image_path);
+    
+        print_r('<br>Image url: ' . $img_url);
+    
         if (!file_exists($this->image_path)) {
-            file_put_contents($this->image_path, file_get_contents($img_url));
-            if (file_exists($this->image_path)) {
-                return $this->image_path;
+            $ch = curl_init($img_url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // For HTTPS URLs
+    
+            $image_data = curl_exec($ch);
+            $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+    
+            if ($http_code == 200 && $image_data) {
+                file_put_contents($this->image_path, $image_data);
+    
+                if (file_exists($this->image_path)) {
+                    return $this->image_path;
+                } else {
+                    echo "Failed to save the image to the local path: $this->image_path";
+                    return false;
+                }
             } else {
                 echo "Failed to download image: $img_url";
                 return false;
             }
         }
-        
+    
         return $this->image_path;
     }
+    
 
     private function insertPost( $counter) {
         $this->wpdb->insert(

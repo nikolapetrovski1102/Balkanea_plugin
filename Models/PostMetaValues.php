@@ -63,6 +63,9 @@ class PostMetaValues
     {
         try {
             foreach ($this->meta_values as $meta_key => $meta_value) {
+
+                if ($meta_key == 'gallery' && $meta_value == '') return 0;
+
                 if ($meta_key == '_wp_old_slug'){
                     print_r($meta_key . '<br>');
                     print_r($meta_value . '<br>');
