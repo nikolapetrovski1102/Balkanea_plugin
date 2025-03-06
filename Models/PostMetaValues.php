@@ -61,8 +61,28 @@ class PostMetaValues
     // Update Meta Values
     public function update(): bool
     {
+        
+        echo "Passed meta_values: <br>";
+        print_r($this->meta_values, true);
+        
         try {
             foreach ($this->meta_values as $meta_key => $meta_value) {
+                
+                if ($meta_key == 'metapolicy_struct'){
+                    $data = [
+                        'post_id' => $this->post_id,
+                        'meta_key' => $meta_key,
+                        'meta_value' => $meta_value,
+                    ];
+
+                    $format = ['%d', '%s', '%s'];
+    
+                    $result = $this->wpdb->insert($this->wpdb->prefix . $this->table, $data, $format);
+                    
+                    if ($this->wpdb->last_error) {
+                       throw new \Exception($this->wpdb->last_error);
+                    }
+                }
                 
                 $data = ['meta_value' => $meta_value];
                 $where = [

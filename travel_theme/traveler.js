@@ -20824,19 +20824,37 @@ jQuery(function ($) {
         modal = $(modal);
         modal.find('.modal-content-inner').empty();
         modal.find('.overlay-form').fadeIn();
-        console.log($(this).data('order_id'));
-        console.log($(this).data('service_id'));
+        let order_id = $(this).data('order_id');
+        let service_id = $(this).data('service_id');
         $.ajax({
             url: 'https://staging.balkanea.com/wp-plugin/APIs/modal_toggle.php',
             data: {
-                order_id: $(this).data('order_id'),
-                service_id: $(this).data('service_id')
+                order_id: order_id,
+                service_id: service_id
             },
             type: 'POST',
             success: function (res) {
-                console.log(res);
                 modal.find('.modal-content-inner').html(res);
                 modal.find('.overlay-form').fadeOut();
+                $('#cancel_booking').on('click', (e) => {
+                  modal.find('.overlay-form').fadeIn();
+                  $.ajax({
+                    url: "https://staging.balkanea.com/wp-plugin/APIs/cancel_reservation.php",
+                    data: {
+                      order_id: order_id,
+                      service_id: service_id
+                    },
+                    type: 'POST',
+                    success: (succ) => {
+                      modal.find('.overlay-form').fadeOut();
+                      document.querySelector('#close_modal').click();
+                    },
+                    error: (err) => {
+                      document.querySelector('#close_modal').click();
+                      console.log(err);
+                    }
+                  })
+                })
             },
             error: function (e) {
                 console.error(e);

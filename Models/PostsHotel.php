@@ -42,6 +42,34 @@ class PostsHotel
         $this->post_type = 'st_hotel';
         $this->comment_count = 0;
     }
+    
+    public function isModified() {
+        if (!is_string($this->post_name)) {
+            error_log($this->post_name);
+            throw new \Exception("post_name must be a string");
+        }
+    
+        $query = $this->wpdb->prepare(
+            "SELECT post_modified FROM " . $this->wpdb->prefix . $this->table . " WHERE post_name = %s",
+            $this->post_name
+        );
+        $result = $this->wpdb->get_row($query);
+    
+        error_log(print_r($result, true));
+    
+        if ($result) {
+            $post_modified = $result->post_modified;
+            $modified_date = date('Y-m-d', strtotime($post_modified)); // Extract date part of post_modified
+            $today_date = date('Y-m-d'); // Get today's date
+    
+            if ($modified_date === $today_date) {
+                return true;
+            }
+        }
+    
+        return false;
+    }
+
 
     // Create Post
     public function create()

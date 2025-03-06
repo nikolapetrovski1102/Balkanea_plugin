@@ -25,9 +25,12 @@ class LocationNested {
 
     public function create() {
 
+        echo 'Creating location...<br>';
+
         $location_exists = $this->locationExists();
 
         if ($location_exists) {
+            echo 'Location exists in DB<br>';
             return $location_exists;
         }
 
@@ -67,6 +70,8 @@ class LocationNested {
             $this->status
         );
 
+        print_r($query);
+
         $this->wpdb->query($query);
 
         if ($this->wpdb->last_error)
@@ -76,23 +81,37 @@ class LocationNested {
     }
 
     private function locationExists() {
-
-        $query = $this->wpdb->prepare(
-            "SELECT * FROM {$this->wpdb->prefix}{$this->table} WHERE name = %s",
+        global $wpdb;
+    
+        // First query
+        $query = $wpdb->prepare(
+            "SELECT * FROM {$wpdb->prefix}{$this->table} WHERE name = %s",
             $this->name
         );
-
-        $query_result = $this->wpdb->get_row($query);
-
-        $query = $this->wpdb->prepare(
-            "SELECT location_id FROM {$this->wpdb->prefix}{$this->table} WHERE id = %d",
-            intval($this->parent_id)
-        );
-
-        $query_result = $this->wpdb->get_row($query);
-
-        return $query_result->location_id;
+    
+        $query_result = $wpdb->get_row($query);
+    
+        if ($query_result === null)
+            return false;
+        else{
+            return $query_result->location_id;
+        }
+        // Second query
+        // $query = $wpdb->prepare(
+        //     "SELECT location_id FROM {$wpdb->prefix}{$this->table} WHERE id = %d",
+        //     intval($this->parent_id)
+        // );
+    
+        // $query_result = $wpdb->get_row($query);
+    
+        // if ($query_result === null) {
+        //     echo 'No results found for the second query.<br>';
+        //     return null;
+        // }
+    
+        // return $query_result->location_id;
     }
+    
 
     private function map_location() {
 
@@ -115,6 +134,95 @@ class LocationNested {
         $this->fullname = $this->name . ', ' . $query_result->name;
     }
 
+    private function mapCountryCode() {
+
+        switch ($this->location_country) {
+            case 'GR':
+                $this->name = 'Greece';
+                $this->fullname = 'Greece';
+                break;
+            case 'RS':
+                $this->name = 'Serbia';
+                $this->fullname = 'Serbia';
+                break;
+            case 'BG':
+                $this->name = 'Bulgaria';
+                $this->fullname = 'Bulgaria';
+                break;
+            case 'MK':
+                $this->name = 'North Macedonia';
+                $this->fullname = 'North Macedonia';
+                break;
+        }
+
+    }
+
+    public function parentLocationExists(){
+
+        $query = $this->wpdb->prepare(
+            "SELECT * FROM {$this->wpdb->prefix}{$this->table} WHERE location_country = %s AND parent_id = 1",
+            $this->location_country
+        );
+
+        $query_result = $this->wpdb->get_row($query);
+
+        print_r($query);
+        echo '<br>' . $query_result->id . '<br>';
+
+        if ($query_result)
+            return $query_result->id;
+        else{
+            $query = $this->wpdb->prepare("
+                SELECT * 
+                FROM {$this->wpdb->prefix}{$this->table} 
+                WHERE parent_id = %d AND status = %s 
+                ORDER BY id DESC 
+                LIMIT 1", 
+                1, 'publish'
+            );
+
+            // [id] => 56 [location_id] => 24396 [location_country] => GR [parent_id] => 1 [left_key] => 100 [right_key] => 117 [name] => Greece [fullname] => Greece [language] => en [status] => publish )
+            $last_location_added = $this->wpdb->get_row($query); 
+
+            $this->location_id = $last_location_added->location_id + 1;
+            $this->parent_id = 1;
+            $this->left_key = $last_location_added->right_key + 2;
+            $this->right_key = $this->left_key + 1;
+            self::mapCountryCode();
+            $this->language = 'en';
+            $this->status = 'publish';
+
+
+            $query = $this->wpdb->prepare(
+                "INSERT INTO {$this->wpdb->prefix}{$this->table}
+            (
+                location_id, 
+                location_country, 
+                parent_id, 
+                left_key, 
+                right_key, 
+                name, 
+                fullname, 
+                language, 
+                status
+            ) VALUES (%d, %s, %d, %d, %d, %s, %s, %s, %s)",
+                $this->location_id,
+                $this->location_country,
+                $this->parent_id,
+                $this->left_key,
+                $this->right_key,
+                $this->name,
+                $this->fullname,
+                $this->language,
+                $this->status
+            );
+    
+            $query_result = $this->wpdb->get_row($query);
+
+            return $query_result->id;
+        }
+    }
+
     private function calculateKeys() {
         $query = $this->wpdb->prepare(
             "SELECT MAX(right_key) AS max_right_key FROM {$this->wpdb->prefix}{$this->table} WHERE parent_id = %d",
@@ -123,11 +231,17 @@ class LocationNested {
 
         $query_result = $this->wpdb->get_row($query);
 
+        print_r($query_result);
+
         if (!$query_result || is_null($query_result->max_right_key)) {
             $query = $this->wpdb->prepare(
-                "SELECT left_key, right_key FROM {$this->wpdb->prefix}{$this->table} WHERE location_id = %d",
+                "SELECT left_key, right_key FROM {$this->wpdb->prefix}{$this->table} WHERE id = %d",
                 $this->parent_id
             );
+
+            echo 'Searching for parent: <br>';
+            print_r($query);
+
             $parent = $this->wpdb->get_row($query);
 
             if ($parent) {

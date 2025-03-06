@@ -4,6 +4,7 @@
     // Format Date To YYYY-MM-DD
 
     function setCookie(name, value, days) {
+        console.log(`Setting ${name} with value ${value}`);
         let expires = "";
         if (days) {
             const date = new Date();
@@ -81,21 +82,63 @@
         });
     }
 
+    function isRateHawkHotel(){
+        const currentUrl = window.location.href;
+        
+        const params = getQueryParams(currentUrl);
+
+        if (params.has('search'))
+            return true;
+
+        return false;
+}
+
+function loadRoomsFromDB (ajax_url, data, body, loader, message) {
+    $.post(ajax_url, data, function (respon) {
+        if (typeof respon == 'object') {
+            if (respon.message) {
+                message.html(respon.message);
+            }
+            $('.st-list-rooms .fetch').html(respon.html);
+            $('html, body').animate({
+                scrollTop: $('.st-list-rooms', body).offset().top - 150
+            }, 500);
+            $('[data-toggle="tooltip"]').tooltip();
+        }
+        $('.st-list-rooms .loader-wrapper').hide();
+        $('.fixed-on-mobile .loader-wrapper').hide();
+        loader.hide();
+    }, 'json');
+    }
+
     function getQueryParams(url) {
         const queryString = url.split('?')[1] || '';
         return new URLSearchParams(queryString);
     }
 
     function getParamFromUrl(param) {
-        const currentUrl = window.location.href;
-
-        const params = getQueryParams(currentUrl);
-
-        if (params.has(param))
-            var parameter_value = params.get(param);
-
+        const currentUrl = decodeURIComponent(window.location.href); // Decode URL in case of encoded characters
+        const url = new URL(currentUrl);
+        const params = new URLSearchParams(url.search); // Extract search params
+        
+        console.log(param);
+    
+        let parameter_value = null;
+    
+        // Check both search params and hash
+        if (params.has(param)) {
+            parameter_value = params.get(param); // Get the value for the param from search params
+        } else {
+            // Handle hash separately if needed
+            const hashParams = new URLSearchParams(url.hash.substring(1));
+            if (hashParams.has(param)) {
+                parameter_value = hashParams.get(param);
+            }
+        }
+    
         return parameter_value;
     }
+    
 
     function getIP() {
 
@@ -118,6 +161,9 @@
     
         data.push({'book_hash' : book_hash});
         data.push({'price' : price});
+        
+        if (!book_hash || !price)
+            return 'not found';
     
         return $.ajax({
             url: 'https://staging.balkanea.com/wp-plugin/APIs/order_booking_form.php',
@@ -125,8 +171,7 @@
             data: {
                 'type': 'order_booking_form',
                 'data': data
-            },
-            dataType: 'json'
+            }
         });
     }
 
@@ -348,13 +393,16 @@
                 var form = $('form.hotel-room-booking-form');
                 var data = $('form.hotel-room-booking-form').serializeArray();
                 var loadingSubmit = form.find('button[name=submit]');
+                let free_cancelation = getParamFromUrl('free_cancelation_before');
+                if (free_cancelation)
+                    setCookie('free_cancelation', free_cancelation, 10);
                 $(loadingSubmit).find("i.fa-spin").removeClass("d-none");
                 data.push({
                     name: 'security',
                     value: st_params._s
                 });
                 $('div.message-wrapper').html("");
-                var booking_form;
+                var booking_form = '';
                 $.ajax({
                     url: st_params.ajax_url,
                     method: "post",
@@ -365,18 +413,35 @@
                         booking_form = orderBookingForm(data);
                     },
                     success: function (res) {
-                        $(loadingSubmit).find('i.fa-spin').addClass("d-none");
-                        if (res) {
-                            if (res.status) {
-                                if (res.redirect && booking_form.responseText == 'ok') {
-                                    window.location = res.redirect;
+                        
+                        if (booking_form == 'not found'){
+                            if (res &&  res.status) {
+                                if (res.redirect) {
+                                    window.location.href = res.redirect;
                                 }
                             } else {
-                                if (res.message && booking_form.responseText == 'erorr') {
+                                if (res.message) {
                                     $('div.message-wrapper').html(res.message);
                                 }
                             }
                         }
+
+                        booking_form.done( (bookingRes) => {
+                            console.log(bookingRes);
+                            $(loadingSubmit).find('i.fa-spin').addClass("d-none");
+                                if (res &&  res.status) {
+                                    if (bookingRes == 'not found' || res.redirect && bookingRes == 'ok') {
+                                        window.location.href = res.redirect;
+                                    }
+                                } else {
+                                    if (res.message && bookingRes == 'erorr') {
+                                        $('div.message-wrapper').html(res.message);
+                                    }
+                                }
+                        }).fail(function (err) {
+                            console.error(err);
+                            $('div.message-wrapper').html('<p> Something went wrong please try again! </p>');
+                        });
                     },
                     error: function (err) {
                         $('div.message-wrapper').html("");
@@ -639,13 +704,24 @@
                 let current_url = window.location.href;
                 hotel_id = current_url.split('/')[4];
 
-                loadPage(1, hotel_id, data);
+                if (isRateHawkHotel()){
+                    loadPage(1, hotel_id, data);
+                }
+                else{
+                    loadRoomsFromDB(st_params.ajax_url, data, body, loader, message);
+                }
+                // loadPage(1, hotel_id, data);
 
                 $(document).on('click', '.pagination-link', function (e) {
                     e.preventDefault();
                     let page = $(this).data('page');
                     $('html, body').animate({ scrollTop: $('.st-list-rooms', body).offset().top - 100 }, 300);
-                    loadPage(page, hotel_id, data);
+                    if (isRateHawkHotel()){
+                        loadPage(page, hotel_id, data);
+                    }
+                    else{
+                        loadRoomsFromDB(st_params.ajax_url, data, body, loader, message);
+                    }
                 });
 
                 //         $.ajax({

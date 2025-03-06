@@ -38,7 +38,6 @@ class RoomAvailability {
             '%d', '%d', '%d', '%d', '%d', '%d', '%f', '%f'
         ];
 
-        // Years to insert data for
         $years = [2024, 2025, 2026];
 
         try {

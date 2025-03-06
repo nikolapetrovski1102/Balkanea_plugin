@@ -20,10 +20,6 @@ class LocationRelationship
 
     public function insertLocationRelationship()
     {
-        print_r('<pre>');
-        print_r($this->location_from);
-        print_r('</pre>');
-
         foreach ($this->location_from as $location) {
 
             try {
@@ -32,8 +28,6 @@ class LocationRelationship
                 VALUES (%d, %s, %s, %s, %s)",
                 $this->post_id, $location, $this->location_to, $this->post_type, $this->location_type
                 );
-
-                print_r("<pre>"); print_r($query); print_r("</pre>");
 
                 $this->wpdb->query($query);
                 

@@ -32,30 +32,71 @@ jQuery(function ($) {
     }
     /* Start rewrite booking event */
     ;(function ($) {
-        $.fn.STSendAjax = function (order_id, payment_information) {
-           
+        $.fn.STSendAjax = function () {
+            var isRateHawkHotel = false;
+            var order_id = '';
+            var payment_information = '';
+            var free_cancelation_before = '';
+
+            document.cookie.split(";").forEach((cookie) => {
+                let [cookie_name, cookie_value] = cookie.split('=').map(part => part.trim());
             
+                if (cookie_name === 'partner_order_id') {
+                    order_id = cookie_value;
+                    document.cookie = `${cookie_name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+                }
+    
+                if (cookie_name === order_id){
+                    payment_information = cookie_value;
+                    document.cookie = `${cookie_name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+                }
+                
+                if (cookie_name === 'free_cancelation'){
+                    free_cancelation_before = cookie_value;
+                    document.cookie = `${cookie_name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+                }
+                
+                if (cookie_name === 'isRateHawkHotel' && cookie_value === 'true'){
+                    isRateHawkHotel = cookie_value;
+                    document.cookie = `${cookie_name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+                }
+    
+            });
+            
+            let json_payment_information = decodeURIComponent(payment_information ?? '');
+            console.log(isRateHawkHotel);
+            
+            if (!order_id && !payment_information && isRateHawkHotel === 'true') {
+                console.log('Going back');
+                window.history.go(-2);
+                return;
+            }
+
             this.each(function () {
+                console.log(free_cancelation_before);
                 console.log(order_id);
-                console.log(JSON.parse(payment_information));
+                console.log(payment_information);
                 var me = $(this);
                 var button = $('.btn-st-checkout-submit', this);
                 var data = me.serializeArray();
                 data.push({name: 'action', value: 'booking_form_direct_submit'});
-                data.push({name : 'partner_order_id', value: order_id});
-                data.push({name: 'payment_information', value: payment_information})
                 me.find('.form-control').removeClass('error');
                 me.find('.form_alert').addClass('hidden');
                 var dataobj = {};
+                var datarate = {};
+                data.push({name: 'partner_order_id', value: order_id});
+                data.push({name: 'payment_information', value: json_payment_information});
                 for (var i = 0; i < data.length; ++i) {
-                    dataobj[data[i].name] = data[i].value
+                    dataobj[data[i].name] = data[i].value;
                 }
+
                 dataobj.order_id = old_order_id;
                 var validate = st_validate_checkout(me);
-                console.log("data obj: ");
-                console.log(dataobj);
-                if (!validate)
-                    return !1;
+                for (var i = 0; i < data.length; ++i) {
+                    datarate[data[i].name] = data[i].value;
+                }
+
+                if (!validate) return false;
                 button.addClass('loading');
                 
                 // $.ajax({
@@ -66,10 +107,28 @@ jQuery(function ($) {
                 //         'type': 'order_booking_finish'
                 //     },
                 //     success: (succ) => {
+                //         console.log('After submit');
+                //         console.log(succ);
                 //         order_status = succ;
-                //         if (order_status !== 'ok'){
-                //             button.removeClass('loading');
-                //             window.history.go(-2);
+                //         if (order_status !== 'ok') {
+                //             var div_ele = document.createElement('div');
+                //             div_ele.innerHTML = `
+                //                 <div id="message">
+                //                     <div style="padding: 5px;">
+                //                         <div id="inner-message" class="alert alert-danger alert-dismissible fade show" role="alert">
+                //                             <strong>Error!</strong> Time out, please book again.
+                //                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                //                                 <span aria-hidden="true">&times;</span>
+                //                             </button>
+                //                         </div>
+                //                     </div>
+                //                 </div>
+                //             `;
+                //             document.querySelector("#demo-form").after( div_ele );
+                //             setTimeout( () => {
+                //                 window.history.go(-2);
+                //             }, 1000)
+                //             return;
                 //         }
                         $.ajax({
                             type: 'post',
@@ -78,144 +137,171 @@ jQuery(function ($) {
                             dataType: 'json',
                             success: function (data) {
                             
-                                $.ajax({
-                                    type: 'get',
-                                    url: 'https://staging.balkanea.com/wp-plugin/APIs/request_query.php',
-                                    data: {
-                                        data_order_id: data.order_id,
-                                        partner_timestamp: order_id
-                                    },
-                                    success: (succ) => {
-                                        console.log(succ);
-                                    },
-                                    error: (err) => {
-                                        console.log(err);
-                                        throw ("Record not saved");
+                                if (isRateHawkHotel){
+                                    $.ajax({
+                                        type: 'get',
+                                        url: 'https://staging.balkanea.com/wp-plugin/APIs/request_query.php',
+                                        data: {
+                                            data_order_id: data.order_id,
+                                            partner_timestamp: order_id,
+                                            free_cancelation: free_cancelation_before
+                                        },
+                                        success: (succ) => {
+                                            console.log(succ);
+                                        },
+                                        error: (err) => {
+                                            console.log(err);
+                                            throw ("Record not saved");
+                                        }
+                                    })
+                                }
+
+                                if( $("input[name=st_payment_gateway]").length > 0 && $("input[name=st_payment_gateway]").val() == 'vina_stripe' && typeof(data.order_id) != 'undefined' && typeof(st_vina_stripe_params) != 'undefined' ){
+                                    var stripePublishKey = st_vina_stripe_params.vina_stripe.publishKey;
+                                    if(st_vina_stripe_params.vina_stripe.sanbox == 'sandbox'){
+                                        stripePublishKey = st_vina_stripe_params.vina_stripe.testPublishKey
                                     }
-                                })
-
-                                // if( $("input[name=st_payment_gateway]").length > 0 && $("input[name=st_payment_gateway]").val() == 'vina_stripe' && typeof(data.order_id) != 'undefined' && typeof(st_vina_stripe_params) != 'undefined' ){
-                                //     var stripePublishKey = st_vina_stripe_params.vina_stripe.publishKey;
-                                //     if(st_vina_stripe_params.vina_stripe.sanbox == 'sandbox'){
-                                //         stripePublishKey = st_vina_stripe_params.vina_stripe.testPublishKey
-                                //     }
-                                //     var stripe = Stripe(stripePublishKey);
+                                    var stripe = Stripe(stripePublishKey);
                                 
-                                //     if (typeof(data.payment_intent_client_secret) != 'undefined' && data.payment_intent_client_secret) {
+                                    if (typeof(data.payment_intent_client_secret) != 'undefined' && data.payment_intent_client_secret) {
                                         
-                                //         stripe.handleCardAction(
-                                //         data.payment_intent_client_secret
-                                //         ).then(function(result) {
+                                        stripe.handleCardAction(
+                                        data.payment_intent_client_secret
+                                        ).then(function(result) {
                                         
-                                //         if (result.error) {
-                                //             if (data.redirect_form) {
-                                //                 setTimeout(function(){
-                                //                     window.location.href = data.redirect_form;
-                                //                 }, 3000);
+                                        if (result.error) {
+                                            if (data.redirect_form) {
+                                                setTimeout(function(){
+                                                    window.location.href = data.redirect_form;
+                                                }, 3000);
                                                 
-                                //             }
-                                //         } else {
+                                            }
+                                        } else {
                                         
-                                //             $.ajax({
-                                //                 url: st_params.ajax_url,
-                                //                 dataType: 'json',
-                                //                 type: 'POST',
-                                //                 data: {
-                                //                     'action' : 'vina_stripe_confirm_server',
-                                //                     'st_order_id' : data.order_id,
-                                //                     'payment_intent_id' : result.paymentIntent.id,
-                                //                     'data_step2' : data,
-                                //                 },
-                                //                 beforeSend: function () {
-                                //                 //handleServerResponse();
-                                //                 },
-                                //                 success: function (response_server) {
-                                //                     console.log(response_server);
-                                //                 },
-                                //                 complete: function (jqXHR) {
-                                //                     var data_response = jqXHR.responseJSON.data;
-                                //                     if (typeof(data_response.order_id) != 'undefined' && data_response.order_id) {
-                                //                         old_order_id = data_response.order_id
-                                //                     }
-                                //                     if (jqXHR.responseJSON.message) {
-                                //                         me.find('.form_alert').addClass('alert-danger').removeClass('hidden');
-                                //                         me.find('.form_alert').html(jqXHR.responseJSON.message)
-                                //                     }
-                                //                     if (data_response.redirect) {
-                                //                         setTimeout(function(){
-                                //                             window.location.href = data_response.redirect
-                                //                         }, 3000);
+                                            $.ajax({
+                                                url: st_params.ajax_url,
+                                                dataType: 'json',
+                                                type: 'POST',
+                                                data: {
+                                                    'action' : 'vina_stripe_confirm_server',
+                                                    'st_order_id' : data.order_id,
+                                                    'payment_intent_id' : result.paymentIntent.id,
+                                                    'data_step2' : data,
+                                                },
+                                                beforeSend: function () {
+                                                    handleServerResponse();
+                                                },
+                                                success: function (response_server) {
+                                                    
+                                                },
+                                                complete: function (jqXHR) {
+                                                    var data_response = jqXHR.responseJSON.data;
+                                                    if (typeof(data_response.order_id) != 'undefined' && data_response.order_id) {
+                                                        old_order_id = data_response.order_id
+                                                    }
+                                                    if (jqXHR.responseJSON.message) {
+                                                        me.find('.form_alert').addClass('alert-danger').removeClass('hidden');
+                                                        me.find('.form_alert').html(jqXHR.responseJSON.message)
+                                                        return;
+                                                    }
+                                                    if (data_response.redirect) {
+                                                        setTimeout(function(){
+                                                            window.location.href = data_response.redirect
+                                                        }, 3000);
                                                         
-                                //                     }
-                                //                     if (data_response.redirect_form) {
-                                //                         $('body').append(data_response.redirect_form)
-                                //                     }
-                                //                     if (data_response.new_nonce) {
-                                //                     }
-                                //                     var widget_id = 'st_recaptchar_' + dataobj.item_id;
-                                //                     get_new_captcha(me);
-                                //                     button.removeClass('loading')
-                                //                 },
-                                //             });
-                                //         }
-                                //         });
-                                //     }  else {
-                                //         if (typeof(data.order_id) != 'undefined' && data.order_id) {
-                                //             old_order_id = data.order_id
-                                //         }
-                                //         if (data.message) {
-                                //             me.find('.form_alert').addClass('alert-danger').removeClass('hidden');
-                                //             me.find('.form_alert').html(data.message)
-                                //         }
-                                //         if (typeof(data.order_id) != 'undefined' && data.order_id) {
-                                //             old_order_id = data.order_id
-                                //         }
-                                //         if (data.message) {
-                                //             me.find('.form_alert').addClass('alert-danger').removeClass('hidden');
-                                //             me.find('.form_alert').html(data.message)
-                                //         }
-                                //         if (data.redirect) {
-                                //             setTimeout(function(){
-                                //                 window.location.href = data.redirect
-                                //             }, 3000);
+                                                    }
+                                                    if (data_response.redirect_form) {
+                                                        $('body').append(data_response.redirect_form)
+                                                    }
+                                                    if (data_response.new_nonce) {
+                                                    }
+                                                    var widget_id = 'st_recaptchar_' + dataobj.item_id;
+                                                    get_new_captcha(me);
+                                                    button.removeClass('loading')
+                                                },
+                                            });
+                                        }
+                                        });
+                                    }  else {
+                                        console.log(data);
+                                        if (typeof(data.order_id) != 'undefined' && data.order_id) {
+                                            old_order_id = data.order_id
+                                        }
+                                        if (data.message) {
+                                            me.find('.form_alert').addClass('alert-danger').removeClass('hidden');
+                                            me.find('.form_alert').html(data.message)
+                                            button.removeClass('loading')
+                                            return;
+                                        }
+                                        if (typeof(data.order_id) != 'undefined' && data.order_id) {
+                                            old_order_id = data.order_id
+                                        }
+                                        if (data.message) {
+                                            me.find('.form_alert').addClass('alert-danger').removeClass('hidden');
+                                            me.find('.form_alert').html(data.message)
+                                            button.removeClass('loading')
+                                            return;
+                                        }
+                                        if (data.redirect) {
+                                            if (!isRateHawkHotel){
+                                                window.location.href = data.redirect
+                                                return;
+                                            }
                                             
-                                //         }
-                                //         if (data.redirect_form) {
-                                //             $('body').append(data.redirect_form)
-                                //         }
-                                //         if (data.new_nonce) {
-                                //         }
-                                //         var widget_id = 'st_recaptchar_' + dataobj.item_id;
-                                //         get_new_captcha(me);
-                                //         button.removeClass('loading')
+                                            $.ajax({
+                                                async: false,
+                                                type: 'post',
+                                                url: 'https://staging.balkanea.com/wp-plugin/APIs/order_booking_form.php',
+                                                data:{
+                                                    'data': datarate,
+                                                    'type': 'order_booking_finish'
+                                                },
+                                                success: (succ) => {
+                                                    window.location.href = data.redirect
+                                                },
+                                                error: (err) => {
+                                                    console.log(err);
+                                                }
+                                            })
+                                        }
+                                        if (data.redirect_form) {
+                                            $('body').append(data.redirect_form)
+                                        }
+                                        if (data.new_nonce) {
+                                        }
+                                        var widget_id = 'st_recaptchar_' + dataobj.item_id;
+                                        get_new_captcha(me);
+                                        button.removeClass('loading')
 
-                                //     }
-                                // } else {
-                                //     if (typeof(data.order_id) != 'undefined' && data.order_id) {
-                                //         old_order_id = data.order_id
-                                //     }
-                                //     if (data.message) {
-                                //         me.find('.form_alert').addClass('alert-danger').removeClass('hidden');
-                                //         me.find('.form_alert').html(data.message)
-                                //     }
-                                //     if (data.redirect) {
-                                //         // window.location.href = data.redirect
-                                //     }
-                                //     if (data.redirect_form) {
-                                //         $('body').append(data.redirect_form)
-                                //     }
-                                //     if (data.new_nonce) {
-                                //     }
-                                //     var widget_id = 'st_recaptchar_' + dataobj.item_id;
-                                //     get_new_captcha(me);
-                                //     button.removeClass('loading')
-                                // }
+                                    }
+                                } else {
+                                    if (typeof(data.order_id) != 'undefined' && data.order_id) {
+                                        old_order_id = data.order_id
+                                    }
+                                    if (data.message) {
+                                        me.find('.form_alert').addClass('alert-danger').removeClass('hidden');
+                                        me.find('.form_alert').html(data.message)
+                                        return;
+                                    }
+                                    if (data.redirect) {
+                                        window.location.href = data.redirect
+                                    }
+                                    if (data.redirect_form) {
+                                        $('body').append(data.redirect_form)
+                                    }
+                                    if (data.new_nonce) {
+                                    }
+                                    var widget_id = 'st_recaptchar_' + dataobj.item_id;
+                                    get_new_captcha(me);
+                                    button.removeClass('loading')
+                                }
                             },
                             error: function (xhr, status, errorThrown) {
                                 console.log(xhr);
                                 if (xhr.responseJSON.message) {
                                     me.find('.form_alert').addClass('alert-danger').removeClass('hidden');
                                     me.find('.form_alert').html(xhr.responseJSON.message);
+                                    return;
                                 }
                                 button.removeClass('loading');
                                 get_new_captcha(me)
@@ -268,23 +354,6 @@ jQuery(function ($) {
     $('.btn-st-checkout-submit').on('click', function (e) {
         console.log($("input[name=st_payment_gateway]"));
         e.preventDefault();
-        var order_id = '';
-        var payment_information = '';
-        document.cookie.split(";").forEach((cookie) => {
-            let [cookie_name, cookie_value] = cookie.split('=').map(part => part.trim());
-        
-            if (cookie_name === 'partner_order_id') {
-                order_id = cookie_value;
-            }
-
-            if (cookie_name === order_id){
-                payment_information = cookie_value;
-            }
-
-        });
-        
-        let json_payment_information = decodeURIComponent(payment_information);
-        e.preventDefault();
         var form = $(this).closest('form');
         form.trigger('st_before_checkout');
         var payment = $('input[name="st_payment_gateway"]:checked', form).val();
@@ -293,7 +362,8 @@ jQuery(function ($) {
             form.trigger('st_wait_checkout');
             return false;
         }
-        form.STSendAjax(order_id, json_payment_information);
+
+        form.STSendAjax();
     });
     /*Checkout package ajax*/
     /* End start rewrite booking event */

@@ -1,5 +1,22 @@
 <?php
 
+    $config = include './config.php';
+    $keyId = $config['api_key'];
+    $apiKey = $config['api_password'];
+
+if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])){
+    header('WWW-Authenticate: Basic realm="Restricted Area"');
+    header('HTTP/1.0 401 Unauthorized');
+    echo 'Authorization header missing';
+    exit;
+}
+if ($_SERVER['PHP_AUTH_USER'] !== $keyId || $_SERVER['PHP_AUTH_PW'] !== $apiKey) {
+    header('WWW-Authenticate: Basic realm="Restricted Area"');
+    header('HTTP/1.0 401 Unauthorized');
+    echo 'Unauthorized Access';
+    exit;
+}
+
 use Models\Amenity;
 use Models\HotelRoom;
 use Models\ImageInserter;
@@ -39,9 +56,20 @@ use data\HotelFlag;
     $wpdb->show_errors();
     $prefix = $wpdb->prefix;
 
-    $keyId = '7788';
-    $apiKey = 'e6a79dc0-c452-48e0-828d-d37614165e39';
+    $posts_hotel = new PostsHotel($wpdb);
+    
+    $hotel_name = checkHotel($data_hotel);
 
+    error_log("Data hotel: ");
+    error_log(print_r($hotel_name, true));
+    
+    $posts_hotel->post_name = $hotel_name;
+
+    if ($posts_hotel->isModified()){
+        error_log("Hotel " . $hotel_name . " is last modified today");
+        exit();
+    }
+    
     $credentials = base64_encode($keyId . ':' . $apiKey);
     $headers = array(
         'Authorization: Basic ' . $credentials,
@@ -55,8 +83,6 @@ use data\HotelFlag;
         exit();
     }
 
-    $posts_hotel = new PostsHotel($wpdb);
-
     $post_content = '';
     $post_excerpt = '';
     $post_title = $hotel['name'];
@@ -67,17 +93,37 @@ use data\HotelFlag;
     $post_id_name = $hotel['id'];
     $img_urls = '';
     $hotel_location = $hotel['region'];
+    $hotel_country_code = $hotel['region'];
+    $metapolicy_struct = json_encode($hotel['metapolicy_struct']);
+
+    error_log("Executing hotel " . $post_title);
 
     echo '<br>' . $hotel['id'] . '<br>';
 
     $location_nested = new LocationNested($wpdb);
+    $location_nested->location_country = $hotel_country_code['country_code'];
+
+    $parent_location = $location_nested->parentLocationExists();
+
+    echo '<br>' . $parent_location . '<br>';
+
+    if ($parent_location){
+        echo 'Location found in DB<br>';
+        $location_nested->parent_id = $parent_location;
+    }
 
     $location_nested->location_id = $hotel_location['id'];
-    $location_nested->location_country = 'GR';
-    $location_nested->parent_id = 56;
+    $parent_id = $location_nested->parent_id;
     $location_nested->name = $hotel_location['name'];
     $location_nested->language = 'en';
     $location_nested->status = 'publish';
+
+    // $location_nested->location_id = $hotel_location['id'];
+    // $location_nested->location_country = 'GR';
+    // $location_nested->parent_id = 56;
+    // $location_nested->name = $hotel_location['name'];
+    // $location_nested->language = 'en';
+    // $location_nested->status = 'publish';
 
     $parent_location_id = $location_nested->create();
 
@@ -97,7 +143,7 @@ use data\HotelFlag;
     $post_id;
 
     $posts_hotel->post_content = $post_content;
-    $posts_hotel->post_title = $hotel['name'];;
+    $posts_hotel->post_title = $hotel['name'];
     $posts_hotel->post_excerpt = $post_excerpt;
     $posts_hotel->post_status = 'publish';
     $posts_hotel->post_password = '';
@@ -137,7 +183,11 @@ use data\HotelFlag;
         
         $post_id = $posts_hotel->create();
 
-        $amenities_model->amenities = $hotel['amenity_groups'][0];
+        if (is_array($hotel['amenity_groups']) && count($hotel['amenity_groups']) > 0)
+            $amenities_model->amenities = $hotel['amenity_groups'][0];
+        else
+            $amenities_model->amenities = array();
+        
         $amenities_model->post_id = $post_id;
 
         $amenities = $amenities_model->getAmenities();
@@ -200,14 +250,14 @@ use data\HotelFlag;
                 'st_booking_option_type' => 'instant',
                 'st_custom_layout' => 3,
                 'disable_adult_name' => 'off',
-                'disable_children_name' => 'off',
+                'disable_children_name' => 'on',
                 'price_by_per_person' => 'off',
                 'allow_full_day' => 'on',
                 'price' => 0,
                 'discount_type_no_day' => 'percent',
                 'extra_price_unit' => 'perday',
-                'adult_number' => 2,
-                'children_number' => 0,
+                'adult_number' => 9,
+                'children_number' => 9,
                 'st_room_external_booking' => 'off',
                 'default_state' => 'available',
                 'st_allow_cancel' => 'off',
@@ -412,8 +462,11 @@ use data\HotelFlag;
         '_thumbnail_id' => $post_image_array_ids != null ? explode(",", $post_image_array_ids)[0] : '',
         'gallery' => $post_image_array_ids ?? '',
         '_wp_old_date' => date('YYYY-mm-dd'),
-        'provider' => 'RateHawk'
+        'provider' => 'RateHawk',
+        'metapolicy_struct' => $metapolicy_struct
     );
+
+    print_r($post_meta->meta_values, true);
 
     if ($post_meta->get())
         $post_meta->update();

@@ -16,10 +16,18 @@
         return _date;
     }
 
+    function mapLocation(location){
+        
+    }
+
     function showLoadingPrices() {
         
-        document.querySelectorAll('[itemprop="priceRange"]').forEach(function(element) {
+        let loading_text_class = document.querySelectorAll('.loading-text');
         
+        if (loading_text_class.length > 0)
+            return;
+        
+        document.querySelectorAll('[itemprop="priceRange"]').forEach(function(element) {
             var priceElement = element.querySelector('.price');
             var unitElement = element.querySelector('.unit');
             if (priceElement) priceElement.style.display = 'none';
@@ -46,7 +54,7 @@
             `;
             document.head.appendChild(styleSheet);
         });
-}
+    }
 
 
     var data = URLToArrayNew();
@@ -88,17 +96,98 @@
 
     /*Sort menu*/
     $('.sort-menu input.service_order').on('change',function () {
-        data['st_orderby'] = $(this).data('value');
+        
+        window.scrollTo({
+            top: $('#modern-result-string').offset().top - 50,
+            behavior: 'smooth'
+        });
+        
+        var divResult = $('.modern-search-result');
+        divResult.addClass('loading');
+        
+        let sort_by = $(this).data('value');
+        
+        const hotelCards = document.querySelectorAll('#available');
+        
+        const hotelCardsArray = Array.from(hotelCards);
+
+        if (sort_by == 'price_desc' || sort_by == 'price_asc' ){
+            hotelCardsArray.sort((a, b) => {
+                const priceA = parseFloat(a.querySelector('.price').textContent.replace(/[^\d.-]/g, ''));
+                const priceB = parseFloat(b.querySelector('.price').textContent.replace(/[^\d.-]/g, ''));
+        
+                if (sort_by == 'price_asc')
+                    return priceA - priceB;
+                else
+                    return priceB - priceA;
+            });
+        }else{
+            hotelCardsArray.sort((a, b) => {
+                const nameA = a.querySelector('.c-main').textContent.trim().toLowerCase();
+                const nameB = b.querySelector('.c-main').textContent.trim().toLowerCase();
+                
+                if (sort_by == 'name_asc'){
+                    if (nameA < nameB) return -1;
+                    if (nameA > nameB) return 1;
+                }
+                else{
+                    if (nameA < nameB) return 1;
+                    if (nameA > nameB) return -1;
+                }
+                return 0;
+            });
+        }
+    
+        const container = document.querySelector('.service-list-wrapper.row');
+
+        hotelCardsArray.forEach(card => {
+            container.appendChild(card);
+        });
+        
+        document.getElementById('No-hotels').innerText = hotelCardsArray.length;
+        
         $(this).closest('.dropdown-menu').slideUp(50);
-        ajaxFilterHandler();
+        
+        divResult.removeClass('loading');
     });
 
     /* Price */
     $('.btn-apply-price-range').on('click', function (e) {
+        
+        window.scrollTo({
+            top: $('#modern-result-string').offset().top - 50,
+            behavior: 'smooth'
+        });
+        
+        var divResult = $('.modern-search-result');
+        divResult.addClass('loading');
         e.preventDefault();
-        data['price_range'] = $(this).closest('.range-slider').find('.price_range').val();
+        
+        let price_range = $(this).closest('.range-slider').find('.price_range').val();
+        
+        const hotelCards = document.querySelectorAll('#available');
+        
+        const hotelCardsArray = Array.from(hotelCards);
+        
+        let price_starting_from = price_range.split(';')[0];
+        let price_ending_to = price_range.split(';')[1];
+        
+        hotelCardsArray.forEach( hotel_card => {
+            hotel_card_price = parseFloat(hotel_card.querySelector('.price').textContent.replace(/[^\d.-]/g, ''));
+            
+            if (hotel_card_price < price_starting_from || hotel_card_price > price_ending_to){
+                hotel_card.style.display = 'none';
+            }else{
+                hotel_card.style.display = '';
+            }
+            
+        })
+        
+         document.getElementById('No-hotels').innerText = document.querySelectorAll('#available:not([style="display"])').length;
+        
         data['page'] = 1;
-        ajaxFilterHandler();
+        divResult.removeClass('loading');
+        // ajaxFilterHandler();
     });
 
     /*Checkbox click*/
@@ -110,25 +199,81 @@
     });
 
     $('.filter-item').on('change',function () {
-       var t = $(this);
-       var filter_type = t.data('type');
-       if(t.is(':checked')){
-           filter_checkbox[filter_type].push(t.val());
-       }else{
-           var index = filter_checkbox[filter_type].indexOf(t.val());
-           if (index > -1) {
-               filter_checkbox[filter_type].splice(index, 1);
-           }
-       }
-       if(filter_checkbox[filter_type].length){
-           data[filter_type] = filter_checkbox[filter_type].toString();
-       }else{
-           if(typeof data[filter_type] != 'undefined'){
-               delete data[filter_type];
-           }
-       }
+        
+        window.scrollTo({
+            top: $('#modern-result-string').offset().top - 50,
+            behavior: 'smooth'
+        });
+        
+        var divResult = $('.modern-search-result');
+        divResult.addClass('loading');
+        
+        const hotelCards = document.querySelectorAll('#available');
+        const hotelCardsArray = Array.from(hotelCards);
+        
+        var t = $(this);
+        var filter_type = t.data('type');
+        
+        let review_score = t.val();
+        let filter_selector = '.st-stars';
+        
+        if (filter_type == 'star_rate'){
+            filter_selector = '.rate-text';
+            switch (t.val()){
+                case '4':
+                    review_score = 'Excellent';
+                    break;
+                case '3':
+                    review_score = 'Very Good';
+                    break;
+                case '2':
+                    review_score = 'Average';
+                    break;
+                case '1':
+                    review_score = 'Poor'
+                    break;
+                case 'zero':
+                    review_score = 'Terrible'
+                    break;
+            }
+        }
+        
+        if(t.is(':checked')){
+              filter_checkbox[filter_type].push(review_score);
+          }else{
+              var index = filter_checkbox[filter_type].indexOf(review_score);
+              if (index > -1) {
+                  filter_checkbox[filter_type].splice(index, 1);
+              }
+          }
+          if(filter_checkbox[filter_type].length){
+              data[filter_type] = filter_checkbox[filter_type].toString();
+          }else{
+              if(typeof data[filter_type] != 'undefined'){
+                  delete data[filter_type];
+              }
+          }
+        
+        hotelCardsArray.forEach( hotel_card => {
+            let rate = hotel_card.querySelector(filter_selector);
+            
+            if (filter_type == 'hotel_rate')
+                rate = rate.childElementCount.toString();
+            else    
+                rate = rate.innerText.trim();
+            
+            if (!filter_checkbox[filter_type].includes(rate) && filter_checkbox[filter_type].length > 0)
+                hotel_card.style.display = 'none';
+            else
+                hotel_card.style.display = '';
+            
+        })
+        
+        document.getElementById('No-hotels').innerText = document.querySelectorAll('#available:not([style="display: none;"])').length;
+    
+        divResult.removeClass('loading');
         data['page'] = 1;
-        ajaxFilterHandler();
+        // ajaxFilterHandler();
     });
 
     /*Taxnonomy*/
@@ -141,6 +286,7 @@
         if($(this).is(':checked')){
             arrTax[$(this).data('type')].push($(this).val());
         }
+        
     });
 
     /* Pagination */
@@ -176,6 +322,14 @@
     });
 
     $('.filter-tax').on('change',function () {
+        var divResult = $('.modern-search-result');
+        divResult.addClass('loading');
+        
+        window.scrollTo({
+            top: $('#modern-result-string').offset().top - 50,
+            behavior: 'smooth'
+        });
+        
         var t = $(this);
         var filter_type = t.data('type');
 
@@ -202,8 +356,64 @@
         if(Object.keys(data['taxonomy']).length <= 0){
             delete data['taxonomy'];
         }
+        
         data['page'] = 1;
         ajaxFilterHandler();
+        
+        let data_ids = [];
+        document.querySelectorAll('#available').forEach( hotel => {
+            data_ids.push(hotel.querySelector('[data-id]').getAttribute('data-id'));
+        })
+   
+    if (data["taxonomy[hotel-facilities]"]){
+        $.ajax({
+            url: 'https://staging.balkanea.com/wp-plugin/APIs/filter_hotel.php',
+            type: 'GET',
+            data: {
+                'data_ids': data_ids,
+                'taxonomy': data["taxonomy[hotel-facilities]"],
+            },
+            success: (response) => {
+                
+                let jsonString = response.replace(/\[\]/g, '');
+                jsonString = jsonString.replace(/\]\[/g, ',');
+        
+                let filtered_hotels;
+                try {
+                    filtered_hotels = JSON.parse(jsonString);
+                } catch (error) {
+                    console.error('Error parsing JSON:', error);
+                    return;
+                }
+        
+                console.log(filtered_hotels);
+                let hotelIds = filtered_hotels.map(item => parseInt(item.object_id));
+        
+                document.querySelectorAll('#available').forEach(hotel => {
+                    let hotelId = parseInt(hotel.querySelector('[data-id]').getAttribute('data-id'));
+                    if (!hotelIds.includes(hotelId)) {
+                        hotel.style.display = 'none';
+                    } else {
+                        hotel.style.display = '';
+                    }
+                });
+                
+                document.getElementById('No-hotels').innerText = hotelIds.length;
+                
+                divResult.removeClass('loading');
+                
+            },
+            error: (err) => {
+                console.log(err);
+            }
+        });
+    }else{
+        divResult.removeClass('loading');
+        document.getElementById('No-hotels').innerText = data_ids.length
+        document.querySelectorAll('#available').forEach(hotel => {
+          hotel.style.display = '';
+        });
+    }
     });
 
     function duplicateData(parent, parentGet){
@@ -530,33 +740,19 @@
 
         $(document).trigger('st_before_search_ajax', [data]);
 
+        var regions = ['24396', '6140790', '603217', '965842500', '6131021', '181071', '6265993', '8876576', '3186', '6156549', '16479', '965835355', '24397', '6046713', '24397'];
+
         divResult.addClass('loading');
         $('.map-content-loading').each(function() {
             $(this).fadeIn();
         });
 
-        showLoadingPrices();
-        
-        var hotel_ids = '';
-                
-        document.querySelectorAll("#modern-search-result > div.row.service-list-wrapper > div > div").forEach( item => {
-            hotel_ids += item.getAttribute('data-id') + ',';
-        });
-
-        xhr = $.ajax({
-            url: st_params.ajax_url,
-            dataType: 'json',
-            type: 'get',
-            data: data,
-            success: function (doc) {
-
-                
-
-                let current_curency = document.querySelector('#dropdown-currency').innerText.trim();
-                let start = formatDate(data.start);
-                let end = formatDate(data.end);
-                let guests_adult_number = data['adult_number'];
-                let guests_child_number = data['child_number'];
+        // xhr = $.ajax({
+        //     url: st_params.ajax_url,
+        //     dataType: 'json',
+        //     type: 'get',
+        //     data: data,
+        //     success: function (doc) {
 
         //         let content = doc.content;
         //         if ($('.search-result-page.layout5').length) {
@@ -597,6 +793,24 @@
                 
                 // showLoadingPrices();
                 
+        // if ( regions.includes(data.location_id) ) {
+
+            let current_curency = document.querySelector('#dropdown-currency').innerText.trim();
+            let start = formatDate(data.start);
+            let end = formatDate(data.end);
+            let guests_adult_number = data['adult_number'];
+            let guests_child_number = data['child_number'];
+
+            showLoadingPrices();
+        
+            var hotel_ids = '';
+                    
+            document.querySelectorAll("#modern-search-result > div.row.service-list-wrapper > div > div").forEach( item => {
+                hotel_ids += item.getAttribute('data-id') + ',';
+            });
+
+            hotel_ids = hotel_ids.slice(0, -1);
+
                 $.ajax({
                     url: 'https://staging.balkanea.com/wp-plugin/APIs/filter_hotel.php',
                     type: 'GET',
@@ -609,6 +823,17 @@
                         'currency': current_curency
                     },
                     success: (response) => {
+                        console.log(response);
+                        if (response)
+                            response = JSON.parse(response);
+                        all_ids = response.all_ids;
+                        response = response.found_ids;
+                        console.log(all_ids);
+                        window.scrollTo({
+                            top: $('#modern-result-string').offset().top - 50,
+                            behavior: 'smooth'
+                        });
+                        
                         let array_ids;
                         try {
                             array_ids = JSON.parse(response);
@@ -621,25 +846,24 @@
                 
                         const idArray = Object.keys(array_ids);
                         
-                        let hotel_count = `${idArray.length} hotels found in <span>Greece</span><div id="btn-clear-filter" class="btn-clear-filter" style="display: none;">Clear filter</div>`;
+                        let hotel_count = `<span id='No-hotels' > ${idArray.length} </span> hotels found in <span>${data.location_name}</span><div id="btn-clear-filter" class="btn-clear-filter" style="display: none;">Clear filter</div>`;
                 
                         divResultString.each(function () {
                             $(this).html(hotel_count);
                         });
-                
-                        document.querySelectorAll("#modern-search-result > div.row.service-list-wrapper > div > div").forEach(item => {
-                            const itemId = item.getAttribute('data-id');
-                
-                            console.log(idArray);
-                
-                            if (!idArray.includes(itemId)) {
-                                item.parentNode.style.display = 'none';
-                            } else {
-                                const price = array_ids[itemId];
-                                
+
+                        all_ids.forEach( (hotelId) => {
+                            item = document.querySelector('[data-id="'+hotelId+'"]');
+                            if (idArray.includes(hotelId)) {
+                                item.style.display = '';
+                                item.parentNode.setAttribute('id', 'available');
+                                const price = array_ids[hotelId];
+
+                                console.log(price);
+
                                 const priceElement = item.querySelector('.price');
+                                console.log(priceElement);
                                 if (priceElement) {
-                                    console.log(item.querySelector('.loading-text'));
                                     item.querySelector('.loading-text').style.display = 'none';
                                     var unitElement = item.querySelector('.unit');
                                     priceElement.textContent = `${price}`;
@@ -649,11 +873,55 @@
                                         unitElement.style.display = '';
                                     }
                                 }
-                
+                            }else{
+                                item.parentNode.setAttribute('id', 'not-available');
+                                item.style.display = 'none';
                             }
-                            
+
                             divResult.removeClass('loading');
                             $('.map-content-loading').fadeOut();
+
+                            item.querySelector('.loading-text').style.display = 'none';
+
+                            item.querySelectorAll('a').forEach(anchor => {
+                                const currentHref = anchor.getAttribute('href');
+                                const newHref = `${currentHref}&search=yes`;
+                                anchor.setAttribute('href', newHref);
+                            });
+                        })
+
+                        document.querySelectorAll('[itemprop="priceRange"]').forEach(element => {
+                            element.querySelector('.unit').style.display = '';
+                            element.querySelector('.price').style.display = '';
+                            element.querySelector('.loading-text').style.display = 'none';
+                        })
+
+                        // document.querySelectorAll("#modern-search-result > div.row.service-list-wrapper > div > div").forEach(item => {
+                        //     const itemId = item.getAttribute('data-id');
+                
+                        //     if (!idArray.includes(itemId)) {
+                        //         item.parentNode.style.display = 'none';
+                        //         item.parentNode.setAttribute('id', 'not-available');
+                        //     } else {
+                        //         item.parentNode.setAttribute('id', 'available');
+                        //         const price = array_ids[itemId];
+                                
+                        //         const priceElement = item.querySelector('.price');
+                        //         if (priceElement) {
+                        //             item.querySelector('.loading-text').style.display = 'none';
+                        //             var unitElement = item.querySelector('.unit');
+                        //             priceElement.textContent = `${price}`;
+                        //             priceElement.style.display = '';
+                                    
+                        //             if (unitElement) {
+                        //                 unitElement.style.display = '';
+                        //             }
+                        //         }
+                
+                        //     }
+                            
+                        //     divResult.removeClass('loading');
+                        //     $('.map-content-loading').fadeOut();
                 
                             // $.ajax({
                             //     url: 'https://staging.balkanea.com/wp-plugin/APIs/update_hotel_price.php',
@@ -669,12 +937,12 @@
                             //     }
                             // });
                 
-                            item.querySelectorAll('a').forEach(anchor => {
-                                const currentHref = anchor.getAttribute('href');
-                                const newHref = `${currentHref}&search=yes`;
-                                anchor.setAttribute('href', newHref);
-                            });
-                        });
+                        //     item.querySelectorAll('a').forEach(anchor => {
+                        //         const currentHref = anchor.getAttribute('href');
+                        //         const newHref = `${currentHref}&search=yes`;
+                        //         anchor.setAttribute('href', newHref);
+                        //     });
+                        // });
                 
                     },
                     error: (err) => {
@@ -682,7 +950,9 @@
                         console.error('AJAX error:', err);
                     }
                 });
-
+            // }else{
+            //     $('.map-content-loading').fadeOut();
+            // }
                 
                 
                 // $.ajax({
@@ -737,48 +1007,48 @@
                 //     }
                 // });
                 
-            },
-            complete: function () {
-                divResult.removeClass('loading');
-                $('.map-content-loading').each(function() {
-                    $(this).fadeOut();
-                });
+            // },
+            // complete: function () {
+                // divResult.removeClass('loading');
+                // $('.map-content-loading').each(function() {
+                //     $(this).fadeOut();
+                // });
 
-                var time = 0;
-                divResult.find('img').one("load", function() {
-                    $(this).addClass('loaded');
-                    if(divResult.find('img.loaded').length === divResult.find('img').length) {
-                        console.log("All images loaded!");
-                        if($('.has-matchHeight').length){
-                            $('.has-matchHeight').matchHeight({ remove: true });
-                            $('.has-matchHeight').matchHeight();
-                        }
+    //             var time = 0;
+    //             divResult.find('img').one("load", function() {
+    //                 $(this).addClass('loaded');
+    //                 if(divResult.find('img.loaded').length === divResult.find('img').length) {
+    //                     console.log("All images loaded!");
+    //                     if($('.has-matchHeight').length){
+    //                         $('.has-matchHeight').matchHeight({ remove: true });
+    //                         $('.has-matchHeight').matchHeight();
+    //                     }
 
-                        setTimeout(function () {
-                            if($('.page-half-map .col-left').length){
-                                $('.page-half-map .col-left').each(function () {
-                                    $(this).getNiceScroll().resize();
-                                })
-                            }
-                        }, 205);
+    //                     setTimeout(function () {
+    //                         if($('.page-half-map .col-left').length){
+    //                             $('.page-half-map .col-left').each(function () {
+    //                                 $(this).getNiceScroll().resize();
+    //                             })
+    //                         }
+    //                     }, 205);
 
-                        setTimeout(function () {
-                            if ($('.page-half-map .col-left-map').length) {
-                                $('.page-half-map .col-left-map').getNiceScroll().resize();
-                            }
-                        }, 205);
-                    }
-                });
+    //                     setTimeout(function () {
+    //                         if ($('.page-half-map .col-left-map').length) {
+    //                             $('.page-half-map .col-left-map').getNiceScroll().resize();
+    //                         }
+    //                     }, 205);
+    //                 }
+    //             });
 
-                if(checkClearFilter()){
-                    $('.btn-clear-filter').fadeIn();
-                }else{
-                    $('.btn-clear-filter').fadeOut();
-                }
-                requestRunning = false;
-            },
-        });
-        requestRunning = true;
+    //             if(checkClearFilter()){
+    //                 $('.btn-clear-filter').fadeIn();
+    //             }else{
+    //                 $('.btn-clear-filter').fadeOut();
+    //             }
+    //             requestRunning = false;
+    //         },
+    //     });
+        // requestRunning = true;
     }
     var resizeMap = 0;
     jQuery(function ($) {

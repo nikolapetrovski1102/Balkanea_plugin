@@ -1,8 +1,15 @@
 <?php
 
+$config = include '../config.php';
+
+function format_date ($date) {
+    $date = explode('T', $date)[0];
+    return date('d/m/Y', strtotime($date));
+}
+
 $apiUrl = 'https://api.worldota.net/api/b2b/v3/hotel/info/';
-$keyId = '7788';
-$apiKey = 'e6a79dc0-c452-48e0-828d-d37614165e39';
+$keyId = $config['api_key'];
+$apiKey = $config['api_password'];
 
 $return_response = [];
 
@@ -31,37 +38,8 @@ if (!isset($_POST['order_id']) && !isset($_POST['service_id'])) {
 
     $query = $wpdb->prepare("SELECT * FROM " . $prefix . "st_order_item_meta WHERE order_item_id = %d AND st_booking_id = %d", $order_item_id, $hotel_id);
     $results = $wpdb->get_row($query);
-
     
-    // $item_price = $response->item_price;
-    // $ori_price = $response->ori_price;
-    // $sale_price = $response->sale_price;
-    // $check_in = $response->check_in;
-    // $check_out = $response->check_out;
-    // $cancelation_date = $response->cancelation_date;
-    // $room_num_search = $response->room_num_search;
-    // $room_id = $response->room_id;
-    // $adult_number = $response->adult_number;
-    // $child_number = $response->child_number;
-    // $extras = $response->extras; // Assuming it's an array
-    // $extra_price = $response->extra_price;
-    // $extra_type = $response->extra_type;
-    // $commission = $response->commission;
-    // $discount_rate = $response->discount_rate;
-    // $guest_title = $response->guest_title[0]; // Assuming the first title
-    // $guest_name = $response->guest_name[0]; // Assuming the first guest name
-    // $total_price_origin = $response->total_price_origin;
-    // $total_bulk_discount = $response->total_bulk_discount;
-    // $st_booking_post_type = $response->st_booking_post_type;
-    // $st_booking_id = $response->st_booking_id;
-    // $sharing = $response->sharing;
-    // $duration_unit = $response->duration_unit;
-    // $title_cart = $response->title_cart;
-    // $deposit_money_type = $response->deposit_money->type;
-    // $deposit_money_amount = $response->deposit_money->amount;
-    // $user_id = $response->user_id;
-    
-    $created_date = $results->created;
+    $created_date = format_date($results->created);
     $room_id = $results->room_id;
     
     $query = $wpdb->prepare("SELECT * FROM " . $prefix . "postmeta WHERE post_id = %d", $order_item_id);
@@ -99,26 +77,31 @@ if (!isset($_POST['order_id']) && !isset($_POST['service_id'])) {
     $extra_price = $cart_info['extra_price'];
     $title = $cart_info['title_cart'];
 
-    $body_data = array(
-        "id" => $hotel_name,
-        "language" => 'en'
-    );
+    // $body_data = array(
+    //     "id" => 
+    // )
 
-    $data = json_encode($body_data);
+    // $data = json_encode($body_data);
 
-    curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        'Content-Type: application/json',
-        'Authorization: Basic ' . base64_encode("$keyId:$apiKey")
-    ]);
+    // curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    //     'Content-Type: application/json',
+    //     'Authorization: Basic ' . base64_encode("$keyId:$apiKey")
+    // ]);
 
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+    // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    // curl_setopt($ch, CURLOPT_POST, true);
+    // curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 
-    $response = curl_exec($ch);
+    // $response = curl_exec($ch);
 
-    $check_in = explode(' ', $meta_data_order['check_in'])[0];
-    $check_out = explode(' ', $meta_data_order['check_out'])[0];
+    $check_in =  format_date($meta_data_order['check_in']);
+    $check_out = format_date($meta_data_order['check_out']);
+    $button_cancel = '';
+
+    if (!empty($meta_data_order['free_cancelation_before'])){
+        $free_cancelation_value = format_date($meta_data_order['free_cancelation_before']);
+        $button_cancel = "<button style='background: #d9534f !important;' id='cancel_booking' class='btn btn-danger' type='button'>Cancel Reservation</button>";
+    }
 
         $modal = <<<HTML
         <div class="st_tab st_tab_order tabbable">
@@ -200,6 +183,11 @@ if (!isset($_POST['order_id']) && !isset($_POST['service_id'])) {
                             <div class="col-md-12">
                                 <div class="item_booking_detail">
                                     <strong>No. Children: </strong> {$child_number}
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="item_booking_detail">
+                                    <strong>Free cancelation before: </strong> {$free_cancelation_value}
                                 </div>
                             </div>
                             <div class="col-md-6 hide">
@@ -300,11 +288,11 @@ if (!isset($_POST['order_id']) && !isset($_POST['service_id'])) {
             </div>
         </div>
 
-
-        <div class="modal-footer">
-            <a href='' data-dismiss="modal" class="btn btn-danger" type="button">Cancel</a>
-            <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+        <div class="modal-footer" style="display: flex; justify-content: space-between; width: 100%;">
+            {$button_cancel}
+            <button id='close_modal' data-dismiss="modal" class="btn btn-default" type="button">Close</button>
         </div>
+
         HTML;
 
     echo $modal;

@@ -90,7 +90,8 @@ class Amenity
         try {
             $query = $this->wpdb->prepare(
                 "INSERT INTO {$this->wpdb->prefix}{$this->table} (object_id, term_taxonomy_id, term_order)
-                VALUES (%d, %d, %d)",
+                VALUES (%d, %d, %d)
+                ON DUPLICATE KEY UPDATE term_order = VALUES(term_order);",
                 $this->post_id, $hotel_facility_number, 0
             );
 
