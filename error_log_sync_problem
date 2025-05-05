@@ -1,0 +1,130 @@
+[22-Apr-2025 21:54:56 UTC] Authentication successful
+[22-Apr-2025 21:54:57 UTC] [Region] ========================================================
+[22-Apr-2025 21:55:49 UTC] [Hotel] _____________________________________________________________
+[22-Apr-2025 21:55:49 UTC] [INFO] Processing hotel: winslow_infinity_and_spa_alexander_services_apartments
+[22-Apr-2025 21:55:49 UTC] [INFO] Country code: BG
+[22-Apr-2025 21:55:52 UTC] Processing amenities for hotel
+[22-Apr-2025 21:56:19 UTC]  [INFO] All rooms processed successfully
+[22-Apr-2025 21:56:32 UTC] [INFO] All rooms processed successfully
+[22-Apr-2025 21:56:45 UTC] [INFO] Completed processing hotel: andromeda_suites in 415.7682
+[22-Apr-2025 21:56:45 UTC] [INFO] Flushing wpdb
+[22-Apr-2025 21:56:55 UTC]  [INFO] Completed processing hotel: podstine_hotel in 1,617.4366
+[22-Apr-2025 21:57:00 UTC] [Hotel] _____________________________________________________________
+[22-Apr-2025 21:57:00 UTC] [INFO] Processing hotel: nsplace_
+[22-Apr-2025 21:57:00 UTC] [INFO] Country code: GR
+[22-Apr-2025 21:57:03 UTC] Processing amenities for hotel
+[22-Apr-2025 21:57:10 UTC] [Hotel] _____________________________________________________________
+[22-Apr-2025 21:57:10 UTC] [INFO] Processing hotel: riva_hvar_yacht_harbor
+[22-Apr-2025 21:57:10 UTC]  [INFO] Country code: HR
+[22-Apr-2025 21:57:12 UTC] Processing amenities for hotel
+[22-Apr-2025 21:59:36 UTC] Authentication successful
+[22-Apr-2025 21:59:37 UTC] [Region] ========================================================
+[22-Apr-2025 22:00:13 UTC] [INFO] Processing region: 6024084 with 31 hotels
+[22-Apr-2025 22:00:13 UTC] [Hotel] _____________________________________________________________
+[22-Apr-2025 22:00:13 UTC] [INFO] Processing hotel: villa_malisko
+[22-Apr-2025 22:00:13 UTC] [INFO] Country code: HR
+[22-Apr-2025 22:00:15 UTC] Processing amenities for hotel
+[22-Apr-2025 22:01:19 UTC] [INFO] All rooms processed successfully
+[22-Apr-2025 22:01:24 UTC] [INFO] Completed processing hotel: villa_malisko in 70.6243
+[22-Apr-2025 22:01:24 UTC] [INFO] Clearing wpdb cache
+[22-Apr-2025 22:01:39 UTC] [Hotel] _____________________________________________________________
+[22-Apr-2025 22:01:39 UTC] [INFO] Processing hotel: robinson_house_nicolina
+[22-Apr-2025 22:01:39 UTC] [INFO] Country code: HR
+[22-Apr-2025 22:01:40 UTC] Processing amenities for hotel
+[22-Apr-2025 22:01:47 UTC] [INFO] All rooms processed successfully
+[22-Apr-2025 22:01:54 UTC] [INFO] Completed processing hotel: robinson_house_nicolina in 15.5561
+[22-Apr-2025 22:01:54 UTC] [INFO] Clearing wpdb cache
+[22-Apr-2025 22:02:09 UTC] [Hotel] _____________________________________________________________
+[22-Apr-2025 22:02:09 UTC] [INFO] Processing hotel: tigrich_apartments
+[22-Apr-2025 22:02:09 UTC] [INFO] Country code: HR
+[22-Apr-2025 22:02:11 UTC] Processing amenities for hotel
+[22-Apr-2025 22:02:11 UTC] [INFO] All rooms processed successfully
+[22-Apr-2025 22:02:22 UTC] [INFO] Completed processing hotel: tigrich_apartments in 12.9168
+[22-Apr-2025 22:02:22 UTC] [INFO] Clearing wpdb cache
+[22-Apr-2025 22:02:37 UTC] [Hotel] _____________________________________________________________
+[22-Apr-2025 22:02:37 UTC] [INFO] Processing hotel: villa_adriella
+[22-Apr-2025 22:02:37 UTC] [INFO] Country code: HR
+[22-Apr-2025 22:02:39 UTC] [INFO] No amenities found for hotel
+[22-Apr-2025 22:02:39 UTC] [INFO] All rooms processed successfully
+[22-Apr-2025 22:02:39 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/balkanea/public_html/wp-plugin/Models/ImageInsert.php on line 37
+[22-Apr-2025 22:02:39 UTC] [INFO] Completed processing hotel: villa_adriella in 1.5447
+[22-Apr-2025 22:02:39 UTC] [INFO] Clearing wpdb cache
+[22-Apr-2025 22:02:54 UTC] [Hotel] _____________________________________________________________
+[22-Apr-2025 22:02:54 UTC] [INFO] Processing hotel: villa_milton_hvar
+[22-Apr-2025 22:02:54 UTC] [INFO] Country code: HR
+[22-Apr-2025 22:02:55 UTC] Processing amenities for hotel
+[22-Apr-2025 22:13:20 UTC] [INFO] All rooms processed successfully
+[22-Apr-2025 22:13:34 UTC] [INFO] Completed processing hotel: villa_milton_hvar in 640.0852
+[22-Apr-2025 22:13:34 UTC] [INFO] Clearing wpdb cache
+[22-Apr-2025 22:13:49 UTC] [Hotel] _____________________________________________________________
+[22-Apr-2025 22:13:49 UTC] [INFO] Processing hotel: podstine_hotel
+[22-Apr-2025 22:13:49 UTC] [INFO] Country code: HR
+[22-Apr-2025 22:13:51 UTC] Processing amenities for hotel
+[22-Apr-2025 22:33:38 UTC] [INFO] All rooms processed successfully
+[22-Apr-2025 22:34:03 UTC] [INFO] Completed processing hotel: podstine_hotel in 1,213.8983
+[22-Apr-2025 22:34:03 UTC] [INFO] Clearing wpdb cache
+[22-Apr-2025 22:34:18 UTC] [Hotel] _____________________________________________________________
+[22-Apr-2025 22:34:18 UTC] [INFO] Processing hotel: riva_hvar_yacht_harbor
+[22-Apr-2025 22:34:18 UTC] [INFO] Country code: HR
+[22-Apr-2025 22:34:19 UTC] Processing amenities for hotel
+[22-Apr-2025 22:45:16 UTC] [INFO] All rooms processed successfully
+[22-Apr-2025 22:45:32 UTC] [INFO] Completed processing hotel: riva_hvar_yacht_harbor in 673.6210
+[22-Apr-2025 22:45:32 UTC] [INFO] Clearing wpdb cache
+[22-Apr-2025 22:45:47 UTC] [Hotel] _____________________________________________________________
+[22-Apr-2025 22:45:47 UTC] [INFO] Processing hotel: the_palace_hvar
+[22-Apr-2025 22:45:47 UTC] [INFO] Country code: HR
+[22-Apr-2025 22:45:48 UTC] Processing amenities for hotel
+[22-Apr-2025 22:57:50 UTC] [INFO] Hotel room does not exist
+[22-Apr-2025 22:58:27 UTC] [INFO] Hotel room does not exist
+[22-Apr-2025 22:59:05 UTC] [INFO] Hotel room does not exist
+[23-Apr-2025 04:00:03 UTC] Authentication successful
+[23-Apr-2025 04:00:06 UTC] Order ID 57302 not payed.
+
+[23-Apr-2025 04:00:06 UTC] [Region] ========================================================
+[23-Apr-2025 04:00:11 UTC] Order ID 57889 updated to completed.
+
+[23-Apr-2025 04:00:13 UTC] Order ID 57899 updated to completed.
+
+[23-Apr-2025 04:00:13 UTC] Order ID 57997 not payed.
+
+[23-Apr-2025 04:00:13 UTC] Order ID 58090 not payed.
+
+[23-Apr-2025 04:00:13 UTC] Order ID 58644 not payed.
+
+[23-Apr-2025 04:01:12 UTC] [INFO] Processing region: 438 with 499 hotels
+[23-Apr-2025 04:01:12 UTC] [Hotel] _____________________________________________________________
+[23-Apr-2025 04:01:12 UTC] [INFO] Processing hotel: zappion_hotel
+[23-Apr-2025 04:01:12 UTC] [INFO] Country code: GR
+[23-Apr-2025 04:01:14 UTC] Processing amenities for hotel
+[23-Apr-2025 04:04:12 UTC] [INFO] All rooms processed successfully
+[23-Apr-2025 04:04:17 UTC] [INFO] Completed processing hotel: zappion_hotel in 184.8904
+[23-Apr-2025 04:04:17 UTC] [INFO] Clearing wpdb cache
+[23-Apr-2025 04:04:32 UTC] [Hotel] _____________________________________________________________
+[23-Apr-2025 04:04:32 UTC] [INFO] Processing hotel: andromeda_suites
+[23-Apr-2025 04:04:32 UTC] [INFO] Country code: GR
+[23-Apr-2025 04:04:33 UTC] Processing amenities for hotel
+[23-Apr-2025 04:08:49 UTC] [INFO] All rooms processed successfully
+[23-Apr-2025 04:08:57 UTC] [INFO] Completed processing hotel: andromeda_suites in 265.1997
+[23-Apr-2025 04:08:57 UTC] [INFO] Clearing wpdb cache
+[23-Apr-2025 04:09:12 UTC] [Hotel] _____________________________________________________________
+[23-Apr-2025 04:09:12 UTC] [INFO] Processing hotel: nsplace_
+[23-Apr-2025 04:09:12 UTC] [INFO] Country code: GR
+[23-Apr-2025 04:09:13 UTC] Processing amenities for hotel
+[23-Apr-2025 04:19:34 UTC] [INFO] All rooms processed successfully
+[23-Apr-2025 04:19:41 UTC] [INFO] Completed processing hotel: nsplace_ in 629.4309
+[23-Apr-2025 04:19:41 UTC] [INFO] Clearing wpdb cache
+[23-Apr-2025 04:19:56 UTC] [Hotel] _____________________________________________________________
+[23-Apr-2025 04:19:56 UTC] [INFO] Processing hotel: athens_green_apartments_2
+[23-Apr-2025 04:19:56 UTC] [INFO] Country code: GR
+[23-Apr-2025 04:19:58 UTC] Processing amenities for hotel
+[23-Apr-2025 04:41:47 UTC] [INFO] All rooms processed successfully
+[23-Apr-2025 04:41:55 UTC] [INFO] Completed processing hotel: athens_green_apartments_2 in 1,318.5277
+[23-Apr-2025 04:41:55 UTC] [INFO] Clearing wpdb cache
+[23-Apr-2025 04:42:10 UTC] [Hotel] _____________________________________________________________
+[23-Apr-2025 04:42:10 UTC] [INFO] Processing hotel: ambrosia_hotel_suites__aparts
+[23-Apr-2025 04:42:10 UTC] [INFO] Country code: GR
+[23-Apr-2025 04:42:12 UTC] Processing amenities for hotel
+[23-Apr-2025 05:00:04 UTC] WordPress database error Commands out of sync; you can't run this command now for query SELECT a.action_id FROM Y7FXuNUTt_actionscheduler_actions a WHERE 1=1 AND a.hook='wc_schedule_pending_batch_processes' AND a.status IN ('in-progress', 'pending') LIMIT 0, 1 made by shutdown_action_hook, do_action('shutdown'), WP_Hook->do_action, WP_Hook->apply_filters, Automattic\WooCommerce\Internal\BatchProcessing\BatchProcessingController->Automattic\WooCommerce\Internal\BatchProcessing\{closure}, Automattic\WooCommerce\Internal\BatchProcessing\BatchProcessingController->remove_or_retry_failed_processors, call_user_func, as_has_scheduled_action, ActionScheduler_Store->query_action, ActionScheduler_DBStore->query_actions
+[23-Apr-2025 05:00:04 UTC] WordPress database error Commands out of sync; you can't run this command now for query SELECT option_value FROM Y7FXuNUTt_options WHERE option_name = 'wc_pending_batch_processes' LIMIT 1 made by shutdown_action_hook, do_action('shutdown'), WP_Hook->do_action, WP_Hook->apply_filters, Automattic\WooCommerce\Internal\BatchProcessing\BatchProcessingController->Automattic\WooCommerce\Internal\BatchProcessing\{closure}, Automattic\WooCommerce\Internal\BatchProcessing\BatchProcessingController->remove_or_retry_failed_processors, Automattic\WooCommerce\Internal\BatchProcessing\BatchProcessingController->get_enqueued_processors, get_option
+[23-Apr-2025 05:00:04 UTC] WordPress database error Commands out of sync; you can't run this command now for query INSERT INTO Y7FXuNUTt_woocommerce_sessions (`session_key`, `session_value`, `session_expiry`) VALUES ('t_aeb0a645be6a7ed077704427566044', 'a:7:{s:4:\"cart\";s:6:\"a:0:{}\";s:11:\"cart_totals\";s:367:\"a:15:{s:8:\"subtotal\";i:0;s:12:\"subtotal_tax\";i:0;s:14:\"shipping_total\";i:0;s:12:\"shipping_tax\";i:0;s:14:\"shipping_taxes\";a:0:{}s:14:\"discount_total\";i:0;s:12:\"discount_tax\";i:0;s:19:\"cart_contents_total\";i:0;s:17:\"cart_contents_tax\";i:0;s:19:\"cart_contents_taxes\";a:0:{}s:9:\"fee_total\";i:0;s:7:\"fee_tax\";i:0;s:9:\"fee_taxes\";a:0:{}s:5:\"total\";i:0;s:9:\"total_tax\";i:0;}\";s:15:\"applied_coupons\";s:6:\"a:0:{}\";s:22:\"coupon_discount_totals\";s:6:\"a:0:{}\";s:26:\"coupon_discount_tax_totals\";s:6:\"a:0:{}\";s:21:\"removed_cart_contents\";s:6:\"a:0:{}\";s:8:\"customer\";s:738:\"a:28:{s:2:\"id\";s:1:\"0\";s:13:\"date_modified\";s:0:\"\";s:10:\"first_name\";s:0:\"\";s:9:\"last_name\";s:0:\"\";s:7:\"company\";s:0:\"\";s:5:\"phone\";s:0:\"\";s:5:\"email\";s:0:\"\";s:7:\"address\";s:0:\"\";s:9:\"address_1\";s:0:\"\";s:9:\"address_2\";s:0:\"\";s:4:\"city\";s:0:\"\";s:5:\"state\";s:0:\"\";s:8:\"postcode\";s:0:\"\";s:7:\"country\";s:2:\"MK\";s:19:\"shipping_first_name\";s:0:\"\";s:18:\"shipping_last_name\";s:0:\"\";s:16:\"shipping_company\";s:0:\"\";s:14:\"shipping_phone\";s:0:\"\";s:16:\"shipping_address\";s:0:\"\";s:18:\"shipping_address_1\";s:0:\"\";s:18:\"shipping_address_2\";s:0:\"\";s:13:\"shipping_city\";s:0:\"\";s:14:\"shipping_state\";s:0:\"\";s:17:\"shipping_postcode\";s:0:\"\";s:16:\"shipping_country\";s:2:\"MK\";s:13:\"is_vat_exempt\";s:0:\"\";s:19:\"calculated_shipping\";s:0:\"\";s:9:\"meta_data\";a:0:{}}\";}', 1745553605)
+ 					ON DUPLICATE KEY UPDATE `session_value` = VALUES(`session_value`), `session_expiry` = VALUES(`session_expiry`) made by shutdown_action_hook, do_action('shutdown'), WP_Hook->do_action, WP_Hook->apply_filters, WC_Session_Handler->save_data

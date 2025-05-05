@@ -1,33 +1,44 @@
 <?php
 
+// Enable error reporting for debugging purposes
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+// Get the document root path
 $path = $_SERVER['DOCUMENT_ROOT']; 
 
+// Include WordPress core file for database access and other functionalities
 include_once $path . '/wp-load.php';
+
+// Load configuration settings
 $config = include '../config.php';
 
+// Access the global WordPress database object
 global $wpdb;
 
+// Enable WordPress database error display
 $wpdb->show_errors();
 $prefix = $wpdb->prefix;
 
+// Set API credentials
 $keyId = $config['api_key'];
 $apiKey = $config['api_password'];
 $adminEmail = $config['email'];
 
+// Check for security nonce (commented out for now)
 // if (!isset($_POST['security']) || !wp_verify_nonce($_POST['security'], 'order_booking_form')) {
 //     http_response_code(403);
 //     echo json_encode(['error' => 'Invalid nonce: ' . $_POST['security']]);
 //     exit;
 // }
 
+// Check if data and type are provided
 if (!isset($_POST['data']) && !isset($_POST['type']) ) {
     return 'Error: No data and type provided.';
 }
 
+// Define error messages for various scenarios
 $errorMessages = [
     'block' => 'Card authorization blocked.',
     'charge' => 'Card authorization failed.',
@@ -42,12 +53,15 @@ $errorMessages = [
     '5xx' => 'Server error (5xx status code).',
 ];
 
+// List of errors that should stop the process
 $stopErrors = array_keys($errorMessages);
 
+// Retrieve data and type from POST parameters
 $data = $_POST['data'];
 $type = $_POST['type'];
 $current_ip = $_SERVER['REMOTE_ADDR'];
 
+// Function to convert currency based on symbol
 function ConvertCurrency($price_expode_currency){
     switch ($price_expode_currency[0]):
         case '€':
@@ -57,6 +71,7 @@ function ConvertCurrency($price_expode_currency){
     endswitch;
 }
 
+// Function to update room price in the database
 function UpdatePrice ($price, $room_id, $prefix, $wpdb) {
     try {
         
@@ -86,6 +101,7 @@ function UpdatePrice ($price, $room_id, $prefix, $wpdb) {
     }
 }
 
+// Function to set order status to failed
 function set_order_failed($order_id, $reason) {
     if (!$order_id) {
         return;
@@ -97,6 +113,18 @@ function set_order_failed($order_id, $reason) {
     }
 }
 
+function set_order_complete($order_id, $reason) {
+    if (!$order_id) {
+        return;
+    }
+
+    $order = wc_get_order($order_id);
+    if ($order) {
+        $order->update_status('complete', $reason);
+    }
+}
+
+// Handle prebook requests
 if ($type === 'prebook') {
     $apiUrl = 'https://api.worldota.net/api/b2b/v3/hotel/prebook/';
 
@@ -140,6 +168,7 @@ if ($type === 'prebook') {
         }
     }
 }
+// Handle order booking form requests
 else if ($type === 'order_booking_form'){
 
     try{
@@ -216,6 +245,7 @@ else if ($type === 'order_booking_form'){
             exit();
         }
 }
+// Handle order booking finish requests
 else if ($type === 'order_booking_finish' && is_numeric($data)) {
     try {
         
@@ -343,6 +373,9 @@ else if ($type === 'order_booking_finish' && is_numeric($data)) {
             $status = $responseData['status'] ?? null;
 
             if ($status === 'ok') {
+                if (!isset($orderData['free_cancellation'])){
+                    set_order_complete($data, "");
+                };
                 error_log("Order #{$data} processed successfully.");
                 echo json_encode(['status' => 'success', 'message' => 'Order processed successfully']);
                 exit();

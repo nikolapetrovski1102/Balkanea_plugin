@@ -1,17 +1,23 @@
 <?php
 
+// Enable error reporting for debugging purposes
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+// Get the document root path
 $path = $_SERVER['DOCUMENT_ROOT']; 
 
+// Include WordPress core file for database access and other functionalities
 include_once $path . '/wp-load.php';
 
+// Access the global WordPress database object
 global $wpdb;
 
+// Enable WordPress database error display
 $wpdb->show_errors();
 
+// Define booking statuses with labels and colors
 $statuses = [
     "pending" => [
         "label" => __("Pending payment", "traveler"),
@@ -51,24 +57,36 @@ $statuses = [
     ],
 ];
     
+// Check if the action is to load more bookings
 if (isset($_GET['action']) && $_GET['action'] == 'load_more_bookings'){
+    // Get offset and current user ID from GET parameters
     $offset = isset($_GET['offset']) ? intval($_GET['offset']) : 0;
     $current_user_id = isset($_GET['current_user']) ? intval($_GET['current_user']) : 0;
 
+    // Query the database for bookings
     $bookings = $wpdb->get_results(
         $wpdb->prepare(
-            "SELECT * FROM {$wpdb->prefix}st_order_item_meta AS so 
-            LEFT JOIN {$wpdb->prefix}posts AS pp 
-            ON so.room_id = pp.ID 
-            WHERE so.user_id = %d AND type = 'woocommerce' 
-            ORDER BY created DESC LIMIT 5 OFFSET %d",
+            "SELECT so.*, pp.*, 
+            MAX(CASE WHEN ps.meta_key = '_order_total' THEN ps.meta_value END) AS order_total,
+            MAX(CASE WHEN ps.meta_key = '_billing_country' THEN ps.meta_value END) AS billing_country,
+            MAX(CASE WHEN ps.meta_key = 'free_cancellation' THEN ps.meta_value END) AS free_cancellation
+            FROM {$wpdb->prefix}st_order_item_meta AS so
+            LEFT JOIN {$wpdb->prefix}posts AS pp
+            ON so.room_id = pp.ID
+            LEFT JOIN {$wpdb->prefix}postmeta AS ps
+            ON so.wc_order_id = ps.post_id
+            WHERE so.user_id = %d AND so.type = 'woocommerce'
+            GROUP BY so.wc_order_id
+            ORDER BY so.wc_order_id DESC
+            LIMIT 15 OFFSET %d",
             $current_user_id,
             $offset
         )
     );
     
+    // Check if bookings are found
     if (!empty($bookings)) {
-        ob_start();
+        ob_start(); // Start output buffering
         foreach ($bookings as $booking) {
             ?>
             <tr>
@@ -77,6 +95,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'load_more_bookings'){
                 <td><?php echo esc_html(strip_tags(wc_price($booking->total_order))); ?></td>
                 <td>
                     <?php 
+                        // Get booking status and display it with color
                         $status_key = explode('-', $booking->status)[1] ?? null;
                         $status_data = $statuses[$status_key] ?? null;
                         
@@ -88,6 +107,23 @@ if (isset($_GET['action']) && $_GET['action'] == 'load_more_bookings'){
                     ?>
                 </td>
                 <td><?php echo esc_html($booking->created); ?></td>
+                <td>
+                <?php
+                    // Added mapping for free_cancellation 26.04.2025
+                    if (empty($booking->free_cancellation)) {
+                        echo esc_html("N/A");
+                    } else {
+                        $free_cancellation_date = DateTime::createFromFormat('d/m/Y', $booking->free_cancellation);
+                        $now = new DateTime();
+                
+                        if ($free_cancellation_date && $free_cancellation_date < $now) {
+                            echo esc_html("Free cancellation period is over");
+                        } else {
+                            echo esc_html($booking->free_cancellation);
+                        }
+                    }
+                ?>
+                </td>
                 <td>
                     <button 
                         onclick="ViewModal(this)"
@@ -106,17 +142,20 @@ if (isset($_GET['action']) && $_GET['action'] == 'load_more_bookings'){
             </tr>
             <?php
         }
-        $html = ob_get_clean();
-        wp_send_json_success($html);
+        $html = ob_get_clean(); // Get buffered content
+        wp_send_json_success($html); // Send success response with HTML content
     } else {
-        wp_send_json_error();
+        wp_send_json_error(); // Send error response if no bookings found
     }
 }
+// Check if the action is to load modal details
 else if (isset($_GET['action']) && $_GET['action'] == 'load_modal'){
 
+        // Get order ID and current user ID from GET parameters
         $order_id = isset($_GET['order_id']) ? intval($_GET['order_id']) : 0;
         $current_user_id = isset($_GET['current_user']) ? intval($_GET['current_user']) : 0;
         
+        // Query the database for order item meta and post meta
         $query = "SELECT * FROM {$wpdb->prefix}st_order_item_meta AS st LEFT JOIN {$wpdb->prefix}postmeta AS pp ON st.wc_order_id = pp.post_id WHERE st.user_id = {$current_user_id} AND st.wc_order_id = {$order_id};";
     
         $postmeta_values = [];
@@ -124,48 +163,67 @@ else if (isset($_GET['action']) && $_GET['action'] == 'load_modal'){
         $base_booking_info = $wpdb->get_results($wpdb->prepare("SELECT * FROM {$wpdb->prefix}st_order_item_meta WHERE user_id = %d AND wc_order_id = %d;", $current_user_id, $order_id));
         $advance_booking_info = $wpdb->get_results($wpdb->prepare("SELECT * FROM {$wpdb->prefix}postmeta WHERE post_id = %d;", $order_id));
     
+        // Store post meta values in an array
         foreach ($advance_booking_info as $meta) {
             $postmeta_values[$meta->meta_key] = $meta->meta_value;
         }
         
+        // Check if base booking info is found
         if (!empty($base_booking_info)) {
             $hotel_details_content = '';
-            ob_start();
+            ob_start(); // Start output buffering
             $booking = $base_booking_info[0];
             $raw_data = json_decode($booking->raw_data);
             
+            // Query the database for hotel and room information
             $hotel_info_array = $wpdb->get_results($wpdb->prepare("SELECT hotel.ID AS hotel_id, hotel.post_title AS hotel_name, pm_address.meta_value AS hotel_address, CONCAT('" . site_url() . "/hotel/', hotel.post_name) AS hotel_url, room.post_title AS room_type " . 
                 "FROM {$wpdb->prefix}posts AS room LEFT JOIN {$wpdb->prefix}postmeta AS pm_parent ON room.ID = pm_parent.post_id AND pm_parent.meta_key = 'room_parent' " . 
                 "LEFT JOIN {$wpdb->prefix}posts AS hotel ON pm_parent.meta_value = hotel.ID LEFT JOIN {$wpdb->prefix}postmeta AS pm_address ON hotel.ID = pm_address.post_id AND pm_address.meta_key = 'address' " . 
                 "WHERE room.ID = " . $booking->room_id . " AND hotel.post_status = 'publish'"));
             $hotel_info = $hotel_info_array[0];
+            // Nikola BAL-632 START
             $free_cancellation_button = '';
-            
             $datetime_now = new DateTime('now', new DateTimeZone('UTC'));
             $free_cancellation_text = 'No free cancellation';
             $free_cancellation_button = '<button class="btn btn-secondary" data-dismiss="modal" type="button" disabled> Free Cancellation Not Available </button>';
             
-            if (isset($postmeta_values['free_cancellation']) && ($booking->status == 'wc-processing')) {
+            if (isset($postmeta_values['free_cancellation'])) {
                 $free_cancellation_raw = $postmeta_values['free_cancellation'] ?? null;
             
-                if ($free_cancellation_raw) {
-                    // Parse the free cancellation date using the correct format
-                    $free_cancellation_date = DateTime::createFromFormat('d/m/Y', $free_cancellation_raw);
+                if (in_array($booking->status, ['wc-completed', 'wc-cancelled', 'wc-failed'])) {
+                    
+                    if ($booking->status == 'wc-completed') {
+                        $free_cancellation_text = 'Order is completed. Free cancellation is no longer available.';
+                    } elseif ($booking->status == 'wc-cancelled') {
+                        $free_cancellation_text = 'Order is already cancelled.';
+                    } elseif ($booking->status == 'wc-failed') {
+                        $free_cancellation_text = 'Order has failed. Free cancellation is not possible.';
+                    }
+                    
+                    $free_cancellation_button = '<button class="btn btn-secondary" data-dismiss="modal" type="button" disabled> Free Cancellation Not Available </button>';
             
-                    if ($free_cancellation_date) {
-                        $free_cancellation_text = $free_cancellation_date->format('d/m/Y');
+                } elseif ($booking->status == 'wc-processing') {
+                    if ($free_cancellation_raw) {
+                        $free_cancellation_date = DateTime::createFromFormat('d/m/Y', $free_cancellation_raw);
             
-                        // Compare with the current datetime
-                        if ($free_cancellation_date > $datetime_now) {
-                            $free_cancellation_button = "<button data-order-id='$order_id' id='close_modal' data-dismiss='modal' onclick='CancelOrder(this)' class='btn btn-danger' type='button'> Cancel </button>";
+                        if ($free_cancellation_date) {
+                            $free_cancellation_text = 'Free cancellation available until ' . $free_cancellation_date->format('d/m/Y');
+            
+                            if ($free_cancellation_date > $datetime_now) {
+                                // Free cancellation is still possible
+                                $free_cancellation_button = "<button data-order-id='$order_id' id='close_modal' data-dismiss='modal' onclick='CancelOrder(this)' class='btn btn-danger' type='button'> Cancel Order </button>";
+                            } else {
+                                // Date passed
+                                $free_cancellation_text = 'Free cancellation period has expired.';
+                                $free_cancellation_button = '<button class="btn btn-secondary" data-dismiss="modal" type="button" disabled> Free Cancellation Not Available </button>';
+                            }
+                        } else {
+                            error_log("Error parsing free_cancellation_raw for order ID: $order_id.");
                         }
-                    } else {
-                        error_log("Error parsing free_cancellation_raw.");
                     }
                 }
             }
-
-
+            // Nikola BAL-632 END
 
 
         
@@ -366,7 +424,7 @@ else if (isset($_GET['action']) && $_GET['action'] == 'load_modal'){
         
         $hotel_details_content = ob_get_clean();
     
-        wp_send_json_success(['data' => $hotel_details_content]);
+        wp_send_json_success(['data' => $hotel_details_content]); // Send success response with modal content
     } else {
         echo json_encode(['success' => false, 'data' => "No booking details found with query: {$query}"]);
     }

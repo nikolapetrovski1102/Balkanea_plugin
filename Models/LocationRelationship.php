@@ -17,9 +17,13 @@ class LocationRelationship
     {
         $this->wpdb = $wpdb;
     }
-
+    
     public function insertLocationRelationship()
     {
+        
+        echo 'Locations: <br>';
+        print_r($this->location_from);
+        
         foreach ($this->location_from as $location) {
 
             try {

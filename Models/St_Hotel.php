@@ -35,7 +35,7 @@ class St_Hotel
         $this->allow_full_day = 'on';
         $this->id_location = '';
     }
-
+    
     // Create Hotel
     public function create()
     {

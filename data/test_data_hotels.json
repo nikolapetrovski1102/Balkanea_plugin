@@ -1,0 +1,2559 @@
+{
+    "24396":
+    [
+{
+    "965855207": [
+        {
+            "address": "Kavos Meso Gerakari Zakynthos GR 29100, Kipseli",
+            "amenity_groups": [
+                {
+                    "amenities": [
+                        "Air conditioning",
+                        "Smoke-free property",
+                        "Heating",
+                        "Express check-in/check-out",
+                        "Garden",
+                        "Terrace",
+                        "Private check-in/check-out"
+                    ],
+                    "non_free_amenities": [],
+                    "group_name": "General"
+                },
+                {
+                    "amenities": [
+                        "Non-smoking rooms",
+                        "Soundproof rooms",
+                        "Fridge",
+                        "Family room",
+                        "TV",
+                        "Hairdryer",
+                        "Shower/Bathtub",
+                        "Bathtub",
+                        "Wardrobe/Closet",
+                        "Linens"
+                    ],
+                    "non_free_amenities": [],
+                    "group_name": "Rooms"
+                },
+                {
+                    "amenities": [
+                        "Luggage storage",
+                        "Wake-up service"
+                    ],
+                    "non_free_amenities": [],
+                    "group_name": "Services and amenities"
+                },
+                {
+                    "amenities": [
+                        "Kettle"
+                    ],
+                    "non_free_amenities": [],
+                    "group_name": "Meals"
+                },
+                {
+                    "amenities": [
+                        "Free Wi-Fi"
+                    ],
+                    "non_free_amenities": [],
+                    "group_name": "Internet"
+                },
+                {
+                    "amenities": [
+                        "Car rental",
+                        "Transfer services"
+                    ],
+                    "non_free_amenities": [
+                        "Car rental"
+                    ],
+                    "group_name": "Transfer"
+                },
+                {
+                    "amenities": [
+                        "English"
+                    ],
+                    "non_free_amenities": [],
+                    "group_name": "Languages Spoken"
+                },
+                {
+                    "amenities": [
+                        "Barbecue grill(s)",
+                        "Hiking"
+                    ],
+                    "non_free_amenities": [],
+                    "group_name": "Recreation"
+                },
+                {
+                    "amenities": [
+                        "Free parking"
+                    ],
+                    "non_free_amenities": [],
+                    "group_name": "Parking"
+                },
+                {
+                    "amenities": [
+                        "Swimming pool",
+                        "Spa tub",
+                        "Outdoor pool",
+                        "Beach/pool towels"
+                    ],
+                    "non_free_amenities": [],
+                    "group_name": "Pool and beach"
+                },
+                {
+                    "amenities": [
+                        "Cycling"
+                    ],
+                    "non_free_amenities": [],
+                    "group_name": "Sports"
+                },
+                {
+                    "amenities": [
+                        "Children's playground",
+                        "Children swimming pool",
+                        "Family/Kid Friendly"
+                    ],
+                    "non_free_amenities": [],
+                    "group_name": "Kids"
+                },
+                {
+                    "amenities": [
+                        "Pets Not Allowed"
+                    ],
+                    "non_free_amenities": [],
+                    "group_name": "Pets"
+                }
+            ],
+            "check_in_time": "00:00:00",
+            "check_out_time": "12:00:00",
+            "description_struct": [
+                {
+                    "paragraphs": [
+                        "The best kind of vacation is when you come somewhere new and it feels like home: apartment \u00abArtemis Apartments\u00bb is located in Kipseli. This apartment is located in walking distance from the city center. You can take a walk and explore the neighbourhood area of the apartment. Places nearby: Zakynthos Port, Port of Kyllini and Port of Argostoli."
+                    ],
+                    "title": "Location"
+                },
+                {
+                    "paragraphs": [
+                        "Free Wi-Fi is available on the territory. Ask for more information when checking in. If you travel by car, you can park in a parking zone for free. You will find these entertainment amenities on the premises: a barbeque area. Swimming fans are going to enjoy a pool and an outdoor pool.",
+                        "Additional services that the apartment offers to its guests: private check-in and check-out and car rental. The staff of the apartment will be happy to talk to you in English."
+                    ],
+                    "title": "At the apartment"
+                },
+                {
+                    "paragraphs": [
+                        "In the room, for you, there is a TV. Please note that the listed services may not be available in all the rooms."
+                    ],
+                    "title": "Room amenities"
+                }
+            ],
+            "id": "artemis_apartments__4",
+            "hid": 7568427,
+            "images": [
+                "https://cdn.worldota.net/t/{size}/content/21/21/2121590716727545621dcb13b7e2a4c7d2dcd5cf.JPEG",
+                "https://cdn.worldota.net/t/{size}/content/81/4e/814e41f8d24ecfd60c5b390fc07905d4af628b60.JPEG",
+                "https://cdn.worldota.net/t/{size}/content/47/f1/47f17d96ea5a5eb5cfc590de689af2c473fd099b.JPEG",
+                "https://cdn.worldota.net/t/{size}/content/06/b3/06b3df6f57b50d9baabaa2ffd64009c8311533ce.JPEG",
+                "https://cdn.worldota.net/t/{size}/content/cc/73/cc736fe5778b4928979b1ed6a264bbb067a74321.JPEG",
+                "https://cdn.worldota.net/t/{size}/content/0f/30/0f302ef2e3ee285d80568d77e39b548520426434.JPEG",
+                "https://cdn.worldota.net/t/{size}/content/20/4e/204e276c2fb4ffaaeff068b9b970c814cdf5aeb8.JPEG",
+                "https://cdn.worldota.net/t/{size}/content/79/e1/79e10526557293ce1e5e12dd6b3256874af9d377.JPEG",
+                "https://cdn.worldota.net/t/{size}/content/c9/4a/c94a847663ecbe9b88d3274b2c932c8b2adff4c7.JPEG",
+                "https://cdn.worldota.net/t/{size}/content/bd/cc/bdccc59b4920e4c3bd2b10475bfe9b7a0455e3ec.jpeg",
+                "https://cdn.worldota.net/t/{size}/content/4e/ae/4eaebc05fedf2086dc8b2ed611fde14b86404913.JPEG",
+                "https://cdn.worldota.net/t/{size}/content/3c/b3/3cb304cf0f6c1f2dbb49dfc78300458430fcf0f1.JPEG",
+                "https://cdn.worldota.net/t/{size}/content/62/c5/62c53bebf22c7c7bb49737db8c02a9ee2ef295fb.JPEG",
+                "https://cdn.worldota.net/t/{size}/content/05/64/05645bf34f5b8436bc49920f00969b2d154742b2.JPEG",
+                "https://cdn.worldota.net/t/{size}/content/74/b7/74b715016bfcc317400c987c6bc548e8e3bf4a4a.JPEG",
+                "https://cdn.worldota.net/t/{size}/content/5e/a0/5ea0fd4f3f21cd255dbc0797366946d69b640c56.JPEG"
+            ],
+            "images_ext": [
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/21/21/2121590716727545621dcb13b7e2a4c7d2dcd5cf.JPEG",
+                    "category_slug": "guest_rooms"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/81/4e/814e41f8d24ecfd60c5b390fc07905d4af628b60.JPEG",
+                    "category_slug": "guest_rooms"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/47/f1/47f17d96ea5a5eb5cfc590de689af2c473fd099b.JPEG",
+                    "category_slug": "guest_rooms"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/06/b3/06b3df6f57b50d9baabaa2ffd64009c8311533ce.JPEG",
+                    "category_slug": "guest_rooms"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/cc/73/cc736fe5778b4928979b1ed6a264bbb067a74321.JPEG",
+                    "category_slug": "guest_rooms"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/0f/30/0f302ef2e3ee285d80568d77e39b548520426434.JPEG",
+                    "category_slug": "balcony"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/20/4e/204e276c2fb4ffaaeff068b9b970c814cdf5aeb8.JPEG",
+                    "category_slug": "bathroom"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/79/e1/79e10526557293ce1e5e12dd6b3256874af9d377.JPEG",
+                    "category_slug": "bathroom"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/c9/4a/c94a847663ecbe9b88d3274b2c932c8b2adff4c7.JPEG",
+                    "category_slug": "bathroom"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/bd/cc/bdccc59b4920e4c3bd2b10475bfe9b7a0455e3ec.jpeg",
+                    "category_slug": "meal"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/4e/ae/4eaebc05fedf2086dc8b2ed611fde14b86404913.JPEG",
+                    "category_slug": "pool"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/3c/b3/3cb304cf0f6c1f2dbb49dfc78300458430fcf0f1.JPEG",
+                    "category_slug": "pool"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/62/c5/62c53bebf22c7c7bb49737db8c02a9ee2ef295fb.JPEG",
+                    "category_slug": "pool"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/05/64/05645bf34f5b8436bc49920f00969b2d154742b2.JPEG",
+                    "category_slug": "outside"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/74/b7/74b715016bfcc317400c987c6bc548e8e3bf4a4a.JPEG",
+                    "category_slug": "outside"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/5e/a0/5ea0fd4f3f21cd255dbc0797366946d69b640c56.JPEG",
+                    "category_slug": ""
+                }
+            ],
+            "kind": "Apartment",
+            "latitude": 37.83673,
+            "longitude": 20.819267,
+            "name": "Artemis Apartments",
+            "phone": "+302695061555",
+            "policy_struct": [
+                {
+                    "paragraphs": [
+                        "Information about the type of meals included in the price is indicated in the rate details."
+                    ],
+                    "title": "Meals"
+                },
+                {
+                    "paragraphs": [
+                        "Please inform Artemis Apartments in advance of your expected arrival time. You can use the Special Requests box when booking, or contact the property directly with the contact details provided in your confirmation. Guests are required to show a photo identification and credit card upon check-in. Please note that all Special Requests are subject to availability and additional charges may apply. Managed by a private host"
+                    ],
+                    "title": "Extra info"
+                }
+            ],
+            "postal_code": "29100",
+            "room_groups": [
+                {
+                    "room_group_id": 26,
+                    "images": [],
+                    "name": "Studio",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 7,
+                        "quality": 0,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 0,
+                        "capacity": 0,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 0
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "Studio"
+                    }
+                },
+                {
+                    "room_group_id": 251,
+                    "images": [],
+                    "name": "Double Studio twin beds",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 7,
+                        "quality": 0,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 4,
+                        "family": 0,
+                        "capacity": 2,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 0
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": "twin beds",
+                        "main_name": "Double Studio"
+                    }
+                },
+                {
+                    "room_group_id": 18395704,
+                    "images": [
+                        "https://cdn.worldota.net/t/{size}/content/2b/2a/2b2ac7dd15e2cb95168dddc3425dcd4228836f8b.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/84/a5/84a5384181e5980f2fdfb54026ffe832857806ff.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/5a/2f/5a2f1ff1dd999673dfaff344866844dee0c2de76.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/58/e4/58e4da32490bbd508dff4d04b56acc73a204ca54.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/3d/a5/3da57317e5daead9eed21b7d0b34c011c3789a54.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/49/95/49951f3ad176fca3da3ab53a7838940422a0e45d.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/0e/b0/0eb08f20adef8dc96ce109e99ed2b2f4ae46f3d2.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/fd/c8/fdc82df73a8663e740abed902bae2fd3cb462ac0.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/3b/36/3b3661abdbb72e1670267e499921eed96539fc82.jpeg"
+                    ],
+                    "name": "Standard Studio",
+                    "room_amenities": [
+                        "air-conditioning",
+                        "hairdryer",
+                        "private-bathroom",
+                        "tv"
+                    ],
+                    "rg_ext": {
+                        "class": 7,
+                        "quality": 2,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 0,
+                        "capacity": 0,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 0
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "Standard Studio"
+                    }
+                },
+                {
+                    "room_group_id": 18395704,
+                    "images": [
+                        "https://cdn.worldota.net/t/{size}/content/2b/2a/2b2ac7dd15e2cb95168dddc3425dcd4228836f8b.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/84/a5/84a5384181e5980f2fdfb54026ffe832857806ff.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/5a/2f/5a2f1ff1dd999673dfaff344866844dee0c2de76.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/58/e4/58e4da32490bbd508dff4d04b56acc73a204ca54.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/3d/a5/3da57317e5daead9eed21b7d0b34c011c3789a54.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/49/95/49951f3ad176fca3da3ab53a7838940422a0e45d.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/0e/b0/0eb08f20adef8dc96ce109e99ed2b2f4ae46f3d2.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/fd/c8/fdc82df73a8663e740abed902bae2fd3cb462ac0.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/3b/36/3b3661abdbb72e1670267e499921eed96539fc82.jpeg"
+                    ],
+                    "name": "Standard Studio with balcony",
+                    "room_amenities": [
+                        "air-conditioning",
+                        "balcony",
+                        "bath",
+                        "bedsheets",
+                        "fridge",
+                        "hairdryer",
+                        "kitchen",
+                        "kitchen-stuff",
+                        "private-bathroom",
+                        "tea",
+                        "towels",
+                        "tv",
+                        "wardrobe"
+                    ],
+                    "rg_ext": {
+                        "class": 7,
+                        "quality": 2,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 0,
+                        "capacity": 0,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 1,
+                        "floor": 0,
+                        "view": 0
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "Standard Studio with balcony"
+                    }
+                },
+                {
+                    "room_group_id": 20623928,
+                    "images": [
+                        "https://cdn.worldota.net/t/{size}/content/2b/2a/2b2ac7dd15e2cb95168dddc3425dcd4228836f8b.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/84/a5/84a5384181e5980f2fdfb54026ffe832857806ff.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/5a/2f/5a2f1ff1dd999673dfaff344866844dee0c2de76.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/58/e4/58e4da32490bbd508dff4d04b56acc73a204ca54.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/3d/a5/3da57317e5daead9eed21b7d0b34c011c3789a54.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/49/95/49951f3ad176fca3da3ab53a7838940422a0e45d.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/0e/b0/0eb08f20adef8dc96ce109e99ed2b2f4ae46f3d2.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/fd/c8/fdc82df73a8663e740abed902bae2fd3cb462ac0.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/3b/36/3b3661abdbb72e1670267e499921eed96539fc82.jpeg"
+                    ],
+                    "name": "Standard Double Studio twin beds",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 7,
+                        "quality": 2,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 4,
+                        "family": 0,
+                        "capacity": 2,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 0
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": "twin beds",
+                        "main_name": "Standard Double Studio"
+                    }
+                },
+                {
+                    "room_group_id": 20623928,
+                    "images": [
+                        "https://cdn.worldota.net/t/{size}/content/2b/2a/2b2ac7dd15e2cb95168dddc3425dcd4228836f8b.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/84/a5/84a5384181e5980f2fdfb54026ffe832857806ff.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/5a/2f/5a2f1ff1dd999673dfaff344866844dee0c2de76.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/58/e4/58e4da32490bbd508dff4d04b56acc73a204ca54.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/3d/a5/3da57317e5daead9eed21b7d0b34c011c3789a54.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/49/95/49951f3ad176fca3da3ab53a7838940422a0e45d.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/0e/b0/0eb08f20adef8dc96ce109e99ed2b2f4ae46f3d2.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/fd/c8/fdc82df73a8663e740abed902bae2fd3cb462ac0.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/3b/36/3b3661abdbb72e1670267e499921eed96539fc82.jpeg"
+                    ],
+                    "name": "Standard Double Studio with mountain view twin beds",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 7,
+                        "quality": 2,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 4,
+                        "family": 0,
+                        "capacity": 2,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 22
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": "twin beds",
+                        "main_name": "Standard Double Studio with mountain view"
+                    }
+                },
+                {
+                    "room_group_id": 41,
+                    "images": [
+                        "https://cdn.worldota.net/t/{size}/content/86/03/86030397e78f3ddd67c261009bd0c3a3fe98c5a7.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/2e/d4/2ed47e7159b56a1bbf5f029685996380e1005004.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/f9/19/f919715000196f61ffd0654fb08d3596c1f02158.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/1a/f3/1af3c6bb276eb97469118fa7d2c4d611202ed187.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/4b/7d/4b7df4139180f2625172ae658642d4fe70bb849b.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/85/69/856985d5703bda97eecbe06993af74b5ec8d8aad.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/5d/43/5d437ae2a514ec619c33a7f0698643d17be1b62a.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/91/a5/91a52d5836eac3e3a0ee4ce9b06f77540f361912.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/ce/bb/cebb0bf940d593a130d51d1693253d12ba9f7cfa.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/5d/fe/5dfeef75cef396985e02a201b5101a07c05dcdb7.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/14/ae/14ae0df445b98532f4ac00fe1389d804dc1f5ebe.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/18/1d/181dbab56a936086c778e7284ce3e550de5c9b38.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/2e/ff/2eff52f19bd708c0574b3f64245eec1812a5576e.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/25/48/25486bb0f512a4bb70e6236021727ac3afb18218.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/75/10/75107cf29113380f69d4bd745cc85b96d8139dac.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/fb/8d/fb8d70bed0a81b7ab370a566c168817600fdae52.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/ff/36/ff36b894b19706889e5bdb7e94d84489b894067f.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/87/85/87855d45f5d6e1cd9067f40d661f6d9f66f2ae3a.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/76/8f/768f8a1ecfd4107dd12afc3519aaef746beadf94.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/db/e2/dbe2b1c6dc8ba1deddf141c66570e7a0f9d510e7.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/bc/33/bc336a6aa46aebe83e98347b0ce219f916dabe4a.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/29/dd/29dd910230576d036493d7c1ff048bba2544c22c.jpeg"
+                    ],
+                    "name": "Superior Studio",
+                    "room_amenities": [
+                        "air-conditioning",
+                        "hairdryer",
+                        "private-bathroom",
+                        "tv"
+                    ],
+                    "rg_ext": {
+                        "class": 7,
+                        "quality": 5,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 0,
+                        "capacity": 0,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 0
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "Superior Studio"
+                    }
+                },
+                {
+                    "room_group_id": 257,
+                    "images": [
+                        "https://cdn.worldota.net/t/{size}/content/86/03/86030397e78f3ddd67c261009bd0c3a3fe98c5a7.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/2e/d4/2ed47e7159b56a1bbf5f029685996380e1005004.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/f9/19/f919715000196f61ffd0654fb08d3596c1f02158.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/1a/f3/1af3c6bb276eb97469118fa7d2c4d611202ed187.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/4b/7d/4b7df4139180f2625172ae658642d4fe70bb849b.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/85/69/856985d5703bda97eecbe06993af74b5ec8d8aad.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/5d/43/5d437ae2a514ec619c33a7f0698643d17be1b62a.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/91/a5/91a52d5836eac3e3a0ee4ce9b06f77540f361912.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/ce/bb/cebb0bf940d593a130d51d1693253d12ba9f7cfa.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/5d/fe/5dfeef75cef396985e02a201b5101a07c05dcdb7.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/14/ae/14ae0df445b98532f4ac00fe1389d804dc1f5ebe.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/18/1d/181dbab56a936086c778e7284ce3e550de5c9b38.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/2e/ff/2eff52f19bd708c0574b3f64245eec1812a5576e.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/25/48/25486bb0f512a4bb70e6236021727ac3afb18218.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/75/10/75107cf29113380f69d4bd745cc85b96d8139dac.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/fb/8d/fb8d70bed0a81b7ab370a566c168817600fdae52.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/ff/36/ff36b894b19706889e5bdb7e94d84489b894067f.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/87/85/87855d45f5d6e1cd9067f40d661f6d9f66f2ae3a.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/76/8f/768f8a1ecfd4107dd12afc3519aaef746beadf94.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/db/e2/dbe2b1c6dc8ba1deddf141c66570e7a0f9d510e7.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/bc/33/bc336a6aa46aebe83e98347b0ce219f916dabe4a.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/29/dd/29dd910230576d036493d7c1ff048bba2544c22c.jpeg"
+                    ],
+                    "name": "Superior Double Studio full double bed",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 7,
+                        "quality": 5,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 3,
+                        "family": 0,
+                        "capacity": 2,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 0
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": "full double bed",
+                        "main_name": "Superior Double Studio"
+                    }
+                },
+                {
+                    "room_group_id": 20591208,
+                    "images": [
+                        "https://cdn.worldota.net/t/{size}/content/86/03/86030397e78f3ddd67c261009bd0c3a3fe98c5a7.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/2e/d4/2ed47e7159b56a1bbf5f029685996380e1005004.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/f9/19/f919715000196f61ffd0654fb08d3596c1f02158.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/1a/f3/1af3c6bb276eb97469118fa7d2c4d611202ed187.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/4b/7d/4b7df4139180f2625172ae658642d4fe70bb849b.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/85/69/856985d5703bda97eecbe06993af74b5ec8d8aad.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/5d/43/5d437ae2a514ec619c33a7f0698643d17be1b62a.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/91/a5/91a52d5836eac3e3a0ee4ce9b06f77540f361912.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/ce/bb/cebb0bf940d593a130d51d1693253d12ba9f7cfa.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/5d/fe/5dfeef75cef396985e02a201b5101a07c05dcdb7.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/14/ae/14ae0df445b98532f4ac00fe1389d804dc1f5ebe.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/18/1d/181dbab56a936086c778e7284ce3e550de5c9b38.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/2e/ff/2eff52f19bd708c0574b3f64245eec1812a5576e.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/25/48/25486bb0f512a4bb70e6236021727ac3afb18218.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/75/10/75107cf29113380f69d4bd745cc85b96d8139dac.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/fb/8d/fb8d70bed0a81b7ab370a566c168817600fdae52.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/ff/36/ff36b894b19706889e5bdb7e94d84489b894067f.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/87/85/87855d45f5d6e1cd9067f40d661f6d9f66f2ae3a.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/76/8f/768f8a1ecfd4107dd12afc3519aaef746beadf94.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/db/e2/dbe2b1c6dc8ba1deddf141c66570e7a0f9d510e7.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/bc/33/bc336a6aa46aebe83e98347b0ce219f916dabe4a.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/29/dd/29dd910230576d036493d7c1ff048bba2544c22c.jpeg"
+                    ],
+                    "name": "Superior Double Studio with mountain view full double bed",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 7,
+                        "quality": 5,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 3,
+                        "family": 0,
+                        "capacity": 2,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 22
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": "full double bed",
+                        "main_name": "Superior Double Studio with mountain view"
+                    }
+                },
+                {
+                    "room_group_id": 42,
+                    "images": [
+                        "https://cdn.worldota.net/t/{size}/content/37/4f/374f0c56548c320670cf643fa923d1ca1a2d5377.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/23/83/2383f0d4ea4628ac8a1756f2991c1c2a89bed2cd.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/bc/24/bc24b251db6db3cdf258ed8d0ef647d54b09c4f8.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/64/0f/640f9eab176b84139f11e7f3da2cc04465b6e929.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/b1/8e/b18ee990ea137b856cc32e679862bb32b6bccddc.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/9f/a8/9fa860f7479998f30777921a87a8935f364fab7f.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/49/3d/493da81ec201db0b529d9d02df4bbc8ce97706f8.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/35/d9/35d99a57f67db866bf7d3bf5ca7ea0dc166698d4.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/ef/f7/eff71dc9bf852bfca7e6f46b56ea6d33c6363faf.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/5e/b8/5eb8ced8154cb7b6063880563ff420a1fdad01bd.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/52/9c/529c0776c8ae96f153337842cd2062990a30433a.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/7b/b6/7bb63f164c722535774463789ead363a1b773287.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/db/71/db719bfa7bbe45f4c78cc24f1b70951ad72a5060.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/bf/fa/bffa4dd87706386154666ec86b6c2c03db86e567.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/dd/1e/dd1e490fca358aaa1d9e7586f4c56ebbdde01445.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/24/25/2425d74b6272ed6fc168376621ec587d5f7edc39.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/71/cc/71cccf72438baaecf9e47c3873f68a7b1f51cf4a.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/99/d3/99d3de753fe410c977dceea192f0dcfa792e62e5.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/d6/zz/d6ad50427699dbbfc382a433ef6ce8f630986b62.jpeg"
+                    ],
+                    "name": "Deluxe Studio",
+                    "room_amenities": [
+                        "air-conditioning",
+                        "hairdryer",
+                        "private-bathroom",
+                        "tv"
+                    ],
+                    "rg_ext": {
+                        "class": 7,
+                        "quality": 6,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 0,
+                        "capacity": 0,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 0
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "Deluxe Studio"
+                    }
+                },
+                {
+                    "room_group_id": 18395768,
+                    "images": [
+                        "https://cdn.worldota.net/t/{size}/content/37/4f/374f0c56548c320670cf643fa923d1ca1a2d5377.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/23/83/2383f0d4ea4628ac8a1756f2991c1c2a89bed2cd.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/bc/24/bc24b251db6db3cdf258ed8d0ef647d54b09c4f8.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/64/0f/640f9eab176b84139f11e7f3da2cc04465b6e929.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/b1/8e/b18ee990ea137b856cc32e679862bb32b6bccddc.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/9f/a8/9fa860f7479998f30777921a87a8935f364fab7f.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/49/3d/493da81ec201db0b529d9d02df4bbc8ce97706f8.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/35/d9/35d99a57f67db866bf7d3bf5ca7ea0dc166698d4.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/ef/f7/eff71dc9bf852bfca7e6f46b56ea6d33c6363faf.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/5e/b8/5eb8ced8154cb7b6063880563ff420a1fdad01bd.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/52/9c/529c0776c8ae96f153337842cd2062990a30433a.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/7b/b6/7bb63f164c722535774463789ead363a1b773287.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/db/71/db719bfa7bbe45f4c78cc24f1b70951ad72a5060.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/bf/fa/bffa4dd87706386154666ec86b6c2c03db86e567.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/dd/1e/dd1e490fca358aaa1d9e7586f4c56ebbdde01445.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/24/25/2425d74b6272ed6fc168376621ec587d5f7edc39.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/71/cc/71cccf72438baaecf9e47c3873f68a7b1f51cf4a.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/99/d3/99d3de753fe410c977dceea192f0dcfa792e62e5.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/d6/zz/d6ad50427699dbbfc382a433ef6ce8f630986b62.jpeg"
+                    ],
+                    "name": "Deluxe Studio with balcony",
+                    "room_amenities": [
+                        "air-conditioning",
+                        "balcony",
+                        "bath",
+                        "bedsheets",
+                        "fridge",
+                        "hairdryer",
+                        "kitchen",
+                        "kitchen-stuff",
+                        "private-bathroom",
+                        "tea",
+                        "towels",
+                        "tv",
+                        "wardrobe"
+                    ],
+                    "rg_ext": {
+                        "class": 7,
+                        "quality": 6,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 0,
+                        "capacity": 0,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 1,
+                        "floor": 0,
+                        "view": 0
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "Deluxe Studio with balcony"
+                    }
+                },
+                {
+                    "room_group_id": 264,
+                    "images": [
+                        "https://cdn.worldota.net/t/{size}/content/37/4f/374f0c56548c320670cf643fa923d1ca1a2d5377.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/23/83/2383f0d4ea4628ac8a1756f2991c1c2a89bed2cd.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/bc/24/bc24b251db6db3cdf258ed8d0ef647d54b09c4f8.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/64/0f/640f9eab176b84139f11e7f3da2cc04465b6e929.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/b1/8e/b18ee990ea137b856cc32e679862bb32b6bccddc.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/9f/a8/9fa860f7479998f30777921a87a8935f364fab7f.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/49/3d/493da81ec201db0b529d9d02df4bbc8ce97706f8.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/35/d9/35d99a57f67db866bf7d3bf5ca7ea0dc166698d4.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/ef/f7/eff71dc9bf852bfca7e6f46b56ea6d33c6363faf.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/5e/b8/5eb8ced8154cb7b6063880563ff420a1fdad01bd.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/52/9c/529c0776c8ae96f153337842cd2062990a30433a.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/7b/b6/7bb63f164c722535774463789ead363a1b773287.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/db/71/db719bfa7bbe45f4c78cc24f1b70951ad72a5060.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/bf/fa/bffa4dd87706386154666ec86b6c2c03db86e567.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/dd/1e/dd1e490fca358aaa1d9e7586f4c56ebbdde01445.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/24/25/2425d74b6272ed6fc168376621ec587d5f7edc39.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/71/cc/71cccf72438baaecf9e47c3873f68a7b1f51cf4a.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/99/d3/99d3de753fe410c977dceea192f0dcfa792e62e5.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/d6/zz/d6ad50427699dbbfc382a433ef6ce8f630986b62.jpeg"
+                    ],
+                    "name": "Deluxe Double Studio full double bed",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 7,
+                        "quality": 6,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 3,
+                        "family": 0,
+                        "capacity": 2,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 0
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": "full double bed",
+                        "main_name": "Deluxe Double Studio"
+                    }
+                },
+                {
+                    "room_group_id": 20591224,
+                    "images": [
+                        "https://cdn.worldota.net/t/{size}/content/37/4f/374f0c56548c320670cf643fa923d1ca1a2d5377.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/23/83/2383f0d4ea4628ac8a1756f2991c1c2a89bed2cd.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/bc/24/bc24b251db6db3cdf258ed8d0ef647d54b09c4f8.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/64/0f/640f9eab176b84139f11e7f3da2cc04465b6e929.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/b1/8e/b18ee990ea137b856cc32e679862bb32b6bccddc.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/9f/a8/9fa860f7479998f30777921a87a8935f364fab7f.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/49/3d/493da81ec201db0b529d9d02df4bbc8ce97706f8.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/35/d9/35d99a57f67db866bf7d3bf5ca7ea0dc166698d4.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/ef/f7/eff71dc9bf852bfca7e6f46b56ea6d33c6363faf.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/5e/b8/5eb8ced8154cb7b6063880563ff420a1fdad01bd.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/52/9c/529c0776c8ae96f153337842cd2062990a30433a.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/7b/b6/7bb63f164c722535774463789ead363a1b773287.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/db/71/db719bfa7bbe45f4c78cc24f1b70951ad72a5060.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/bf/fa/bffa4dd87706386154666ec86b6c2c03db86e567.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/dd/1e/dd1e490fca358aaa1d9e7586f4c56ebbdde01445.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/24/25/2425d74b6272ed6fc168376621ec587d5f7edc39.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/71/cc/71cccf72438baaecf9e47c3873f68a7b1f51cf4a.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/99/d3/99d3de753fe410c977dceea192f0dcfa792e62e5.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/d6/zz/d6ad50427699dbbfc382a433ef6ce8f630986b62.jpeg"
+                    ],
+                    "name": "Deluxe Double Studio with mountain view full double bed",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 7,
+                        "quality": 6,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 3,
+                        "family": 0,
+                        "capacity": 2,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 22
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": "full double bed",
+                        "main_name": "Deluxe Double Studio with mountain view"
+                    }
+                },
+                {
+                    "room_group_id": 18395674,
+                    "images": [],
+                    "name": "2 Bedrooms Cottage",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 9,
+                        "quality": 0,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 0,
+                        "capacity": 0,
+                        "club": 0,
+                        "bedrooms": 2,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 0
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "2 Bedrooms Cottage"
+                    }
+                },
+                {
+                    "room_group_id": 20623898,
+                    "images": [],
+                    "name": "Double Cottage twin beds",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 9,
+                        "quality": 0,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 4,
+                        "family": 0,
+                        "capacity": 2,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 0
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": "twin beds",
+                        "main_name": "Double Cottage"
+                    }
+                },
+                {
+                    "room_group_id": 68,
+                    "images": [],
+                    "name": "Deluxe Cottage",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 9,
+                        "quality": 6,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 0,
+                        "capacity": 0,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 0
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "Deluxe Cottage"
+                    }
+                }
+            ],
+            "region": {
+                "id": 965855207,
+                "country_code": "GR",
+                "iata": null,
+                "name": "Kipseli",
+                "type": "City",
+                "type_v2": "city"
+            },
+            "star_rating": 0,
+            "email": "artemisrooms@gmail.com",
+            "serp_filters": [
+                "has_internet",
+                "has_airport_transfer",
+                "has_parking",
+                "has_kids",
+                "has_pool",
+                "has_spa",
+                "air_conditioning",
+                "has_jacuzzi"
+            ],
+            "deleted": false,
+            "is_closed": false,
+            "is_gender_specification_required": false,
+            "metapolicy_struct": {
+                "internet": [],
+                "meal": [],
+                "children_meal": [],
+                "extra_bed": [],
+                "cot": [],
+                "pets": [],
+                "shuttle": [],
+                "parking": [],
+                "children": [],
+                "visa": {
+                    "visa_support": "unspecified"
+                },
+                "deposit": [],
+                "no_show": {
+                    "availability": "unspecified",
+                    "time": null,
+                    "day_period": "unspecified"
+                },
+                "add_fee": [],
+                "check_in_check_out": []
+            },
+            "metapolicy_extra_info": "Please inform Artemis Apartments in advance of your expected arrival time. You can use the Special Requests box when booking, or contact the property directly with the contact details provided in your confirmation. Guests are required to show a photo identification and credit card upon check-in. Please note that all Special Requests are subject to availability and additional charges may apply. Managed by a private host",
+            "star_certificate": null,
+            "facts": {
+                "floors_number": 2,
+                "rooms_number": 12,
+                "year_built": null,
+                "year_renovated": null,
+                "electricity": {
+                    "frequency": [
+                        50
+                    ],
+                    "voltage": [
+                        230
+                    ],
+                    "sockets": [
+                        "c",
+                        "f"
+                    ]
+                }
+            },
+            "payment_methods": [],
+            "hotel_chain": "No chain",
+            "front_desk_time_start": null,
+            "front_desk_time_end": null,
+            "keys_pickup": {
+                "type": "unspecified",
+                "phone": null,
+                "email": null,
+                "apartment_office_address": null,
+                "apartment_extra_information": null,
+                "is_contactless": false
+            }
+        },
+        {
+            "address": "Psarou Beach, Kipseli",
+            "amenity_groups": [
+                {
+                    "amenities": [
+                        "Air conditioning",
+                        "Smoke-free property",
+                        "Ticket assistance",
+                        "Garden",
+                        "Terrace",
+                        "No elevators",
+                        "Reception desk"
+                    ],
+                    "non_free_amenities": [],
+                    "group_name": "General"
+                },
+                {
+                    "amenities": [
+                        "Non-smoking rooms",
+                        "Room service",
+                        "Family room"
+                    ],
+                    "non_free_amenities": [],
+                    "group_name": "Rooms"
+                },
+                {
+                    "amenities": [
+                        "Laundry",
+                        "Safe-deposit box",
+                        "Dry-cleaning",
+                        "Luggage storage"
+                    ],
+                    "non_free_amenities": [
+                        "Laundry",
+                        "Dry-cleaning"
+                    ],
+                    "group_name": "Services and amenities"
+                },
+                {
+                    "amenities": [
+                        "Breakfast",
+                        "Restaurant",
+                        "Snack bar"
+                    ],
+                    "non_free_amenities": [],
+                    "group_name": "Meals"
+                },
+                {
+                    "amenities": [
+                        "Free Wi-Fi"
+                    ],
+                    "non_free_amenities": [],
+                    "group_name": "Internet"
+                },
+                {
+                    "amenities": [
+                        "Car rental"
+                    ],
+                    "non_free_amenities": [
+                        "Car rental"
+                    ],
+                    "group_name": "Transfer"
+                },
+                {
+                    "amenities": [
+                        "English"
+                    ],
+                    "non_free_amenities": [],
+                    "group_name": "Languages Spoken"
+                },
+                {
+                    "amenities": [
+                        "Tour assistance"
+                    ],
+                    "non_free_amenities": [],
+                    "group_name": "Tourist services"
+                },
+                {
+                    "amenities": [
+                        "Library",
+                        "Bike rental",
+                        "Barbecue grill(s)",
+                        "Billiards",
+                        "Barbeque",
+                        "Sun Deck",
+                        "Ping-Pong"
+                    ],
+                    "non_free_amenities": [],
+                    "group_name": "Recreation"
+                },
+                {
+                    "amenities": [
+                        "Parking"
+                    ],
+                    "non_free_amenities": [],
+                    "group_name": "Parking"
+                },
+                {
+                    "amenities": [
+                        "Swimming pool",
+                        "Outdoor pool",
+                        "Beach facilities",
+                        "Seasonal outdoor swimming pool",
+                        "Pool facilities"
+                    ],
+                    "non_free_amenities": [],
+                    "group_name": "Pool and beach"
+                },
+                {
+                    "amenities": [
+                        "Playroom",
+                        "Children swimming pool",
+                        "Family/Kid Friendly"
+                    ],
+                    "non_free_amenities": [],
+                    "group_name": "Kids"
+                },
+                {
+                    "amenities": [
+                        "Pets Not Allowed"
+                    ],
+                    "non_free_amenities": [],
+                    "group_name": "Pets"
+                }
+            ],
+            "check_in_time": "15:00:00",
+            "check_out_time": "11:00:00",
+            "description_struct": [
+                {
+                    "paragraphs": [
+                        "A great option for family vacation: apartment \u00abArmonia Studios &amp; Apartments\u00bb is located in Kipseli. This apartment is located in walking distance from the city center. You can take a walk and explore the neighbourhood area of the apartment \u2014 Zakynthos Port, Port of Kyllini and Port of Argostoli."
+                    ],
+                    "title": "Location"
+                },
+                {
+                    "paragraphs": [
+                        "Spend an evening in a nice atmosphere of the bar. It\u2019s time to have a nice meal! Stop by the restaurant. Want to be always on-line? Wi-Fi is available. If you travel by car, you can park in a parking zone.",
+                        "You will find these entertainment amenities on the premises: a library, a ping-pong area and a barbeque area. Here, you can treat yourself with water procedures as there will be a pool and an outdoor pool. There are playrooms for children at the apartment. They will be having so much fun that you might have to spend the evening with adults. The tour assistance desk of the apartment will help you book an excursion.",
+                        "Additional services that the apartment offers to its guests: a laundry, dry cleaning, car rental and a safe-deposit box. The staff of the apartment speaks English."
+                    ],
+                    "title": "At the apartment"
+                }
+            ],
+            "id": "armonia_studios_apartments",
+            "hid": 7787391,
+            "images": [
+                "https://cdn.worldota.net/t/{size}/content/8d/b4/8db476aeb1824927ceecbcce175e17a1709b67b8.JPEG",
+                "https://cdn.worldota.net/t/{size}/content/08/3e/083ed5bfa460f9883b1a3deb08a1c5743ccf5a29.jpeg",
+                "https://cdn.worldota.net/t/{size}/content/16/be/16bef2e6cc2acc0771a0d5bc46c2bbdbfec01af0.JPEG",
+                "https://cdn.worldota.net/t/{size}/content/db/fb/dbfb05d2bb2cac3e30c7659e7662c6016a5365fe.jpeg",
+                "https://cdn.worldota.net/t/{size}/content/b1/39/b139721bd3154f0df05e241d87430641b6990b2e.JPEG",
+                "https://cdn.worldota.net/t/{size}/content/db/08/db08424f0fe9913f5de99464ba9912370b887884.jpeg",
+                "https://cdn.worldota.net/t/{size}/content/79/32/79323dab8e6b75819aec4931cd3767593f326d90.JPEG",
+                "https://cdn.worldota.net/t/{size}/content/05/2e/052e030c21abc98c9438feaa19a2c0b1798160b3.jpeg",
+                "https://cdn.worldota.net/t/{size}/content/c5/a7/c5a7a925c79b741627082079358db0a1d50802dd.JPEG",
+                "https://cdn.worldota.net/t/{size}/content/c4/bf/c4bfe23676393efffd58a966a0006b7bd82f194a.jpeg",
+                "https://cdn.worldota.net/t/{size}/content/b6/10/b6107165d4044fc620a1dd84eef3bbedc9c1feba.jpeg",
+                "https://cdn.worldota.net/t/{size}/content/45/43/454305bd7676c88fa4e4d353c086d62ce2687747.JPEG",
+                "https://cdn.worldota.net/t/{size}/content/72/49/7249740b8f47feed489521d1acad72910f3caa20.JPEG",
+                "https://cdn.worldota.net/t/{size}/content/56/06/5606263d8fbec1e371b6268e705a78e4381be0a2.JPEG",
+                "https://cdn.worldota.net/t/{size}/content/44/32/44324342fee80a9f4d3f37b522ad90b3a262aa9c.jpeg",
+                "https://cdn.worldota.net/t/{size}/content/9d/ce/9dce16c73820180454c35f7462d722481d76ef49.jpeg",
+                "https://cdn.worldota.net/t/{size}/content/e4/73/e47349d8109f98bb4bf5b62db8fdac63403963f0.JPEG",
+                "https://cdn.worldota.net/t/{size}/content/37/ec/37ecc4c484a487fd131ca03979c599b40b917dcf.jpeg",
+                "https://cdn.worldota.net/t/{size}/content/18/65/18653a80194b0eca651d3f6c8d9ec00a71053e81.jpeg",
+                "https://cdn.worldota.net/t/{size}/content/03/75/0375b149ba263d1256576d3e4831145f56da1cb2.jpeg",
+                "https://cdn.worldota.net/t/{size}/content/cd/3c/cd3c8dc155568e4a84966f33f99e654512a763f5.JPEG",
+                "https://cdn.worldota.net/t/{size}/content/ea/7f/ea7f29d6125e640bec4194e6aaf78d1e27fac765.jpeg",
+                "https://cdn.worldota.net/t/{size}/content/d0/df/d0df5a0a9a1520ef8652521e9874e6c4a82b156b.jpeg",
+                "https://cdn.worldota.net/t/{size}/content/1f/11/1f112803c6d3cab64ef8f9debffc88793b5d1ab0.JPEG",
+                "https://cdn.worldota.net/t/{size}/content/42/db/42db480aaa374b2ca9b5ded6ced54e415a83f2fd.jpeg",
+                "https://cdn.worldota.net/t/{size}/content/88/51/8851f42850fa4f0e825a1bd6e2690b28426ff893.jpeg"
+            ],
+            "images_ext": [
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/8d/b4/8db476aeb1824927ceecbcce175e17a1709b67b8.JPEG",
+                    "category_slug": "exterior"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/08/3e/083ed5bfa460f9883b1a3deb08a1c5743ccf5a29.jpeg",
+                    "category_slug": "guest_rooms"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/16/be/16bef2e6cc2acc0771a0d5bc46c2bbdbfec01af0.JPEG",
+                    "category_slug": "guest_rooms"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/db/fb/dbfb05d2bb2cac3e30c7659e7662c6016a5365fe.jpeg",
+                    "category_slug": "guest_rooms"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/b1/39/b139721bd3154f0df05e241d87430641b6990b2e.JPEG",
+                    "category_slug": "guest_rooms"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/db/08/db08424f0fe9913f5de99464ba9912370b887884.jpeg",
+                    "category_slug": "guest_rooms"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/79/32/79323dab8e6b75819aec4931cd3767593f326d90.JPEG",
+                    "category_slug": "balcony"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/05/2e/052e030c21abc98c9438feaa19a2c0b1798160b3.jpeg",
+                    "category_slug": "bathroom"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/c5/a7/c5a7a925c79b741627082079358db0a1d50802dd.JPEG",
+                    "category_slug": "bathroom"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/c4/bf/c4bfe23676393efffd58a966a0006b7bd82f194a.jpeg",
+                    "category_slug": "bathroom"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/b6/10/b6107165d4044fc620a1dd84eef3bbedc9c1feba.jpeg",
+                    "category_slug": "meal"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/45/43/454305bd7676c88fa4e4d353c086d62ce2687747.JPEG",
+                    "category_slug": "pool"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/72/49/7249740b8f47feed489521d1acad72910f3caa20.JPEG",
+                    "category_slug": "pool"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/56/06/5606263d8fbec1e371b6268e705a78e4381be0a2.JPEG",
+                    "category_slug": "pool"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/44/32/44324342fee80a9f4d3f37b522ad90b3a262aa9c.jpeg",
+                    "category_slug": "entertainment"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/9d/ce/9dce16c73820180454c35f7462d722481d76ef49.jpeg",
+                    "category_slug": "beach"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/e4/73/e47349d8109f98bb4bf5b62db8fdac63403963f0.JPEG",
+                    "category_slug": "beach"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/37/ec/37ecc4c484a487fd131ca03979c599b40b917dcf.jpeg",
+                    "category_slug": "beach"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/18/65/18653a80194b0eca651d3f6c8d9ec00a71053e81.jpeg",
+                    "category_slug": "outside"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/03/75/0375b149ba263d1256576d3e4831145f56da1cb2.jpeg",
+                    "category_slug": "outside"
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/cd/3c/cd3c8dc155568e4a84966f33f99e654512a763f5.JPEG",
+                    "category_slug": ""
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/ea/7f/ea7f29d6125e640bec4194e6aaf78d1e27fac765.jpeg",
+                    "category_slug": ""
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/d0/df/d0df5a0a9a1520ef8652521e9874e6c4a82b156b.jpeg",
+                    "category_slug": ""
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/1f/11/1f112803c6d3cab64ef8f9debffc88793b5d1ab0.JPEG",
+                    "category_slug": ""
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/42/db/42db480aaa374b2ca9b5ded6ced54e415a83f2fd.jpeg",
+                    "category_slug": ""
+                },
+                {
+                    "url": "https://cdn.worldota.net/t/{size}/content/88/51/8851f42850fa4f0e825a1bd6e2690b28426ff893.jpeg",
+                    "category_slug": ""
+                }
+            ],
+            "kind": "Apartment",
+            "latitude": 37.837704,
+            "longitude": 20.812635,
+            "name": "Armonia Studios & Apartments",
+            "phone": "30-26950-63636",
+            "policy_struct": [
+                {
+                    "paragraphs": [
+                        "Information about the type of meals included in the price is indicated in the rate details."
+                    ],
+                    "title": "Meals"
+                },
+                {
+                    "paragraphs": [
+                        "<p><b>National Rating</b> <br />For the benefit of our customers, we have provided a rating based on our rating system.</p><p><b>Know Before You Go</b> <br /><ul>  <li>Cash transactions at this property cannot exceed EUR 500, due to national regulations. For further details, please contact the property using information in the booking confirmation. </li> </ul></p><p><b>Fees</b> <br /><p>The following fees and deposits are charged by the property at time of service, check-in, or check-out. </p> <ul> <li>Fee for full breakfast: EUR 7 per person (approximately)</li>                              </ul> <p>The above list may not be comprehensive. Fees and deposits may not include tax and are subject to change. </p></p><p><b>Mandatory Fees and Taxes</b> <br /><p>You'll be asked to pay the following charges at the property:</p> <ul><li>Tourism fee: EUR 0.50 per accommodation, per night</li></ul> <p>We have included all charges provided to us by the property. However, charges can vary, for example, based on length of stay or the room you book. </p></p>"
+                    ],
+                    "title": "Extra info"
+                }
+            ],
+            "postal_code": "29100",
+            "room_groups": [
+                {
+                    "room_group_id": 11,
+                    "images": [
+                        "https://cdn.worldota.net/t/{size}/content/0c/3e/0c3e1d743f98ff70f1869fe65dcef2d3aecb3757.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/83/5d/835ddf2c86b61380c0b70ffa455db6ffb43517f8.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/14/0e/140ebf38a2181db1a2f05c96f23459145240f255.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/75/28/75286ea41458f0fecd93d22ac2a264d3af664464.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/0b/2a/0b2a89d992f187fc95c746a5562e967fb173c9ed.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/86/bb/86bbca6267a5d74a1bb709c8728a4318e25bb8fc.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/30/cc/30ccb5a510a0962403c6afb09206f06091c582e9.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/ed/fb/edfba5cd18637e59218f1eb480a63c02a7ddddaa.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/f0/93/f0937358689d0e0be464a22157da28c64a200d16.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/38/19/38196a422c85d30a4cc123bddf102c60049bbbca.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c1/cb/c1cba4abd35468300ead9b15a7d76eb55b6dee20.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/cb/53/cb53a9282e1625da6138e6c86a6d7f18db32c116.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/5e/18/5e18219c5e5190bca16119e7653ea254c5ef2673.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/1f/96/1f966ddedc990a66144c301c1a8b89f480638b65.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c1/cf/c1cfea6d34304d9fd898525bd1e052f2a130c1d9.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/04/9b/049b8ca7070ebdae0bb6c007689f80d814067df1.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/dd/21/dd21d78202b60ac7580b4c3fcf949cebe9f7d03d.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/d7/57/d7572e2dea8414443a0f4145c13b1c756cd5c5c0.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/ec/6d/ec6d8d714b9cbb1bd761852cdadf89528b2036f6.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/79/0c/790c3eba1db7d3c943c477c15055076318e371ed.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/22/32/2232111fbef68d4be3d101985facf644ec699441.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/04/fa/04faac4f06ebe71f18c71710e8a4846bfbd9a4f7.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/98/5b/985b15526005d62d5993872f5976f0f55e2cc6f2.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/db/73/db7374e039e86081cde6eca55eb611a255b900a0.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c5/61/c561ac65c7c6cb5755ca07802b83654bdde8f61b.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/73/87/7387fa42202d5692def5d55c2bbcfad65a4daf73.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/71/b7/71b7df55fffdb33f78cfb69fbc81b7201cd9f143.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/44/fb/44fb5a07e45327e6636ab3a6500901d15f78dcb6.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/eb/6c/eb6c17acaec686f14c44d562a6a5b57535da4a5f.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/fc/bf/fcbf23451deeeea1b935aff69e940618f99f5a0b.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/a4/69/a4699832bad5e36fe4aa2811f22203d7fe30dfc0.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/a5/a3/a5a34c02e2f4e8295bef68b00b4d70afd407dc5a.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c1/01/c101ae1682f174c4591eaafcf5e5d726b9190989.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/d0/0a/d00a8d87837bd93207e8cd4fee77b3cebad462a4.JPEG"
+                    ],
+                    "name": "Standard room",
+                    "room_amenities": [
+                        "air-conditioning",
+                        "balcony",
+                        "fridge",
+                        "hairdryer",
+                        "iron",
+                        "kitchen",
+                        "private-bathroom",
+                        "shower",
+                        "tea",
+                        "towels",
+                        "tv",
+                        "wi-fi"
+                    ],
+                    "rg_ext": {
+                        "class": 3,
+                        "quality": 2,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 0,
+                        "capacity": 0,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 0
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "Standard room"
+                    }
+                },
+                {
+                    "room_group_id": 99,
+                    "images": [
+                        "https://cdn.worldota.net/t/{size}/content/0c/3e/0c3e1d743f98ff70f1869fe65dcef2d3aecb3757.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/83/5d/835ddf2c86b61380c0b70ffa455db6ffb43517f8.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/14/0e/140ebf38a2181db1a2f05c96f23459145240f255.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/75/28/75286ea41458f0fecd93d22ac2a264d3af664464.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/0b/2a/0b2a89d992f187fc95c746a5562e967fb173c9ed.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/86/bb/86bbca6267a5d74a1bb709c8728a4318e25bb8fc.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/30/cc/30ccb5a510a0962403c6afb09206f06091c582e9.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/ed/fb/edfba5cd18637e59218f1eb480a63c02a7ddddaa.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/f0/93/f0937358689d0e0be464a22157da28c64a200d16.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/38/19/38196a422c85d30a4cc123bddf102c60049bbbca.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c1/cb/c1cba4abd35468300ead9b15a7d76eb55b6dee20.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/cb/53/cb53a9282e1625da6138e6c86a6d7f18db32c116.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/5e/18/5e18219c5e5190bca16119e7653ea254c5ef2673.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/1f/96/1f966ddedc990a66144c301c1a8b89f480638b65.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c1/cf/c1cfea6d34304d9fd898525bd1e052f2a130c1d9.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/04/9b/049b8ca7070ebdae0bb6c007689f80d814067df1.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/dd/21/dd21d78202b60ac7580b4c3fcf949cebe9f7d03d.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/d7/57/d7572e2dea8414443a0f4145c13b1c756cd5c5c0.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/ec/6d/ec6d8d714b9cbb1bd761852cdadf89528b2036f6.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/79/0c/790c3eba1db7d3c943c477c15055076318e371ed.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/22/32/2232111fbef68d4be3d101985facf644ec699441.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/04/fa/04faac4f06ebe71f18c71710e8a4846bfbd9a4f7.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/98/5b/985b15526005d62d5993872f5976f0f55e2cc6f2.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/db/73/db7374e039e86081cde6eca55eb611a255b900a0.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c5/61/c561ac65c7c6cb5755ca07802b83654bdde8f61b.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/73/87/7387fa42202d5692def5d55c2bbcfad65a4daf73.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/71/b7/71b7df55fffdb33f78cfb69fbc81b7201cd9f143.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/44/fb/44fb5a07e45327e6636ab3a6500901d15f78dcb6.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/eb/6c/eb6c17acaec686f14c44d562a6a5b57535da4a5f.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/fc/bf/fcbf23451deeeea1b935aff69e940618f99f5a0b.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/a4/69/a4699832bad5e36fe4aa2811f22203d7fe30dfc0.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/a5/a3/a5a34c02e2f4e8295bef68b00b4d70afd407dc5a.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c1/01/c101ae1682f174c4591eaafcf5e5d726b9190989.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/d0/0a/d00a8d87837bd93207e8cd4fee77b3cebad462a4.JPEG"
+                    ],
+                    "name": "Standard Family room",
+                    "room_amenities": [
+                        "air-conditioning",
+                        "balcony",
+                        "fridge",
+                        "hairdryer",
+                        "iron",
+                        "kitchen",
+                        "private-bathroom",
+                        "shower",
+                        "tea",
+                        "towels",
+                        "tv",
+                        "wi-fi"
+                    ],
+                    "rg_ext": {
+                        "class": 3,
+                        "quality": 2,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 1,
+                        "capacity": 0,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 0
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "Standard Family room"
+                    }
+                },
+                {
+                    "room_group_id": 17871412,
+                    "images": [
+                        "https://cdn.worldota.net/t/{size}/content/0c/3e/0c3e1d743f98ff70f1869fe65dcef2d3aecb3757.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/a5/a3/a5a34c02e2f4e8295bef68b00b4d70afd407dc5a.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/ec/6d/ec6d8d714b9cbb1bd761852cdadf89528b2036f6.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/0b/2a/0b2a89d992f187fc95c746a5562e967fb173c9ed.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/98/5b/985b15526005d62d5993872f5976f0f55e2cc6f2.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/c1/01/c101ae1682f174c4591eaafcf5e5d726b9190989.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/44/fb/44fb5a07e45327e6636ab3a6500901d15f78dcb6.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/fc/bf/fcbf23451deeeea1b935aff69e940618f99f5a0b.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/ed/fb/edfba5cd18637e59218f1eb480a63c02a7ddddaa.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/f0/93/f0937358689d0e0be464a22157da28c64a200d16.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/73/87/7387fa42202d5692def5d55c2bbcfad65a4daf73.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/22/32/2232111fbef68d4be3d101985facf644ec699441.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/d7/57/d7572e2dea8414443a0f4145c13b1c756cd5c5c0.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/db/73/db7374e039e86081cde6eca55eb611a255b900a0.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/a4/69/a4699832bad5e36fe4aa2811f22203d7fe30dfc0.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/71/b7/71b7df55fffdb33f78cfb69fbc81b7201cd9f143.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/c5/61/c561ac65c7c6cb5755ca07802b83654bdde8f61b.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/eb/6c/eb6c17acaec686f14c44d562a6a5b57535da4a5f.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/68/77/687703a202e54a54fc020012bf2bc2826c20bf22.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/5e/18/5e18219c5e5190bca16119e7653ea254c5ef2673.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/c1/cf/c1cfea6d34304d9fd898525bd1e052f2a130c1d9.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/04/fa/04faac4f06ebe71f18c71710e8a4846bfbd9a4f7.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/27/1c/271cc38616d2d67f15fd70586eda57a33f0ef3bd.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/c1/cb/c1cba4abd35468300ead9b15a7d76eb55b6dee20.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/d0/0a/d00a8d87837bd93207e8cd4fee77b3cebad462a4.jpeg"
+                    ],
+                    "name": "Standard Family room with balcony",
+                    "room_amenities": [
+                        "air-conditioning",
+                        "balcony",
+                        "fridge",
+                        "hairdryer",
+                        "iron",
+                        "kitchen",
+                        "private-bathroom",
+                        "shower",
+                        "tea",
+                        "towels",
+                        "tv",
+                        "wi-fi"
+                    ],
+                    "rg_ext": {
+                        "class": 3,
+                        "quality": 2,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 1,
+                        "capacity": 0,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 1,
+                        "floor": 0,
+                        "view": 0
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "Standard Family room with balcony"
+                    }
+                },
+                {
+                    "room_group_id": 19968564,
+                    "images": [
+                        "https://cdn.worldota.net/t/{size}/content/0c/3e/0c3e1d743f98ff70f1869fe65dcef2d3aecb3757.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/83/5d/835ddf2c86b61380c0b70ffa455db6ffb43517f8.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/14/0e/140ebf38a2181db1a2f05c96f23459145240f255.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/75/28/75286ea41458f0fecd93d22ac2a264d3af664464.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/0b/2a/0b2a89d992f187fc95c746a5562e967fb173c9ed.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/86/bb/86bbca6267a5d74a1bb709c8728a4318e25bb8fc.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/30/cc/30ccb5a510a0962403c6afb09206f06091c582e9.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/ed/fb/edfba5cd18637e59218f1eb480a63c02a7ddddaa.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/f0/93/f0937358689d0e0be464a22157da28c64a200d16.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/38/19/38196a422c85d30a4cc123bddf102c60049bbbca.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c1/cb/c1cba4abd35468300ead9b15a7d76eb55b6dee20.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/cb/53/cb53a9282e1625da6138e6c86a6d7f18db32c116.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/5e/18/5e18219c5e5190bca16119e7653ea254c5ef2673.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/1f/96/1f966ddedc990a66144c301c1a8b89f480638b65.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c1/cf/c1cfea6d34304d9fd898525bd1e052f2a130c1d9.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/04/9b/049b8ca7070ebdae0bb6c007689f80d814067df1.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/dd/21/dd21d78202b60ac7580b4c3fcf949cebe9f7d03d.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/d7/57/d7572e2dea8414443a0f4145c13b1c756cd5c5c0.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/ec/6d/ec6d8d714b9cbb1bd761852cdadf89528b2036f6.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/79/0c/790c3eba1db7d3c943c477c15055076318e371ed.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/22/32/2232111fbef68d4be3d101985facf644ec699441.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/04/fa/04faac4f06ebe71f18c71710e8a4846bfbd9a4f7.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/98/5b/985b15526005d62d5993872f5976f0f55e2cc6f2.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/db/73/db7374e039e86081cde6eca55eb611a255b900a0.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c5/61/c561ac65c7c6cb5755ca07802b83654bdde8f61b.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/73/87/7387fa42202d5692def5d55c2bbcfad65a4daf73.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/71/b7/71b7df55fffdb33f78cfb69fbc81b7201cd9f143.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/44/fb/44fb5a07e45327e6636ab3a6500901d15f78dcb6.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/eb/6c/eb6c17acaec686f14c44d562a6a5b57535da4a5f.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/fc/bf/fcbf23451deeeea1b935aff69e940618f99f5a0b.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/a4/69/a4699832bad5e36fe4aa2811f22203d7fe30dfc0.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/a5/a3/a5a34c02e2f4e8295bef68b00b4d70afd407dc5a.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c1/01/c101ae1682f174c4591eaafcf5e5d726b9190989.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/d0/0a/d00a8d87837bd93207e8cd4fee77b3cebad462a4.JPEG"
+                    ],
+                    "name": "Standard Single Family room",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 3,
+                        "quality": 2,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 1,
+                        "capacity": 1,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 0
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "Standard Single Family room"
+                    }
+                },
+                {
+                    "room_group_id": 19968564,
+                    "images": [
+                        "https://cdn.worldota.net/t/{size}/content/0c/3e/0c3e1d743f98ff70f1869fe65dcef2d3aecb3757.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/83/5d/835ddf2c86b61380c0b70ffa455db6ffb43517f8.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/14/0e/140ebf38a2181db1a2f05c96f23459145240f255.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/75/28/75286ea41458f0fecd93d22ac2a264d3af664464.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/0b/2a/0b2a89d992f187fc95c746a5562e967fb173c9ed.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/86/bb/86bbca6267a5d74a1bb709c8728a4318e25bb8fc.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/30/cc/30ccb5a510a0962403c6afb09206f06091c582e9.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/ed/fb/edfba5cd18637e59218f1eb480a63c02a7ddddaa.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/f0/93/f0937358689d0e0be464a22157da28c64a200d16.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/38/19/38196a422c85d30a4cc123bddf102c60049bbbca.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c1/cb/c1cba4abd35468300ead9b15a7d76eb55b6dee20.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/cb/53/cb53a9282e1625da6138e6c86a6d7f18db32c116.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/5e/18/5e18219c5e5190bca16119e7653ea254c5ef2673.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/1f/96/1f966ddedc990a66144c301c1a8b89f480638b65.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c1/cf/c1cfea6d34304d9fd898525bd1e052f2a130c1d9.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/04/9b/049b8ca7070ebdae0bb6c007689f80d814067df1.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/dd/21/dd21d78202b60ac7580b4c3fcf949cebe9f7d03d.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/d7/57/d7572e2dea8414443a0f4145c13b1c756cd5c5c0.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/ec/6d/ec6d8d714b9cbb1bd761852cdadf89528b2036f6.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/79/0c/790c3eba1db7d3c943c477c15055076318e371ed.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/22/32/2232111fbef68d4be3d101985facf644ec699441.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/04/fa/04faac4f06ebe71f18c71710e8a4846bfbd9a4f7.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/98/5b/985b15526005d62d5993872f5976f0f55e2cc6f2.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/db/73/db7374e039e86081cde6eca55eb611a255b900a0.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c5/61/c561ac65c7c6cb5755ca07802b83654bdde8f61b.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/73/87/7387fa42202d5692def5d55c2bbcfad65a4daf73.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/71/b7/71b7df55fffdb33f78cfb69fbc81b7201cd9f143.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/44/fb/44fb5a07e45327e6636ab3a6500901d15f78dcb6.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/eb/6c/eb6c17acaec686f14c44d562a6a5b57535da4a5f.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/fc/bf/fcbf23451deeeea1b935aff69e940618f99f5a0b.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/a4/69/a4699832bad5e36fe4aa2811f22203d7fe30dfc0.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/a5/a3/a5a34c02e2f4e8295bef68b00b4d70afd407dc5a.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c1/01/c101ae1682f174c4591eaafcf5e5d726b9190989.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/d0/0a/d00a8d87837bd93207e8cd4fee77b3cebad462a4.JPEG"
+                    ],
+                    "name": "Standard Double Family room",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 3,
+                        "quality": 2,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 1,
+                        "capacity": 2,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 0
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "Standard Double Family room"
+                    }
+                },
+                {
+                    "room_group_id": 19968564,
+                    "images": [
+                        "https://cdn.worldota.net/t/{size}/content/0c/3e/0c3e1d743f98ff70f1869fe65dcef2d3aecb3757.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/83/5d/835ddf2c86b61380c0b70ffa455db6ffb43517f8.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/14/0e/140ebf38a2181db1a2f05c96f23459145240f255.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/75/28/75286ea41458f0fecd93d22ac2a264d3af664464.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/0b/2a/0b2a89d992f187fc95c746a5562e967fb173c9ed.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/86/bb/86bbca6267a5d74a1bb709c8728a4318e25bb8fc.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/30/cc/30ccb5a510a0962403c6afb09206f06091c582e9.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/ed/fb/edfba5cd18637e59218f1eb480a63c02a7ddddaa.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/f0/93/f0937358689d0e0be464a22157da28c64a200d16.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/38/19/38196a422c85d30a4cc123bddf102c60049bbbca.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c1/cb/c1cba4abd35468300ead9b15a7d76eb55b6dee20.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/cb/53/cb53a9282e1625da6138e6c86a6d7f18db32c116.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/5e/18/5e18219c5e5190bca16119e7653ea254c5ef2673.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/1f/96/1f966ddedc990a66144c301c1a8b89f480638b65.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c1/cf/c1cfea6d34304d9fd898525bd1e052f2a130c1d9.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/04/9b/049b8ca7070ebdae0bb6c007689f80d814067df1.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/dd/21/dd21d78202b60ac7580b4c3fcf949cebe9f7d03d.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/d7/57/d7572e2dea8414443a0f4145c13b1c756cd5c5c0.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/ec/6d/ec6d8d714b9cbb1bd761852cdadf89528b2036f6.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/79/0c/790c3eba1db7d3c943c477c15055076318e371ed.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/22/32/2232111fbef68d4be3d101985facf644ec699441.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/04/fa/04faac4f06ebe71f18c71710e8a4846bfbd9a4f7.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/98/5b/985b15526005d62d5993872f5976f0f55e2cc6f2.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/db/73/db7374e039e86081cde6eca55eb611a255b900a0.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c5/61/c561ac65c7c6cb5755ca07802b83654bdde8f61b.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/73/87/7387fa42202d5692def5d55c2bbcfad65a4daf73.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/71/b7/71b7df55fffdb33f78cfb69fbc81b7201cd9f143.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/44/fb/44fb5a07e45327e6636ab3a6500901d15f78dcb6.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/eb/6c/eb6c17acaec686f14c44d562a6a5b57535da4a5f.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/fc/bf/fcbf23451deeeea1b935aff69e940618f99f5a0b.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/a4/69/a4699832bad5e36fe4aa2811f22203d7fe30dfc0.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/a5/a3/a5a34c02e2f4e8295bef68b00b4d70afd407dc5a.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c1/01/c101ae1682f174c4591eaafcf5e5d726b9190989.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/d0/0a/d00a8d87837bd93207e8cd4fee77b3cebad462a4.JPEG"
+                    ],
+                    "name": "Standard Double Family room with sea view",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 3,
+                        "quality": 2,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 1,
+                        "capacity": 2,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 31
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "Standard Double Family room with sea view"
+                    }
+                },
+                {
+                    "room_group_id": 100,
+                    "images": [
+                        "https://cdn.worldota.net/t/{size}/content/0c/3e/0c3e1d743f98ff70f1869fe65dcef2d3aecb3757.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/83/5d/835ddf2c86b61380c0b70ffa455db6ffb43517f8.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/14/0e/140ebf38a2181db1a2f05c96f23459145240f255.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/75/28/75286ea41458f0fecd93d22ac2a264d3af664464.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/0b/2a/0b2a89d992f187fc95c746a5562e967fb173c9ed.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/86/bb/86bbca6267a5d74a1bb709c8728a4318e25bb8fc.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/30/cc/30ccb5a510a0962403c6afb09206f06091c582e9.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/ed/fb/edfba5cd18637e59218f1eb480a63c02a7ddddaa.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/f0/93/f0937358689d0e0be464a22157da28c64a200d16.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/38/19/38196a422c85d30a4cc123bddf102c60049bbbca.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c1/cb/c1cba4abd35468300ead9b15a7d76eb55b6dee20.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/cb/53/cb53a9282e1625da6138e6c86a6d7f18db32c116.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/5e/18/5e18219c5e5190bca16119e7653ea254c5ef2673.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/1f/96/1f966ddedc990a66144c301c1a8b89f480638b65.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c1/cf/c1cfea6d34304d9fd898525bd1e052f2a130c1d9.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/04/9b/049b8ca7070ebdae0bb6c007689f80d814067df1.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/dd/21/dd21d78202b60ac7580b4c3fcf949cebe9f7d03d.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/d7/57/d7572e2dea8414443a0f4145c13b1c756cd5c5c0.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/ec/6d/ec6d8d714b9cbb1bd761852cdadf89528b2036f6.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/79/0c/790c3eba1db7d3c943c477c15055076318e371ed.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/22/32/2232111fbef68d4be3d101985facf644ec699441.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/04/fa/04faac4f06ebe71f18c71710e8a4846bfbd9a4f7.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/98/5b/985b15526005d62d5993872f5976f0f55e2cc6f2.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/db/73/db7374e039e86081cde6eca55eb611a255b900a0.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c5/61/c561ac65c7c6cb5755ca07802b83654bdde8f61b.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/73/87/7387fa42202d5692def5d55c2bbcfad65a4daf73.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/71/b7/71b7df55fffdb33f78cfb69fbc81b7201cd9f143.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/44/fb/44fb5a07e45327e6636ab3a6500901d15f78dcb6.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/eb/6c/eb6c17acaec686f14c44d562a6a5b57535da4a5f.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/fc/bf/fcbf23451deeeea1b935aff69e940618f99f5a0b.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/a4/69/a4699832bad5e36fe4aa2811f22203d7fe30dfc0.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/a5/a3/a5a34c02e2f4e8295bef68b00b4d70afd407dc5a.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c1/01/c101ae1682f174c4591eaafcf5e5d726b9190989.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/d0/0a/d00a8d87837bd93207e8cd4fee77b3cebad462a4.JPEG"
+                    ],
+                    "name": "Standard Double Family room full double bed",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 3,
+                        "quality": 2,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 3,
+                        "family": 1,
+                        "capacity": 2,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 0
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": "full double bed",
+                        "main_name": "Standard Double Family room"
+                    }
+                },
+                {
+                    "room_group_id": 18002484,
+                    "images": [
+                        "https://cdn.worldota.net/t/{size}/content/0c/3e/0c3e1d743f98ff70f1869fe65dcef2d3aecb3757.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/83/5d/835ddf2c86b61380c0b70ffa455db6ffb43517f8.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/14/0e/140ebf38a2181db1a2f05c96f23459145240f255.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/75/28/75286ea41458f0fecd93d22ac2a264d3af664464.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/0b/2a/0b2a89d992f187fc95c746a5562e967fb173c9ed.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/86/bb/86bbca6267a5d74a1bb709c8728a4318e25bb8fc.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/30/cc/30ccb5a510a0962403c6afb09206f06091c582e9.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/ed/fb/edfba5cd18637e59218f1eb480a63c02a7ddddaa.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/f0/93/f0937358689d0e0be464a22157da28c64a200d16.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/38/19/38196a422c85d30a4cc123bddf102c60049bbbca.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c1/cb/c1cba4abd35468300ead9b15a7d76eb55b6dee20.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/cb/53/cb53a9282e1625da6138e6c86a6d7f18db32c116.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/5e/18/5e18219c5e5190bca16119e7653ea254c5ef2673.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/1f/96/1f966ddedc990a66144c301c1a8b89f480638b65.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c1/cf/c1cfea6d34304d9fd898525bd1e052f2a130c1d9.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/04/9b/049b8ca7070ebdae0bb6c007689f80d814067df1.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/dd/21/dd21d78202b60ac7580b4c3fcf949cebe9f7d03d.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/d7/57/d7572e2dea8414443a0f4145c13b1c756cd5c5c0.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/ec/6d/ec6d8d714b9cbb1bd761852cdadf89528b2036f6.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/79/0c/790c3eba1db7d3c943c477c15055076318e371ed.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/22/32/2232111fbef68d4be3d101985facf644ec699441.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/04/fa/04faac4f06ebe71f18c71710e8a4846bfbd9a4f7.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/98/5b/985b15526005d62d5993872f5976f0f55e2cc6f2.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/db/73/db7374e039e86081cde6eca55eb611a255b900a0.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c5/61/c561ac65c7c6cb5755ca07802b83654bdde8f61b.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/73/87/7387fa42202d5692def5d55c2bbcfad65a4daf73.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/71/b7/71b7df55fffdb33f78cfb69fbc81b7201cd9f143.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/44/fb/44fb5a07e45327e6636ab3a6500901d15f78dcb6.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/eb/6c/eb6c17acaec686f14c44d562a6a5b57535da4a5f.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/fc/bf/fcbf23451deeeea1b935aff69e940618f99f5a0b.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/a4/69/a4699832bad5e36fe4aa2811f22203d7fe30dfc0.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/a5/a3/a5a34c02e2f4e8295bef68b00b4d70afd407dc5a.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c1/01/c101ae1682f174c4591eaafcf5e5d726b9190989.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/d0/0a/d00a8d87837bd93207e8cd4fee77b3cebad462a4.JPEG"
+                    ],
+                    "name": "Standard Family room twin beds",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 3,
+                        "quality": 2,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 4,
+                        "family": 1,
+                        "capacity": 0,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 0
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": "twin beds",
+                        "main_name": "Standard Family room"
+                    }
+                },
+                {
+                    "room_group_id": 101,
+                    "images": [
+                        "https://cdn.worldota.net/t/{size}/content/0c/3e/0c3e1d743f98ff70f1869fe65dcef2d3aecb3757.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/83/5d/835ddf2c86b61380c0b70ffa455db6ffb43517f8.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/14/0e/140ebf38a2181db1a2f05c96f23459145240f255.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/75/28/75286ea41458f0fecd93d22ac2a264d3af664464.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/0b/2a/0b2a89d992f187fc95c746a5562e967fb173c9ed.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/86/bb/86bbca6267a5d74a1bb709c8728a4318e25bb8fc.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/30/cc/30ccb5a510a0962403c6afb09206f06091c582e9.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/ed/fb/edfba5cd18637e59218f1eb480a63c02a7ddddaa.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/f0/93/f0937358689d0e0be464a22157da28c64a200d16.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/38/19/38196a422c85d30a4cc123bddf102c60049bbbca.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c1/cb/c1cba4abd35468300ead9b15a7d76eb55b6dee20.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/cb/53/cb53a9282e1625da6138e6c86a6d7f18db32c116.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/5e/18/5e18219c5e5190bca16119e7653ea254c5ef2673.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/1f/96/1f966ddedc990a66144c301c1a8b89f480638b65.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c1/cf/c1cfea6d34304d9fd898525bd1e052f2a130c1d9.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/04/9b/049b8ca7070ebdae0bb6c007689f80d814067df1.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/dd/21/dd21d78202b60ac7580b4c3fcf949cebe9f7d03d.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/d7/57/d7572e2dea8414443a0f4145c13b1c756cd5c5c0.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/ec/6d/ec6d8d714b9cbb1bd761852cdadf89528b2036f6.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/79/0c/790c3eba1db7d3c943c477c15055076318e371ed.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/22/32/2232111fbef68d4be3d101985facf644ec699441.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/04/fa/04faac4f06ebe71f18c71710e8a4846bfbd9a4f7.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/98/5b/985b15526005d62d5993872f5976f0f55e2cc6f2.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/db/73/db7374e039e86081cde6eca55eb611a255b900a0.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c5/61/c561ac65c7c6cb5755ca07802b83654bdde8f61b.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/73/87/7387fa42202d5692def5d55c2bbcfad65a4daf73.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/71/b7/71b7df55fffdb33f78cfb69fbc81b7201cd9f143.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/44/fb/44fb5a07e45327e6636ab3a6500901d15f78dcb6.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/eb/6c/eb6c17acaec686f14c44d562a6a5b57535da4a5f.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/fc/bf/fcbf23451deeeea1b935aff69e940618f99f5a0b.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/a4/69/a4699832bad5e36fe4aa2811f22203d7fe30dfc0.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/a5/a3/a5a34c02e2f4e8295bef68b00b4d70afd407dc5a.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/c1/01/c101ae1682f174c4591eaafcf5e5d726b9190989.JPEG",
+                        "https://cdn.worldota.net/t/{size}/content/d0/0a/d00a8d87837bd93207e8cd4fee77b3cebad462a4.JPEG"
+                    ],
+                    "name": "Standard Double Family room twin beds",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 3,
+                        "quality": 2,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 4,
+                        "family": 1,
+                        "capacity": 2,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 0
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": "twin beds",
+                        "main_name": "Standard Double Family room"
+                    }
+                },
+                {
+                    "room_group_id": 14,
+                    "images": [],
+                    "name": "Apartment",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 6,
+                        "quality": 0,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 0,
+                        "capacity": 0,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 0
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "Apartment"
+                    }
+                },
+                {
+                    "room_group_id": 18395671,
+                    "images": [],
+                    "name": "Apartment with sea view",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 6,
+                        "quality": 0,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 0,
+                        "capacity": 0,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 31
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "Apartment with sea view"
+                    }
+                },
+                {
+                    "room_group_id": 18395671,
+                    "images": [],
+                    "name": "2 Bedrooms Apartment",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 6,
+                        "quality": 0,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 0,
+                        "capacity": 0,
+                        "club": 0,
+                        "bedrooms": 2,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 0
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "2 Bedrooms Apartment"
+                    }
+                },
+                {
+                    "room_group_id": 18395671,
+                    "images": [],
+                    "name": "2 Bedrooms Apartment with sea view",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 6,
+                        "quality": 0,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 0,
+                        "capacity": 0,
+                        "club": 0,
+                        "bedrooms": 2,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 31
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "2 Bedrooms Apartment with sea view"
+                    }
+                },
+                {
+                    "room_group_id": 18526743,
+                    "images": [],
+                    "name": "2 Bedrooms Apartment with sea view twin beds",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 6,
+                        "quality": 0,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 4,
+                        "family": 0,
+                        "capacity": 0,
+                        "club": 0,
+                        "bedrooms": 2,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 31
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": "twin beds",
+                        "main_name": "2 Bedrooms Apartment with sea view"
+                    }
+                },
+                {
+                    "room_group_id": 20623895,
+                    "images": [],
+                    "name": "Double Apartment with water view twin beds",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 6,
+                        "quality": 0,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 4,
+                        "family": 0,
+                        "capacity": 2,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 36
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": "twin beds",
+                        "main_name": "Double Apartment with water view"
+                    }
+                },
+                {
+                    "room_group_id": 26,
+                    "images": [
+                        "https://cdn.worldota.net/t/{size}/content/04/9b/049b8ca7070ebdae0bb6c007689f80d814067df1.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/79/0c/790c3eba1db7d3c943c477c15055076318e371ed.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/86/bb/86bbca6267a5d74a1bb709c8728a4318e25bb8fc.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/dd/21/dd21d78202b60ac7580b4c3fcf949cebe9f7d03d.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/14/0e/140ebf38a2181db1a2f05c96f23459145240f255.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/83/5d/835ddf2c86b61380c0b70ffa455db6ffb43517f8.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/30/cc/30ccb5a510a0962403c6afb09206f06091c582e9.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/cb/53/cb53a9282e1625da6138e6c86a6d7f18db32c116.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/75/28/75286ea41458f0fecd93d22ac2a264d3af664464.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/1f/96/1f966ddedc990a66144c301c1a8b89f480638b65.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/38/19/38196a422c85d30a4cc123bddf102c60049bbbca.jpeg"
+                    ],
+                    "name": "Studio",
+                    "room_amenities": [
+                        "air-conditioning",
+                        "balcony",
+                        "fridge",
+                        "hairdryer",
+                        "iron",
+                        "kitchen",
+                        "private-bathroom",
+                        "shower",
+                        "tea",
+                        "towels",
+                        "tv",
+                        "wi-fi",
+                        "with-view"
+                    ],
+                    "rg_ext": {
+                        "class": 7,
+                        "quality": 0,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 0,
+                        "capacity": 0,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 0
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "Studio"
+                    }
+                },
+                {
+                    "room_group_id": 18395672,
+                    "images": [
+                        "https://cdn.worldota.net/t/{size}/content/04/9b/049b8ca7070ebdae0bb6c007689f80d814067df1.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/79/0c/790c3eba1db7d3c943c477c15055076318e371ed.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/86/bb/86bbca6267a5d74a1bb709c8728a4318e25bb8fc.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/dd/21/dd21d78202b60ac7580b4c3fcf949cebe9f7d03d.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/14/0e/140ebf38a2181db1a2f05c96f23459145240f255.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/83/5d/835ddf2c86b61380c0b70ffa455db6ffb43517f8.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/30/cc/30ccb5a510a0962403c6afb09206f06091c582e9.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/cb/53/cb53a9282e1625da6138e6c86a6d7f18db32c116.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/75/28/75286ea41458f0fecd93d22ac2a264d3af664464.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/1f/96/1f966ddedc990a66144c301c1a8b89f480638b65.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/38/19/38196a422c85d30a4cc123bddf102c60049bbbca.jpeg"
+                    ],
+                    "name": "Studio with sea view",
+                    "room_amenities": [
+                        "air-conditioning",
+                        "balcony",
+                        "fridge",
+                        "hairdryer",
+                        "iron",
+                        "kitchen",
+                        "private-bathroom",
+                        "shower",
+                        "tea",
+                        "towels",
+                        "tv",
+                        "wi-fi",
+                        "with-view"
+                    ],
+                    "rg_ext": {
+                        "class": 7,
+                        "quality": 0,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 0,
+                        "capacity": 0,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 31
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "Studio with sea view"
+                    }
+                },
+                {
+                    "room_group_id": 18395672,
+                    "images": [
+                        "https://cdn.worldota.net/t/{size}/content/04/9b/049b8ca7070ebdae0bb6c007689f80d814067df1.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/79/0c/790c3eba1db7d3c943c477c15055076318e371ed.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/86/bb/86bbca6267a5d74a1bb709c8728a4318e25bb8fc.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/dd/21/dd21d78202b60ac7580b4c3fcf949cebe9f7d03d.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/14/0e/140ebf38a2181db1a2f05c96f23459145240f255.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/83/5d/835ddf2c86b61380c0b70ffa455db6ffb43517f8.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/30/cc/30ccb5a510a0962403c6afb09206f06091c582e9.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/cb/53/cb53a9282e1625da6138e6c86a6d7f18db32c116.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/75/28/75286ea41458f0fecd93d22ac2a264d3af664464.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/1f/96/1f966ddedc990a66144c301c1a8b89f480638b65.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/38/19/38196a422c85d30a4cc123bddf102c60049bbbca.jpeg"
+                    ],
+                    "name": "Studio with balcony and with sea view",
+                    "room_amenities": [
+                        "air-conditioning",
+                        "balcony",
+                        "fridge",
+                        "hairdryer",
+                        "iron",
+                        "kitchen",
+                        "private-bathroom",
+                        "shower",
+                        "tea",
+                        "towels",
+                        "tv",
+                        "wi-fi",
+                        "with-view"
+                    ],
+                    "rg_ext": {
+                        "class": 7,
+                        "quality": 0,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 0,
+                        "capacity": 0,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 1,
+                        "floor": 0,
+                        "view": 31
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "Studio with balcony and with sea view"
+                    }
+                },
+                {
+                    "room_group_id": 21541400,
+                    "images": [
+                        "https://cdn.worldota.net/t/{size}/content/04/9b/049b8ca7070ebdae0bb6c007689f80d814067df1.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/79/0c/790c3eba1db7d3c943c477c15055076318e371ed.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/86/bb/86bbca6267a5d74a1bb709c8728a4318e25bb8fc.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/dd/21/dd21d78202b60ac7580b4c3fcf949cebe9f7d03d.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/14/0e/140ebf38a2181db1a2f05c96f23459145240f255.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/83/5d/835ddf2c86b61380c0b70ffa455db6ffb43517f8.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/30/cc/30ccb5a510a0962403c6afb09206f06091c582e9.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/cb/53/cb53a9282e1625da6138e6c86a6d7f18db32c116.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/75/28/75286ea41458f0fecd93d22ac2a264d3af664464.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/1f/96/1f966ddedc990a66144c301c1a8b89f480638b65.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/38/19/38196a422c85d30a4cc123bddf102c60049bbbca.jpeg"
+                    ],
+                    "name": "Triple Studio with sea view",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 7,
+                        "quality": 0,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 0,
+                        "capacity": 3,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 31
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "Triple Studio with sea view"
+                    }
+                },
+                {
+                    "room_group_id": 21541400,
+                    "images": [
+                        "https://cdn.worldota.net/t/{size}/content/04/9b/049b8ca7070ebdae0bb6c007689f80d814067df1.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/79/0c/790c3eba1db7d3c943c477c15055076318e371ed.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/86/bb/86bbca6267a5d74a1bb709c8728a4318e25bb8fc.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/dd/21/dd21d78202b60ac7580b4c3fcf949cebe9f7d03d.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/14/0e/140ebf38a2181db1a2f05c96f23459145240f255.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/83/5d/835ddf2c86b61380c0b70ffa455db6ffb43517f8.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/30/cc/30ccb5a510a0962403c6afb09206f06091c582e9.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/cb/53/cb53a9282e1625da6138e6c86a6d7f18db32c116.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/75/28/75286ea41458f0fecd93d22ac2a264d3af664464.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/1f/96/1f966ddedc990a66144c301c1a8b89f480638b65.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/38/19/38196a422c85d30a4cc123bddf102c60049bbbca.jpeg"
+                    ],
+                    "name": "Triple Studio with balcony and with sea view",
+                    "room_amenities": [
+                        "air-conditioning",
+                        "balcony",
+                        "fridge",
+                        "iron",
+                        "kitchen",
+                        "private-bathroom",
+                        "shower",
+                        "tv",
+                        "wi-fi"
+                    ],
+                    "rg_ext": {
+                        "class": 7,
+                        "quality": 0,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 0,
+                        "capacity": 3,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 1,
+                        "floor": 0,
+                        "view": 31
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "Triple Studio with balcony and with sea view"
+                    }
+                },
+                {
+                    "room_group_id": 18461208,
+                    "images": [
+                        "https://cdn.worldota.net/t/{size}/content/04/9b/049b8ca7070ebdae0bb6c007689f80d814067df1.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/79/0c/790c3eba1db7d3c943c477c15055076318e371ed.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/86/bb/86bbca6267a5d74a1bb709c8728a4318e25bb8fc.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/dd/21/dd21d78202b60ac7580b4c3fcf949cebe9f7d03d.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/14/0e/140ebf38a2181db1a2f05c96f23459145240f255.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/83/5d/835ddf2c86b61380c0b70ffa455db6ffb43517f8.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/30/cc/30ccb5a510a0962403c6afb09206f06091c582e9.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/cb/53/cb53a9282e1625da6138e6c86a6d7f18db32c116.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/75/28/75286ea41458f0fecd93d22ac2a264d3af664464.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/1f/96/1f966ddedc990a66144c301c1a8b89f480638b65.jpeg",
+                        "https://cdn.worldota.net/t/{size}/content/38/19/38196a422c85d30a4cc123bddf102c60049bbbca.jpeg"
+                    ],
+                    "name": "Studio with sea view single bed",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 7,
+                        "quality": 0,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 2,
+                        "family": 0,
+                        "capacity": 0,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 31
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": "single bed",
+                        "main_name": "Studio with sea view"
+                    }
+                },
+                {
+                    "room_group_id": 22,
+                    "images": [],
+                    "name": "Villa",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 8,
+                        "quality": 0,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 0,
+                        "capacity": 0,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 0
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "Villa"
+                    }
+                },
+                {
+                    "room_group_id": 18395673,
+                    "images": [],
+                    "name": "Villa with garden view",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 8,
+                        "quality": 0,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 0,
+                        "capacity": 0,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 8
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "Villa with garden view"
+                    }
+                },
+                {
+                    "room_group_id": 18395674,
+                    "images": [],
+                    "name": "Cottage with water view",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 9,
+                        "quality": 0,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 0,
+                        "capacity": 0,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 36
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "Cottage with water view"
+                    }
+                },
+                {
+                    "room_group_id": 18395674,
+                    "images": [],
+                    "name": "Cottage with view",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 9,
+                        "quality": 0,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 0,
+                        "capacity": 0,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 37
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "Cottage with view"
+                    }
+                },
+                {
+                    "room_group_id": 21541402,
+                    "images": [],
+                    "name": "Triple Cottage",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 9,
+                        "quality": 0,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 0,
+                        "capacity": 3,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 0
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "Triple Cottage"
+                    }
+                },
+                {
+                    "room_group_id": 21541402,
+                    "images": [],
+                    "name": "Triple Cottage with water view",
+                    "room_amenities": [
+                        "private-bathroom"
+                    ],
+                    "rg_ext": {
+                        "class": 9,
+                        "quality": 0,
+                        "sex": 0,
+                        "bathroom": 2,
+                        "bedding": 0,
+                        "family": 0,
+                        "capacity": 3,
+                        "club": 0,
+                        "bedrooms": 0,
+                        "balcony": 0,
+                        "floor": 0,
+                        "view": 36
+                    },
+                    "name_struct": {
+                        "bathroom": null,
+                        "bedding_type": null,
+                        "main_name": "Triple Cottage with water view"
+                    }
+                }
+            ],
+            "region": {
+                "id": 965855207,
+                "country_code": "GR",
+                "iata": null,
+                "name": "Kipseli",
+                "type": "City",
+                "type_v2": "city"
+            },
+            "star_rating": 0,
+            "email": "armonia.studios.apartments@gmail.com",
+            "serp_filters": [
+                "has_internet",
+                "has_parking",
+                "has_kids",
+                "has_pool",
+                "has_meal",
+                "air_conditioning"
+            ],
+            "deleted": false,
+            "is_closed": false,
+            "is_gender_specification_required": false,
+            "metapolicy_struct": {
+                "internet": [],
+                "meal": [],
+                "children_meal": [],
+                "extra_bed": [],
+                "cot": [],
+                "pets": [],
+                "shuttle": [],
+                "parking": [],
+                "children": [],
+                "visa": {
+                    "visa_support": "unspecified"
+                },
+                "deposit": [],
+                "no_show": {
+                    "availability": "unspecified",
+                    "time": null,
+                    "day_period": "unspecified"
+                },
+                "add_fee": [],
+                "check_in_check_out": []
+            },
+            "metapolicy_extra_info": "<p><b>National Rating</b> <br />For the benefit of our customers, we have provided a rating based on our rating system.</p><p><b>Know Before You Go</b> <br /><ul>  <li>Cash transactions at this property cannot exceed EUR 500, due to national regulations. For further details, please contact the property using information in the booking confirmation. </li> </ul></p><p><b>Fees</b> <br /><p>The following fees and deposits are charged by the property at time of service, check-in, or check-out. </p> <ul> <li>Fee for full breakfast: EUR 7 per person (approximately)</li>                              </ul> <p>The above list may not be comprehensive. Fees and deposits may not include tax and are subject to change. </p></p><p><b>Mandatory Fees and Taxes</b> <br /><p>You'll be asked to pay the following charges at the property:</p> <ul><li>Tourism fee: EUR 0.50 per accommodation, per night</li></ul> <p>We have included all charges provided to us by the property. However, charges can vary, for example, based on length of stay or the room you book. </p></p>",
+            "star_certificate": null,
+            "facts": {
+                "floors_number": null,
+                "rooms_number": 6,
+                "year_built": null,
+                "year_renovated": null,
+                "electricity": {
+                    "frequency": [
+                        50
+                    ],
+                    "voltage": [
+                        230
+                    ],
+                    "sockets": [
+                        "c",
+                        "f"
+                    ]
+                }
+            },
+            "payment_methods": [
+                "visa",
+                "jcb",
+                "master_card",
+                "american_express",
+                "diners_club"
+            ],
+            "hotel_chain": "No chain",
+            "front_desk_time_start": null,
+            "front_desk_time_end": null,
+            "keys_pickup": {
+                "type": "unspecified",
+                "phone": null,
+                "email": null,
+                "apartment_office_address": null,
+                "apartment_extra_information": null,
+                "is_contactless": false
+            }
+        }
+    ]
+}
+]
+}

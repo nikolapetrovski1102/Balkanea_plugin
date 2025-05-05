@@ -1,1 +1,2 @@
 [26-Aug-2024 16:57:49 UTC] PHP Parse error:  syntax error, unexpected 'return' (T_RETURN), expecting ';' or ',' in /home/balkanea/public_html/wp-plugin/Hotels_CRUD/fetch_hotels.php on line 20
+[12-Apr-2025 22:01:25 UTC] WordPress database error Lock wait timeout exceeded; try restarting transaction for query DELETE FROM Y7FXuNUTt_posts WHERE post_name = 'premier_luxury_mountain_resort'

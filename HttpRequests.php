@@ -1,114 +1,81 @@
+/**
+ * HttpRequests.php
+ * This file contains functions for making HTTP requests to the provider API
+ * to fetch hotel information, prices, and details.
+ */
 <?php
 
-function checkHotel($data_hotel) {
-    // Load the state from JSON
-    $state = json_decode(file_get_contents('region_state.json'), true);
+/**
+ * Manages the state of hotel processing and returns the next hotel to be processed
+ * Uses a JSON file to maintain state between executions
+ * 
+ * @param array $data_hotel Hierarchical array of hotels organized by regions
+ * @return mixed Returns the next hotel ID to process or null if no hotels are available
+ */
 
-    // Default state if no state exists
-    if (!$state) {
-        $state = [
-            'last_region_index' => -1, 
-            'last_hotel_key_index' => -1, 
-            'last_hotel_index' => -1
-        ];
-    }
-
+function trackNextRegion() {
+    // Load regions
+    $stateFile = 'region_tracker_state.json';
+    
+    // Load the current state or initialize if it doesn't exist
+    $state = json_decode(@file_get_contents($stateFile), true) ?: ['last_region_index' => -1];
+    
+    // Include the region data
+    require_once './data/track_region.php';
+    
+    // Extract region IDs
     $regions = array_keys($data_hotel);
-    $lastRegionIndex = $state['last_region_index'];
-    $lastHotelKeyIndex = $state['last_hotel_key_index'];
-    $lastHotelIndex = $state['last_hotel_index'];
-
-    // Move to the next hotel in the current key
-    $nextHotelIndex = $lastHotelIndex + 1;
-
-    // If there is no valid region or the last region is exhausted, go to the next region
-    if ($lastRegionIndex < 0 || !isset($regions[$lastRegionIndex])) {
-        // Initialize the first region
-        $nextRegionIndex = 0;
-        $nextHotelKeyIndex = 0;
-        $nextHotelIndex = 0;
-    } else {
-        // Get current region ID and its hotel keys
-        $currentRegionId = $regions[$lastRegionIndex];
-        $hotelKeys = array_keys($data_hotel[$currentRegionId]);
-
-        // Check if the current hotel key is exhausted
-        if (!isset($hotelKeys[$lastHotelKeyIndex]) || $nextHotelIndex >= count($data_hotel[$currentRegionId][$hotelKeys[$lastHotelKeyIndex]])) {
-            // Move to the next hotel key
-            $nextHotelKeyIndex = $lastHotelKeyIndex + 1;
-            $nextHotelIndex = 0;
-
-            // Check if all hotel keys in the current region are exhausted
-            if ($nextHotelKeyIndex >= count($hotelKeys)) {
-                // Move to the next region if all hotel keys are exhausted
-                $nextRegionIndex = $lastRegionIndex + 1;
-                $nextHotelKeyIndex = 0;
-                $nextHotelIndex = 0;
-
-                // If all regions are exhausted, loop back to the first region
-                if ($nextRegionIndex >= count($regions)) {
-                    $nextRegionIndex = 0;
-                }
-            } else {
-                // Stay in the same region but move to the next hotel key
-                $nextRegionIndex = $lastRegionIndex;
-            }
-        } else {
-            // Stay in the same region and hotel key
-            $nextRegionIndex = $lastRegionIndex;
-            $nextHotelKeyIndex = $lastHotelKeyIndex;
-        }
+    if (empty($regions)) {
+        return json_encode(['error' => 'No regions available.']);
     }
+    
+    // Calculate the next region index (cycle through regions)
+    $nextIndex = ($state['last_region_index'] + 1) % count($regions);
+    $countryId = $regions[$nextIndex];
+    $regions = $data_hotel[$countryId];
+    
+    // Update the state
+    $state['last_region_index'] = $nextIndex;
+    file_put_contents($stateFile, json_encode($state));
+    
+    // Return the region data as JSON
+    return json_encode([
+        'country' => $countryId,
+        'regions' => $regions
+    ]);
 
-    // Fetch the next region, hotel key, and hotel
-    $nextRegionId = $regions[$nextRegionIndex];
-    $hotelKeys = array_keys($data_hotel[$nextRegionId]);
-
-    if (isset($hotelKeys[$nextHotelKeyIndex])) {
-        $nextHotelKey = $hotelKeys[$nextHotelKeyIndex];
-        if (isset($data_hotel[$nextRegionId][$nextHotelKey][$nextHotelIndex])) {
-            $hotelToProcess = $data_hotel[$nextRegionId][$nextHotelKey][$nextHotelIndex];
-        } else {
-            $hotelToProcess = null;
-        }
-    } else {
-        $hotelToProcess = null;
-    }
-
-    // Update the state in the JSON file
-    file_put_contents('region_state.json', json_encode([
-        'last_region_index' => $nextRegionIndex,
-        'last_hotel_key_index' => $nextHotelKeyIndex,
-        'last_hotel_index' => $nextHotelIndex
-    ]));
-
-    return $hotelToProcess;
 }
 
-
-
-
-function getHotelPrice($data_hotel, $headers) {
-    $hotel_id = checkHotel($data_hotel);
+/**
+ * Fetches hotel pricing information from the WorldOta API
+ * Makes a POST request to get hotel prices for specific dates and guest configuration
+ * 
+ * @param array $data_hotel Array containing hotel data
+ * @param array $headers HTTP headers for API authentication
+ * @return array|string Returns API response as array or error message
+ */
+function getHotelPrice($region, $headers) {
 
     $hotels_by_region_url = 'https://api.worldota.net/api/b2b/v3/search/hp/';
 
+    // Set check-in date to 54 days from now and checkout to 62 days (8-day stay)
     $checkin = date("Y-m-d", strtotime("+54 day"));
     $checkout = date("Y-m-d", strtotime("+62 day"));
 
+    // Prepare request body with search parameters
     $body_data = array(
         "checkin" => $checkin,
         "checkout" => $checkout,
-        "residency" => "gr",
-        "language" => "en",
+        "residency" => "gr",              // Set residency to Greece
+        "language" => "en",               // Set language to English
         "guests" => array(
             array(
-                "adults" => 2,
-                "children" => array()
+                "adults" => 2,            // Search for 2 adults
+                "children" => array()      // No children
             )
         ),
         "id" => $hotel_id,
-        "currency" => "EUR"
+        "currency" => "EUR"               // Prices in Euros
     );
 
     $json_data = json_encode($body_data);
@@ -132,36 +99,81 @@ function getHotelPrice($data_hotel, $headers) {
         return json_decode($result, true);
 }
 
-function getHotelDetails($hotel_data, $headers){
-    $hotel_id = checkHotel($hotel_data);
-
-    $url = 'https://api.worldota.net/api/b2b/v3/hotel/info/';
-
-    $data_hotel = array(
-        'id' => $hotel_id,
-        'language' => 'en'
+/**
+ * Retrieves detailed information about a specific hotel
+ * Makes a POST request to fetch comprehensive hotel details including amenities,
+ * location, and other property information
+ * 
+ * @param array $hotel_data Array containing hotel data
+ * @param array $headers HTTP headers for API authentication
+ * @return array|string Returns hotel details as array or error message
+ */
+function getHotelDetails($region, $headers){
+    
+    $url = 'http://cyberlink-001-site33.atempurl.com/api/ExtractHotels/process';
+    
+    $data = array(
+        "region_id" => $region,
+        "country_code" => ""
     );
-
-    $json_data_hotel = json_encode($data_hotel);
+    
+    $jsonData = json_encode($data);
     
     $ci = curl_init();
     
     curl_setopt($ci, CURLOPT_URL, $url);
-    curl_setopt($ci, CURLOPT_POST, 1);
+    curl_setopt($ci, CURLOPT_POST, true);
+    curl_setopt($ci, CURLOPT_POSTFIELDS, $jsonData);
     curl_setopt($ci, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ci, CURLOPT_POSTFIELDS, $json_data_hotel);
     curl_setopt($ci, CURLOPT_HTTPHEADER, $headers);
-    curl_setopt($ci, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ci, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ci, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
+    
+    curl_setopt($ci, CURLOPT_TIMEOUT, 0);
+    curl_setopt($ci, CURLOPT_CONNECTTIMEOUT, 0);
     
     $response = curl_exec($ci);
-
+    $response_json = json_decode($response, true);
+    $httpCode = curl_getinfo($ci, CURLINFO_HTTP_CODE);
+    
+    if (curl_errno($ci)) {
+        echo 'CURL Error: ' . curl_error($ci);
+    } else {
+        return $response_json['outputFile'][$region];
+    }
+    
     curl_close($ci);
+    // $hotel_id = $hotel_name;
 
-    if ($response === false)
-        return curl_error($ci);
-    else
-        return json_decode($response, true)['data'];
+    // $url = 'https://api.worldota.net/api/b2b/v3/hotel/info/';
+
+    // error_log("Executing hotel" . $hotel_id);
+
+    // $data_hotel = array(
+    //     'id' => $hotel_id,
+    //     'language' => 'en'                // Set response language to English
+    // );
+
+    // $json_data_hotel = json_encode($data_hotel);
+    
+    // $ci = curl_init();
+    
+    // curl_setopt($ci, CURLOPT_URL, $url);
+    // curl_setopt($ci, CURLOPT_POST, 1);
+    // curl_setopt($ci, CURLOPT_RETURNTRANSFER, true);
+    // curl_setopt($ci, CURLOPT_POSTFIELDS, $json_data_hotel);
+    // curl_setopt($ci, CURLOPT_HTTPHEADER, $headers);
+    // curl_setopt($ci, CURLOPT_RETURNTRANSFER, true);
+    // curl_setopt($ci, CURLOPT_SSL_VERIFYPEER, false);
+    
+    // $response = curl_exec($ci);
+
+    // curl_close($ci);
+
+    // if ($response === false)
+    //     return curl_error($ci);
+    // else
+    //     return json_decode($response, true)['data'];
 }
 
 ?>

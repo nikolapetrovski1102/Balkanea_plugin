@@ -31,7 +31,7 @@ class ImageInserter {
             echo '<br>Directory: ' . $this->directory_url . '<br>';
 
             if (empty($this->hotel['images'])) {
-                $this->hotel['images'][] = $this->default_image;
+                $this->hotel['images'] = $this->default_image;
             }
 
             foreach ($this->hotel['images'] as $img) {
@@ -88,6 +88,7 @@ class ImageInserter {
     }
 
     private function downloadImage($img_url, $new_name) {
+
         $ch = curl_init($img_url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);

@@ -34,46 +34,12 @@ class LocationNested {
             return $location_exists;
         }
 
+        $this->map_location();
+        
         $this->calculateKeys();
 
-        $this->map_location();
-
-        $query = $this->wpdb->prepare(
-            "INSERT INTO {$this->wpdb->prefix}{$this->table} (
-                location_id, 
-                location_country, 
-                parent_id, 
-                left_key, 
-                right_key, 
-                name, 
-                fullname, 
-                language, 
-                status
-            ) VALUES (%d, %s, %d, %d, %d, %s, %s, %s, %s)
-            ON DUPLICATE KEY UPDATE
-                location_country = VALUES(location_country),
-                parent_id = VALUES(parent_id),
-                left_key = VALUES(left_key),
-                right_key = VALUES(right_key),
-                name = VALUES(name),
-                fullname = VALUES(fullname),
-                language = VALUES(language),
-                status = VALUES(status)",
-            $this->location_id, 
-            $this->location_country, 
-            $this->parent_id, 
-            $this->left_key, 
-            $this->right_key, 
-            $this->name, 
-            $this->fullname, 
-            $this->language, 
-            $this->status
-        );
-
-        print_r($query);
-
         $this->wpdb->query($query);
-
+        
         if ($this->wpdb->last_error)
             throw new \Exception($this->wpdb->last_error);
         else
@@ -96,20 +62,6 @@ class LocationNested {
         else{
             return $query_result->location_id;
         }
-        // Second query
-        // $query = $wpdb->prepare(
-        //     "SELECT location_id FROM {$wpdb->prefix}{$this->table} WHERE id = %d",
-        //     intval($this->parent_id)
-        // );
-    
-        // $query_result = $wpdb->get_row($query);
-    
-        // if ($query_result === null) {
-        //     echo 'No results found for the second query.<br>';
-        //     return null;
-        // }
-    
-        // return $query_result->location_id;
     }
     
 
@@ -118,14 +70,18 @@ class LocationNested {
         if (!isset($this->parent_id)) {
             throw new Error('Parent ID not set');
         }
-
+        
         $query = $this->wpdb->prepare(
             "SELECT * FROM {$this->wpdb->prefix}{$this->table} WHERE id = %d",
             $this->parent_id
         );
-
+        
+        error_log("Executin query: " . print_r($query, true));
+        
         $query_result = $this->wpdb->get_row($query);
-
+        
+        error_log("Query results: " . print_r($query_result, true));
+        
         if (!$query_result) {
             throw new Error('Parent location not found');
         }
@@ -135,77 +91,66 @@ class LocationNested {
     }
 
     private function mapCountryCode() {
-
-        switch ($this->location_country) {
-            case 'GR':
-                $this->name = 'Greece';
-                $this->fullname = 'Greece';
-                break;
-            case 'RS':
-                $this->name = 'Serbia';
-                $this->fullname = 'Serbia';
-                break;
-            case 'BG':
-                $this->name = 'Bulgaria';
-                $this->fullname = 'Bulgaria';
-                break;
-            case 'MK':
-                $this->name = 'North Macedonia';
-                $this->fullname = 'North Macedonia';
-                break;
+        if (!function_exists('add_action')) {
+            require_once('/home/balkanea/public_html/wp-load.php');
         }
-
+    
+        if (function_exists('WC')) {
+            $this->name = WC()->countries->countries[$this->location_country] ?? 'Unknown';
+            $this->fullname = $this->name;
+        } else {
+            $this->name = 'Unknown';
+            $this->fullname = 'Unknown';
+        }
     }
 
-    public function parentLocationExists(){
-
+    public function parentLocationExists() {
         $query = $this->wpdb->prepare(
             "SELECT * FROM {$this->wpdb->prefix}{$this->table} WHERE location_country = %s AND parent_id = 1",
             $this->location_country
         );
-
+    
         $query_result = $this->wpdb->get_row($query);
-
-        print_r($query);
-        echo '<br>' . $query_result->id . '<br>';
-
-        if ($query_result)
-            return $query_result->id;
-        else{
+    
+        if ($query_result) {
+            $row_array = (array) $query_result;
+            return json_encode([
+                "ID" => $row_array['id'],
+                "location_id" => $row_array['location_id']
+            ]);
+        } else {
             $query = $this->wpdb->prepare("
                 SELECT * 
                 FROM {$this->wpdb->prefix}{$this->table} 
                 WHERE parent_id = %d AND status = %s 
-                ORDER BY id DESC 
-                LIMIT 1", 
+                ORDER BY right_key DESC 
+                LIMIT 1",
                 1, 'publish'
             );
-
-            // [id] => 56 [location_id] => 24396 [location_country] => GR [parent_id] => 1 [left_key] => 100 [right_key] => 117 [name] => Greece [fullname] => Greece [language] => en [status] => publish )
-            $last_location_added = $this->wpdb->get_row($query); 
-
+    
+            $last_location_added = $this->wpdb->get_row($query);
+    
             $this->location_id = $last_location_added->location_id + 1;
             $this->parent_id = 1;
             $this->left_key = $last_location_added->right_key + 2;
             $this->right_key = $this->left_key + 1;
-            self::mapCountryCode();
+            $this->mapCountryCode();
             $this->language = 'en';
             $this->status = 'publish';
-
-
+    
             $query = $this->wpdb->prepare(
                 "INSERT INTO {$this->wpdb->prefix}{$this->table}
-            (
-                location_id, 
-                location_country, 
-                parent_id, 
-                left_key, 
-                right_key, 
-                name, 
-                fullname, 
-                language, 
-                status
-            ) VALUES (%d, %s, %d, %d, %d, %s, %s, %s, %s)",
+                (
+                    location_id, 
+                    location_country, 
+                    parent_id, 
+                    left_key, 
+                    right_key, 
+                    name, 
+                    fullname, 
+                    language, 
+                    status
+                ) VALUES (%d, %s, %d, %d, %d, %s, %s, %s, %s)",
                 $this->location_id,
                 $this->location_country,
                 $this->parent_id,
@@ -217,49 +162,176 @@ class LocationNested {
                 $this->status
             );
     
-            $query_result = $this->wpdb->get_row($query);
-
-            return $query_result->id;
+            $this->wpdb->query($query);
+            $inserted_id = $this->wpdb->insert_id;
+    
+            return json_encode([
+                "ID" => $inserted_id,
+                "location_id" => $this->location_id
+            ]);
         }
     }
 
     private function calculateKeys() {
-        $query = $this->wpdb->prepare(
-            "SELECT MAX(right_key) AS max_right_key FROM {$this->wpdb->prefix}{$this->table} WHERE parent_id = %d",
-            $this->parent_id
-        );
-
-        $query_result = $this->wpdb->get_row($query);
-
-        print_r($query_result);
-
-        if (!$query_result || is_null($query_result->max_right_key)) {
-            $query = $this->wpdb->prepare(
-                "SELECT left_key, right_key FROM {$this->wpdb->prefix}{$this->table} WHERE id = %d",
+        // Begin transaction to ensure data integrity
+        $this->wpdb->query('START TRANSACTION');
+        
+        try {
+            // Retrieve the parent's current left and right keys
+            $parent_query = $this->wpdb->prepare(
+                "SELECT MAX(right_key) AS key_indicator FROM {$this->wpdb->prefix}{$this->table} WHERE id = %d",
                 $this->parent_id
             );
-
-            echo 'Searching for parent: <br>';
-            print_r($query);
-
-            $parent = $this->wpdb->get_row($query);
-
-            if ($parent) {
-                $this->left_key = $parent->right_key;
-                $this->right_key = $this->left_key + 1;
-            } else {
-                throw new Error('Unable to determine keys; parent not found');
+            $parent = $this->wpdb->get_row($parent_query);
+            
+            if (!$parent) {
+                throw new \Exception('Unable to determine keys; parent not found');
             }
-        } else {
-            $this->left_key = $query_result->max_right_key + 1;
-            $this->right_key = $this->left_key + 1;
+            
+            // The new node will be placed inside the parent, just before the parent's right boundary
+            $this->left_key = $parent->key_indicator;
+            $this->right_key = $parent->key_indicator + 1;
+            
+            $query = $this->wpdb->prepare(
+                "INSERT INTO {$this->wpdb->prefix}{$this->table} (
+                    location_id, 
+                    location_country, 
+                    parent_id, 
+                    left_key, 
+                    right_key, 
+                    name, 
+                    fullname, 
+                    language, 
+                    status
+                ) VALUES (%d, %s, %d, %d, %d, %s, %s, %s, %s)
+                ON DUPLICATE KEY UPDATE
+                    location_country = VALUES(location_country),
+                    parent_id = VALUES(parent_id),
+                    left_key = VALUES(left_key),
+                    right_key = VALUES(right_key),
+                    name = VALUES(name),
+                    fullname = VALUES(fullname),
+                    language = VALUES(language),
+                    status = VALUES(status)",
+                $this->location_id, 
+                $this->location_country, 
+                $this->parent_id, 
+                $this->left_key, 
+                $this->right_key, 
+                $this->name, 
+                $this->fullname, 
+                $this->language, 
+                $this->status
+            );
+            
+            // Execute it!
+            $this->wpdb->query($query);
+            
+            // First, make space for the new node by shifting all right keys >= parent's right_key - 1
+            $this->wpdb->query(
+                $this->wpdb->prepare(
+                    "UPDATE {$this->wpdb->prefix}{$this->table} SET right_key = right_key + 2 WHERE id = %d",
+                    $this->parent_id
+                )
+            );
+            
+            // Commit the transaction
+            $this->wpdb->query('COMMIT');
+            
+            $this->fixOverlapingLocations();
+            
+        } catch (\Exception $e) {
+            // Roll back on error
+            $this->wpdb->query('ROLLBACK');
+            throw $e;
+        }
+    }
+    
+    public function fixOverlapingLocations () {
+        try{
+            $wpdb = $this->wpdb;
+            $table = $wpdb->prefix . 'st_location_nested';
+            $parentId = 1;
+            
+            // Step 1: Find overlapping parent nodes under the same parent
+            $nodes = $wpdb->get_results("
+                SELECT 
+                    DISTINCT a.*
+                FROM $table a
+                JOIN $table b ON a.id != b.id
+                WHERE 
+                    a.parent_id = $parentId AND b.parent_id = $parentId AND (
+                        a.left_key BETWEEN b.left_key AND b.right_key
+                        OR a.right_key BETWEEN b.left_key AND b.right_key
+                    )
+                    AND a.status = 'publish' AND b.status = 'publish'
+                ORDER BY a.left_key ASC
+            ");
+            
+            for ($i = 0; $i < count($nodes) - 1; $i++) {
+                $current = $nodes[$i];
+                $next = $nodes[$i + 1];
+            
+                // Only shift if overlapping
+                if ($current->right_key >= $next->left_key) {
+                    $shiftAmount = $current->right_key - $next->left_key + 1;
+            
+                    // Update DB
+                    $wpdb->query(
+                        $wpdb->prepare(
+                            "UPDATE $table
+                             SET left_key = left_key + %d,
+                                 right_key = right_key + %d
+                             WHERE id = %d",
+                            $shiftAmount, $shiftAmount, $next->id
+                        )
+                    );
+                    
+                    $wpdb->query(
+                        $wpdb->prepare(
+                            "UPDATE $table
+                             SET left_key = left_key + %d,
+                                 right_key = right_key + %d
+                             WHERE parent_id = %d",
+                            $shiftAmount, $shiftAmount, $next->id
+                        )
+                    );
+            
+                    // Update the in-memory object so the next loop uses fresh keys
+                    $nodes[$i + 1]->left_key += $shiftAmount;
+                    $nodes[$i + 1]->right_key += $shiftAmount;
+                }
+            }
+            
+            // Updating last node!!
+            $lastNode = $nodes[count($nodes)];
+            $beforeLastNode = $nodes[count($nodes) - 1];
+            
+            $shiftAmount = $beforeLastNode->right_key - $lastNode->left_key + 1;
+            
+            $wpdb->query(
+                $wpdb->prepare(
+                    "UPDATE $table
+                     SET left_key = left_key + %d,
+                         right_key = right_key + %d
+                     WHERE id = %d",
+                    $shiftAmount, $shiftAmount, $lastNode->id
+                )
+            );
+            
+            $wpdb->query(
+                $wpdb->prepare(
+                    "UPDATE $table
+                     SET left_key = left_key + %d,
+                         right_key = right_key + %d
+                     WHERE parent_id = %d",
+                    $shiftAmount, $shiftAmount, $lastNode->id
+                )
+            );
+        }catch (\Exception $e) {
+            throw $e;
         }
 
-        $this->wpdb->query(
-            $this->wpdb->prepare(
-                "UPDATE {$this->wpdb->prefix}{$this->table} SET right_key = right_key + 2 WHERE right_key >= %d",
-                $this->left_key
-            )
-        );
     }
+    
 }

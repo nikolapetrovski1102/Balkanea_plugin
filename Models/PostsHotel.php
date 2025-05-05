@@ -74,6 +74,12 @@ class PostsHotel
     // Create Post
     public function create()
     {
+        $hotel_id = $this->hotelExists();
+        error_log("found id: $hotel_id");
+        
+        if ($hotel_id)
+            return $hotel_id;
+        
         $data = [
             'post_author' => $this->post_author,
             'post_date' => date('Y-m-d H:i:s'),
@@ -182,10 +188,21 @@ class PostsHotel
         $query = $this->wpdb->prepare("SELECT * FROM " . $this->wpdb->prefix . $this->table . " WHERE post_title = %s", $this->post_title);
         $result = $this->wpdb->get_row($query);
 
-        if ($result)
-            \data\HotelFlag::setHotelFlag();
-
-        return $result != null ? $result->ID : $result;
+        return $result != null ? $result->ID : NULL;
     }
+    
+    private function hotelExists(){
+
+        if (!is_string($this->post_title)) {
+            throw new \Exception("post_title must be a string");
+        }
+    
+        $query = $this->wpdb->prepare("SELECT * FROM " . $this->wpdb->prefix . $this->table . " WHERE post_title = %s", $this->post_title);
+        $result = $this->wpdb->get_row($query);
+
+        if ($result)
+            return $result != null ? $result->ID : $result;
+    }
+    
 }
 ?>
