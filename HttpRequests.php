@@ -1,8 +1,3 @@
-/**
- * HttpRequests.php
- * This file contains functions for making HTTP requests to the provider API
- * to fetch hotel information, prices, and details.
- */
 <?php
 
 /**
@@ -15,13 +10,14 @@
 
 function trackNextRegion() {
     // Load regions
+    error_log("Tracking next region...");
     $stateFile = 'region_tracker_state.json';
     
     // Load the current state or initialize if it doesn't exist
     $state = json_decode(@file_get_contents($stateFile), true) ?: ['last_region_index' => -1];
     
     // Include the region data
-    require_once './data/track_region.php';
+    require_once realpath(__DIR__) . '/data/track_region.php';
     
     // Extract region IDs
     $regions = array_keys($data_hotel);
@@ -109,37 +105,40 @@ function getHotelPrice($region, $headers) {
  * @return array|string Returns hotel details as array or error message
  */
 function getHotelDetails($region, $headers){
-    
-    $url = 'http://cyberlink-001-site33.atempurl.com/api/ExtractHotels/process';
-    
-    $data = array(
-        "region_id" => $region,
-        "country_code" => ""
-    );
-    
-    $jsonData = json_encode($data);
-    
-    $ci = curl_init();
-    
-    curl_setopt($ci, CURLOPT_URL, $url);
-    curl_setopt($ci, CURLOPT_POST, true);
-    curl_setopt($ci, CURLOPT_POSTFIELDS, $jsonData);
-    curl_setopt($ci, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ci, CURLOPT_HTTPHEADER, $headers);
-    curl_setopt($ci, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ci, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
-    
-    curl_setopt($ci, CURLOPT_TIMEOUT, 0);
-    curl_setopt($ci, CURLOPT_CONNECTTIMEOUT, 0);
-    
-    $response = curl_exec($ci);
-    $response_json = json_decode($response, true);
-    $httpCode = curl_getinfo($ci, CURLINFO_HTTP_CODE);
-    
-    if (curl_errno($ci)) {
-        echo 'CURL Error: ' . curl_error($ci);
-    } else {
-        return $response_json['outputFile'][$region];
+    try{
+        $url = 'http://cyberlink-001-site33.atempurl.com/api/ExtractHotels/process';
+        
+        $data = array(
+            "region_id" => intval($region),
+            "country_code" => ""
+        );
+        
+        $jsonData = json_encode($data);
+        
+        $ci = curl_init();
+        
+        curl_setopt($ci, CURLOPT_URL, $url);
+        curl_setopt($ci, CURLOPT_POST, true);
+        curl_setopt($ci, CURLOPT_POSTFIELDS, $jsonData);
+        curl_setopt($ci, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ci, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ci, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ci, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
+        
+        curl_setopt($ci, CURLOPT_TIMEOUT, 0);
+        curl_setopt($ci, CURLOPT_CONNECTTIMEOUT, 0);
+        
+        $response = curl_exec($ci);
+        $response_json = json_decode($response, true);
+        $httpCode = curl_getinfo($ci, CURLINFO_HTTP_CODE);
+        
+        if (curl_errno($ci)) {
+            error_log( 'CURL Error: ' . curl_error($ci));
+        } else {
+            return $response_json['outputFile'][$region];
+        }
+    }catch(\Exception $ex){
+        error_log("Error when calling API " . print_r($ex->getMessage(), true));
     }
     
     curl_close($ci);

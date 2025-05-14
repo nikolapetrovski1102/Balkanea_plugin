@@ -1,193 +1,1628 @@
-[27-Apr-2025 11:20:25 UTC] Authentication successful
-[27-Apr-2025 11:20:26 UTC] [INFO] Processing hotel: test_hotel
-[27-Apr-2025 11:20:26 UTC] [INFO] Country code: RU
-[27-Apr-2025 11:20:26 UTC] Array
+[09-May-2025 04:00:03 UTC] Authentication successful
+[09-May-2025 04:00:04 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php:1) in /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php on line 24
+[09-May-2025 04:00:04 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php:1) in /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php on line 25
+[09-May-2025 21:28:22 UTC] Executing hotel
+[09-May-2025 21:29:03 UTC] Authentication successful
+[09-May-2025 21:30:09 UTC] Authentication successful
+[09-May-2025 21:31:24 UTC] Authentication successful
+[09-May-2025 21:31:56 UTC] Authentication successful
+[09-May-2025 21:31:56 UTC] test
+[09-May-2025 21:32:47 UTC] PHP Parse error:  syntax error, unexpected 'use' (T_USE) in /home/balkanea/public_html/wp-plugin/cron_job.php on line 28
+[09-May-2025 21:34:08 UTC] Authentication successful
+[09-May-2025 21:34:08 UTC] test
+[09-May-2025 21:34:08 UTC] Importing...
+[09-May-2025 21:36:34 UTC] Authentication successful
+[09-May-2025 21:36:34 UTC] test
+[09-May-2025 21:36:34 UTC] Importing...
+[09-May-2025 21:37:25 UTC] Authentication successful
+[09-May-2025 21:37:25 UTC] test
+[09-May-2025 21:37:25 UTC] Importing...
+[10-May-2025 04:00:02 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php:1) in /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php on line 24
+[10-May-2025 04:00:02 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php:1) in /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php on line 25
+[10-May-2025 04:00:02 UTC] Authentication successful
+[10-May-2025 04:00:02 UTC] Tracking next region...
+[10-May-2025 04:00:02 UTC] [Region] ========================================================
+[10-May-2025 04:00:34 UTC] [INFO] Processing region: 6156549 with 9 hotels
+[10-May-2025 04:00:34 UTC] [Hotel] _____________________________________________________________
+[10-May-2025 04:00:34 UTC] [INFO] Processing hotel: hotel_zlatibor_mona
+[10-May-2025 04:00:34 UTC] [INFO] Country code: RS
+[10-May-2025 04:00:35 UTC] Processing amenities for hotel
+[10-May-2025 04:00:35 UTC] Inserting Amenities for post_id: 0
+[10-May-2025 04:00:35 UTC] Finished processing amenities
+[10-May-2025 04:01:03 UTC] Inserting Amenities for post_id: 211637
+[10-May-2025 04:01:05 UTC] Inserting Amenities for post_id: 211654
+[10-May-2025 04:01:12 UTC] Inserting Amenities for post_id: 211659
+[10-May-2025 04:01:20 UTC] Inserting Amenities for post_id: 211676
+[10-May-2025 04:01:28 UTC] Inserting Amenities for post_id: 211693
+[10-May-2025 04:01:30 UTC] Inserting Amenities for post_id: 211710
+[10-May-2025 04:01:37 UTC] Inserting Amenities for post_id: 211637
+[10-May-2025 04:01:46 UTC] Inserting Amenities for post_id: 211654
+[10-May-2025 04:01:48 UTC] Inserting Amenities for post_id: 211727
+[10-May-2025 04:01:58 UTC] Inserting Amenities for post_id: 211731
+[10-May-2025 04:02:14 UTC] Inserting Amenities for post_id: 211748
+[10-May-2025 04:02:16 UTC] Inserting Amenities for post_id: 211727
+[10-May-2025 04:02:26 UTC] Inserting Amenities for post_id: 211727
+[10-May-2025 04:02:29 UTC] Inserting Amenities for post_id: 211778
+[10-May-2025 04:02:32 UTC] Inserting Amenities for post_id: 211786
+[10-May-2025 04:02:35 UTC] Inserting Amenities for post_id: 211794
+[10-May-2025 04:02:39 UTC] Inserting Amenities for post_id: 211802
+[10-May-2025 04:02:44 UTC] Inserting Amenities for post_id: 211810
+[10-May-2025 04:02:48 UTC] Inserting Amenities for post_id: 211818
+[10-May-2025 04:02:52 UTC] Inserting Amenities for post_id: 211826
+[10-May-2025 04:02:56 UTC] Inserting Amenities for post_id: 211786
+[10-May-2025 04:02:59 UTC] Inserting Amenities for post_id: 211794
+[10-May-2025 04:03:03 UTC] Inserting Amenities for post_id: 211818
+[10-May-2025 04:03:08 UTC] Inserting Amenities for post_id: 211786
+[10-May-2025 04:03:10 UTC] Inserting Amenities for post_id: 211794
+[10-May-2025 04:03:13 UTC] Inserting Amenities for post_id: 211794
+[10-May-2025 04:03:16 UTC] Inserting Amenities for post_id: 211786
+[10-May-2025 04:03:19 UTC] Inserting Amenities for post_id: 211794
+[10-May-2025 04:03:24 UTC] Inserting Amenities for post_id: 211834
+[10-May-2025 04:03:25 UTC] Inserting Amenities for post_id: 211845
+[10-May-2025 04:03:30 UTC] Inserting Amenities for post_id: 211848
+[10-May-2025 04:03:35 UTC] Inserting Amenities for post_id: 211859
+[10-May-2025 04:03:40 UTC] Inserting Amenities for post_id: 211845
+[10-May-2025 04:03:45 UTC] Inserting Amenities for post_id: 211845
+[10-May-2025 04:03:47 UTC] Inserting Amenities for post_id: 211848
+[10-May-2025 04:03:52 UTC] Inserting Amenities for post_id: 211878
+[10-May-2025 04:03:56 UTC] Inserting Amenities for post_id: 211889
+[10-May-2025 04:04:01 UTC] Inserting Amenities for post_id: 211848
+[10-May-2025 04:04:05 UTC] Inserting Amenities for post_id: 211878
+[10-May-2025 04:04:10 UTC] Inserting Amenities for post_id: 211845
+[10-May-2025 04:04:12 UTC] Inserting Amenities for post_id: 211900
+[10-May-2025 04:04:14 UTC] Inserting Amenities for post_id: 211906
+[10-May-2025 04:04:16 UTC] Inserting Amenities for post_id: 211912
+[10-May-2025 04:04:18 UTC] Inserting Amenities for post_id: 211918
+[10-May-2025 04:04:20 UTC] Inserting Amenities for post_id: 211924
+[10-May-2025 04:04:22 UTC] Inserting Amenities for post_id: 211906
+[10-May-2025 04:04:24 UTC] Inserting Amenities for post_id: 211906
+[10-May-2025 04:04:26 UTC] Inserting Amenities for post_id: 211912
+[10-May-2025 04:04:28 UTC] Inserting Amenities for post_id: 211912
+[10-May-2025 04:04:30 UTC] Inserting Amenities for post_id: 211918
+[10-May-2025 04:04:32 UTC] Inserting Amenities for post_id: 211930
+[10-May-2025 04:04:33 UTC] Inserting Amenities for post_id: 211935
+[10-May-2025 04:04:36 UTC] Inserting Amenities for post_id: 211940
+[10-May-2025 04:04:38 UTC] Inserting Amenities for post_id: 211945
+[10-May-2025 04:04:41 UTC] Inserting Amenities for post_id: 211950
+[10-May-2025 04:04:43 UTC] Inserting Amenities for post_id: 211958
+[10-May-2025 04:04:45 UTC] Inserting Amenities for post_id: 211963
+[10-May-2025 04:04:47 UTC] Inserting Amenities for post_id: 211968
+[10-May-2025 04:04:50 UTC] Inserting Amenities for post_id: 211973
+[10-May-2025 04:04:51 UTC] Inserting Amenities for post_id: 211978
+[10-May-2025 04:04:54 UTC] Inserting Amenities for post_id: 211935
+[10-May-2025 04:04:55 UTC] Inserting Amenities for post_id: 211983
+[10-May-2025 04:04:57 UTC] Inserting Amenities for post_id: 211988
+[10-May-2025 04:04:59 UTC] Inserting Amenities for post_id: 211993
+[10-May-2025 04:05:01 UTC] Inserting Amenities for post_id: 211998
+[10-May-2025 04:05:05 UTC] Inserting Amenities for post_id: 211958
+[10-May-2025 04:05:09 UTC] Inserting Amenities for post_id: 211963
+[10-May-2025 04:05:13 UTC] Inserting Amenities for post_id: 211963
+[10-May-2025 04:05:29 UTC] Inserting Amenities for post_id: 212003
+[10-May-2025 04:05:31 UTC] Inserting Amenities for post_id: 212041
+[10-May-2025 04:05:33 UTC] Inserting Amenities for post_id: 212046
+[10-May-2025 04:05:34 UTC] Inserting Amenities for post_id: 212051
+[10-May-2025 04:05:36 UTC] Inserting Amenities for post_id: 212056
+[10-May-2025 04:05:40 UTC] Inserting Amenities for post_id: 212061
+[10-May-2025 04:05:43 UTC] Inserting Amenities for post_id: 212071
+[10-May-2025 04:05:47 UTC] Inserting Amenities for post_id: 212081
+[10-May-2025 04:05:50 UTC] Inserting Amenities for post_id: 212091
+[10-May-2025 04:05:54 UTC] Inserting Amenities for post_id: 212101
+[10-May-2025 04:05:58 UTC] Inserting Amenities for post_id: 212091
+[10-May-2025 04:06:01 UTC] Inserting Amenities for post_id: 212111
+[10-May-2025 04:06:04 UTC] Inserting Amenities for post_id: 212121
+[10-May-2025 04:06:08 UTC] Inserting Amenities for post_id: 212129
+[10-May-2025 04:06:11 UTC] Inserting Amenities for post_id: 212137
+[10-May-2025 04:06:14 UTC] Inserting Amenities for post_id: 212145
+[10-May-2025 04:06:17 UTC] Inserting Amenities for post_id: 212153
+[10-May-2025 04:06:35 UTC] Inserting Amenities for post_id: 212161
+[10-May-2025 04:06:35 UTC] [INFO] All rooms processed successfully
+[10-May-2025 04:06:52 UTC] [INFO] Completed processing hotel: hotel_zlatibor_mona in 377.7250
+[10-May-2025 04:07:07 UTC] [Hotel] _____________________________________________________________
+[10-May-2025 04:07:07 UTC] [INFO] Processing hotel: villa_natural_wood
+[10-May-2025 04:07:07 UTC] [INFO] Country code: RS
+[10-May-2025 04:07:09 UTC] Processing amenities for hotel
+[10-May-2025 04:07:09 UTC] Inserting Amenities for post_id: 1336928
+[10-May-2025 04:07:09 UTC] Finished processing amenities
+[10-May-2025 04:07:21 UTC] Inserting Amenities for post_id: 54860
+[10-May-2025 04:07:25 UTC] Inserting Amenities for post_id: 54863
+[10-May-2025 04:07:30 UTC] Inserting Amenities for post_id: 54874
+[10-May-2025 04:07:36 UTC] Inserting Amenities for post_id: 54885
+[10-May-2025 04:07:41 UTC] Inserting Amenities for post_id: 54901
+[10-May-2025 04:07:46 UTC] Inserting Amenities for post_id: 54912
+[10-May-2025 04:07:48 UTC] Inserting Amenities for post_id: 54923
+[10-May-2025 04:07:52 UTC] Inserting Amenities for post_id: 54929
+[10-May-2025 04:07:57 UTC] Inserting Amenities for post_id: 54940
+[10-May-2025 04:08:02 UTC] Inserting Amenities for post_id: 54951
+[10-May-2025 04:08:06 UTC] Inserting Amenities for post_id: 54995
+[10-May-2025 04:08:11 UTC] Inserting Amenities for post_id: 54923
+[10-May-2025 04:08:16 UTC] Inserting Amenities for post_id: 54929
+[10-May-2025 04:08:20 UTC] Inserting Amenities for post_id: 55011
+[10-May-2025 04:08:24 UTC] Inserting Amenities for post_id: 55022
+[10-May-2025 04:08:29 UTC] Inserting Amenities for post_id: 55033
+[10-May-2025 04:08:33 UTC] Inserting Amenities for post_id: 55044
+[10-May-2025 04:08:37 UTC] Inserting Amenities for post_id: 55055
+[10-May-2025 04:08:42 UTC] Inserting Amenities for post_id: 55066
+[10-May-2025 04:08:47 UTC] Inserting Amenities for post_id: 55077
+[10-May-2025 04:08:56 UTC] Inserting Amenities for post_id: 55088
+[10-May-2025 04:08:58 UTC] Inserting Amenities for post_id: 55090
+[10-May-2025 04:09:00 UTC] Inserting Amenities for post_id: 55095
+[10-May-2025 04:09:02 UTC] Inserting Amenities for post_id: 55100
+[10-May-2025 04:09:04 UTC] Inserting Amenities for post_id: 55095
+[10-May-2025 04:09:06 UTC] Inserting Amenities for post_id: 55100
+[10-May-2025 04:09:15 UTC] Inserting Amenities for post_id: 55105
+[10-May-2025 04:09:25 UTC] Inserting Amenities for post_id: 55107
+[10-May-2025 04:09:33 UTC] Inserting Amenities for post_id: 55109
+[10-May-2025 04:09:38 UTC] Inserting Amenities for post_id: 55161
+[10-May-2025 04:09:42 UTC] Inserting Amenities for post_id: 55111
+[10-May-2025 04:09:45 UTC] Inserting Amenities for post_id: 55121
+[10-May-2025 04:09:49 UTC] Inserting Amenities for post_id: 55123
+[10-May-2025 04:09:53 UTC] Inserting Amenities for post_id: 55132
+[10-May-2025 04:09:54 UTC] [INFO] All rooms processed successfully
+[10-May-2025 04:10:05 UTC] [INFO] Completed processing hotel: villa_natural_wood in 178.6812
+[10-May-2025 04:10:20 UTC] [Hotel] _____________________________________________________________
+[10-May-2025 04:10:20 UTC] [INFO] Processing hotel: villa_miris_dunja
+[10-May-2025 04:10:20 UTC] [INFO] Country code: RS
+[10-May-2025 04:10:22 UTC] Processing amenities for hotel
+[10-May-2025 04:10:22 UTC] Inserting Amenities for post_id: 1336929
+[10-May-2025 04:10:22 UTC] Finished processing amenities
+[10-May-2025 04:10:39 UTC] Inserting Amenities for post_id: 218281
+[10-May-2025 04:10:52 UTC] Inserting Amenities for post_id: 218306
+[10-May-2025 04:10:56 UTC] Inserting Amenities for post_id: 218331
+[10-May-2025 04:11:00 UTC] Inserting Amenities for post_id: 218340
+[10-May-2025 04:11:07 UTC] Inserting Amenities for post_id: 218349
+[10-May-2025 04:11:10 UTC] Inserting Amenities for post_id: 218367
+[10-May-2025 04:11:11 UTC] [INFO] All rooms processed successfully
+[10-May-2025 04:11:14 UTC] [INFO] Completed processing hotel: villa_miris_dunja in 53.8008
+[10-May-2025 04:11:29 UTC] [Hotel] _____________________________________________________________
+[10-May-2025 04:11:29 UTC] [INFO] Processing hotel: villa_romantika
+[10-May-2025 04:11:29 UTC] [INFO] Country code: RS
+[10-May-2025 04:11:30 UTC] Processing amenities for hotel
+[10-May-2025 04:11:30 UTC] Inserting Amenities for post_id: 1336930
+[10-May-2025 04:11:30 UTC] Finished processing amenities
+[10-May-2025 04:11:32 UTC] Inserting Amenities for post_id: 218383
+[10-May-2025 04:11:33 UTC] Inserting Amenities for post_id: 218387
+[10-May-2025 04:11:36 UTC] Inserting Amenities for post_id: 218391
+[10-May-2025 04:11:38 UTC] Inserting Amenities for post_id: 218397
+[10-May-2025 04:11:41 UTC] Inserting Amenities for post_id: 218403
+[10-May-2025 04:11:44 UTC] Inserting Amenities for post_id: 218411
+[10-May-2025 04:11:46 UTC] Inserting Amenities for post_id: 218419
+[10-May-2025 04:11:46 UTC] [INFO] All rooms processed successfully
+[10-May-2025 04:11:47 UTC] [INFO] Completed processing hotel: villa_romantika in 18.1327
+[10-May-2025 04:12:02 UTC] [Hotel] _____________________________________________________________
+[10-May-2025 04:12:02 UTC] [INFO] Processing hotel: kraljevi_konaci_apartments
+[10-May-2025 04:12:02 UTC] [INFO] Country code: RS
+[10-May-2025 04:12:04 UTC] Processing amenities for hotel
+[10-May-2025 04:12:04 UTC] Inserting Amenities for post_id: 1336931
+[10-May-2025 04:12:04 UTC] Finished processing amenities
+[10-May-2025 04:12:07 UTC] Inserting Amenities for post_id: 218428
+[10-May-2025 04:12:09 UTC] Inserting Amenities for post_id: 218438
+[10-May-2025 04:12:10 UTC] Inserting Amenities for post_id: 218442
+[10-May-2025 04:12:13 UTC] Inserting Amenities for post_id: 218446
+[10-May-2025 04:12:16 UTC] Inserting Amenities for post_id: 218454
+[10-May-2025 04:12:19 UTC] Inserting Amenities for post_id: 218462
+[10-May-2025 04:12:22 UTC] Inserting Amenities for post_id: 218470
+[10-May-2025 04:12:26 UTC] Inserting Amenities for post_id: 218478
+[10-May-2025 04:12:29 UTC] Inserting Amenities for post_id: 218486
+[10-May-2025 04:12:33 UTC] Inserting Amenities for post_id: 218494
+[10-May-2025 04:12:33 UTC] [INFO] All rooms processed successfully
+[10-May-2025 04:12:35 UTC] [INFO] Completed processing hotel: kraljevi_konaci_apartments in 33.3285
+[10-May-2025 04:12:50 UTC] [Hotel] _____________________________________________________________
+[10-May-2025 04:12:50 UTC] [INFO] Processing hotel: villa_ruza_apartments
+[10-May-2025 04:12:50 UTC] [INFO] Country code: RS
+[10-May-2025 04:12:52 UTC] Processing amenities for hotel
+[10-May-2025 04:12:52 UTC] Inserting Amenities for post_id: 1336932
+[10-May-2025 04:12:52 UTC] Finished processing amenities
+[10-May-2025 04:13:07 UTC] Inserting Amenities for post_id: 218510
+[10-May-2025 04:13:21 UTC] Inserting Amenities for post_id: 218544
+[10-May-2025 04:13:35 UTC] Inserting Amenities for post_id: 218578
+[10-May-2025 04:13:54 UTC] Inserting Amenities for post_id: 218612
+[10-May-2025 04:14:16 UTC] Inserting Amenities for post_id: 218663
+[10-May-2025 04:14:32 UTC] Inserting Amenities for post_id: 218714
+[10-May-2025 04:14:46 UTC] Inserting Amenities for post_id: 218749
+[10-May-2025 04:14:59 UTC] Inserting Amenities for post_id: 218784
+[10-May-2025 04:15:22 UTC] Inserting Amenities for post_id: 218817
+[10-May-2025 04:15:22 UTC] [INFO] All rooms processed successfully
+[10-May-2025 04:15:22 UTC] [INFO] Completed processing hotel: villa_ruza_apartments in 151.2278
+[10-May-2025 04:15:37 UTC] [Hotel] _____________________________________________________________
+[10-May-2025 04:15:37 UTC] [INFO] Processing hotel: vila_sofija_zlatibor
+[10-May-2025 04:15:37 UTC] [INFO] Country code: RS
+[10-May-2025 04:15:38 UTC] Processing amenities for hotel
+[10-May-2025 04:15:38 UTC] Inserting Amenities for post_id: 1336933
+[10-May-2025 04:15:38 UTC] Finished processing amenities
+[10-May-2025 04:15:41 UTC] Inserting Amenities for post_id: 218851
+[10-May-2025 04:15:43 UTC] Inserting Amenities for post_id: 218856
+[10-May-2025 04:15:52 UTC] Inserting Amenities for post_id: 218856
+[10-May-2025 04:15:54 UTC] Inserting Amenities for post_id: 218874
+[10-May-2025 04:16:04 UTC] Inserting Amenities for post_id: 218879
+[10-May-2025 04:16:15 UTC] Inserting Amenities for post_id: 218901
+[10-May-2025 04:16:25 UTC] Inserting Amenities for post_id: 218901
+[10-May-2025 04:16:33 UTC] Inserting Amenities for post_id: 218923
+[10-May-2025 04:16:40 UTC] Inserting Amenities for post_id: 218939
+[10-May-2025 04:16:49 UTC] Inserting Amenities for post_id: 218955
+[10-May-2025 04:16:57 UTC] Inserting Amenities for post_id: 218955
+[10-May-2025 04:17:04 UTC] Inserting Amenities for post_id: 218971
+[10-May-2025 04:17:11 UTC] Inserting Amenities for post_id: 218986
+[10-May-2025 04:17:21 UTC] Inserting Amenities for post_id: 219001
+[10-May-2025 04:17:30 UTC] Inserting Amenities for post_id: 219021
+[10-May-2025 04:17:39 UTC] Inserting Amenities for post_id: 219041
+[10-May-2025 04:17:48 UTC] Inserting Amenities for post_id: 219061
+[10-May-2025 04:17:59 UTC] Inserting Amenities for post_id: 219081
+[10-May-2025 04:17:59 UTC] [INFO] All rooms processed successfully
+[10-May-2025 04:18:09 UTC] [INFO] Completed processing hotel: vila_sofija_zlatibor in 152.4050
+[10-May-2025 04:18:24 UTC] [Hotel] _____________________________________________________________
+[10-May-2025 04:18:24 UTC] [INFO] Processing hotel: vila_jela_tornik
+[10-May-2025 04:18:24 UTC] [INFO] Country code: RS
+[10-May-2025 04:18:26 UTC] Processing amenities for hotel
+[10-May-2025 04:18:26 UTC] Inserting Amenities for post_id: 1336934
+[10-May-2025 04:18:26 UTC] Finished processing amenities
+[10-May-2025 04:18:33 UTC] Inserting Amenities for post_id: 219125
+[10-May-2025 04:18:40 UTC] Inserting Amenities for post_id: 219141
+[10-May-2025 04:18:41 UTC] [INFO] All rooms processed successfully
+[10-May-2025 04:18:47 UTC] [INFO] Completed processing hotel: vila_jela_tornik in 23.2158
+[10-May-2025 04:19:02 UTC] [Hotel] _____________________________________________________________
+[10-May-2025 04:19:02 UTC] [INFO] Processing hotel: stunning_1bed_apartment_in_zlatibor
+[10-May-2025 04:19:02 UTC] [INFO] Country code: RS
+[10-May-2025 04:19:04 UTC] Processing amenities for hotel
+[10-May-2025 04:19:04 UTC] Inserting Amenities for post_id: 1336935
+[10-May-2025 04:19:04 UTC] Finished processing amenities
+[10-May-2025 04:19:11 UTC] Inserting Amenities for post_id: 219172
+[10-May-2025 04:19:17 UTC] Inserting Amenities for post_id: 219186
+[10-May-2025 04:19:17 UTC] [INFO] All rooms processed successfully
+[10-May-2025 04:19:24 UTC] [INFO] Completed processing hotel: stunning_1bed_apartment_in_zlatibor in 21.8862
+[10-May-2025 04:19:49 UTC] [Region] ========================================================
+[10-May-2025 04:20:15 UTC] [INFO] Processing region: 965835355 with 14 hotels
+[10-May-2025 04:20:15 UTC] [Hotel] _____________________________________________________________
+[10-May-2025 04:20:15 UTC] [INFO] Processing hotel: aparthotel_kopaonik
+[10-May-2025 04:20:15 UTC] [INFO] Country code: RS
+[10-May-2025 04:20:17 UTC] Processing amenities for hotel
+[10-May-2025 04:20:17 UTC] Inserting Amenities for post_id: 1336936
+[10-May-2025 04:20:17 UTC] Finished processing amenities
+[10-May-2025 04:20:20 UTC] Inserting Amenities for post_id: 219214
+[10-May-2025 04:20:21 UTC] Inserting Amenities for post_id: 219218
+[10-May-2025 04:20:23 UTC] Inserting Amenities for post_id: 219222
+[10-May-2025 04:20:25 UTC] Inserting Amenities for post_id: 219226
+[10-May-2025 04:20:27 UTC] Inserting Amenities for post_id: 219231
+[10-May-2025 04:20:27 UTC] [INFO] All rooms processed successfully
+[10-May-2025 04:20:28 UTC] [INFO] Completed processing hotel: aparthotel_kopaonik in 12.7760
+[10-May-2025 04:20:43 UTC] [Hotel] _____________________________________________________________
+[10-May-2025 04:20:43 UTC] [INFO] Processing hotel: vila_milica_
+[10-May-2025 04:20:43 UTC] [INFO] Country code: RS
+[10-May-2025 04:20:45 UTC] [INFO] No amenities found for hotel
+[10-May-2025 04:20:45 UTC] Finished processing amenities
+[10-May-2025 04:20:45 UTC] [INFO] All rooms processed successfully
+[10-May-2025 04:20:48 UTC] [INFO] Completed processing hotel: vila_milica_ in 5.0983
+[10-May-2025 04:21:03 UTC] [Hotel] _____________________________________________________________
+[10-May-2025 04:21:03 UTC] [INFO] Processing hotel: villa_milmari_
+[10-May-2025 04:21:03 UTC] [INFO] Country code: RS
+[10-May-2025 04:21:05 UTC] Processing amenities for hotel
+[10-May-2025 04:21:05 UTC] Inserting Amenities for post_id: 1336938
+[10-May-2025 04:21:05 UTC] Finished processing amenities
+[10-May-2025 04:21:09 UTC] Inserting Amenities for post_id: 219245
+[10-May-2025 04:21:10 UTC] Inserting Amenities for post_id: 219254
+[10-May-2025 04:21:14 UTC] Inserting Amenities for post_id: 219257
+[10-May-2025 04:21:18 UTC] Inserting Amenities for post_id: 219266
+[10-May-2025 04:21:33 UTC] Inserting Amenities for post_id: 219275
+[10-May-2025 04:21:45 UTC] Inserting Amenities for post_id: 219304
+[10-May-2025 04:21:47 UTC] Inserting Amenities for post_id: 219333
+[10-May-2025 04:21:49 UTC] Inserting Amenities for post_id: 219339
+[10-May-2025 04:21:51 UTC] Inserting Amenities for post_id: 219345
+[10-May-2025 04:21:54 UTC] Inserting Amenities for post_id: 219351
+[10-May-2025 04:21:56 UTC] Inserting Amenities for post_id: 219358
+[10-May-2025 04:22:02 UTC] Inserting Amenities for post_id: 219364
+[10-May-2025 04:22:05 UTC] Inserting Amenities for post_id: 219345
+[10-May-2025 04:22:07 UTC] Inserting Amenities for post_id: 219378
+[10-May-2025 04:22:09 UTC] Inserting Amenities for post_id: 219358
+[10-May-2025 04:22:12 UTC] Inserting Amenities for post_id: 219384
+[10-May-2025 04:22:14 UTC] Inserting Amenities for post_id: 219390
+[10-May-2025 04:22:15 UTC] Inserting Amenities for post_id: 219394
+[10-May-2025 04:22:21 UTC] Inserting Amenities for post_id: 219398
+[10-May-2025 04:22:27 UTC] Inserting Amenities for post_id: 219411
+[10-May-2025 04:22:33 UTC] Inserting Amenities for post_id: 219424
+[10-May-2025 04:22:34 UTC] Inserting Amenities for post_id: 219437
+[10-May-2025 04:22:36 UTC] Inserting Amenities for post_id: 219440
+[10-May-2025 04:22:37 UTC] Inserting Amenities for post_id: 219443
+[10-May-2025 04:22:38 UTC] Inserting Amenities for post_id: 219446
+[10-May-2025 04:22:39 UTC] Inserting Amenities for post_id: 219449
+[10-May-2025 04:22:40 UTC] Inserting Amenities for post_id: 219452
+[10-May-2025 04:22:41 UTC] Inserting Amenities for post_id: 219455
+[10-May-2025 04:22:42 UTC] Inserting Amenities for post_id: 219458
+[10-May-2025 04:22:43 UTC] Inserting Amenities for post_id: 219461
+[10-May-2025 04:22:45 UTC] Inserting Amenities for post_id: 219464
+[10-May-2025 04:22:46 UTC] Inserting Amenities for post_id: 219467
+[10-May-2025 04:22:59 UTC] Inserting Amenities for post_id: 219470
+[10-May-2025 04:23:13 UTC] Inserting Amenities for post_id: 219499
+[10-May-2025 04:23:28 UTC] Inserting Amenities for post_id: 219528
+[10-May-2025 04:23:41 UTC] Inserting Amenities for post_id: 219557
+[10-May-2025 04:23:55 UTC] Inserting Amenities for post_id: 219586
+[10-May-2025 04:24:10 UTC] Inserting Amenities for post_id: 219615
+[10-May-2025 04:24:28 UTC] Inserting Amenities for post_id: 219644
+[10-May-2025 04:24:45 UTC] Inserting Amenities for post_id: 219673
+[10-May-2025 04:24:50 UTC] Inserting Amenities for post_id: 219702
+[10-May-2025 04:24:59 UTC] Inserting Amenities for post_id: 219711
+[10-May-2025 04:25:07 UTC] Inserting Amenities for post_id: 219729
+[10-May-2025 04:25:13 UTC] Inserting Amenities for post_id: 219729
+[10-May-2025 04:25:17 UTC] Inserting Amenities for post_id: 219729
+[10-May-2025 04:25:21 UTC] Inserting Amenities for post_id: 219738
+[10-May-2025 04:25:25 UTC] Inserting Amenities for post_id: 219746
+[10-May-2025 04:25:29 UTC] Inserting Amenities for post_id: 219754
+[10-May-2025 04:25:32 UTC] Inserting Amenities for post_id: 219762
+[10-May-2025 04:25:37 UTC] Inserting Amenities for post_id: 219770
+[10-May-2025 04:25:39 UTC] Inserting Amenities for post_id: 219778
+[10-May-2025 04:25:41 UTC] Inserting Amenities for post_id: 219782
+[10-May-2025 04:25:44 UTC] Inserting Amenities for post_id: 219786
+[10-May-2025 04:25:58 UTC] Inserting Amenities for post_id: 219790
+[10-May-2025 04:26:13 UTC] Inserting Amenities for post_id: 219819
+[10-May-2025 04:26:28 UTC] Inserting Amenities for post_id: 219848
+[10-May-2025 04:26:42 UTC] Inserting Amenities for post_id: 219877
+[10-May-2025 04:26:56 UTC] Inserting Amenities for post_id: 219906
+[10-May-2025 04:27:11 UTC] Inserting Amenities for post_id: 219935
+[10-May-2025 04:27:29 UTC] Inserting Amenities for post_id: 219964
+[10-May-2025 04:27:29 UTC] [INFO] All rooms processed successfully
+[10-May-2025 04:27:44 UTC] [INFO] Completed processing hotel: villa_milmari_ in 401.0179
+[10-May-2025 04:27:59 UTC] [Hotel] _____________________________________________________________
+[10-May-2025 04:27:59 UTC] [INFO] Processing hotel: vila_runolist_
+[10-May-2025 04:27:59 UTC] [INFO] Country code: RS
+[10-May-2025 04:28:01 UTC] Processing amenities for hotel
+[10-May-2025 04:28:01 UTC] Inserting Amenities for post_id: 1336939
+[10-May-2025 04:28:01 UTC] Finished processing amenities
+[10-May-2025 04:28:02 UTC] Inserting Amenities for post_id: 220022
+[10-May-2025 04:28:02 UTC] Inserting Amenities for post_id: 220023
+[10-May-2025 04:28:02 UTC] Inserting Amenities for post_id: 220024
+[10-May-2025 04:28:02 UTC] Inserting Amenities for post_id: 220025
+[10-May-2025 04:28:03 UTC] [INFO] All rooms processed successfully
+[10-May-2025 04:28:03 UTC] [INFO] Completed processing hotel: vila_runolist_ in 3.2869
+[10-May-2025 04:28:18 UTC] [Hotel] _____________________________________________________________
+[10-May-2025 04:28:18 UTC] [INFO] Processing hotel: apartments_mujen_lux_
+[10-May-2025 04:28:18 UTC] [INFO] Country code: RS
+[10-May-2025 04:28:23 UTC] Processing amenities for hotel
+[10-May-2025 04:28:23 UTC] Inserting Amenities for post_id: 1336940
+[10-May-2025 04:28:23 UTC] Finished processing amenities
+[10-May-2025 04:29:32 UTC] Inserting Amenities for post_id: 220027
+[10-May-2025 04:29:34 UTC] Inserting Amenities for post_id: 220051
+[10-May-2025 04:29:36 UTC] Inserting Amenities for post_id: 220054
+[10-May-2025 04:29:37 UTC] Inserting Amenities for post_id: 220057
+[10-May-2025 04:29:39 UTC] Inserting Amenities for post_id: 220060
+[10-May-2025 04:29:40 UTC] Inserting Amenities for post_id: 220063
+[10-May-2025 04:29:41 UTC] Inserting Amenities for post_id: 220066
+[10-May-2025 04:29:43 UTC] Inserting Amenities for post_id: 220069
+[10-May-2025 04:29:46 UTC] Inserting Amenities for post_id: 220074
+[10-May-2025 04:29:47 UTC] Inserting Amenities for post_id: 220079
+[10-May-2025 04:29:48 UTC] Inserting Amenities for post_id: 220082
+[10-May-2025 04:29:51 UTC] Inserting Amenities for post_id: 220085
+[10-May-2025 04:29:53 UTC] Inserting Amenities for post_id: 220090
+[10-May-2025 04:29:55 UTC] Inserting Amenities for post_id: 220095
+[10-May-2025 04:29:57 UTC] Inserting Amenities for post_id: 220095
+[10-May-2025 04:29:59 UTC] Inserting Amenities for post_id: 220100
+[10-May-2025 04:30:02 UTC] Inserting Amenities for post_id: 220105
+[10-May-2025 04:30:08 UTC] Inserting Amenities for post_id: 220110
+[10-May-2025 04:30:10 UTC] Inserting Amenities for post_id: 220115
+[10-May-2025 04:30:12 UTC] Inserting Amenities for post_id: 220110
+[10-May-2025 04:30:14 UTC] Inserting Amenities for post_id: 220110
+[10-May-2025 04:30:24 UTC] Inserting Amenities for post_id: 220120
+[10-May-2025 04:30:35 UTC] Inserting Amenities for post_id: 220144
+[10-May-2025 04:30:46 UTC] Inserting Amenities for post_id: 220168
+[10-May-2025 04:30:48 UTC] Inserting Amenities for post_id: 220192
+[10-May-2025 04:30:50 UTC] Inserting Amenities for post_id: 220197
+[10-May-2025 04:30:52 UTC] Inserting Amenities for post_id: 220202
+[10-May-2025 04:31:03 UTC] Inserting Amenities for post_id: 220207
+[10-May-2025 04:31:15 UTC] Inserting Amenities for post_id: 220231
+[10-May-2025 04:31:15 UTC] [INFO] All rooms processed successfully
+[10-May-2025 04:31:27 UTC] [INFO] Completed processing hotel: apartments_mujen_lux_ in 189.5021
+[10-May-2025 04:31:42 UTC] [Hotel] _____________________________________________________________
+[10-May-2025 04:31:42 UTC] [INFO] Processing hotel: vidik_residence
+[10-May-2025 04:31:42 UTC] [INFO] Country code: RS
+[10-May-2025 04:31:45 UTC] Processing amenities for hotel
+[10-May-2025 04:31:45 UTC] Inserting Amenities for post_id: 1336941
+[10-May-2025 04:31:45 UTC] Finished processing amenities
+[10-May-2025 04:31:45 UTC] Inserting Amenities for post_id: 220279
+[10-May-2025 04:31:46 UTC] Inserting Amenities for post_id: 220281
+[10-May-2025 04:31:47 UTC] Inserting Amenities for post_id: 220283
+[10-May-2025 04:31:48 UTC] Inserting Amenities for post_id: 220285
+[10-May-2025 04:31:49 UTC] Inserting Amenities for post_id: 220287
+[10-May-2025 04:31:49 UTC] Inserting Amenities for post_id: 220289
+[10-May-2025 04:31:49 UTC] [INFO] All rooms processed successfully
+[10-May-2025 04:31:50 UTC] [INFO] Completed processing hotel: vidik_residence in 7.7701
+[10-May-2025 04:32:05 UTC] [Hotel] _____________________________________________________________
+[10-May-2025 04:32:05 UTC] [INFO] Processing hotel: sky_3_3
+[10-May-2025 04:32:05 UTC] [INFO] Country code: RS
+[10-May-2025 04:32:07 UTC] [INFO] No amenities found for hotel
+[10-May-2025 04:32:07 UTC] Finished processing amenities
+[10-May-2025 04:32:07 UTC] [INFO] All rooms processed successfully
+[10-May-2025 04:32:07 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/balkanea/public_html/wp-plugin/Models/ImageInsert.php on line 37
+[10-May-2025 04:32:07 UTC] [INFO] Completed processing hotel: sky_3_3 in 1.8773
+[10-May-2025 04:32:22 UTC] [Hotel] _____________________________________________________________
+[10-May-2025 04:32:22 UTC] [INFO] Processing hotel: studio_l39_milmari_kopaonik
+[10-May-2025 04:32:22 UTC] [INFO] Country code: RS
+[10-May-2025 04:32:24 UTC] [INFO] No amenities found for hotel
+[10-May-2025 04:32:24 UTC] Finished processing amenities
+[10-May-2025 04:32:24 UTC] [INFO] All rooms processed successfully
+[10-May-2025 04:32:24 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/balkanea/public_html/wp-plugin/Models/ImageInsert.php on line 37
+[10-May-2025 04:32:24 UTC] [INFO] Completed processing hotel: studio_l39_milmari_kopaonik in 1.8445
+[10-May-2025 04:32:39 UTC] [Hotel] _____________________________________________________________
+[10-May-2025 04:32:39 UTC] [INFO] Processing hotel: ski_spa_apartment_s20_milmari_resort_kopaonik_2
+[10-May-2025 04:32:39 UTC] [INFO] Country code: RS
+[10-May-2025 04:32:41 UTC] Processing amenities for hotel
+[10-May-2025 04:32:41 UTC] Inserting Amenities for post_id: 1336944
+[10-May-2025 04:32:41 UTC] Finished processing amenities
+[10-May-2025 04:33:05 UTC] Inserting Amenities for post_id: 220295
+[10-May-2025 04:33:29 UTC] Inserting Amenities for post_id: 220346
+[10-May-2025 04:33:29 UTC] [INFO] All rooms processed successfully
+[10-May-2025 04:33:42 UTC] [INFO] Completed processing hotel: ski_spa_apartment_s20_milmari_resort_kopaonik_2 in 63.4210
+[10-May-2025 04:33:57 UTC] [Hotel] _____________________________________________________________
+[10-May-2025 04:33:57 UTC] [INFO] Processing hotel: skispa_milmari_l17_2
+[10-May-2025 04:33:57 UTC] [INFO] Country code: RS
+[10-May-2025 04:33:59 UTC] Processing amenities for hotel
+[10-May-2025 04:33:59 UTC] Inserting Amenities for post_id: 1336945
+[10-May-2025 04:33:59 UTC] Finished processing amenities
+[10-May-2025 04:34:19 UTC] Inserting Amenities for post_id: 220426
+[10-May-2025 04:34:39 UTC] Inserting Amenities for post_id: 220467
+[10-May-2025 04:34:39 UTC] [INFO] All rooms processed successfully
+[10-May-2025 04:34:50 UTC] [INFO] Completed processing hotel: skispa_milmari_l17_2 in 52.4769
+[10-May-2025 04:35:05 UTC] [Hotel] _____________________________________________________________
+[10-May-2025 04:35:05 UTC] [INFO] Processing hotel: tasa114
+[10-May-2025 04:35:05 UTC] [INFO] Country code: RS
+[10-May-2025 04:35:07 UTC] Processing amenities for hotel
+[10-May-2025 04:35:07 UTC] Inserting Amenities for post_id: 1336946
+[10-May-2025 04:35:07 UTC] Finished processing amenities
+[10-May-2025 04:35:18 UTC] Inserting Amenities for post_id: 220531
+[10-May-2025 04:35:27 UTC] Inserting Amenities for post_id: 220551
+[10-May-2025 04:35:27 UTC] [INFO] All rooms processed successfully
+[10-May-2025 04:35:33 UTC] [INFO] Completed processing hotel: tasa114 in 28.9165
+[10-May-2025 04:35:48 UTC] [Hotel] _____________________________________________________________
+[10-May-2025 04:35:48 UTC] [INFO] Processing hotel: suncana_dolina_a2_apartmani
+[10-May-2025 04:35:48 UTC] [INFO] Country code: RS
+[10-May-2025 04:35:50 UTC] [INFO] No amenities found for hotel
+[10-May-2025 04:35:50 UTC] Finished processing amenities
+[10-May-2025 04:35:50 UTC] [INFO] All rooms processed successfully
+[10-May-2025 04:35:50 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/balkanea/public_html/wp-plugin/Models/ImageInsert.php on line 37
+[10-May-2025 04:35:50 UTC] [INFO] Completed processing hotel: suncana_dolina_a2_apartmani in 1.9808
+[10-May-2025 04:36:05 UTC] [Hotel] _____________________________________________________________
+[10-May-2025 04:36:05 UTC] [INFO] Processing hotel: woodside_residences_by_vedrana
+[10-May-2025 04:36:05 UTC] [INFO] Country code: RS
+[10-May-2025 04:36:07 UTC] Processing amenities for hotel
+[10-May-2025 04:36:07 UTC] Inserting Amenities for post_id: 1336948
+[10-May-2025 04:36:07 UTC] Finished processing amenities
+[10-May-2025 04:36:07 UTC] [INFO] All rooms processed successfully
+[10-May-2025 04:36:14 UTC] [INFO] Completed processing hotel: woodside_residences_by_vedrana in 8.4215
+[10-May-2025 04:36:29 UTC] [Hotel] _____________________________________________________________
+[10-May-2025 04:36:29 UTC] [INFO] Processing hotel: milmari_minart_s40
+[10-May-2025 04:36:29 UTC] [INFO] Country code: RS
+[10-May-2025 04:36:31 UTC] Processing amenities for hotel
+[10-May-2025 04:36:31 UTC] Inserting Amenities for post_id: 1336949
+[10-May-2025 04:36:31 UTC] Finished processing amenities
+[10-May-2025 04:36:31 UTC] [INFO] All rooms processed successfully
+[10-May-2025 04:36:40 UTC] [INFO] Completed processing hotel: milmari_minart_s40 in 11.0943
+[10-May-2025 04:37:05 UTC] [INFO] Successfully processed all hotels in Country: 16479 in 1,799.8874
+[11-May-2025 04:00:03 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php:1) in /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php on line 24
+[11-May-2025 04:00:03 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php:1) in /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php on line 25
+[11-May-2025 04:00:04 UTC] Authentication successful
+[11-May-2025 04:00:04 UTC] Tracking next region...
+[11-May-2025 04:00:04 UTC] [Region] ========================================================
+[11-May-2025 04:00:37 UTC] [INFO] Processing region: 6046713 with 33 hotels
+[11-May-2025 04:00:37 UTC] [Hotel] _____________________________________________________________
+[11-May-2025 04:00:37 UTC] [INFO] Processing hotel: zagorchina_kashta
+[11-May-2025 04:00:37 UTC] [INFO] Country code: BG
+[11-May-2025 04:00:39 UTC] [INFO] No amenities found for hotel
+[11-May-2025 04:00:39 UTC] Finished processing amenities
+[11-May-2025 04:00:39 UTC] [INFO] All rooms processed successfully
+[11-May-2025 04:00:39 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/balkanea/public_html/wp-plugin/Models/ImageInsert.php on line 37
+[11-May-2025 04:00:39 UTC] [INFO] Completed processing hotel: zagorchina_kashta in 1.7005
+[11-May-2025 04:00:54 UTC] [Hotel] _____________________________________________________________
+[11-May-2025 04:00:54 UTC] [INFO] Processing hotel: winslow_infinity_and_spa_alexander_services_apartments
+[11-May-2025 04:00:54 UTC] [INFO] Country code: BG
+[11-May-2025 04:00:56 UTC] Processing amenities for hotel
+[11-May-2025 04:00:56 UTC] Inserting Amenities for post_id: 1540059
+[11-May-2025 04:00:56 UTC] Finished processing amenities
+[11-May-2025 04:01:26 UTC] Inserting Amenities for post_id: 212450
+[11-May-2025 04:02:04 UTC] Inserting Amenities for post_id: 212490
+[11-May-2025 04:02:36 UTC] Inserting Amenities for post_id: 212530
+[11-May-2025 04:03:01 UTC] Inserting Amenities for post_id: 212570
+[11-May-2025 04:03:29 UTC] Inserting Amenities for post_id: 212610
+[11-May-2025 04:03:56 UTC] Inserting Amenities for post_id: 212650
+[11-May-2025 04:04:21 UTC] Inserting Amenities for post_id: 212690
+[11-May-2025 04:04:47 UTC] Inserting Amenities for post_id: 212730
+[11-May-2025 04:05:20 UTC] Inserting Amenities for post_id: 212770
+[11-May-2025 04:05:44 UTC] Inserting Amenities for post_id: 212810
+[11-May-2025 04:06:10 UTC] Inserting Amenities for post_id: 212850
+[11-May-2025 04:06:38 UTC] Inserting Amenities for post_id: 212890
+[11-May-2025 04:07:03 UTC] Inserting Amenities for post_id: 212730
+[11-May-2025 04:07:28 UTC] Inserting Amenities for post_id: 212930
+[11-May-2025 04:07:52 UTC] Inserting Amenities for post_id: 212970
+[11-May-2025 04:08:17 UTC] Inserting Amenities for post_id: 213010
+[11-May-2025 04:08:42 UTC] Inserting Amenities for post_id: 213010
+[11-May-2025 04:09:12 UTC] Inserting Amenities for post_id: 213050
+[11-May-2025 04:09:37 UTC] Inserting Amenities for post_id: 213090
+[11-May-2025 04:10:00 UTC] Inserting Amenities for post_id: 213130
+[11-May-2025 04:10:35 UTC] Inserting Amenities for post_id: 213170
+[11-May-2025 04:10:35 UTC] [INFO] All rooms processed successfully
+[11-May-2025 04:10:59 UTC] [INFO] Completed processing hotel: winslow_infinity_and_spa_alexander_services_apartments in 604.6901
+[11-May-2025 04:11:14 UTC] [Hotel] _____________________________________________________________
+[11-May-2025 04:11:14 UTC] [INFO] Processing hotel: todeva_house
+[11-May-2025 04:11:14 UTC] [INFO] Country code: BG
+[11-May-2025 04:11:15 UTC] Processing amenities for hotel
+[11-May-2025 04:11:15 UTC] Inserting Amenities for post_id: 1542360
+[11-May-2025 04:11:15 UTC] Finished processing amenities
+[11-May-2025 04:11:28 UTC] Inserting Amenities for post_id: 213264
+[11-May-2025 04:11:34 UTC] Inserting Amenities for post_id: 213272
+[11-May-2025 04:11:40 UTC] Inserting Amenities for post_id: 213280
+[11-May-2025 04:11:44 UTC] Inserting Amenities for post_id: 213288
+[11-May-2025 04:11:48 UTC] Inserting Amenities for post_id: 213296
+[11-May-2025 04:11:53 UTC] Inserting Amenities for post_id: 213272
+[11-May-2025 04:11:55 UTC] Inserting Amenities for post_id: 213302
+[11-May-2025 04:11:59 UTC] Inserting Amenities for post_id: 213306
+[11-May-2025 04:12:02 UTC] Inserting Amenities for post_id: 213302
+[11-May-2025 04:12:08 UTC] Inserting Amenities for post_id: 213316
+[11-May-2025 04:12:13 UTC] Inserting Amenities for post_id: 213325
+[11-May-2025 04:12:15 UTC] Inserting Amenities for post_id: 213334
+[11-May-2025 04:12:16 UTC] [INFO] All rooms processed successfully
+[11-May-2025 04:12:24 UTC] [INFO] Completed processing hotel: todeva_house in 70.2805
+[11-May-2025 04:12:39 UTC] [Hotel] _____________________________________________________________
+[11-May-2025 04:12:39 UTC] [INFO] Processing hotel: casa_karina
+[11-May-2025 04:12:39 UTC] [INFO] Country code: BG
+[11-May-2025 04:12:41 UTC] Processing amenities for hotel
+[11-May-2025 04:12:41 UTC] Inserting Amenities for post_id: 1542693
+[11-May-2025 04:12:41 UTC] Finished processing amenities
+[11-May-2025 04:12:43 UTC] Inserting Amenities for post_id: 213353
+[11-May-2025 04:12:45 UTC] Inserting Amenities for post_id: 213353
+[11-May-2025 04:12:50 UTC] Inserting Amenities for post_id: 213358
+[11-May-2025 04:12:54 UTC] Inserting Amenities for post_id: 213366
+[11-May-2025 04:13:03 UTC] Inserting Amenities for post_id: 213374
+[11-May-2025 04:13:13 UTC] Inserting Amenities for post_id: 213389
+[11-May-2025 04:13:16 UTC] Inserting Amenities for post_id: 213402
+[11-May-2025 04:13:26 UTC] Inserting Amenities for post_id: 213406
+[11-May-2025 04:13:26 UTC] [INFO] All rooms processed successfully
+[11-May-2025 04:14:10 UTC] [INFO] Completed processing hotel: casa_karina in 91.1978
+[11-May-2025 04:14:25 UTC] [Hotel] _____________________________________________________________
+[11-May-2025 04:14:25 UTC] [INFO] Processing hotel: premier_luxury_mountain_resort
+[11-May-2025 04:14:25 UTC] [INFO] Country code: BG
+[11-May-2025 04:14:27 UTC] Processing amenities for hotel
+[11-May-2025 04:14:27 UTC] Inserting Amenities for post_id: 1542941
+[11-May-2025 04:14:27 UTC] Finished processing amenities
+[11-May-2025 04:15:24 UTC] Inserting Amenities for post_id: 223859
+[11-May-2025 04:15:42 UTC] Inserting Amenities for post_id: 223888
+[11-May-2025 04:15:58 UTC] Inserting Amenities for post_id: 223917
+[11-May-2025 04:16:16 UTC] Inserting Amenities for post_id: 223946
+[11-May-2025 04:16:32 UTC] Inserting Amenities for post_id: 223975
+[11-May-2025 04:16:34 UTC] Inserting Amenities for post_id: 224004
+[11-May-2025 04:16:51 UTC] Inserting Amenities for post_id: 224009
+[11-May-2025 04:17:10 UTC] Inserting Amenities for post_id: 224038
+[11-May-2025 04:17:28 UTC] Inserting Amenities for post_id: 224067
+[11-May-2025 04:17:43 UTC] Inserting Amenities for post_id: 224096
+[11-May-2025 04:17:58 UTC] Inserting Amenities for post_id: 224004
+[11-May-2025 04:17:59 UTC] Inserting Amenities for post_id: 224149
+[11-May-2025 04:18:02 UTC] Inserting Amenities for post_id: 224151
+[11-May-2025 04:18:18 UTC] Inserting Amenities for post_id: 224156
+[11-May-2025 04:18:35 UTC] Inserting Amenities for post_id: 224185
+[11-May-2025 04:18:51 UTC] Inserting Amenities for post_id: 224149
+[11-May-2025 04:19:10 UTC] Inserting Amenities for post_id: 224004
+[11-May-2025 04:19:46 UTC] Inserting Amenities for post_id: 224241
+[11-May-2025 04:20:25 UTC] Inserting Amenities for post_id: 224292
+[11-May-2025 04:20:56 UTC] Inserting Amenities for post_id: 224343
+[11-May-2025 04:21:29 UTC] Inserting Amenities for post_id: 224394
+[11-May-2025 04:22:01 UTC] Inserting Amenities for post_id: 224445
+[11-May-2025 04:22:33 UTC] Inserting Amenities for post_id: 224496
+[11-May-2025 04:23:05 UTC] Inserting Amenities for post_id: 224547
+[11-May-2025 04:23:38 UTC] Inserting Amenities for post_id: 224496
+[11-May-2025 04:24:10 UTC] Inserting Amenities for post_id: 224598
+[11-May-2025 04:24:46 UTC] Inserting Amenities for post_id: 224649
+[11-May-2025 04:25:34 UTC] Inserting Amenities for post_id: 224700
+[11-May-2025 04:26:10 UTC] Inserting Amenities for post_id: 224751
+[11-May-2025 04:26:46 UTC] Inserting Amenities for post_id: 224802
+[11-May-2025 04:27:19 UTC] Inserting Amenities for post_id: 224853
+[11-May-2025 04:27:53 UTC] Inserting Amenities for post_id: 224904
+[11-May-2025 04:28:26 UTC] Inserting Amenities for post_id: 224955
+[11-May-2025 04:28:59 UTC] Inserting Amenities for post_id: 225006
+[11-May-2025 04:29:33 UTC] Inserting Amenities for post_id: 225057
+[11-May-2025 04:30:20 UTC] Inserting Amenities for post_id: 225057
+[11-May-2025 04:31:02 UTC] Inserting Amenities for post_id: 225108
+[11-May-2025 04:31:37 UTC] Inserting Amenities for post_id: 225159
+[11-May-2025 04:31:45 UTC] Inserting Amenities for post_id: 225210
+[11-May-2025 04:31:53 UTC] Inserting Amenities for post_id: 225223
+[11-May-2025 04:31:59 UTC] Inserting Amenities for post_id: 225236
+[11-May-2025 04:32:14 UTC] Inserting Amenities for post_id: 225246
+[11-May-2025 04:32:22 UTC] Inserting Amenities for post_id: 225268
+[11-May-2025 04:32:26 UTC] Inserting Amenities for post_id: 225281
+[11-May-2025 04:32:35 UTC] Inserting Amenities for post_id: 225286
+[11-May-2025 04:32:43 UTC] Inserting Amenities for post_id: 225299
+[11-May-2025 04:32:51 UTC] Inserting Amenities for post_id: 225312
+[11-May-2025 04:32:59 UTC] Inserting Amenities for post_id: 225325
+[11-May-2025 04:33:07 UTC] Inserting Amenities for post_id: 225281
+[11-May-2025 04:33:16 UTC] Inserting Amenities for post_id: 225286
+[11-May-2025 04:33:24 UTC] Inserting Amenities for post_id: 225346
+[11-May-2025 04:33:33 UTC] Inserting Amenities for post_id: 225281
+[11-May-2025 04:33:41 UTC] Inserting Amenities for post_id: 225286
+[11-May-2025 04:33:47 UTC] Inserting Amenities for post_id: 225299
+[11-May-2025 04:33:55 UTC] Inserting Amenities for post_id: 225359
+[11-May-2025 04:34:05 UTC] Inserting Amenities for post_id: 225372
+[11-May-2025 04:34:13 UTC] Inserting Amenities for post_id: 225385
+[11-May-2025 04:34:21 UTC] Inserting Amenities for post_id: 225398
+[11-May-2025 04:34:29 UTC] Inserting Amenities for post_id: 225411
+[11-May-2025 04:34:37 UTC] Inserting Amenities for post_id: 225281
+[11-May-2025 04:34:45 UTC] Inserting Amenities for post_id: 225286
+[11-May-2025 04:34:52 UTC] Inserting Amenities for post_id: 225299
+[11-May-2025 04:35:29 UTC] Inserting Amenities for post_id: 225424
+[11-May-2025 04:36:00 UTC] Inserting Amenities for post_id: 225475
+[11-May-2025 04:36:03 UTC] Inserting Amenities for post_id: 225526
+[11-May-2025 04:36:06 UTC] Inserting Amenities for post_id: 225531
+[11-May-2025 04:36:09 UTC] Inserting Amenities for post_id: 225536
+[11-May-2025 04:36:40 UTC] Inserting Amenities for post_id: 225541
+[11-May-2025 04:37:15 UTC] Inserting Amenities for post_id: 225592
+[11-May-2025 04:37:46 UTC] Inserting Amenities for post_id: 225643
+[11-May-2025 04:38:19 UTC] Inserting Amenities for post_id: 225694
+[11-May-2025 04:38:51 UTC] Inserting Amenities for post_id: 225745
+[11-May-2025 04:39:21 UTC] Inserting Amenities for post_id: 225796
+[11-May-2025 04:39:54 UTC] Inserting Amenities for post_id: 225847
+[11-May-2025 04:40:27 UTC] Inserting Amenities for post_id: 225898
+[11-May-2025 04:40:34 UTC] Inserting Amenities for post_id: 225936
+[11-May-2025 04:41:04 UTC] Inserting Amenities for post_id: 225948
+[11-May-2025 04:41:07 UTC] Inserting Amenities for post_id: 225986
+[11-May-2025 04:41:38 UTC] Inserting Amenities for post_id: 225991
+[11-May-2025 04:42:05 UTC] Inserting Amenities for post_id: 226029
+[11-May-2025 04:42:27 UTC] Inserting Amenities for post_id: 226067
+[11-May-2025 04:42:51 UTC] Inserting Amenities for post_id: 226105
+[11-May-2025 04:43:19 UTC] Inserting Amenities for post_id: 226143
+[11-May-2025 04:43:23 UTC] Inserting Amenities for post_id: 226181
+[11-May-2025 04:43:48 UTC] Inserting Amenities for post_id: 226187
+[11-May-2025 04:44:13 UTC] Inserting Amenities for post_id: 226225
+[11-May-2025 04:44:38 UTC] Inserting Amenities for post_id: 226263
+[11-May-2025 04:45:00 UTC] Inserting Amenities for post_id: 226301
+[11-May-2025 04:45:27 UTC] Inserting Amenities for post_id: 226339
+[11-May-2025 04:45:51 UTC] Inserting Amenities for post_id: 226377
+[11-May-2025 04:46:15 UTC] Inserting Amenities for post_id: 226415
+[11-May-2025 04:46:40 UTC] Inserting Amenities for post_id: 226453
+[11-May-2025 04:46:44 UTC] Inserting Amenities for post_id: 226491
+[11-May-2025 04:46:48 UTC] Inserting Amenities for post_id: 226498
+[11-May-2025 04:46:54 UTC] Inserting Amenities for post_id: 226505
+[11-May-2025 04:47:19 UTC] Inserting Amenities for post_id: 226515
+[11-May-2025 04:47:48 UTC] Inserting Amenities for post_id: 226553
+[11-May-2025 04:48:14 UTC] Inserting Amenities for post_id: 226591
+[11-May-2025 04:48:43 UTC] Inserting Amenities for post_id: 226505
+[11-May-2025 04:49:07 UTC] Inserting Amenities for post_id: 226657
+[11-May-2025 04:49:33 UTC] Inserting Amenities for post_id: 226695
+[11-May-2025 04:49:58 UTC] Inserting Amenities for post_id: 226225
+[11-May-2025 04:50:33 UTC] Inserting Amenities for post_id: 226733
+[11-May-2025 04:51:05 UTC] Inserting Amenities for post_id: 226263
+[11-May-2025 04:51:32 UTC] Inserting Amenities for post_id: 226771
+[11-May-2025 04:52:00 UTC] Inserting Amenities for post_id: 226809
+[11-May-2025 04:52:26 UTC] Inserting Amenities for post_id: 226591
+[11-May-2025 04:52:50 UTC] Inserting Amenities for post_id: 226847
+[11-May-2025 04:52:58 UTC] Inserting Amenities for post_id: 226885
+[11-May-2025 04:53:22 UTC] Inserting Amenities for post_id: 226897
+[11-May-2025 04:53:50 UTC] Inserting Amenities for post_id: 226935
+[11-May-2025 04:54:18 UTC] Inserting Amenities for post_id: 226973
+[11-May-2025 04:54:46 UTC] Inserting Amenities for post_id: 227011
+[11-May-2025 04:55:19 UTC] Inserting Amenities for post_id: 226505
+[11-May-2025 04:55:45 UTC] Inserting Amenities for post_id: 227049
+[11-May-2025 04:56:10 UTC] Inserting Amenities for post_id: 226515
+[11-May-2025 04:56:39 UTC] Inserting Amenities for post_id: 226657
+[11-May-2025 04:57:08 UTC] Inserting Amenities for post_id: 226695
+[11-May-2025 04:57:09 UTC] Inserting Amenities for post_id: 226591
+[11-May-2025 04:57:35 UTC] Inserting Amenities for post_id: 226415
+[11-May-2025 04:58:01 UTC] Inserting Amenities for post_id: 226657
+[11-May-2025 04:58:24 UTC] Inserting Amenities for post_id: 226591
+[11-May-2025 04:58:46 UTC] Inserting Amenities for post_id: 226505
+[11-May-2025 04:59:19 UTC] Inserting Amenities for post_id: 227087
+[11-May-2025 04:59:52 UTC] Inserting Amenities for post_id: 227138
+[11-May-2025 05:00:04 UTC] Shutdown error: Array
 (
-    [0] => Array
-        (
-            [paragraphs] => Array
-                (
-                    [0] => A very nice place to stay for a reasonable price — living quarters «Kitty Test Hotel (Do Not Book)» are located in Belogorsk. These living quarters are located in walking distance from the city center.
-                )
-
-            [title] => Location
-        )
-
-    [1] => Array
-        (
-            [paragraphs] => Array
-                (
-                    [0] => In the shared kitchen, you can cook anything you want. Wi-Fi is available on the premises. Ask for more information when checking-in. Specially for tourists who travel by car, there’s a parking zone. Pets are welcome here.
-                    [1] => Accessible for guests with disabilities: the elevator helps them to go to the highest floors. Additional services that the living quarters offers to its guests: ironing. The staff of the living quarters will be happy to talk to you in English and Russian.
-                )
-
-            [title] => At the living quarters
-        )
-
-    [2] => Array
-        (
-            [paragraphs] => Array
-                (
-                    [0] => The room is warmly decorated and has everything you need to have a rest after a long eventful day. There is a DVD player, a TV, a mini-bar and a bathrobe. The room equipment depends on its category.
-                )
-
-            [title] => Room amenities
-        )
-
+    [type] => 2
+    [message] => Invalid argument supplied for foreach()
+    [file] => /home/balkanea/public_html/wp-plugin/Models/ImageInsert.php
+    [line] => 37
 )
 
-[27-Apr-2025 11:20:28 UTC] Processing amenities for hotel
-[27-Apr-2025 11:20:28 UTC] Inserting Amenities for post_id: 0
-[27-Apr-2025 11:20:28 UTC] Finished processing amenities
-[27-Apr-2025 11:20:38 UTC] Inserting Amenities for post_id: 260627
-[27-Apr-2025 11:20:38 UTC] [INFO] Hotel room does not exist
-[27-Apr-2025 11:20:48 UTC] Inserting Amenities for post_id: 260640
-[27-Apr-2025 11:20:48 UTC] [INFO] Hotel room does not exist
-[27-Apr-2025 11:20:57 UTC] Inserting Amenities for post_id: 52588
-[27-Apr-2025 11:20:57 UTC] [INFO] Hotel room does not exist
-[27-Apr-2025 11:20:57 UTC] WordPress database error Duplicate entry '52588-1745712000' for key 'Y7FXuNUTt_st_room_availability.ST_AVAILABILITY' for query INSERT INTO `Y7FXuNUTt_st_room_availability` (`post_id`, `check_in`, `check_out`, `number`, `post_type`, `price`, `status`, `priority`, `number_booked`, `parent_id`, `allow_full_day`, `number_end`, `booking_period`, `is_base`, `adult_number`, `child_number`, `adult_price`, `child_price`) VALUES (52588, '1745712000', '1777248000', '9999', 'hotel_room', '0', 'available', NULL, '0', '55215', 'on', NULL, '0', '0', '2', '0', '0', '0') made by Models\HotelRoom->create
-[27-Apr-2025 11:21:07 UTC] Inserting Amenities for post_id: 260660
-[27-Apr-2025 11:21:07 UTC] [INFO] Hotel room does not exist
-[27-Apr-2025 11:21:08 UTC] Inserting Amenities for post_id: 52596
-[27-Apr-2025 11:21:18 UTC] Inserting Amenities for post_id: 260673
-[27-Apr-2025 11:21:18 UTC] [INFO] Hotel room does not exist
-[27-Apr-2025 11:21:23 UTC] Inserting Amenities for post_id: 58480
-[27-Apr-2025 11:21:33 UTC] Inserting Amenities for post_id: 260687
-[27-Apr-2025 11:21:33 UTC] [INFO] Hotel room does not exist
-[27-Apr-2025 11:21:42 UTC] Inserting Amenities for post_id: 260700
-[27-Apr-2025 11:21:42 UTC] [INFO] Hotel room does not exist
-[27-Apr-2025 11:21:52 UTC] Inserting Amenities for post_id: 260713
-[27-Apr-2025 11:21:52 UTC] [INFO] Hotel room does not exist
-[27-Apr-2025 11:21:59 UTC] Inserting Amenities for post_id: 194088
-[27-Apr-2025 11:22:08 UTC] Inserting Amenities for post_id: 260732
-[27-Apr-2025 11:22:08 UTC] [INFO] Hotel room does not exist
-[27-Apr-2025 11:22:17 UTC] Inserting Amenities for post_id: 260745
-[27-Apr-2025 11:22:17 UTC] [INFO] Hotel room does not exist
-[27-Apr-2025 11:22:27 UTC] Inserting Amenities for post_id: 260758
-[27-Apr-2025 11:22:27 UTC] [INFO] Hotel room does not exist
-[27-Apr-2025 11:22:36 UTC] Inserting Amenities for post_id: 260771
-[27-Apr-2025 11:22:36 UTC] [INFO] Hotel room does not exist
-[27-Apr-2025 11:22:45 UTC] Inserting Amenities for post_id: 52627
-[27-Apr-2025 11:22:45 UTC] [INFO] Hotel room does not exist
-[27-Apr-2025 11:22:45 UTC] WordPress database error Duplicate entry '52627-1745712000' for key 'Y7FXuNUTt_st_room_availability.ST_AVAILABILITY' for query INSERT INTO `Y7FXuNUTt_st_room_availability` (`post_id`, `check_in`, `check_out`, `number`, `post_type`, `price`, `status`, `priority`, `number_booked`, `parent_id`, `allow_full_day`, `number_end`, `booking_period`, `is_base`, `adult_number`, `child_number`, `adult_price`, `child_price`) VALUES (52627, '1745712000', '1777248000', '9999', 'hotel_room', '0', 'available', NULL, '0', '55215', 'on', NULL, '0', '0', '2', '0', '0', '0') made by Models\HotelRoom->create
-[27-Apr-2025 11:22:46 UTC] Inserting Amenities for post_id: 260794
-[27-Apr-2025 11:22:46 UTC] [INFO] Hotel room does not exist
-[27-Apr-2025 11:22:55 UTC] Inserting Amenities for post_id: 260796
-[27-Apr-2025 11:22:55 UTC] [INFO] Hotel room does not exist
-[27-Apr-2025 11:23:00 UTC] Inserting Amenities for post_id: 260809
-[27-Apr-2025 11:23:01 UTC] [INFO] Hotel room does not exist
-[27-Apr-2025 11:23:10 UTC] Inserting Amenities for post_id: 260813
-[27-Apr-2025 11:23:10 UTC] [INFO] Hotel room does not exist
-[27-Apr-2025 11:23:10 UTC] [INFO] All rooms processed successfully
-[27-Apr-2025 11:23:15 UTC] [INFO] Completed processing hotel: test_hotel in 169.2596
-[27-Apr-2025 11:23:15 UTC] [INFO] Successfully processed all hotels in Country:  in 169.2596
-[27-Apr-2025 11:24:38 UTC] Authentication successful
-[27-Apr-2025 11:24:39 UTC] [INFO] Processing hotel: test_hotel
-[27-Apr-2025 11:24:39 UTC] [INFO] Country code: RU
-[27-Apr-2025 11:24:39 UTC] Array
+[12-May-2025 04:00:02 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php:1) in /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php on line 24
+[12-May-2025 04:00:02 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php:1) in /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php on line 25
+[12-May-2025 04:00:03 UTC] Authentication successful
+[12-May-2025 04:00:03 UTC] Tracking next region...
+[12-May-2025 04:00:03 UTC] [Region] ========================================================
+[12-May-2025 04:00:50 UTC] [INFO] Processing region: 6024084 with 31 hotels
+[12-May-2025 04:00:50 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 04:00:50 UTC] [INFO] Processing hotel: villa_malisko
+[12-May-2025 04:00:50 UTC] [INFO] Country code: HR
+[12-May-2025 04:00:53 UTC] Processing amenities for hotel
+[12-May-2025 04:00:53 UTC] Inserting Amenities for post_id: 0
+[12-May-2025 04:00:53 UTC] Finished processing amenities
+[12-May-2025 04:00:57 UTC] Inserting Amenities for post_id: 237886
+[12-May-2025 04:01:00 UTC] Inserting Amenities for post_id: 237891
+[12-May-2025 04:01:03 UTC] Inserting Amenities for post_id: 237896
+[12-May-2025 04:01:12 UTC] Inserting Amenities for post_id: 237900
+[12-May-2025 04:01:20 UTC] Inserting Amenities for post_id: 237916
+[12-May-2025 04:01:26 UTC] Inserting Amenities for post_id: 237930
+[12-May-2025 04:01:28 UTC] Inserting Amenities for post_id: 237942
+[12-May-2025 04:01:30 UTC] Inserting Amenities for post_id: 237947
+[12-May-2025 04:01:36 UTC] Inserting Amenities for post_id: 237952
+[12-May-2025 04:01:42 UTC] Inserting Amenities for post_id: 237964
+[12-May-2025 04:01:49 UTC] Inserting Amenities for post_id: 237976
+[12-May-2025 04:01:57 UTC] Inserting Amenities for post_id: 237988
+[12-May-2025 04:02:07 UTC] Inserting Amenities for post_id: 238004
+[12-May-2025 04:02:19 UTC] Inserting Amenities for post_id: 238020
+[12-May-2025 04:02:19 UTC] [INFO] All rooms processed successfully
+[12-May-2025 04:02:26 UTC] [INFO] Completed processing hotel: villa_malisko in 95.8655
+[12-May-2025 04:02:41 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 04:02:41 UTC] [INFO] Processing hotel: robinson_house_nicolina
+[12-May-2025 04:02:41 UTC] [INFO] Country code: HR
+[12-May-2025 04:02:43 UTC] Processing amenities for hotel
+[12-May-2025 04:02:43 UTC] Inserting Amenities for post_id: 1569523
+[12-May-2025 04:02:43 UTC] Finished processing amenities
+[12-May-2025 04:02:46 UTC] Inserting Amenities for post_id: 238049
+[12-May-2025 04:02:48 UTC] Inserting Amenities for post_id: 238054
+[12-May-2025 04:02:51 UTC] Inserting Amenities for post_id: 238054
+[12-May-2025 04:02:51 UTC] [INFO] All rooms processed successfully
+[12-May-2025 04:03:03 UTC] [INFO] Completed processing hotel: robinson_house_nicolina in 21.7039
+[12-May-2025 04:03:18 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 04:03:18 UTC] [INFO] Processing hotel: tigrich_apartments
+[12-May-2025 04:03:18 UTC] [INFO] Country code: HR
+[12-May-2025 04:03:20 UTC] Processing amenities for hotel
+[12-May-2025 04:03:20 UTC] Inserting Amenities for post_id: 1569524
+[12-May-2025 04:03:20 UTC] Finished processing amenities
+[12-May-2025 04:03:20 UTC] [INFO] All rooms processed successfully
+[12-May-2025 04:03:35 UTC] [INFO] Completed processing hotel: tigrich_apartments in 16.6536
+[12-May-2025 04:03:50 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 04:03:50 UTC] [INFO] Processing hotel: villa_adriella
+[12-May-2025 04:03:50 UTC] [INFO] Country code: HR
+[12-May-2025 04:03:52 UTC] [INFO] No amenities found for hotel
+[12-May-2025 04:03:52 UTC] Finished processing amenities
+[12-May-2025 04:03:52 UTC] [INFO] All rooms processed successfully
+[12-May-2025 04:03:52 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/balkanea/public_html/wp-plugin/Models/ImageInsert.php on line 37
+[12-May-2025 04:03:52 UTC] [INFO] Completed processing hotel: villa_adriella in 2.1176
+[12-May-2025 04:04:07 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 04:04:07 UTC] [INFO] Processing hotel: villa_milton_hvar
+[12-May-2025 04:04:07 UTC] [INFO] Country code: HR
+[12-May-2025 04:04:09 UTC] Processing amenities for hotel
+[12-May-2025 04:04:09 UTC] Inserting Amenities for post_id: 1569526
+[12-May-2025 04:04:09 UTC] Finished processing amenities
+[12-May-2025 04:04:48 UTC] Inserting Amenities for post_id: 238137
+[12-May-2025 04:05:09 UTC] Inserting Amenities for post_id: 238170
+[12-May-2025 04:05:28 UTC] Inserting Amenities for post_id: 238203
+[12-May-2025 04:05:44 UTC] Inserting Amenities for post_id: 238236
+[12-May-2025 04:06:01 UTC] Inserting Amenities for post_id: 238269
+[12-May-2025 04:06:17 UTC] Inserting Amenities for post_id: 238302
+[12-May-2025 04:06:33 UTC] Inserting Amenities for post_id: 238335
+[12-May-2025 04:06:54 UTC] Inserting Amenities for post_id: 238368
+[12-May-2025 04:06:55 UTC] Inserting Amenities for post_id: 238401
+[12-May-2025 04:06:57 UTC] Inserting Amenities for post_id: 238404
+[12-May-2025 04:06:58 UTC] Inserting Amenities for post_id: 238407
+[12-May-2025 04:07:18 UTC] Inserting Amenities for post_id: 238410
+[12-May-2025 04:07:38 UTC] Inserting Amenities for post_id: 238443
+[12-May-2025 04:07:59 UTC] Inserting Amenities for post_id: 238476
+[12-May-2025 04:08:19 UTC] Inserting Amenities for post_id: 238509
+[12-May-2025 04:08:37 UTC] Inserting Amenities for post_id: 238542
+[12-May-2025 04:08:57 UTC] Inserting Amenities for post_id: 238575
+[12-May-2025 04:09:17 UTC] Inserting Amenities for post_id: 238608
+[12-May-2025 04:09:36 UTC] Inserting Amenities for post_id: 238641
+[12-May-2025 04:09:53 UTC] Inserting Amenities for post_id: 238671
+[12-May-2025 04:10:11 UTC] Inserting Amenities for post_id: 238701
+[12-May-2025 04:10:29 UTC] Inserting Amenities for post_id: 238727
+[12-May-2025 04:10:47 UTC] Inserting Amenities for post_id: 238727
+[12-May-2025 04:11:05 UTC] Inserting Amenities for post_id: 238727
+[12-May-2025 04:11:15 UTC] Inserting Amenities for post_id: 238757
+[12-May-2025 04:11:26 UTC] Inserting Amenities for post_id: 238773
+[12-May-2025 04:11:35 UTC] Inserting Amenities for post_id: 238789
+[12-May-2025 04:11:47 UTC] Inserting Amenities for post_id: 238804
+[12-May-2025 04:11:56 UTC] Inserting Amenities for post_id: 238826
+[12-May-2025 04:12:09 UTC] Inserting Amenities for post_id: 238842
+[12-May-2025 04:12:16 UTC] Inserting Amenities for post_id: 238864
+[12-May-2025 04:12:24 UTC] Inserting Amenities for post_id: 238876
+[12-May-2025 04:12:32 UTC] Inserting Amenities for post_id: 238892
+[12-May-2025 04:12:40 UTC] Inserting Amenities for post_id: 238908
+[12-May-2025 04:12:50 UTC] Inserting Amenities for post_id: 238924
+[12-May-2025 04:13:00 UTC] Inserting Amenities for post_id: 238940
+[12-May-2025 04:13:09 UTC] Inserting Amenities for post_id: 238956
+[12-May-2025 04:13:19 UTC] Inserting Amenities for post_id: 238972
+[12-May-2025 04:13:28 UTC] Inserting Amenities for post_id: 238892
+[12-May-2025 04:13:38 UTC] Inserting Amenities for post_id: 238988
+[12-May-2025 04:13:48 UTC] Inserting Amenities for post_id: 238908
+[12-May-2025 04:13:57 UTC] Inserting Amenities for post_id: 239004
+[12-May-2025 04:14:07 UTC] Inserting Amenities for post_id: 239004
+[12-May-2025 04:14:17 UTC] Inserting Amenities for post_id: 239020
+[12-May-2025 04:14:38 UTC] Inserting Amenities for post_id: 239036
+[12-May-2025 04:14:58 UTC] Inserting Amenities for post_id: 239069
+[12-May-2025 04:15:22 UTC] Inserting Amenities for post_id: 239102
+[12-May-2025 04:15:33 UTC] Inserting Amenities for post_id: 239135
+[12-May-2025 04:15:43 UTC] Inserting Amenities for post_id: 239155
+[12-May-2025 04:15:55 UTC] Inserting Amenities for post_id: 239175
+[12-May-2025 04:16:14 UTC] Inserting Amenities for post_id: 239195
+[12-May-2025 04:16:34 UTC] Inserting Amenities for post_id: 239228
+[12-May-2025 04:16:54 UTC] Inserting Amenities for post_id: 239261
+[12-May-2025 04:17:14 UTC] Inserting Amenities for post_id: 239294
+[12-May-2025 04:17:34 UTC] Inserting Amenities for post_id: 239327
+[12-May-2025 04:17:34 UTC] [INFO] All rooms processed successfully
+[12-May-2025 04:17:50 UTC] [INFO] Completed processing hotel: villa_milton_hvar in 823.3714
+[12-May-2025 04:18:05 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 04:18:05 UTC] [INFO] Processing hotel: podstine_hotel
+[12-May-2025 04:18:05 UTC] [INFO] Country code: HR
+[12-May-2025 04:18:07 UTC] Processing amenities for hotel
+[12-May-2025 04:18:07 UTC] Inserting Amenities for post_id: 1569533
+[12-May-2025 04:18:07 UTC] Finished processing amenities
+[12-May-2025 04:18:38 UTC] Inserting Amenities for post_id: 239444
+[12-May-2025 04:18:41 UTC] Inserting Amenities for post_id: 239448
+[12-May-2025 04:18:43 UTC] Inserting Amenities for post_id: 239448
+[12-May-2025 04:18:49 UTC] Inserting Amenities for post_id: 239452
+[12-May-2025 04:18:51 UTC] Inserting Amenities for post_id: 239452
+[12-May-2025 04:18:53 UTC] Inserting Amenities for post_id: 239448
+[12-May-2025 04:19:29 UTC] Inserting Amenities for post_id: 239460
+[12-May-2025 04:20:01 UTC] Inserting Amenities for post_id: 239511
+[12-May-2025 04:20:31 UTC] Inserting Amenities for post_id: 239460
+[12-May-2025 04:20:38 UTC] Inserting Amenities for post_id: 239562
+[12-May-2025 04:20:39 UTC] Inserting Amenities for post_id: 239574
+[12-May-2025 04:21:06 UTC] Inserting Amenities for post_id: 239576
+[12-May-2025 04:21:33 UTC] Inserting Amenities for post_id: 239619
+[12-May-2025 04:21:37 UTC] Inserting Amenities for post_id: 239662
+[12-May-2025 04:21:59 UTC] Inserting Amenities for post_id: 239669
+[12-May-2025 04:22:22 UTC] Inserting Amenities for post_id: 239712
+[12-May-2025 04:22:46 UTC] Inserting Amenities for post_id: 239755
+[12-May-2025 04:23:15 UTC] Inserting Amenities for post_id: 239798
+[12-May-2025 04:23:40 UTC] Inserting Amenities for post_id: 239669
+[12-May-2025 04:24:08 UTC] Inserting Amenities for post_id: 239669
+[12-May-2025 04:24:35 UTC] Inserting Amenities for post_id: 239712
+[12-May-2025 04:24:53 UTC] Inserting Amenities for post_id: 239511
+[12-May-2025 04:25:02 UTC] Inserting Amenities for post_id: 239841
+[12-May-2025 04:25:31 UTC] Inserting Amenities for post_id: 239854
+[12-May-2025 04:25:57 UTC] Inserting Amenities for post_id: 239897
+[12-May-2025 04:26:21 UTC] Inserting Amenities for post_id: 239940
+[12-May-2025 04:26:31 UTC] Inserting Amenities for post_id: 239983
+[12-May-2025 04:26:58 UTC] Inserting Amenities for post_id: 240001
+[12-May-2025 04:27:24 UTC] Inserting Amenities for post_id: 240044
+[12-May-2025 04:27:47 UTC] Inserting Amenities for post_id: 240087
+[12-May-2025 04:28:12 UTC] Inserting Amenities for post_id: 239511
+[12-May-2025 04:28:37 UTC] Inserting Amenities for post_id: 239841
+[12-May-2025 04:29:03 UTC] Inserting Amenities for post_id: 239897
+[12-May-2025 04:29:26 UTC] Inserting Amenities for post_id: 239669
+[12-May-2025 04:29:52 UTC] Inserting Amenities for post_id: 239712
+[12-May-2025 04:29:52 UTC] Inserting Amenities for post_id: 239511
+[12-May-2025 04:30:29 UTC] Inserting Amenities for post_id: 240160
+[12-May-2025 04:31:01 UTC] Inserting Amenities for post_id: 240211
+[12-May-2025 04:31:33 UTC] Inserting Amenities for post_id: 240262
+[12-May-2025 04:31:49 UTC] Inserting Amenities for post_id: 240313
+[12-May-2025 04:32:07 UTC] Inserting Amenities for post_id: 240342
+[12-May-2025 04:32:25 UTC] Inserting Amenities for post_id: 240371
+[12-May-2025 04:32:42 UTC] Inserting Amenities for post_id: 240400
+[12-May-2025 04:33:00 UTC] Inserting Amenities for post_id: 240429
+[12-May-2025 04:33:05 UTC] Inserting Amenities for post_id: 240458
+[12-May-2025 04:33:22 UTC] Inserting Amenities for post_id: 240468
+[12-May-2025 04:33:40 UTC] Inserting Amenities for post_id: 240497
+[12-May-2025 04:33:57 UTC] Inserting Amenities for post_id: 240526
+[12-May-2025 04:34:12 UTC] Inserting Amenities for post_id: 240468
+[12-May-2025 04:34:26 UTC] Inserting Amenities for post_id: 240468
+[12-May-2025 04:34:38 UTC] Inserting Amenities for post_id: 240497
+[12-May-2025 04:34:55 UTC] Inserting Amenities for post_id: 240555
+[12-May-2025 04:35:13 UTC] Inserting Amenities for post_id: 240584
+[12-May-2025 04:35:34 UTC] Inserting Amenities for post_id: 240613
+[12-May-2025 04:35:49 UTC] Inserting Amenities for post_id: 240642
+[12-May-2025 04:35:59 UTC] Inserting Amenities for post_id: 240671
+[12-May-2025 04:36:14 UTC] Inserting Amenities for post_id: 240688
+[12-May-2025 04:36:29 UTC] Inserting Amenities for post_id: 240717
+[12-May-2025 04:36:45 UTC] Inserting Amenities for post_id: 240497
+[12-May-2025 04:37:01 UTC] Inserting Amenities for post_id: 240584
+[12-May-2025 04:37:26 UTC] Inserting Amenities for post_id: 240468
+[12-May-2025 04:37:26 UTC] Inserting Amenities for post_id: 240497
+[12-May-2025 04:37:56 UTC] Inserting Amenities for post_id: 240746
+[12-May-2025 04:38:28 UTC] Inserting Amenities for post_id: 240797
+[12-May-2025 04:38:54 UTC] Inserting Amenities for post_id: 240848
+[12-May-2025 04:39:25 UTC] Inserting Amenities for post_id: 240848
+[12-May-2025 04:39:26 UTC] Inserting Amenities for post_id: 240899
+[12-May-2025 04:39:26 UTC] Inserting Amenities for post_id: 240901
+[12-May-2025 04:39:58 UTC] Inserting Amenities for post_id: 240903
+[12-May-2025 04:40:34 UTC] Inserting Amenities for post_id: 240954
+[12-May-2025 04:41:06 UTC] Inserting Amenities for post_id: 241005
+[12-May-2025 04:41:39 UTC] Inserting Amenities for post_id: 241056
+[12-May-2025 04:42:11 UTC] Inserting Amenities for post_id: 241107
+[12-May-2025 04:42:52 UTC] Inserting Amenities for post_id: 241158
+[12-May-2025 04:43:25 UTC] Inserting Amenities for post_id: 241209
+[12-May-2025 04:43:56 UTC] Inserting Amenities for post_id: 241260
+[12-May-2025 04:44:28 UTC] Inserting Amenities for post_id: 241311
+[12-May-2025 04:44:28 UTC] [INFO] All rooms processed successfully
+[12-May-2025 04:45:03 UTC] [INFO] Completed processing hotel: podstine_hotel in 1,617.9444
+[12-May-2025 04:45:18 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 04:45:18 UTC] [INFO] Processing hotel: riva_hvar_yacht_harbor
+[12-May-2025 04:45:18 UTC] [INFO] Country code: HR
+[12-May-2025 04:45:20 UTC] Processing amenities for hotel
+[12-May-2025 04:45:20 UTC] Inserting Amenities for post_id: 1569555
+[12-May-2025 04:45:20 UTC] Finished processing amenities
+[12-May-2025 04:45:25 UTC] Inserting Amenities for post_id: 241413
+[12-May-2025 04:45:47 UTC] Inserting Amenities for post_id: 241420
+[12-May-2025 04:46:08 UTC] Inserting Amenities for post_id: 241454
+[12-May-2025 04:46:15 UTC] Inserting Amenities for post_id: 241488
+[12-May-2025 04:46:21 UTC] Inserting Amenities for post_id: 241499
+[12-May-2025 04:46:22 UTC] Inserting Amenities for post_id: 241510
+[12-May-2025 04:46:29 UTC] Inserting Amenities for post_id: 241512
+[12-May-2025 04:46:35 UTC] Inserting Amenities for post_id: 241523
+[12-May-2025 04:46:43 UTC] Inserting Amenities for post_id: 241534
+[12-May-2025 04:46:49 UTC] Inserting Amenities for post_id: 241547
+[12-May-2025 04:46:55 UTC] Inserting Amenities for post_id: 241558
+[12-May-2025 04:47:02 UTC] Inserting Amenities for post_id: 241568
+[12-May-2025 04:47:08 UTC] Inserting Amenities for post_id: 241579
+[12-May-2025 04:47:16 UTC] Inserting Amenities for post_id: 241588
+[12-May-2025 04:47:22 UTC] Inserting Amenities for post_id: 241599
+[12-May-2025 04:47:26 UTC] Inserting Amenities for post_id: 241610
+[12-May-2025 04:47:32 UTC] Inserting Amenities for post_id: 241616
+[12-May-2025 04:47:38 UTC] Inserting Amenities for post_id: 241627
+[12-May-2025 04:47:39 UTC] Inserting Amenities for post_id: 241638
+[12-May-2025 04:47:41 UTC] Inserting Amenities for post_id: 241641
+[12-May-2025 04:47:46 UTC] Inserting Amenities for post_id: 241645
+[12-May-2025 04:47:52 UTC] Inserting Amenities for post_id: 241656
+[12-May-2025 04:47:59 UTC] Inserting Amenities for post_id: 241616
+[12-May-2025 04:48:05 UTC] Inserting Amenities for post_id: 241610
+[12-May-2025 04:48:12 UTC] Inserting Amenities for post_id: 241616
+[12-May-2025 04:48:19 UTC] Inserting Amenities for post_id: 241641
+[12-May-2025 04:48:20 UTC] Inserting Amenities for post_id: 241679
+[12-May-2025 04:48:25 UTC] Inserting Amenities for post_id: 241681
+[12-May-2025 04:48:31 UTC] Inserting Amenities for post_id: 241692
+[12-May-2025 04:48:38 UTC] Inserting Amenities for post_id: 241703
+[12-May-2025 04:48:43 UTC] Inserting Amenities for post_id: 241714
+[12-May-2025 04:48:46 UTC] Inserting Amenities for post_id: 241725
+[12-May-2025 04:48:53 UTC] Inserting Amenities for post_id: 241731
+[12-May-2025 04:49:02 UTC] Inserting Amenities for post_id: 241742
+[12-May-2025 04:49:05 UTC] Inserting Amenities for post_id: 241753
+[12-May-2025 04:49:12 UTC] Inserting Amenities for post_id: 241759
+[12-May-2025 04:49:20 UTC] Inserting Amenities for post_id: 241488
+[12-May-2025 04:49:27 UTC] Inserting Amenities for post_id: 241534
+[12-May-2025 04:49:34 UTC] Inserting Amenities for post_id: 241679
+[12-May-2025 04:49:40 UTC] Inserting Amenities for post_id: 241725
+[12-May-2025 04:49:46 UTC] Inserting Amenities for post_id: 241784
+[12-May-2025 04:49:53 UTC] Inserting Amenities for post_id: 241742
+[12-May-2025 04:49:59 UTC] Inserting Amenities for post_id: 241753
+[12-May-2025 04:50:10 UTC] Inserting Amenities for post_id: 241616
+[12-May-2025 04:50:18 UTC] Inserting Amenities for post_id: 241641
+[12-May-2025 04:50:19 UTC] Inserting Amenities for post_id: 241800
+[12-May-2025 04:50:21 UTC] Inserting Amenities for post_id: 241803
+[12-May-2025 04:50:22 UTC] Inserting Amenities for post_id: 241806
+[12-May-2025 04:50:24 UTC] Inserting Amenities for post_id: 241809
+[12-May-2025 04:50:25 UTC] Inserting Amenities for post_id: 241812
+[12-May-2025 04:50:26 UTC] Inserting Amenities for post_id: 241814
+[12-May-2025 04:50:28 UTC] Inserting Amenities for post_id: 241817
+[12-May-2025 04:50:30 UTC] Inserting Amenities for post_id: 241820
+[12-May-2025 04:50:33 UTC] Inserting Amenities for post_id: 241823
+[12-May-2025 04:50:35 UTC] Inserting Amenities for post_id: 241826
+[12-May-2025 04:50:37 UTC] Inserting Amenities for post_id: 241829
+[12-May-2025 04:50:39 UTC] Inserting Amenities for post_id: 241820
+[12-May-2025 04:50:41 UTC] Inserting Amenities for post_id: 241826
+[12-May-2025 04:50:42 UTC] Inserting Amenities for post_id: 241832
+[12-May-2025 04:50:44 UTC] Inserting Amenities for post_id: 241834
+[12-May-2025 04:50:46 UTC] Inserting Amenities for post_id: 241837
+[12-May-2025 04:50:48 UTC] Inserting Amenities for post_id: 241840
+[12-May-2025 04:50:50 UTC] Inserting Amenities for post_id: 241843
+[12-May-2025 04:50:52 UTC] Inserting Amenities for post_id: 241846
+[12-May-2025 04:50:54 UTC] Inserting Amenities for post_id: 241849
+[12-May-2025 04:50:55 UTC] Inserting Amenities for post_id: 241832
+[12-May-2025 04:50:56 UTC] Inserting Amenities for post_id: 241843
+[12-May-2025 04:50:58 UTC] Inserting Amenities for post_id: 241820
+[12-May-2025 04:50:59 UTC] Inserting Amenities for post_id: 241826
+[12-May-2025 04:51:21 UTC] Inserting Amenities for post_id: 241853
+[12-May-2025 04:51:46 UTC] Inserting Amenities for post_id: 241887
+[12-May-2025 04:52:10 UTC] Inserting Amenities for post_id: 241921
+[12-May-2025 04:52:33 UTC] Inserting Amenities for post_id: 241955
+[12-May-2025 04:52:55 UTC] Inserting Amenities for post_id: 241989
+[12-May-2025 04:53:18 UTC] Inserting Amenities for post_id: 241921
+[12-May-2025 04:53:38 UTC] Inserting Amenities for post_id: 241989
+[12-May-2025 04:53:58 UTC] Inserting Amenities for post_id: 242023
+[12-May-2025 04:54:19 UTC] Inserting Amenities for post_id: 242057
+[12-May-2025 04:54:24 UTC] Inserting Amenities for post_id: 242091
+[12-May-2025 04:54:29 UTC] Inserting Amenities for post_id: 242100
+[12-May-2025 04:54:34 UTC] Inserting Amenities for post_id: 242109
+[12-May-2025 04:54:39 UTC] Inserting Amenities for post_id: 242118
+[12-May-2025 04:54:45 UTC] Inserting Amenities for post_id: 242129
+[12-May-2025 04:54:50 UTC] Inserting Amenities for post_id: 242118
+[12-May-2025 04:54:55 UTC] Inserting Amenities for post_id: 242129
+[12-May-2025 04:54:59 UTC] Inserting Amenities for post_id: 242118
+[12-May-2025 04:55:02 UTC] Inserting Amenities for post_id: 242138
+[12-May-2025 04:55:08 UTC] Inserting Amenities for post_id: 242143
+[12-May-2025 04:55:14 UTC] Inserting Amenities for post_id: 242152
+[12-May-2025 04:55:19 UTC] Inserting Amenities for post_id: 242161
+[12-May-2025 04:55:22 UTC] Inserting Amenities for post_id: 242138
+[12-May-2025 04:55:27 UTC] Inserting Amenities for post_id: 242170
+[12-May-2025 04:55:32 UTC] Inserting Amenities for post_id: 242161
+[12-May-2025 04:55:37 UTC] Inserting Amenities for post_id: 242129
+[12-May-2025 04:55:57 UTC] Inserting Amenities for post_id: 242179
+[12-May-2025 04:56:18 UTC] Inserting Amenities for post_id: 242213
+[12-May-2025 04:56:39 UTC] Inserting Amenities for post_id: 242247
+[12-May-2025 04:56:59 UTC] Inserting Amenities for post_id: 242281
+[12-May-2025 04:57:02 UTC] Inserting Amenities for post_id: 242315
+[12-May-2025 04:57:05 UTC] Inserting Amenities for post_id: 242320
+[12-May-2025 04:57:06 UTC] Inserting Amenities for post_id: 242325
+[12-May-2025 04:57:09 UTC] Inserting Amenities for post_id: 242327
+[12-May-2025 04:57:11 UTC] Inserting Amenities for post_id: 242332
+[12-May-2025 04:57:15 UTC] Inserting Amenities for post_id: 242337
+[12-May-2025 04:57:20 UTC] Inserting Amenities for post_id: 242332
+[12-May-2025 04:57:23 UTC] Inserting Amenities for post_id: 242342
+[12-May-2025 04:57:26 UTC] Inserting Amenities for post_id: 242347
+[12-May-2025 04:57:27 UTC] Inserting Amenities for post_id: 242352
+[12-May-2025 04:57:30 UTC] Inserting Amenities for post_id: 242352
+[12-May-2025 04:57:33 UTC] Inserting Amenities for post_id: 242332
+[12-May-2025 04:57:34 UTC] Inserting Amenities for post_id: 242342
+[12-May-2025 04:57:54 UTC] Inserting Amenities for post_id: 242357
+[12-May-2025 04:58:15 UTC] Inserting Amenities for post_id: 242391
+[12-May-2025 04:58:16 UTC] Inserting Amenities for post_id: 242425
+[12-May-2025 04:58:16 UTC] Inserting Amenities for post_id: 242427
+[12-May-2025 04:58:17 UTC] Inserting Amenities for post_id: 242429
+[12-May-2025 04:58:25 UTC] Inserting Amenities for post_id: 242431
+[12-May-2025 04:58:26 UTC] Inserting Amenities for post_id: 242445
+[12-May-2025 04:58:27 UTC] Inserting Amenities for post_id: 242447
+[12-May-2025 04:58:28 UTC] Inserting Amenities for post_id: 242449
+[12-May-2025 04:58:29 UTC] Inserting Amenities for post_id: 242451
+[12-May-2025 04:58:32 UTC] Inserting Amenities for post_id: 242453
+[12-May-2025 04:58:33 UTC] Inserting Amenities for post_id: 242459
+[12-May-2025 04:58:34 UTC] Inserting Amenities for post_id: 242461
+[12-May-2025 04:58:35 UTC] Inserting Amenities for post_id: 242463
+[12-May-2025 04:58:36 UTC] Inserting Amenities for post_id: 242465
+[12-May-2025 04:58:36 UTC] Inserting Amenities for post_id: 242467
+[12-May-2025 04:58:37 UTC] Inserting Amenities for post_id: 242469
+[12-May-2025 04:58:38 UTC] Inserting Amenities for post_id: 242471
+[12-May-2025 04:58:38 UTC] Inserting Amenities for post_id: 242465
+[12-May-2025 04:58:39 UTC] Inserting Amenities for post_id: 242473
+[12-May-2025 04:58:40 UTC] Inserting Amenities for post_id: 242475
+[12-May-2025 04:58:41 UTC] Inserting Amenities for post_id: 242477
+[12-May-2025 04:58:42 UTC] Inserting Amenities for post_id: 242479
+[12-May-2025 04:58:43 UTC] Inserting Amenities for post_id: 242481
+[12-May-2025 04:58:43 UTC] Inserting Amenities for post_id: 242483
+[12-May-2025 04:58:44 UTC] Inserting Amenities for post_id: 242485
+[12-May-2025 04:58:45 UTC] Inserting Amenities for post_id: 242465
+[12-May-2025 04:58:46 UTC] Inserting Amenities for post_id: 242473
+[12-May-2025 04:59:06 UTC] Inserting Amenities for post_id: 242487
+[12-May-2025 04:59:07 UTC] Inserting Amenities for post_id: 242521
+[12-May-2025 04:59:08 UTC] Inserting Amenities for post_id: 242523
+[12-May-2025 04:59:09 UTC] Inserting Amenities for post_id: 242525
+[12-May-2025 04:59:10 UTC] Inserting Amenities for post_id: 242527
+[12-May-2025 04:59:10 UTC] Inserting Amenities for post_id: 242529
+[12-May-2025 04:59:11 UTC] Inserting Amenities for post_id: 242531
+[12-May-2025 04:59:14 UTC] Inserting Amenities for post_id: 242533
+[12-May-2025 04:59:15 UTC] Inserting Amenities for post_id: 242538
+[12-May-2025 04:59:16 UTC] Inserting Amenities for post_id: 242540
+[12-May-2025 04:59:17 UTC] Inserting Amenities for post_id: 242542
+[12-May-2025 04:59:18 UTC] Inserting Amenities for post_id: 242533
+[12-May-2025 04:59:19 UTC] Inserting Amenities for post_id: 242544
+[12-May-2025 04:59:20 UTC] Inserting Amenities for post_id: 242533
+[12-May-2025 04:59:21 UTC] Inserting Amenities for post_id: 242544
+[12-May-2025 04:59:21 UTC] Inserting Amenities for post_id: 242533
+[12-May-2025 04:59:42 UTC] Inserting Amenities for post_id: 242546
+[12-May-2025 05:00:03 UTC] Shutdown error: Array
 (
-    [0] => Array
-        (
-            [paragraphs] => Array
-                (
-                    [0] => A very nice place to stay for a reasonable price — living quarters «Kitty Test Hotel (Do Not Book)» are located in Belogorsk. These living quarters are located in walking distance from the city center.
-                )
-
-            [title] => Location
-        )
-
-    [1] => Array
-        (
-            [paragraphs] => Array
-                (
-                    [0] => In the shared kitchen, you can cook anything you want. Wi-Fi is available on the premises. Ask for more information when checking-in. Specially for tourists who travel by car, there’s a parking zone. Pets are welcome here.
-                    [1] => Accessible for guests with disabilities: the elevator helps them to go to the highest floors. Additional services that the living quarters offers to its guests: ironing. The staff of the living quarters will be happy to talk to you in English and Russian.
-                )
-
-            [title] => At the living quarters
-        )
-
-    [2] => Array
-        (
-            [paragraphs] => Array
-                (
-                    [0] => The room is warmly decorated and has everything you need to have a rest after a long eventful day. There is a DVD player, a TV, a mini-bar and a bathrobe. The room equipment depends on its category.
-                )
-
-            [title] => Room amenities
-        )
-
+    [type] => 2
+    [message] => Invalid argument supplied for foreach()
+    [file] => /home/balkanea/public_html/wp-plugin/Models/ImageInsert.php
+    [line] => 37
 )
 
-[27-Apr-2025 11:24:41 UTC] Processing amenities for hotel
-[27-Apr-2025 11:24:41 UTC] Inserting Amenities for post_id: 1317534
-[27-Apr-2025 11:24:41 UTC] Finished processing amenities
-[27-Apr-2025 11:24:49 UTC] Inserting Amenities for post_id: 260627
-[27-Apr-2025 11:24:55 UTC] Inserting Amenities for post_id: 260640
-[27-Apr-2025 11:25:00 UTC] Inserting Amenities for post_id: 52588
-[27-Apr-2025 11:25:10 UTC] Inserting Amenities for post_id: 260660
-[27-Apr-2025 11:25:12 UTC] Inserting Amenities for post_id: 52596
-[27-Apr-2025 11:25:17 UTC] Inserting Amenities for post_id: 260673
-[27-Apr-2025 11:25:23 UTC] Inserting Amenities for post_id: 58480
-[27-Apr-2025 11:25:29 UTC] Inserting Amenities for post_id: 260687
-[27-Apr-2025 11:25:35 UTC] Inserting Amenities for post_id: 260700
-[27-Apr-2025 11:25:40 UTC] Inserting Amenities for post_id: 260713
-[27-Apr-2025 11:25:46 UTC] Inserting Amenities for post_id: 194088
-[27-Apr-2025 11:25:52 UTC] Inserting Amenities for post_id: 260732
-[27-Apr-2025 11:25:58 UTC] Inserting Amenities for post_id: 260745
-[27-Apr-2025 11:26:03 UTC] Inserting Amenities for post_id: 260758
-[27-Apr-2025 11:26:09 UTC] Inserting Amenities for post_id: 260771
-[27-Apr-2025 11:26:15 UTC] Inserting Amenities for post_id: 52627
-[27-Apr-2025 11:26:15 UTC] Inserting Amenities for post_id: 260794
-[27-Apr-2025 11:26:21 UTC] Inserting Amenities for post_id: 260796
-[27-Apr-2025 11:26:22 UTC] Inserting Amenities for post_id: 260809
-[27-Apr-2025 11:26:28 UTC] Inserting Amenities for post_id: 260813
-[27-Apr-2025 11:26:28 UTC] [INFO] All rooms processed successfully
-[27-Apr-2025 11:26:33 UTC] [INFO] Completed processing hotel: test_hotel in 114.3743
-[27-Apr-2025 11:26:33 UTC] [INFO] Successfully processed all hotels in Country:  in 114.3743
-[28-Apr-2025 04:00:03 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php:1) in /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php on line 24
-[28-Apr-2025 04:00:03 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php:1) in /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php on line 25
-[28-Apr-2025 04:00:04 UTC] Authentication successful
-[28-Apr-2025 04:00:13 UTC] [Region] ========================================================
-[28-Apr-2025 04:00:15 UTC] [Region] ========================================================
-[28-Apr-2025 04:00:15 UTC] [INFO] Successfully processed all hotels in Country: Coratia in 0.0000
-[29-Apr-2025 04:00:04 UTC] Authentication successful
-[29-Apr-2025 04:00:04 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php:1) in /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php on line 24
-[29-Apr-2025 04:00:04 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php:1) in /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php on line 25
-[29-Apr-2025 04:00:09 UTC] [Region] ========================================================
-[29-Apr-2025 04:00:11 UTC] [INFO] Successfully processed all hotels in Country: 24396 in 0.0000
-[29-Apr-2025 17:01:26 UTC] Executing hotel
-[29-Apr-2025 17:02:00 UTC] Executing hotel
-[30-Apr-2025 04:00:05 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php:1) in /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php on line 24
-[30-Apr-2025 04:00:05 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php:1) in /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php on line 25
-[30-Apr-2025 04:00:09 UTC] Authentication successful
-[30-Apr-2025 04:00:23 UTC] [Region] ========================================================
-[30-Apr-2025 04:00:27 UTC] [Region] ========================================================
-[30-Apr-2025 04:00:27 UTC] [INFO] Successfully processed all hotels in Country: 16479 in 0.0000
-[01-May-2025 04:00:05 UTC] Authentication successful
-[01-May-2025 04:00:10 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php:1) in /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php on line 24
-[01-May-2025 04:00:10 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php:1) in /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php on line 25
-[01-May-2025 04:00:30 UTC] [Region] ========================================================
-[01-May-2025 04:00:32 UTC] [INFO] Successfully processed all hotels in Country: 1231231 in 0.0000
-[02-May-2025 04:00:03 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php:1) in /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php on line 24
-[02-May-2025 04:00:03 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php:1) in /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php on line 25
-[02-May-2025 04:00:03 UTC] Authentication successful
-[02-May-2025 04:00:10 UTC] [Region] ========================================================
-[02-May-2025 04:00:11 UTC] [Region] ========================================================
-[02-May-2025 04:00:12 UTC] [INFO] Successfully processed all hotels in Country: Coratia in 0.0000
-[03-May-2025 04:00:03 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php:1) in /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php on line 24
-[03-May-2025 04:00:03 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php:1) in /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php on line 25
-[03-May-2025 04:00:03 UTC] Authentication successful
-[03-May-2025 04:00:08 UTC] [Region] ========================================================
-[03-May-2025 04:00:10 UTC] [INFO] Successfully processed all hotels in Country: 24396 in 0.0000
-[04-May-2025 04:00:03 UTC] Authentication successful
-[04-May-2025 04:00:03 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php:1) in /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php on line 24
-[04-May-2025 04:00:03 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php:1) in /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php on line 25
-[04-May-2025 04:00:10 UTC] [Region] ========================================================
-[04-May-2025 04:00:12 UTC] [Region] ========================================================
-[04-May-2025 04:00:12 UTC] [INFO] Successfully processed all hotels in Country: 16479 in 0.0000
-[05-May-2025 04:00:04 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php:1) in /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php on line 24
-[05-May-2025 04:00:04 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php:1) in /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php on line 25
-[05-May-2025 04:00:04 UTC] Authentication successful
-[05-May-2025 04:00:10 UTC] [Region] ========================================================
-[05-May-2025 04:00:12 UTC] [INFO] Successfully processed all hotels in Country: 1231231 in 0.0000
+[12-May-2025 15:11:24 UTC] Authentication successful
+[12-May-2025 15:13:41 UTC] Authentication successful
+[12-May-2025 15:16:52 UTC] Authentication successful
+[12-May-2025 15:18:06 UTC] Authentication successful
+[12-May-2025 15:20:04 UTC] Authentication successful
+[12-May-2025 15:20:09 UTC] Authentication successful
+[12-May-2025 15:21:35 UTC] Authentication successful
+[12-May-2025 15:24:42 UTC] Authentication successful
+[12-May-2025 15:24:42 UTC] PHP Warning:  include(/home/balkanea/public_html/wp-plugin./Models/ProcessAmenity.php): Failed to open stream: No such file or directory in /home/balkanea/public_html/wp-plugin/cron_job.php on line 46
+[12-May-2025 15:24:42 UTC] PHP Warning:  include(): Failed opening '/home/balkanea/public_html/wp-plugin./Models/ProcessAmenity.php' for inclusion (include_path='.:/opt/cpanel/ea-php82/root/usr/share/pear') in /home/balkanea/public_html/wp-plugin/cron_job.php on line 46
+[12-May-2025 15:25:13 UTC] Authentication successful
+[12-May-2025 15:25:49 UTC] Authentication successful
+[12-May-2025 15:27:05 UTC] Authentication successful
+[12-May-2025 15:28:05 UTC] Authentication successful
+[12-May-2025 15:29:26 UTC] Authentication successful
+[12-May-2025 15:30:09 UTC] Authentication successful
+[12-May-2025 15:30:31 UTC] Authentication successful
+[12-May-2025 15:31:32 UTC] Authentication successful
+[12-May-2025 15:31:55 UTC] Authentication successful
+[12-May-2025 15:34:00 UTC] Authentication successful
+[12-May-2025 15:35:26 UTC] Authentication successful
+[12-May-2025 15:35:56 UTC] Authentication successful
+[12-May-2025 15:36:34 UTC] Authentication successful
+[12-May-2025 15:36:37 UTC] Authentication successful
+[12-May-2025 15:41:21 UTC] Authentication successful
+[12-May-2025 15:42:15 UTC] Authentication successful
+[12-May-2025 15:43:06 UTC] Authentication successful
+[12-May-2025 15:43:06 UTC] Tracking next region...
+[12-May-2025 15:43:06 UTC] [Region] ========================================================
+[12-May-2025 16:00:13 UTC] Authentication successful
+[12-May-2025 16:00:13 UTC] Tracking next region...
+[12-May-2025 16:00:13 UTC] [Region] ========================================================
+[12-May-2025 16:02:03 UTC] [INFO] Processing region: 438 with 499 hotels
+[12-May-2025 16:02:03 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 16:02:03 UTC] [INFO] Processing hotel: zappion_hotel
+[12-May-2025 16:02:03 UTC] [INFO] Country code: GR
+[12-May-2025 16:02:06 UTC] Processing amenities for hotel
+
+[12-May-2025 16:02:06 UTC] 
+Inserting Amenities for post_id: 0
+[12-May-2025 16:02:06 UTC] Finished processing amenities
+[12-May-2025 16:06:26 UTC] [INFO] All rooms processed successfully
+[12-May-2025 16:06:34 UTC] [INFO] Completed processing hotel: zappion_hotel in 270.6150
+[12-May-2025 16:06:34 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 16:06:34 UTC] [INFO] Processing hotel: andromeda_suites
+[12-May-2025 16:06:34 UTC] [INFO] Country code: GR
+[12-May-2025 16:06:35 UTC] Processing amenities for hotel
+
+[12-May-2025 16:06:35 UTC] 
+Inserting Amenities for post_id: 1570148
+[12-May-2025 16:06:35 UTC] Finished processing amenities
+[12-May-2025 16:12:40 UTC] [INFO] All rooms processed successfully
+[12-May-2025 16:12:51 UTC] [INFO] Completed processing hotel: andromeda_suites in 377.2194
+[12-May-2025 16:12:51 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 16:12:51 UTC] [INFO] Processing hotel: nsplace_
+[12-May-2025 16:12:51 UTC] [INFO] Country code: GR
+[12-May-2025 16:12:53 UTC] Processing amenities for hotel
+
+[12-May-2025 16:12:53 UTC] 
+Inserting Amenities for post_id: 1570149
+[12-May-2025 16:12:53 UTC] Finished processing amenities
+[12-May-2025 16:21:32 UTC] Authentication successful
+[12-May-2025 16:21:35 UTC] Tracking next region...
+[12-May-2025 16:21:35 UTC] [Region] ========================================================
+[12-May-2025 16:23:12 UTC] [INFO] Processing region: 438 with 499 hotels
+[12-May-2025 16:23:12 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 16:23:12 UTC] [INFO] Processing hotel: zappion_hotel
+[12-May-2025 16:23:12 UTC] [INFO] Country code: GR
+[12-May-2025 16:24:41 UTC] Processing amenities for hotel
+
+[12-May-2025 16:24:41 UTC] 
+Inserting Amenities for post_id: 0
+[12-May-2025 16:24:41 UTC] Finished processing amenities
+[12-May-2025 16:31:27 UTC] [INFO] All rooms processed successfully
+[12-May-2025 16:31:35 UTC] [INFO] Completed processing hotel: zappion_hotel in 502.3546
+[12-May-2025 16:31:35 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 16:31:35 UTC] [INFO] Processing hotel: andromeda_suites
+[12-May-2025 16:31:35 UTC] [INFO] Country code: GR
+[12-May-2025 16:31:37 UTC] Processing amenities for hotel
+
+[12-May-2025 16:31:37 UTC] 
+Inserting Amenities for post_id: 1570159
+[12-May-2025 16:31:37 UTC] Finished processing amenities
+[12-May-2025 16:39:51 UTC] Authentication successful
+[12-May-2025 16:39:51 UTC] Tracking next region...
+[12-May-2025 16:39:51 UTC] [Region] ========================================================
+[12-May-2025 16:40:25 UTC] [INFO] Processing region: 6156549 with 9 hotels
+[12-May-2025 16:40:25 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 16:40:25 UTC] [INFO] Processing hotel: hotel_zlatibor_mona
+[12-May-2025 16:40:25 UTC] [INFO] Country code: RS
+[12-May-2025 16:40:28 UTC] Processing amenities for hotel
+
+[12-May-2025 16:40:28 UTC] 
+Inserting Amenities for post_id: 0
+[12-May-2025 16:40:28 UTC] Finished processing amenities
+[12-May-2025 16:48:33 UTC] [INFO] All rooms processed successfully
+[12-May-2025 16:48:53 UTC] [INFO] Completed processing hotel: hotel_zlatibor_mona in 507.5235
+[12-May-2025 16:48:53 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 16:48:53 UTC] [INFO] Processing hotel: villa_natural_wood
+[12-May-2025 16:48:53 UTC] [INFO] Country code: RS
+[12-May-2025 16:48:55 UTC] Processing amenities for hotel
+
+[12-May-2025 16:48:55 UTC] 
+Inserting Amenities for post_id: 1570173
+[12-May-2025 16:48:55 UTC] Finished processing amenities
+[12-May-2025 16:49:30 UTC] Authentication successful
+[12-May-2025 16:49:30 UTC] Tracking next region...
+[12-May-2025 16:49:30 UTC] [Region] ========================================================
+[12-May-2025 16:51:22 UTC] Authentication successful
+[12-May-2025 16:51:22 UTC] Tracking next region...
+[12-May-2025 16:51:22 UTC] [Region] ========================================================
+[12-May-2025 17:00:43 UTC] Authentication successful
+[12-May-2025 17:00:43 UTC] Tracking next region...
+[12-May-2025 17:00:43 UTC] [Region] ========================================================
+[12-May-2025 17:01:54 UTC] [INFO] Processing region: 513 with 262 hotels
+[12-May-2025 17:01:54 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 17:01:54 UTC] [INFO] Processing hotel: apartment_roger_de_lluria
+[12-May-2025 17:01:54 UTC] [INFO] Country code: ES
+[12-May-2025 17:01:54 UTC] Executin query: SELECT * FROM Y7FXuNUTt_st_location_nested WHERE id = 136
+[12-May-2025 17:01:54 UTC] Query results: stdClass Object
+(
+    [id] => 136
+    [location_id] => 24399
+    [location_country] => ES
+    [parent_id] => 1
+    [left_key] => 167
+    [right_key] => 168
+    [name] => Unknown
+    [fullname] => Unknown
+    [language] => en
+    [status] => publish
+)
+
+[12-May-2025 17:01:54 UTC] PHP Warning:  Undefined array key 2 in /home/balkanea/public_html/wp-plugin/Models/LocationNested.php on line 307
+[12-May-2025 17:01:54 UTC] PHP Warning:  Attempt to read property "left_key" on null in /home/balkanea/public_html/wp-plugin/Models/LocationNested.php on line 310
+[12-May-2025 17:01:54 UTC] PHP Warning:  Attempt to read property "id" on null in /home/balkanea/public_html/wp-plugin/Models/LocationNested.php on line 318
+[12-May-2025 17:01:54 UTC] PHP Warning:  Attempt to read property "id" on null in /home/balkanea/public_html/wp-plugin/Models/LocationNested.php on line 328
+[12-May-2025 17:01:54 UTC] PHP Warning:  Undefined variable $query in /home/balkanea/public_html/wp-plugin/Models/LocationNested.php on line 41
+[12-May-2025 17:01:58 UTC] found id: 
+[12-May-2025 17:01:58 UTC] 
+Inserting Amenities for post_id: 330572
+[12-May-2025 17:02:27 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:02:49 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:03:10 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:03:31 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:03:55 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:04:14 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:04:37 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:04:59 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:05:25 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:05:25 UTC] [INFO] All rooms processed successfully
+[12-May-2025 17:05:40 UTC] [INFO] Completed processing hotel: apartment_roger_de_lluria in 226.5413
+[12-May-2025 17:05:40 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 17:05:40 UTC] [INFO] Processing hotel: valladolid_19
+[12-May-2025 17:05:40 UTC] [INFO] Country code: ES
+[12-May-2025 17:05:44 UTC] found id: 
+[12-May-2025 17:05:44 UTC] 
+Inserting Amenities for post_id: 330796
+[12-May-2025 17:06:28 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:07:01 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:07:41 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:07:41 UTC] [INFO] All rooms processed successfully
+[12-May-2025 17:08:02 UTC] [INFO] Completed processing hotel: valladolid_19 in 141.1764
+[12-May-2025 17:08:02 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 17:08:02 UTC] [INFO] Processing hotel: smartroom_barcelona
+[12-May-2025 17:08:02 UTC] [INFO] Country code: ES
+[12-May-2025 17:08:07 UTC] found id: 
+[12-May-2025 17:08:07 UTC] 
+Inserting Amenities for post_id: 330924
+[12-May-2025 17:08:12 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:08:19 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:08:27 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:08:36 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:08:38 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:08:38 UTC] [INFO] All rooms processed successfully
+[12-May-2025 17:09:08 UTC] [INFO] Completed processing hotel: smartroom_barcelona in 66.0674
+[12-May-2025 17:09:08 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 17:09:08 UTC] [INFO] Processing hotel: sagrada_familia_sun
+[12-May-2025 17:09:08 UTC] [INFO] Country code: ES
+[12-May-2025 17:09:12 UTC] found id: 
+[12-May-2025 17:09:12 UTC] 
+Inserting Amenities for post_id: 330971
+[12-May-2025 17:10:12 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:10:52 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:11:32 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:11:54 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:12:33 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:13:16 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:13:58 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:14:31 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:15:00 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:15:33 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:15:33 UTC] [INFO] All rooms processed successfully
+[12-May-2025 17:16:02 UTC] [INFO] Completed processing hotel: sagrada_familia_sun in 414.3802
+[12-May-2025 17:16:02 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 17:16:02 UTC] [INFO] Processing hotel: white_house_13
+[12-May-2025 17:16:02 UTC] [INFO] Country code: ES
+[12-May-2025 17:16:06 UTC] found id: 
+[12-May-2025 17:16:06 UTC] [INFO] All rooms processed successfully
+[12-May-2025 17:16:19 UTC] [INFO] Completed processing hotel: white_house_13 in 16.4544
+[12-May-2025 17:16:19 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 17:16:19 UTC] [INFO] Processing hotel: the_serras
+[12-May-2025 17:16:19 UTC] [INFO] Country code: ES
+[12-May-2025 17:16:22 UTC] found id: 
+[12-May-2025 17:16:22 UTC] 
+Inserting Amenities for post_id: 331410
+[12-May-2025 17:16:53 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:17:23 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:17:49 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:18:30 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:18:43 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:18:54 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:19:05 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:19:16 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:19:37 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:19:42 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:19:55 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:20:14 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:20:53 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:21:29 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:23:51 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:25:28 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:25:40 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:25:45 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:25:49 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:26:03 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:26:07 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:26:11 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:26:26 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:26:36 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:26:46 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:26:47 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:26:57 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:27:03 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:27:12 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:27:21 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:27:31 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:27:40 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:27:51 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:28:01 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:28:38 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:28:47 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:28:56 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:29:07 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:29:40 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:30:18 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:30:49 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:31:23 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:32:01 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:32:39 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:32:44 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:32:49 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:32:53 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:33:03 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:33:06 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:33:09 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:33:13 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:33:18 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:33:24 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:33:29 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:33:34 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:33:58 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:34:01 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:34:38 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:35:13 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:35:15 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:35:15 UTC] [INFO] All rooms processed successfully
+[12-May-2025 17:35:45 UTC] [INFO] Completed processing hotel: the_serras in 1,166.8022
+[12-May-2025 17:35:45 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 17:35:45 UTC] [INFO] Processing hotel: praktik_vinoteca_hotel_
+[12-May-2025 17:35:45 UTC] [INFO] Country code: ES
+[12-May-2025 17:35:49 UTC] found id: 
+[12-May-2025 17:35:49 UTC] 
+Inserting Amenities for post_id: 332198
+[12-May-2025 17:36:27 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:36:31 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:36:34 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:36:45 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:36:58 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:37:10 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:37:22 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:37:22 UTC] [INFO] All rooms processed successfully
+[12-May-2025 17:38:01 UTC] [INFO] Completed processing hotel: praktik_vinoteca_hotel_ in 135.6144
+[12-May-2025 17:38:01 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 17:38:01 UTC] [INFO] Processing hotel: bruc__bruc_guesthouse
+[12-May-2025 17:38:01 UTC] [INFO] Country code: ES
+[12-May-2025 17:38:05 UTC] found id: 
+[12-May-2025 17:38:05 UTC] 
+Inserting Amenities for post_id: 332317
+[12-May-2025 17:38:21 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:38:32 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:38:33 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:38:34 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:38:35 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:38:36 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:39:30 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:39:42 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:39:52 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:40:07 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:40:19 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:40:29 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:40:40 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:40:50 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:41:17 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:41:28 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:41:40 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:42:22 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:42:41 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:43:02 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:43:29 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:43:40 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:44:06 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:44:23 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:44:23 UTC] [INFO] All rooms processed successfully
+[12-May-2025 17:44:33 UTC] [INFO] Completed processing hotel: bruc__bruc_guesthouse in 392.0051
+[12-May-2025 17:44:33 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 17:44:33 UTC] [INFO] Processing hotel: yurbban_trafalgar
+[12-May-2025 17:44:33 UTC] [INFO] Country code: ES
+[12-May-2025 17:44:37 UTC] found id: 
+[12-May-2025 17:44:37 UTC] 
+Inserting Amenities for post_id: 332615
+[12-May-2025 17:44:40 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:44:44 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:44:49 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:44:58 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:45:08 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:45:18 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:45:18 UTC] [INFO] All rooms processed successfully
+[12-May-2025 17:46:01 UTC] [INFO] Completed processing hotel: yurbban_trafalgar in 88.4701
+[12-May-2025 17:46:01 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 17:46:01 UTC] [INFO] Processing hotel: trivao_park_guell
+[12-May-2025 17:46:01 UTC] [INFO] Country code: ES
+[12-May-2025 17:46:05 UTC] found id: 
+[12-May-2025 17:46:05 UTC] 
+Inserting Amenities for post_id: 332697
+[12-May-2025 17:46:26 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:46:47 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:47:07 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:47:27 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:47:46 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:48:08 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:48:28 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:48:47 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:48:49 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:48:50 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:48:51 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:48:52 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:48:53 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:48:54 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:48:55 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:48:56 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:48:56 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:48:57 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:48:58 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:48:59 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:49:00 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:49:01 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:49:02 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:49:03 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:49:04 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:49:05 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:49:06 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:49:07 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:49:09 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:49:32 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:49:32 UTC] [INFO] All rooms processed successfully
+[12-May-2025 17:49:50 UTC] [INFO] Completed processing hotel: trivao_park_guell in 228.2228
+[12-May-2025 17:49:50 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 17:49:50 UTC] [INFO] Processing hotel: via_augusta_apartments
+[12-May-2025 17:49:50 UTC] [INFO] Country code: ES
+[12-May-2025 17:49:53 UTC] found id: 
+[12-May-2025 17:49:53 UTC] 
+Inserting Amenities for post_id: 332959
+[12-May-2025 17:49:53 UTC] [INFO] All rooms processed successfully
+[12-May-2025 17:50:08 UTC] [INFO] Completed processing hotel: via_augusta_apartments in 18.2658
+[12-May-2025 17:50:08 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 17:50:08 UTC] [INFO] Processing hotel: the_white_flats_eixample_
+[12-May-2025 17:50:08 UTC] [INFO] Country code: ES
+[12-May-2025 17:50:12 UTC] found id: 
+[12-May-2025 17:50:12 UTC] 
+Inserting Amenities for post_id: 332971
+[12-May-2025 17:50:38 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:50:58 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:51:19 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:51:19 UTC] [INFO] All rooms processed successfully
+[12-May-2025 17:51:40 UTC] [INFO] Completed processing hotel: the_white_flats_eixample_ in 91.7011
+[12-May-2025 17:51:40 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 17:51:40 UTC] [INFO] Processing hotel: villarroel
+[12-May-2025 17:51:40 UTC] [INFO] Country code: ES
+[12-May-2025 17:51:43 UTC] found id: 
+[12-May-2025 17:51:43 UTC] 
+Inserting Amenities for post_id: 333063
+[12-May-2025 17:51:44 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:51:45 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:51:46 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:51:47 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:51:47 UTC] [INFO] All rooms processed successfully
+[12-May-2025 17:52:08 UTC] [INFO] Completed processing hotel: villarroel in 28.6062
+[12-May-2025 17:52:08 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 17:52:08 UTC] [INFO] Processing hotel: uranie_barcelona_
+[12-May-2025 17:52:08 UTC] [INFO] Country code: ES
+[12-May-2025 17:52:12 UTC] found id: 
+[12-May-2025 17:52:12 UTC] 
+Inserting Amenities for post_id: 333091
+[12-May-2025 17:52:12 UTC] [INFO] All rooms processed successfully
+[12-May-2025 17:52:13 UTC] [INFO] Completed processing hotel: uranie_barcelona_ in 4.4112
+[12-May-2025 17:52:13 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 17:52:13 UTC] [INFO] Processing hotel: upper_diagonal
+[12-May-2025 17:52:13 UTC] [INFO] Country code: ES
+[12-May-2025 17:52:16 UTC] found id: 
+[12-May-2025 17:52:16 UTC] 
+Inserting Amenities for post_id: 333093
+[12-May-2025 17:52:21 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:52:44 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:52:54 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:53:10 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:53:23 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:53:35 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:53:43 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:53:52 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:53:52 UTC] [INFO] All rooms processed successfully
+[12-May-2025 17:54:27 UTC] [INFO] Completed processing hotel: upper_diagonal in 134.3870
+[12-May-2025 17:54:27 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 17:54:27 UTC] [INFO] Processing hotel: poblenou
+[12-May-2025 17:54:27 UTC] [INFO] Country code: ES
+[12-May-2025 17:54:31 UTC] found id: 
+[12-May-2025 17:54:31 UTC] 
+Inserting Amenities for post_id: 333209
+[12-May-2025 17:55:06 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:55:14 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:55:22 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:55:26 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:55:30 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:55:34 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:55:37 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:55:44 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:56:02 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:56:13 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:56:29 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:56:37 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:57:12 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:57:41 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:57:41 UTC] [INFO] All rooms processed successfully
+[12-May-2025 17:58:13 UTC] [INFO] Completed processing hotel: poblenou in 225.4909
+[12-May-2025 17:58:13 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 17:58:13 UTC] [INFO] Processing hotel: ohla_eixample
+[12-May-2025 17:58:13 UTC] [INFO] Country code: ES
+[12-May-2025 17:58:17 UTC] found id: 
+[12-May-2025 17:58:17 UTC] 
+Inserting Amenities for post_id: 333407
+[12-May-2025 17:58:26 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:58:38 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:58:45 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:58:48 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:58:52 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:58:54 UTC] [INFO] Hotel room does not exist
+[12-May-2025 17:58:54 UTC] [INFO] All rooms processed successfully
+[12-May-2025 17:59:42 UTC] [INFO] Completed processing hotel: ohla_eixample in 89.8617
+[12-May-2025 17:59:42 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 17:59:42 UTC] [INFO] Processing hotel: sweet_inn_apartment_francesc_macia
+[12-May-2025 17:59:42 UTC] [INFO] Country code: ES
+[12-May-2025 17:59:47 UTC] found id: 
+[12-May-2025 17:59:48 UTC] 
+Inserting Amenities for post_id: 333478
+[12-May-2025 18:00:53 UTC] [INFO] Hotel room does not exist
+[12-May-2025 18:01:36 UTC] [INFO] Hotel room does not exist
+[12-May-2025 18:01:36 UTC] [INFO] All rooms processed successfully
+[12-May-2025 18:02:17 UTC] [INFO] Completed processing hotel: sweet_inn_apartment_francesc_macia in 155.0526
+[12-May-2025 18:02:17 UTC] [Hotel] _____________________________________________________________
+[12-May-2025 18:02:17 UTC] [INFO] Processing hotel: sweet_inn_apartments_ethnic_eixample
+[12-May-2025 18:02:17 UTC] [INFO] Country code: ES
+[12-May-2025 18:02:21 UTC] found id: 
+[12-May-2025 18:02:21 UTC] 
+Inserting Amenities for post_id: 333604
+[12-May-2025 18:02:48 UTC] [INFO] Hotel room does not exist
+[12-May-2025 18:03:10 UTC] [INFO] Hotel room does not exist
+[12-May-2025 18:03:33 UTC] [INFO] Hotel room does not exist
+[13-May-2025 04:00:03 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php:1) in /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php on line 24
+[13-May-2025 04:00:03 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php:1) in /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php on line 25
+[13-May-2025 04:00:03 UTC] Authentication successful
+[13-May-2025 04:00:04 UTC] Tracking next region...
+[13-May-2025 04:00:04 UTC] [Region] ========================================================
+[13-May-2025 04:01:45 UTC] [INFO] Processing region: 438 with 499 hotels
+[13-May-2025 04:01:45 UTC] [Hotel] _____________________________________________________________
+[13-May-2025 04:01:45 UTC] [INFO] Processing hotel: zappion_hotel
+[13-May-2025 04:01:45 UTC] [INFO] Country code: GR
+[13-May-2025 04:01:47 UTC] Processing amenities for hotel
+
+[13-May-2025 04:01:47 UTC] 
+Inserting Amenities for post_id: 0
+[13-May-2025 04:01:47 UTC] Finished processing amenities
+[13-May-2025 04:05:51 UTC] [INFO] All rooms processed successfully
+[13-May-2025 04:05:57 UTC] [INFO] Completed processing hotel: zappion_hotel in 251.5415
+[13-May-2025 04:05:57 UTC] [Hotel] _____________________________________________________________
+[13-May-2025 04:05:57 UTC] [INFO] Processing hotel: andromeda_suites
+[13-May-2025 04:05:57 UTC] [INFO] Country code: GR
+[13-May-2025 04:05:58 UTC] Processing amenities for hotel
+
+[13-May-2025 04:05:58 UTC] 
+Inserting Amenities for post_id: 1584735
+[13-May-2025 04:05:58 UTC] Finished processing amenities
+[13-May-2025 04:11:51 UTC] [INFO] All rooms processed successfully
+[13-May-2025 04:12:01 UTC] [INFO] Completed processing hotel: andromeda_suites in 364.1854
+[13-May-2025 04:12:01 UTC] [Hotel] _____________________________________________________________
+[13-May-2025 04:12:01 UTC] [INFO] Processing hotel: nsplace_
+[13-May-2025 04:12:01 UTC] [INFO] Country code: GR
+[13-May-2025 04:12:02 UTC] Processing amenities for hotel
+
+[13-May-2025 04:12:02 UTC] 
+Inserting Amenities for post_id: 1584745
+[13-May-2025 04:12:02 UTC] Finished processing amenities
+[13-May-2025 04:28:15 UTC] [INFO] All rooms processed successfully
+[13-May-2025 04:28:26 UTC] [INFO] Completed processing hotel: nsplace_ in 984.8668
+[13-May-2025 04:28:26 UTC] [Hotel] _____________________________________________________________
+[13-May-2025 04:28:26 UTC] [INFO] Processing hotel: athens_green_apartments_2
+[13-May-2025 04:28:26 UTC] [INFO] Country code: GR
+[13-May-2025 04:28:27 UTC] Processing amenities for hotel
+
+[13-May-2025 04:28:27 UTC] 
+Inserting Amenities for post_id: 1584760
+[13-May-2025 04:28:27 UTC] Finished processing amenities
+[14-May-2025 04:00:04 UTC] Authentication successful
+[14-May-2025 04:00:04 UTC] Tracking next region...
+[14-May-2025 04:00:04 UTC] [Region] ========================================================
+[14-May-2025 04:00:04 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php:1) in /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php on line 24
+[14-May-2025 04:00:04 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php:1) in /home/balkanea/public_html/wp-plugin/daily_cancellation_check.php on line 25
+[14-May-2025 04:00:56 UTC] [INFO] Processing region: 6156549 with 9 hotels
+[14-May-2025 04:00:56 UTC] [Hotel] _____________________________________________________________
+[14-May-2025 04:00:56 UTC] [INFO] Processing hotel: hotel_zlatibor_mona
+[14-May-2025 04:00:56 UTC] [INFO] Country code: RS
+[14-May-2025 04:00:58 UTC] Processing amenities for hotel
+
+[14-May-2025 04:00:58 UTC] 
+Inserting Amenities for post_id: 0
+[14-May-2025 04:00:58 UTC] Finished processing amenities
+[14-May-2025 04:11:11 UTC] [INFO] All rooms processed successfully
+[14-May-2025 04:11:39 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Models\PostMetaValues::get() in /home/balkanea/public_html/wp-plugin/cron_job.php:528
+Stack trace:
+#0 {main}
+  thrown in /home/balkanea/public_html/wp-plugin/cron_job.php on line 528
+[14-May-2025 10:52:22 UTC] Executing hotel
+[14-May-2025 10:52:32 UTC] Executing hotel

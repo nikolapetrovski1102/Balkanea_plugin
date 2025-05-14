@@ -1,5 +1,4 @@
 <?php
-
 namespace Models;
 
 class LocationRelationship
@@ -12,40 +11,97 @@ class LocationRelationship
     
     private $wpdb;
     private $table = 'st_location_relationships';
-
+    private $batch_size = 100; // Configure batch size based on your database capabilities
+    
     public function __construct($wpdb)
     {
         $this->wpdb = $wpdb;
     }
     
+    /**
+     * Insert location relationships using batch processing
+     * 
+     * @return string Result message
+     */
     public function insertLocationRelationship()
     {
-        
         echo 'Locations: <br>';
         print_r($this->location_from);
         
-        foreach ($this->location_from as $location) {
-
-            try {
-                $query = $this->wpdb->prepare(
-                    "INSERT INTO {$this->wpdb->prefix}{$this->table} (post_id, location_from, location_to, post_type, location_type) 
-                VALUES (%d, %s, %s, %s, %s)",
-                $this->post_id, $location, $this->location_to, $this->post_type, $this->location_type
-                );
-
-                $this->wpdb->query($query);
+        if (empty($this->location_from)) {
+            return 'No locations to insert';
+        }
+        
+        try {
+            // Prepare for batch insert
+            $values = [];
+            $placeholders = [];
+            $query_args = [];
+            
+            foreach ($this->location_from as $location) {
+                $placeholders[] = "(%d, %s, %s, %s, %s)";
                 
-                if ($this->wpdb->last_error) {
-                    throw new \Exception($this->wpdb->last_error);
+                array_push(
+                    $query_args,
+                    $this->post_id,
+                    $location,
+                    $this->location_to,
+                    $this->post_type,
+                    $this->location_type
+                );
+                
+                // If we've reached the batch size, execute the query
+                if (count($placeholders) >= $this->batch_size) {
+                    $this->executeBatchInsert($placeholders, $query_args);
+                    $placeholders = [];
+                    $query_args = [];
                 }
-                            
-            } catch (\Exception $ex) {
-                return 'Caught exception: ' . $ex->getMessage() . "\n";
             }
             
+            // Insert any remaining items
+            if (!empty($placeholders)) {
+                $this->executeBatchInsert($placeholders, $query_args);
+            }
+            
+            return 'Location relationships inserted successfully';
+            
+        } catch (\Exception $ex) {
+            return 'Caught exception: ' . $ex->getMessage() . "\n";
         }
-
-        return 'Location relationship inserted successfully';
-
+    }
+    
+    /**
+     * Execute a batch insert query
+     * 
+     * @param array $placeholders Array of placeholder strings
+     * @param array $query_args Query arguments
+     * @throws \Exception When database error occurs
+     */
+    private function executeBatchInsert($placeholders, $query_args)
+    {
+        // Prepare the multi-value insert query
+        $query = "INSERT INTO {$this->wpdb->prefix}{$this->table} "
+               . "(post_id, location_from, location_to, post_type, location_type) "
+               . "VALUES " . implode(', ', $placeholders);
+        
+        // Prepare and execute the query
+        $prepared_query = $this->wpdb->prepare($query, $query_args);
+        $this->wpdb->query($prepared_query);
+        
+        if ($this->wpdb->last_error) {
+            throw new \Exception($this->wpdb->last_error);
+        }
+    }
+    
+    /**
+     * Set the batch size for insert operations
+     * 
+     * @param int $size Batch size
+     * @return $this
+     */
+    public function setBatchSize($size)
+    {
+        $this->batch_size = (int)$size > 0 ? (int)$size : 100;
+        return $this;
     }
 }

@@ -15,8 +15,8 @@
     error_log("Executing hotel" . $hotel_id);
 
     $data_hotel = array(
-        'id' => 'zappion_hotel',
-        'language' => 'mk'                // Set response language to English
+        'id' => 'pharos_',
+        'language' => 'en'                // Set response language to English
     );
 
     $json_data_hotel = json_encode($data_hotel);

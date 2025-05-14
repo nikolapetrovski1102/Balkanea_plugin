@@ -1,7 +1,17 @@
 <?php
-    $config = include './config.php';
+    $basePath = realpath(__DIR__);
+    define('WP_CLI', true); 
+    $_SERVER['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1'; 
+
+    $config = include $basePath . '/config.php';
     $keyId = $config['api_key'];
     $apiKey = $config['api_password'];
+    
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    ini_set('log_errors', 1);
+    error_reporting(E_ALL);
+
 
 // if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])){
 //     error_log("Authentication headers missing");
@@ -32,35 +42,56 @@ use Models\LocationRelationship;
 use Models\CurrencyModel;
 use data\HotelFlag;
 
+register_shutdown_function(function () {
+    $error = error_get_last();
+    if ($error !== null) {
+        error_log("Shutdown error: " . print_r($error, true));
+    }
+});
+
+try {
+
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
+    ini_set('log_errors', 1);
     error_reporting(E_ALL);
 
-    $path = $_SERVER['DOCUMENT_ROOT']; 
-    
-    include './Models/Amenity.php';
-    include './Models/PostsHotel.php';
-    include './Models/PostsRoom.php';
-    include './Models/HotelRoom.php';
-    include './Models/PostMetaValues.php';
-    include './Models/St_Hotel.php';
-    include './Models/ImageInsert.php';
-    include './Models/RoomAvailability.php';
-    include './Models/LocationRelationship.php';
-    include './Models/LocationNested.php';
-    include './Models/CurrencyModel.php';
-    include './data/data.php';
-    include './data/track_data.php';
-    include './data/HotelFlag.php';
-    include './HttpRequests.php';
-    
+    $path = realpath(__DIR__ . '/../');
+
+    $files = [
+        '/Models/Amenity.php',
+        '/Models/PostsHotel.php',
+        '/Models/PostsRoom.php',
+        '/Models/HotelRoom.php',
+        '/Models/PostMetaValues.php',
+        '/Models/St_Hotel.php',
+        '/Models/ImageInsert.php',
+        '/Models/RoomAvailability.php',
+        '/Models/LocationRelationship.php',
+        '/Models/LocationNested.php',
+        '/Models/CurrencyModel.php',
+        '/data/data.php',
+        '/data/track_data.php',
+        '/data/HotelFlag.php',
+        '/HttpRequests.php',
+    ];
+
+    foreach ($files as $file) {
+        $fullPath = $basePath . $file;
+        if (!file_exists($fullPath)) {
+            error_log("Missing file: $fullPath");
+        } else {
+            include_once $fullPath;
+        }
+    }
+
+    define('SHORTINIT', true); // Optional: to avoid plugin loading
     include_once $path . '/wp-load.php';
-
+    
     global $wpdb;
-
     $wpdb->show_errors();
     $prefix = $wpdb->prefix;
-    
+
     $credentials = base64_encode($keyId . ':' . $apiKey);
     
     $headers = array(
@@ -68,32 +99,10 @@ use data\HotelFlag;
         'Content-Type: application/json'
     );
     
-    function clearWpDb() {
-        // $path = $_SERVER['DOCUMENT_ROOT']; 
-        // include_once $path . '/wp-load.php';
-        // global $wpdb;
-        
-        // if ($wpdb->use_mysqli && $wpdb->dbh instanceof mysqli) {
-        //     while ($wpdb->dbh->more_results() && $wpdb->dbh->next_result()) {
-        //         if ($res = $wpdb->dbh->store_result()) {
-        //             $res->free();
-        //         }
-        //     }
-        // }
-    }
-
-    try{
-        
-        $credentials = base64_encode($keyId . ':' . $apiKey);
-    
-        $headers = array(
-            'Authorization: Basic ' . $credentials
-        );
-    
         $url = 'https://api.worldota.net/api/b2b/v3/hotel/info/';
     
         $data_hotel = array(
-            'id' => 'test_hotel',
+            'id' => 'pharos_',
             'language' => 'en'                // Set response language to English
         );
     
@@ -129,9 +138,6 @@ use data\HotelFlag;
         error_log("[INFO] Processing hotel: " . $hotel_name);
 
         $posts_hotel->post_name = $hotel_name;
-
-        // Clear any pending result sets before checking if hotel exists
-        clearWpDb();
         
         $post_content = '';
         $post_excerpt = '';
@@ -150,12 +156,12 @@ use data\HotelFlag;
 
         $location_nested = new LocationNested($wpdb);
         error_log("[INFO] Country code: " . $hotel_country_code['country_code']);
-        $location_nested->location_country = 'GR';
+        $location_nested->location_country = $hotel_country_code['country_code'];
         
         // Execute query and store result before proceeding
         $parent_location_exists_json = $location_nested->parentLocationExists();
         // Make sure to consume the result
-        clearWpDb();
+
         
         $parent_location_exists = json_decode($parent_location_exists_json);
         $parent_location = $parent_location_exists->ID;
@@ -178,9 +184,6 @@ use data\HotelFlag;
         
         // Create location and ensure the result is consumed
         $location_result = $location_nested->create();
-        clearWpDb();
-        
-        error_log(print_r($hotel['description_struct'], true));
         
         foreach ($hotel['description_struct'] as $content){
             if ($content['title'] == 'Location'){
@@ -209,17 +212,16 @@ use data\HotelFlag;
         
         // Get post and ensure result is consumed
         $post_id = $posts_hotel->get();
-        clearWpDb();
-        
+
         $amenities_model = new Amenity($wpdb);
         $location_relationships = new LocationRelationship($wpdb);
 
         if ($post_id){
-            echo 'Hotel found in DB<br>';
+            error_log('Hotel found in DB');
             
             $posts_hotel->id = $post_id;
             $updated_id = $posts_hotel->update();
-            clearWpDb();
+    
 
             if ($hotel['amenity_groups'] != null && count($hotel['amenity_groups']) > 0)
             {
@@ -227,7 +229,7 @@ use data\HotelFlag;
                 $amenities_model->amenities = $hotel['amenity_groups'][0];
                 $amenities_model->post_id = $updated_id;
                 $amenities = $amenities_model->getAmenities();
-                clearWpDb();
+        
             } else {
                 error_log("[INFO] No amenities found for hotel");
             }
@@ -241,13 +243,13 @@ use data\HotelFlag;
             $location_relationships->location_type = 'multi_location';
         
             $location_result = $location_relationships->insertLocationRelationship();
-            clearWpDb();    
+        
         }
         else{
             echo 'Hotel not found in DB<br>';
             
             $post_id = $posts_hotel->create();
-            clearWpDb();
+    
 
             if (is_array($hotel['amenity_groups']) && count($hotel['amenity_groups']) > 0) {
                 $amenities_model->amenities = $hotel['amenity_groups'][0];
@@ -258,7 +260,7 @@ use data\HotelFlag;
             $amenities_model->post_id = $post_id;
 
             $amenities = $amenities_model->getAmenities();
-            clearWpDb();
+    
 
             $location_relationships->post_id = $post_id;
             $location_relationships->location_from = array($parent_location_id, $hotel_location['id']);
@@ -267,7 +269,7 @@ use data\HotelFlag;
             $location_relationships->location_type = 'multi_location';
 
             $location_result = $location_relationships->insertLocationRelationship();
-            clearWpDb();
+    
         }
 
         $prices = array();
@@ -285,7 +287,7 @@ use data\HotelFlag;
             
             foreach ($hotel['room_groups'] as $room) {
                 // Clear any existing result sets
-        clearWpDb();
+
 
                 $posts_room->post_title = $room['name_struct']['main_name'];
                 $posts_room->post_content = $post_content;
@@ -301,7 +303,7 @@ use data\HotelFlag;
                 $posts_room->post_mime_type = '';
 
                 $posts_room_exsists = $posts_room->get();
-        clearWpDb();
+
 
                 $post_images->hotel = $room;
                 $post_images->directory_url = $hotel['id'] . '/' . str_replace(' ', '-', $room['name_struct']['main_name']);
@@ -360,40 +362,40 @@ use data\HotelFlag;
                     $post_images->post_id = $post_room_id;
 
                     $post_image_array_ids = $post_images->insertImages();
-                    clearWpDb();
+            
 
                     $post_meta->meta_values['_thumbnail_id'] = $post_image_array_ids != null ? explode(",", $post_image_array_ids)[0] : '';
                     $post_meta->meta_values['gallery'] = $post_image_array_ids ?? '';
 
                     $update_result = $posts_room->update();
-                    clearWpDb();
+            
                     
                     $meta_update_result = $post_meta->update();
-                    clearWpDb();
+            
                     
                 }
                 else{
                     $post_room_id = $posts_room->create();
-                    clearWpDb();
+            
 
                     $post_meta->post_id = $post_room_id;
                     $post_images->post_id = $post_room_id;
                     
                     $post_image_array_ids = $post_images->insertImages();
-                    clearWpDb();
+            
 
                     $post_meta->meta_values['_thumbnail_id'] = $post_image_array_ids != null ? explode(",", $post_image_array_ids)[0] : '';
                     $post_meta->meta_values['gallery'] = $post_image_array_ids ?? '';
 
                     $meta_create_result = $post_meta->create();
-                    clearWpDb();
+            
                 }
 
                 $amenities_model->amenities = $room['room_amenities'];
                 $amenities_model->post_id = $post_room_id;
 
                 $amenities = $amenities_model->getRoomAmenities();
-                clearWpDb();
+        
 
                 $hotel_room_model = new HotelRoom($wpdb);
 
@@ -415,16 +417,16 @@ use data\HotelFlag;
                 $room_id = $post_room_id;
 
                 $hotel_room = $hotel_room_model->get();
-                clearWpDb();
+        
                 
                 $hotel_room ?? error_log("[INFO] Hotel room does not exist");
 
                 if ($hotel_room) {
                     $hotel_room_update = $hotel_room_model->update();
-                    clearWpDb();
+            
                 } else {
                     $hotel_room_create = $hotel_room_model->create();
-                    clearWpDb();
+            
                 }
             }
 
@@ -455,10 +457,10 @@ use data\HotelFlag;
 
         if ($st_hotel->get()) {
             $st_hotel_update = $st_hotel->update();
-            clearWpDb();
+    
         } else {
             $st_hotel_create = $st_hotel->create();
-            clearWpDb();
+    
         }
 
         $post_image_array_ids = '';
@@ -474,11 +476,11 @@ use data\HotelFlag;
         $post_meta->post_id = $post_id;
 
         $post_image_array_ids = $post_images->insertImages();
-        clearWpDb();
+
 
         if ($post_image_array_ids == ''){
             $meta_result = $post_meta->read('gallery');
-            clearWpDb();
+    
             $post_image_array_ids = $meta_result->meta_value;
         }
 
@@ -524,15 +526,15 @@ use data\HotelFlag;
             'metapolicy_struct' => $metapolicy_struct
         );
 
-        $meta_exists = $post_meta->get();
-        clearWpDb();
+        $meta_exists = $post_meta->getAll();
+
         
         if ($meta_exists) {
             $hotel_meta_update = $post_meta->update();
-            clearWpDb();
+    
         } else {
             $hotel_meta_create = $post_meta->create();
-            clearWpDb();
+    
         }
             
         $singleHotelEnd = microtime(true);
@@ -544,7 +546,7 @@ use data\HotelFlag;
         error_log("[INFO] Completed processing hotel: " . $hotel_name . " in " . number_format($singleHotelTotal, 4));
         
         // Final flush of any pending results
-        clearWpDb();
+
         // End of foreach
         
         error_log("[INFO] Successfully processed all hotels in Country: " . $country . " in " . number_format($regionTotal, 4));
@@ -557,7 +559,7 @@ use data\HotelFlag;
         
         // Make sure to flush any pending results even on fatal error
         if (isset($wpdb) && $wpdb) {
-            clearWpDb();
+    
         }
     }
 

@@ -181,11 +181,13 @@ class PostsHotel
 
     public function get()
     {
-        if (!is_string($this->post_title)) {
+        error_log("[INFO] Get");
+        
+        if (!is_string($this->post_name)) {
             throw new \Exception("post_title must be a string");
         }
     
-        $query = $this->wpdb->prepare("SELECT * FROM " . $this->wpdb->prefix . $this->table . " WHERE post_title = %s", $this->post_title);
+        $query = $this->wpdb->prepare("SELECT * FROM " . $this->wpdb->prefix . $this->table . " WHERE post_name = %s", $this->post_name);
         $result = $this->wpdb->get_row($query);
 
         return $result != null ? $result->ID : NULL;
@@ -193,11 +195,11 @@ class PostsHotel
     
     private function hotelExists(){
 
-        if (!is_string($this->post_title)) {
+        if (!is_string($this->post_name)) {
             throw new \Exception("post_title must be a string");
         }
     
-        $query = $this->wpdb->prepare("SELECT * FROM " . $this->wpdb->prefix . $this->table . " WHERE post_title = %s", $this->post_title);
+        $query = $this->wpdb->prepare("SELECT * FROM " . $this->wpdb->prefix . $this->table . " WHERE post_name = %s", $this->post_name);
         $result = $this->wpdb->get_row($query);
 
         if ($result)
