@@ -5,26 +5,26 @@ define('SHORTINIT', true);
     define('WP_USE_THEMES', false); // or true, depending on context
     define('DOING_CRON', true); // Helps WP know it's a cron job
 
-    $config = include './config.php';
+    $config = include __DIR__ . '/config.php';
     $keyId = $config['api_key'];
     $apiKey = $config['api_password'];
 
 // if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])){
-//     error_log("Authentication headers missing");
+//     logToRegionFile("Authentication headers missing", "global", "ERROR");
 //     header('WWW-Authenticate: Basic realm="Restricted Area"');
 //     header('HTTP/1.0 401 Unauthorized');
 //     echo 'Authorization header missing';
 //     exit;
 // }
 // if ($_SERVER['PHP_AUTH_USER'] !== $keyId || $_SERVER['PHP_AUTH_PW'] !== $apiKey) {
-//     error_log("Invalid credentials provided: " . $_SERVER['PHP_AUTH_USER']);
+//     logToRegionFile("Invalid credentials provided: " . $_SERVER['PHP_AUTH_USER'], "global", "ERROR");
 //     header('WWW-Authenticate: Basic realm="Restricted Area"');
 //     header('HTTP/1.0 401 Unauthorized');
 //     echo 'Unauthorized Access';
 //     exit;
 // }
 
-error_log("Authentication successful");
+logToRegionFile("Authentication successful");
 
 use Models\Amenity;
 use Models\HotelRoom;
@@ -77,19 +77,22 @@ use data\HotelFlag;
     );
 
     function clearWpDb() {
-        echo "\n Call clearWpDb()";
-        $path = realpath(__DIR__ . '/../');
-        require_once $path . '/wp-load.php';
-        global $wpdb;
-
-        if ($wpdb->use_mysqli && $wpdb->dbh instanceof mysqli) {
-            while ($wpdb->dbh->more_results() && $wpdb->dbh->next_result()) {
-                if ($res = $wpdb->dbh->store_result()) {
-                    $res->free();
-                }
-            }
-        }
     }
+    
+    function logToRegionFile($message, $currentRegion = 'global', $logLevel = 'INFO') {
+        error_log("Logging to $currentRegion");
+        $logDate = date('Y-m-d H:i:s');
+        $logMessage = "[$logDate] [$logLevel] $message" . PHP_EOL;
+        
+        $logFilePath = __DIR__ . "/logs/{$currentRegion}_logs.log";
+        
+        if (!is_dir(__DIR__ . '/logs')) {
+            mkdir(__DIR__ . '/logs', 0755, true);
+        }
+        
+        file_put_contents($logFilePath, $logMessage, FILE_APPEND);
+    }
+
 
     try{
         $regionTotal = 0;
@@ -98,7 +101,7 @@ use data\HotelFlag;
         $regionData = json_decode($allHotels, true);
 
         if ($regionData === null) {
-            error_log("JSON decode failed: " . json_last_error_msg() . " - Raw data: " . substr($allHotels, 0, 1000));
+            logToRegionFile("JSON decode failed: " . json_last_error_msg() . " - Raw data: " . substr($allHotels, 0, 1000), "global", "ERROR");
             throw new Exception("Invalid JSON: " . json_last_error_msg());
         }
 
@@ -106,30 +109,41 @@ use data\HotelFlag;
         $regions = $regionData['regions'];
 
         foreach ($regions as $region) {
-            error_log("[Region] ========================================================");
- //           $hotelEntries = getHotelDetails($region, $headers);
-           $hotelEntries = getHotelDetailsLocal("438"); //get data from test_data_hotels2.json
+            
+            logToRegionFile("processing region $region");
+            
+            $hotelEntries = getHotelDetails($region, $headers);
+        //   $hotelEntries = getHotelDetailsLocal("438"); //get data from test_data_hotels2.json
+
+            logToRegionFile("Hotel entries gathered");
 
             if (!is_array($hotelEntries) || empty($hotelEntries)) continue;
 
-            error_log("[INFO] Processing region: " . $region . " with " . count($hotelEntries) . " hotels");
+            logToRegionFile("Hotel entries not null");
 
             foreach ($hotelEntries as $hotel_response) {
               try {
-                error_log("[Hotel] _____________________________________________________________");
-
+                  
+              logToRegionFile("Processing hotel");
+                  
                 $singleHotelStart = microtime(true);
 
                 $hotel = json_decode($hotel_response, true);
+                
+                
                 if (!$hotel) {
-                    error_log("[Error] Failed to decode hotel JSON: " . json_last_error_msg());
+                    logToRegionFile("Failed to decode hotel JSON: " . json_last_error_msg(), "global", "ERROR");
                     continue;
                 }
 
                 $posts_hotel = new PostsHotel($wpdb);
 
                 $hotel_name = $hotel["id"];
-                error_log("[INFO] Processing hotel: " . $hotel_name);
+                $current_country_code = $hotel['region']['country_code'];
+                logToRegionFile("_____________________________________________________________", $current_country_code, "INFO");
+                logToRegionFile("Processing region: " . $region . " with " . count($hotelEntries) . " hotels", $current_country_code, "INFO");
+                
+                logToRegionFile("Processing hotel: " . $hotel_name, $current_country_code, "INFO");
 
                 $posts_hotel->post_name = $hotel_name;
 
@@ -152,7 +166,7 @@ use data\HotelFlag;
                 echo "\n{$hotel['id']}";
 
                 $location_nested = new LocationNested($wpdb);
-                error_log("[INFO] Country code: " . $hotel_country_code['country_code']);
+                logToRegionFile("Country code: " . $current_country_code, $currentRegion, "INFO");
                 $location_nested->location_country = $hotel_country_code['country_code'];
 
                 // Execute query and store result before proceeding
@@ -171,7 +185,7 @@ use data\HotelFlag;
                     $location_nested->parent_id = $parent_location;
                 } else {
                     $location_nested->parent_id = $parent_location;
-                    error_log("[INFO] No parent location found");
+                    logToRegionFile("No parent location found", $current_country_code, "INFO");
                 }
 
                 $location_nested->location_id = $hotel_location['id'];
@@ -224,16 +238,16 @@ use data\HotelFlag;
 
                     if ($hotel['amenity_groups'] != null && count($hotel['amenity_groups']) > 0)
                     {
-                        error_log("Processing amenities for hotel\n");
+                        logToRegionFile("Processing amenities for hotel\n", $current_country_code, "INFO");
                         $amenities_model->amenities = $hotel['amenity_groups'][0];
                         $amenities_model->post_id = $updated_id;
                         $amenities = $amenities_model->getAmenities();
                         clearWpDb();
                     } else {
-                        error_log("[INFO] No amenities found for hotel");
+                        logToRegionFile("No amenities found for hotel", $current_country_code, "INFO");
                     }
 
-                    error_log("Finished processing amenities");
+                    logToRegionFile("Finished processing amenities", $current_country_code, "INFO");
 
                     $location_relationships->post_id = $post_id;
                     $location_relationships->location_from = array($parent_location_id, $hotel_location['id']);
@@ -418,7 +432,7 @@ use data\HotelFlag;
                         $hotel_room = $hotel_room_model->get();
                         clearWpDb();
 
-                        $hotel_room ?? error_log("[INFO] Hotel room does not exist");
+                        $hotel_room ?? logToRegionFile("Hotel room does not exist", $current_country_code, "INFO");
 
                         if ($hotel_room) {
                             $hotel_room_update = $hotel_room_model->update();
@@ -430,15 +444,15 @@ use data\HotelFlag;
                     }
 
                     if ($wpdb->last_error) {
-                        error_log(' [ERROR] wpdb last error after processing rooms: ' . $wpdb->last_error);
+                        logToRegionFile("wpdb last error after processing rooms: " . $wpdb->last_error, $current_country_code, "ERROR");
                         echo 'wpdb last error: ' . $wpdb->last_error . '<br>';
                     } else {
-                        error_log("[INFO] All rooms processed successfully");
+                        logToRegionFile("All rooms processed successfully", $current_country_code, "INFO");
                         echo '<br>Data for posts hotel room inserted successfully<br>';
                     }
 
                 } catch (Exception $e) {
-                    error_log(' [ERROR] Caught exception in rooms processing: ' . $e->getMessage() . ' - ' . $e->getTraceAsString());
+                    logToRegionFile("Caught exception in rooms processing: " . $e->getMessage() . " - " . $e->getTraceAsString(), $current_country_code, "ERROR");
                     echo 'Caught exception: ',  $e->getMessage(), "\n";
                 }
 
@@ -542,7 +556,7 @@ use data\HotelFlag;
 
                 $regionTotal += $singleHotelTotal;
 
-                error_log("[INFO] Completed processing hotel: " . $hotel_name . " in " . number_format($singleHotelTotal, 4));
+                logToRegionFile("Completed processing hotel: " . $hotel_name . " in " . number_format($singleHotelTotal, 4), $current_country_code, "INFO");
 
                 // Final flush of any pending results
                 clearWpDb();
@@ -550,10 +564,10 @@ use data\HotelFlag;
                 //sleep(15);
 
               } catch(\Exception $ex) {
-                error_log(" [ERROR] CRITICAL ERROR: " . $ex->getMessage());
-                error_log(" [ERROR] Error stack trace: " . $ex->getTraceAsString());
+                logToRegionFile("CRITICAL ERROR: " . $ex->getMessage(), $current_country_code, "ERROR");
+                logToRegionFile("Error stack trace: " . $ex->getTraceAsString(), $current_country_code, "ERROR");
                 echo 'error check logs';
-                error_log(print_r($ex, true));
+                logToRegionFile(print_r($ex, true), $current_country_code, "ERROR");
 
                 // Make sure to flush any pending results even on error
                 clearWpDb();
@@ -565,13 +579,13 @@ use data\HotelFlag;
         }
         // End of foreach
 
-        error_log("[INFO] Successfully processed all hotels in Country: " . $country . " in " . number_format($regionTotal, 4));
+        logToRegionFile("Successfully processed all hotels in Country: " . $country . " in " . number_format($regionTotal, 4), "global", "INFO");
 
     } catch(\Exception $ex) {
-        error_log(" [ERROR] CRITICAL ERROR: " . $ex->getMessage());
-        error_log(" [ERROR] Error stack trace: " . $ex->getTraceAsString());
+        logToRegionFile("CRITICAL ERROR: " . $ex->getMessage(), "global", "ERROR");
+        logToRegionFile("Error stack trace: " . $ex->getTraceAsString(), "global", "ERROR");
         echo 'error check logs';
-        error_log(print_r($ex, true));
+        logToRegionFile(print_r($ex, true), "global", "ERROR");
 
         // Make sure to flush any pending results even on fatal error
         if (isset($wpdb) && $wpdb) {
