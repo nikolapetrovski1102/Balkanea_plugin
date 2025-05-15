@@ -25,12 +25,12 @@ class ProcessAmenity
 
     public function getRoomAmenities(): array
     {
-        return $this->processAmenities($this->amenities['amenities'] ?? [], 'room-facilities');
+        return $this->processAmenities($this->amenities ?? [], 'room-facilities');
     }
 
     public function processAmenities(array $amenities, string $taxonomy): array
     {
-       // $this->term_taxonomy = $taxonomy;
+        // $this->term_taxonomy = $taxonomy;
         if (empty($amenities)) {
             return [];
         }
@@ -61,10 +61,10 @@ class ProcessAmenity
                 FROM {$this->wpdb->prefix}terms AS t
                 INNER JOIN {$this->wpdb->prefix}term_taxonomy AS tt ON t.term_id = tt.term_id
                 WHERE (t.name, t.slug, tt.taxonomy) IN ($placeholders)";
-       // $start = microtime(true);
+        // $start = microtime(true);
         $query = $this->wpdb->prepare($sql, $values);
         $existing_terms = $this->wpdb->get_results($query, OBJECT_K);
-     //   $end = microtime(true);
+        //   $end = microtime(true);
 
         // Process results and create missing amenities
         $terms_to_create = [];
@@ -116,9 +116,9 @@ class ProcessAmenity
                 INNER JOIN {$this->wpdb->prefix}term_taxonomy AS tt ON t.term_id = tt.term_id
                 WHERE t.name IN ($placeholders) AND tt.taxonomy = %s";
         $params = array_merge($amenities, [$taxonomy]);
-       // $start = microtime(true);
+        // $start = microtime(true);
         $existing_terms = $this->wpdb->get_results($this->wpdb->prepare($sql, $params), OBJECT_K);
-       // $end = microtime(true);
+        // $end = microtime(true);
 
         // Prepare terms to insert (excluding existing ones)
         $terms_to_insert = [];
@@ -193,7 +193,7 @@ class ProcessAmenity
     private function insertAmenitiesBulk(array $term_taxonomy_ids): void
     {
         try {
-            error_log("\nInserting Amenities for post_id: {$this->post_id}");
+            error_log("Inserting Amenities for post_id: {$this->post_id}\n");
 
             // Build placeholders and values for the IN clause
             $in_placeholders = implode(',', array_fill(0, count($term_taxonomy_ids), '%d'));
