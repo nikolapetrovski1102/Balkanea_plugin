@@ -42,31 +42,31 @@ class PostsHotel
         $this->post_type = 'st_hotel';
         $this->comment_count = 0;
     }
-    
+
     public function isModified() {
         if (!is_string($this->post_name)) {
             error_log($this->post_name);
             throw new \Exception("post_name must be a string");
         }
-    
+
         $query = $this->wpdb->prepare(
             "SELECT post_modified FROM " . $this->wpdb->prefix . $this->table . " WHERE post_name = %s",
             $this->post_name
         );
         $result = $this->wpdb->get_row($query);
-    
+
         error_log(print_r($result, true));
-    
+
         if ($result) {
             $post_modified = $result->post_modified;
             $modified_date = date('Y-m-d', strtotime($post_modified)); // Extract date part of post_modified
             $today_date = date('Y-m-d'); // Get today's date
-    
+
             if ($modified_date === $today_date) {
                 return true;
             }
         }
-    
+
         return false;
     }
 
@@ -76,10 +76,10 @@ class PostsHotel
     {
         $hotel_id = $this->hotelExists();
         error_log("found id: $hotel_id");
-        
+
         if ($hotel_id)
             return $hotel_id;
-        
+
         $data = [
             'post_author' => $this->post_author,
             'post_date' => date('Y-m-d H:i:s'),
@@ -112,7 +112,7 @@ class PostsHotel
 
         try{
             $result = $this->wpdb->insert($this->wpdb->prefix . $this->table, $data, $format);
-            
+
             if ($this->wpdb->last_error)
                 throw new \Exception($this->wpdb->last_error);
             else
@@ -165,7 +165,7 @@ class PostsHotel
 
         $result = $this->wpdb->update($this->wpdb->prefix . $this->table, $data, $where, $format, $where_format);
 
-        return $this->wpdb->insert_id;
+        return $this->id;
     }
 
     // Delete Post
@@ -182,29 +182,29 @@ class PostsHotel
     public function get()
     {
         error_log("[INFO] Get");
-        
+
         if (!is_string($this->post_name)) {
             throw new \Exception("post_title must be a string");
         }
-    
+
         $query = $this->wpdb->prepare("SELECT * FROM " . $this->wpdb->prefix . $this->table . " WHERE post_name = %s", $this->post_name);
         $result = $this->wpdb->get_row($query);
 
         return $result != null ? $result->ID : NULL;
     }
-    
+
     private function hotelExists(){
 
         if (!is_string($this->post_name)) {
             throw new \Exception("post_title must be a string");
         }
-    
+
         $query = $this->wpdb->prepare("SELECT * FROM " . $this->wpdb->prefix . $this->table . " WHERE post_name = %s", $this->post_name);
         $result = $this->wpdb->get_row($query);
 
         if ($result)
             return $result != null ? $result->ID : $result;
     }
-    
+
 }
 ?>
