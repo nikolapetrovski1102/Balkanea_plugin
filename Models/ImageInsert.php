@@ -21,14 +21,14 @@ class ImageInserter {
     }
 
     public function insertImages() {
-        $directory = "/home/balkanea/public_html/wp-content/uploads/" . self::sanitizeFileName($this->provider) . '/' . $this->directory_url;
-        $image_origin_url = "https://balkanea.com/wp-content/uploads/" . self::sanitizeFileName($this->provider) . '/' . $this->directory_url . '/';
+       // $directory = "/home/balkanea/public_html/wp-content/uploads/" . self::sanitizeFileName($this->provider) . '/' . $this->directory_url;
+     //   $image_origin_url = "https://balkanea.com/wp-content/uploads/" . self::sanitizeFileName($this->provider) . '/' . $this->directory_url . '/';
         $counter = 0;
         $post_image_array_ids = '';
-    
+
         try {
-            echo '<br>' . $image_origin_url . '<br>';
-            echo '<br>Directory: ' . $this->directory_url . '<br>';
+         //   echo '<br>' . $image_origin_url . '<br>';
+        //    echo '<br>Directory: ' . $this->directory_url . '<br>';
 
             if (empty($this->hotel['images'])) {
                 $this->hotel['images'] = $this->default_image;
@@ -36,42 +36,48 @@ class ImageInserter {
 
             foreach ($this->hotel['images'] as $img) {
                 $counter++;
-                $new_image_name = basename($this->directory_url) . '-' . $counter . '.jpg'; // New image filename
-    
-                echo '<br>Saving: ' . $new_image_name . '<br>';
+                //$new_image_name = basename($this->directory_url) . '-' . $counter . '.jpg'; // New image filename
+
+              //  echo '<br>Saving: ' . $new_image_name . '<br>';
 
                 $img_url = self::getImageUrl($img);
 
                 // Check if the image already exists
-                $this->createDirectory($directory);
-                $this->image_path = $directory . '/' . $new_image_name;
+               // $this->createDirectory($directory);
+               // $this->image_path = $directory . '/' . $new_image_name;
 
-                if (!file_exists($this->image_path)) {
+               /* if (!file_exists($this->image_path)) {
                     // Download and save the image
                     $this->downloadImage($img_url, $new_image_name);
                 }
-    
+*/
                 // Check if the image URL exists in the database
-                $image_url_exists = self::imageUrlExists($image_origin_url . $new_image_name);
-    
-                if ($image_url_exists) {
+     //           $image_url_exists = self::imageUrlExists($image_origin_url . $new_image_name);
+
+               /* if ($image_url_exists) {
                     $post_image_array_ids .= $image_url_exists . ',';
                 } else {
                     if ($this->image_path) {
                         $this->image_guid = $image_origin_url . $new_image_name;
                         $this->insertPost($counter);
                         $post_image_array_ids .= $this->wpdb->insert_id . ',';
-    
+
                         $photo_metadata = self::createPhotoMetadata();
                         $this->insertPostMeta($photo_metadata);
                     }
-                }
+                }*/
+                $this->image_guid = $img_url;
+                $this->insertPost($counter);
+                $post_image_array_ids .= $this->wpdb->insert_id . ',';
+
+                $photo_metadata = self::createPhotoMetadata($img_url);
+                $this->insertPostMeta($photo_metadata, $img_url);
             }
-    
+
             $post_image_array_ids = rtrim($post_image_array_ids, ',');
-    
+
             return $post_image_array_ids;
-    
+
         } catch (\Exception $e) {
             echo 'Caught exception: ', $e->getMessage(), "\n";
         }
@@ -114,18 +120,18 @@ class ImageInserter {
     private function insertPost($counter) {
         $this->wpdb->insert(
             $this->wpdb->prefix . 'posts',
-            array(
+            [
                 'post_author' => 6961,
                 'post_date' => date('Y-m-d H:i:s'),
                 'post_date_gmt' => date('Y-m-d H:i:s'),
                 'post_content' => '',
-                'post_title' => $this->post_title . ' (' . $counter . ')',
+                'post_title' => $this->post_title,
                 'post_excerpt' => '',
                 'post_status' => 'inherit',
                 'comment_status' => 'open',
                 'ping_status' => 'closed',
                 'post_password' => '',
-                'post_name' => $this->post_id_name . '-' . $counter,
+                'post_name' => self::sanitizeFileName( $this->post_title ),
                 'to_ping' => '',
                 'pinged' => '',
                 'post_modified' => date('Y-m-d H:i:s'),
@@ -137,16 +143,17 @@ class ImageInserter {
                 'post_type' => 'attachment',
                 'post_mime_type' => 'image/jpeg',
                 'comment_count' => 0
-            )
+            ]
         );
     }
 
-    private function createPhotoMetadata() {
+    private function createPhotoMetadata(string $img_url) {
         return array(
             'width' => 640,
             'height' => 400,
-            'file' => self::sanitizeFileName($this->provider) . '/' . $this->directory_url . '/' . basename($this->image_path),
-            'filesize' => filesize($this->image_path),
+            //'file' => self::sanitizeFileName($this->provider) . '/' . $this->directory_url . '/' . basename($this->image_path),
+            'file' => $img_url,
+           // 'filesize' => filesize($this->image_path),
             'sizes' => array(),
             'image_meta' => array(
                 'aperture' => '0',
@@ -165,15 +172,15 @@ class ImageInserter {
         );
     }
 
-    private function insertPostMeta($photo_metadata) {
+    private function insertPostMeta(array $photo_metadata, string $img_url) {
         $photo_metadata_serialized = serialize($photo_metadata);
-
         $this->wpdb->insert(
             $this->wpdb->prefix . 'postmeta',
             array(
                 'post_id' => $this->wpdb->insert_id,
                 'meta_key' => '_wp_attached_file',
-                'meta_value' => self::sanitizeFileName($this->provider) . '/' . $this->directory_url . '/' . basename($this->image_path)
+           //     'meta_value' => self::sanitizeFileName($this->provider) . '/' . $this->directory_url . '/' . basename($this->image_path)
+                'meta_value' => $img_url,
             )
         );
 

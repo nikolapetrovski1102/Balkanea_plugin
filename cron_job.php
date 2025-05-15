@@ -61,7 +61,7 @@ use data\HotelFlag;
     require_once __DIR__ .'/data/track_data.php';
     require_once __DIR__ .'/data/HotelFlag.php';
     require_once __DIR__ .'/HttpRequests.php';
-    
+
     require_once $path . '/wp-load.php';
 
     global $wpdb;
@@ -107,8 +107,8 @@ use data\HotelFlag;
 
         foreach ($regions as $region) {
             error_log("[Region] ========================================================");
-            $hotelEntries = getHotelDetails($region, $headers);
-//            $hotelEntries = getHotelDetailsLocal("181071"); //get data from test_data_hotels2.json
+ //           $hotelEntries = getHotelDetails($region, $headers);
+           $hotelEntries = getHotelDetailsLocal("438"); //get data from test_data_hotels2.json
 
             if (!is_array($hotelEntries) || empty($hotelEntries)) continue;
 
@@ -288,12 +288,12 @@ use data\HotelFlag;
                         // Clear any existing result sets
                 clearWpDb();
 
-                        $posts_room->post_title = $room['name_struct']['main_name'];
+                        $posts_room->post_title = $room['name'];
                         $posts_room->post_content = $post_content;
                         $posts_room->post_excerpt = $post_excerpt;
                         $posts_room->post_status = 'publish';
                         $posts_room->post_password = '';
-                        $posts_room->post_name = $post_id_name . '-' . str_replace(' ', '-', $room['name_struct']['main_name']);
+                        $posts_room->post_name = $post_id_name . '-' . str_replace(' ', '-', $room['name']) . '-' . $room['room_group_id'];
                         $posts_room->to_ping = '';
                         $posts_room->pinged = '';
                         $posts_room->post_content_filtered = '';
@@ -305,8 +305,8 @@ use data\HotelFlag;
                 clearWpDb();
 
                         $post_images->hotel = $room;
-                        $post_images->directory_url = $hotel['id'] . '/' . str_replace(' ', '-', $room['name_struct']['main_name']);
-                        $post_images->post_title = $room['name_struct']['main_name'];
+                        $post_images->directory_url = ''; //$hotel['id'] . '/' . str_replace(' ', '-', $room['name_struct']['main_name']);
+                        $post_images->post_title = $hotel['name'] . ' - ' . $room['name'];
                         $post_images->post_id_name = $post_id_name;
                         $post_images->provider = 'RateHawk';
                         $post_images->default_image = $hotel['images'];
@@ -517,7 +517,7 @@ use data\HotelFlag;
                     '_yoast_wpseo_content_score' => 60,
                     '_yoast_wpseo_estimated-reading-time-minutes' => NULL,
                     'hotel_layout_style' => 5,
-                    'hotel_policy' => 'a:1:{i:0;a:2:{s:5:"title";s:0:"";s:18:"policy_description";s:' . strlen($hotel['metapolicy_extra_info']) . ':"' . $hotel['metapolicy_extra_info'] . '";}}',
+                    'hotel_policy' => 'a:1:{i:0;a:2:{s:5:"title";s:0:"";s:18:"policy_description";s:' . strlen($hotel['metapolicy_extra_info'] ?? '') . ':"' . $hotel['metapolicy_extra_info'] ?? '' . '";}}',
                     '_thumbnail_id' => $post_image_array_ids != null ? explode(",", $post_image_array_ids)[0] : '',
                     'gallery' => $post_image_array_ids ?? '',
                     '_wp_old_date' => date('YYYY-mm-dd'),
@@ -525,7 +525,7 @@ use data\HotelFlag;
                     'metapolicy_struct' => $metapolicy_struct
                 );
 
-                $meta_exists = $post_meta->get();
+                  $meta_exists = $post_meta->getAll();
                 clearWpDb();
 
                 if ($meta_exists) {
