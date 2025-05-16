@@ -2,6 +2,8 @@
 
 namespace Models;
 
+use Log;
+
 class ProcessAmenity
 {
     private $wpdb;
@@ -12,10 +14,12 @@ class ProcessAmenity
     ];
     private string $table = 'term_relationships';
     public int $post_id;
+    private Log $log;
 
-    public function __construct($wpdb)
+    public function __construct($wpdb, Log $log)
     {
         $this->wpdb = $wpdb;
+        $this->log = $log;
     }
 
     public function getAmenities(): array
@@ -172,7 +176,7 @@ class ProcessAmenity
                 $this->wpdb->query('COMMIT');
             } catch (Exception $e) {
                 $this->wpdb->query('ROLLBACK');
-                error_log("Failed to create amenities: " . $e->getMessage());
+                $this->log->error("Failed to create amenities: " . $e->getMessage());
             }
         }
 
@@ -193,7 +197,7 @@ class ProcessAmenity
     private function insertAmenitiesBulk(array $term_taxonomy_ids): void
     {
         try {
-            error_log("Inserting Amenities for post_id: {$this->post_id}\n");
+            $this->log->info("Inserting Amenities for post_id: {$this->post_id}");
 
             // Build placeholders and values for the IN clause
             $in_placeholders = implode(',', array_fill(0, count($term_taxonomy_ids), '%d'));
@@ -225,10 +229,12 @@ class ProcessAmenity
             $this->wpdb->query($final_sql);
 
             if ($this->wpdb->last_error) {
+                $this->log->error('Error in insertAmenitiesBulk: ' . $this->wpdb->last_error);
+
                 throw new \Exception($this->wpdb->last_error);
             }
         } catch (\Exception $ex) {
-            error_log('Error in insertAmenitiesBulk: ' . $ex->getMessage());
+            $this->log->error('Error in insertAmenitiesBulk: ' . $ex->getMessage());
         }
     }
 }

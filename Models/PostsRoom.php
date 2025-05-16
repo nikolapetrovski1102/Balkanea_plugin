@@ -2,6 +2,7 @@
 
 namespace Models;
 
+use Log;
 use Models\HotelRoom;
 
 class PostsRoom
@@ -33,8 +34,9 @@ class PostsRoom
     public $post_mime_type;
     public $comment_count;
 
-    public function __construct($wpdb)
+    public function __construct($wpdb, Log $log)
     {
+        $this->log = $log;
         $this->wpdb = $wpdb;
         $this->post_author = 6961;
         $this->comment_status = 'open';
@@ -79,13 +81,17 @@ class PostsRoom
 
         try{
             $result = $this->wpdb->insert($this->wpdb->prefix . $this->table, $data, $format);
-            
-            if ($this->wpdb->last_error)
+
+            if ($this->wpdb->last_error){
+                $this->log->error($this->wpdb->last_error);
                 throw new \Exception($this->wpdb->last_error);
-            else
+            }
+            else {
                 return $this->wpdb->insert_id;
+            }
 
         }catch(\Exception $ex){
+            $this->log->error('Caught exception: ' .  $ex->getMessage());
             return 'Caught exception: ' .  $ex->getMessage() . "\n";
         }
     }
@@ -151,7 +157,7 @@ class PostsRoom
         if (!is_string($this->post_name)) {
             throw new \Exception("post_name must be a string");
         }
-    
+
         $query = $this->wpdb->prepare("SELECT * FROM " . $this->wpdb->prefix . $this->table . " WHERE post_name = %s", $this->post_name);
         $result = $this->wpdb->get_row($query);
 

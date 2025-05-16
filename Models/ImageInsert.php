@@ -1,6 +1,8 @@
 <?php
 namespace Models;
 
+use Log;
+
 class ImageInserter {
     private $wpdb;
     public $current_date_time;
@@ -14,60 +16,26 @@ class ImageInserter {
     private $image_path;
     private $image_guid;
     private $img_url;
+    private Log $log;
 
-    public function __construct($wpdb) {
+    public function __construct($wpdb, Log $log) {
         $this->wpdb = $wpdb;
+        $this->log = $log;
         $this->img_url = '';
     }
 
     public function insertImages() {
-       // $directory = "/home/balkanea/public_html/wp-content/uploads/" . self::sanitizeFileName($this->provider) . '/' . $this->directory_url;
-     //   $image_origin_url = "https://balkanea.com/wp-content/uploads/" . self::sanitizeFileName($this->provider) . '/' . $this->directory_url . '/';
-        $counter = 0;
-        $post_image_array_ids = '';
-
         try {
-         //   echo '<br>' . $image_origin_url . '<br>';
-        //    echo '<br>Directory: ' . $this->directory_url . '<br>';
-
+            $post_image_array_ids = '';
+            $this->log->info("Insert images. Total: " . count($this->default_image));
             if (empty($this->hotel['images'])) {
                 $this->hotel['images'] = $this->default_image;
             }
-
-            foreach ($this->hotel['images'] as $img) {
-                $counter++;
-                //$new_image_name = basename($this->directory_url) . '-' . $counter . '.jpg'; // New image filename
-
-              //  echo '<br>Saving: ' . $new_image_name . '<br>';
-
+            foreach ($this->default_image as $img) {
                 $img_url = self::getImageUrl($img);
 
-                // Check if the image already exists
-               // $this->createDirectory($directory);
-               // $this->image_path = $directory . '/' . $new_image_name;
-
-               /* if (!file_exists($this->image_path)) {
-                    // Download and save the image
-                    $this->downloadImage($img_url, $new_image_name);
-                }
-*/
-                // Check if the image URL exists in the database
-     //           $image_url_exists = self::imageUrlExists($image_origin_url . $new_image_name);
-
-               /* if ($image_url_exists) {
-                    $post_image_array_ids .= $image_url_exists . ',';
-                } else {
-                    if ($this->image_path) {
-                        $this->image_guid = $image_origin_url . $new_image_name;
-                        $this->insertPost($counter);
-                        $post_image_array_ids .= $this->wpdb->insert_id . ',';
-
-                        $photo_metadata = self::createPhotoMetadata();
-                        $this->insertPostMeta($photo_metadata);
-                    }
-                }*/
-                $this->image_guid = $img_url;
-                $this->insertPost($counter);
+                $this->image_guid = $img_url . '#'.uniqid();
+                $this->insertPost();
                 $post_image_array_ids .= $this->wpdb->insert_id . ',';
 
                 $photo_metadata = self::createPhotoMetadata($img_url);
@@ -75,11 +43,11 @@ class ImageInserter {
             }
 
             $post_image_array_ids = rtrim($post_image_array_ids, ',');
+            $this->log->info("Finish Insert images.");
 
             return $post_image_array_ids;
-
         } catch (\Exception $e) {
-            echo 'Caught exception: ', $e->getMessage(), "\n";
+            $this->log->error('Caught exception: ' . $e->getMessage());
         }
     }
 
@@ -117,7 +85,7 @@ class ImageInserter {
         return $this->image_path;
     }
 
-    private function insertPost($counter) {
+    private function insertPost() {
         $this->wpdb->insert(
             $this->wpdb->prefix . 'posts',
             [
@@ -131,7 +99,7 @@ class ImageInserter {
                 'comment_status' => 'open',
                 'ping_status' => 'closed',
                 'post_password' => '',
-                'post_name' => self::sanitizeFileName( $this->post_title ),
+                'post_name' => self::sanitizeFileName( $this->post_title ) . '-' . uniqid(),
                 'to_ping' => '',
                 'pinged' => '',
                 'post_modified' => date('Y-m-d H:i:s'),

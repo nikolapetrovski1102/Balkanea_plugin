@@ -2,6 +2,8 @@
 
 namespace Models;
 
+use Log;
+
 class St_Hotel
 {
     private $wpdb;
@@ -22,10 +24,12 @@ class St_Hotel
     public $is_sale_schedule;
     public $post_origin;
     public $is_featured;
+    private $log;
 
-    public function __construct($wpdb)
+    public function __construct($wpdb, Log $log)
     {
         $this->wpdb = $wpdb;
+        $this->log = $log;
         $this->is_featured = 'off';
         $this->table = 'st_hotel';
         $this->multi_location= '_14848_,_15095_';
@@ -35,7 +39,7 @@ class St_Hotel
         $this->allow_full_day = 'on';
         $this->id_location = '';
     }
-    
+
     // Create Hotel
     public function create()
     {
@@ -64,7 +68,7 @@ class St_Hotel
 
         try {
             $result = $this->wpdb->insert($this->wpdb->prefix . $this->table, $data, $format);
-            
+
             if ($this->wpdb->last_error) {
                 throw new \Exception($this->wpdb->last_error);
             } else {
@@ -103,11 +107,11 @@ class St_Hotel
 
         try {
             $result = $this->wpdb->update($this->wpdb->prefix . $this->table, $data, $where, $format, $where_format);
-            
+
             if ($this->wpdb->last_error) {
                 throw new \Exception($this->wpdb->last_error);
             } else {
-                echo '<br>Data for st_hotel updated successfully<br>';
+                $this->log->info("Data for st_hotel updated successfull");
             }
         } catch (\Exception $e) {
             echo 'Caught exception: ',  $e->getMessage(), "\n";
@@ -118,10 +122,10 @@ class St_Hotel
     public function get()
     {
         $query = $this->wpdb->prepare("SELECT * FROM " . $this->wpdb->prefix . $this->table . " WHERE post_id = %d", $this->post_id);
-        
+
         try {
             $result = $this->wpdb->get_row($query);
-            
+
             if ($this->wpdb->last_error) {
                 throw new \Exception($this->wpdb->last_error);
             } else {

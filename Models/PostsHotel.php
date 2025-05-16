@@ -2,6 +2,8 @@
 
 namespace Models;
 
+use Log;
+
 class PostsHotel
 {
     private $wpdb;
@@ -30,9 +32,11 @@ class PostsHotel
     public $post_type;
     public $post_mime_type;
     public $comment_count;
+    private Log $log;
 
-    public function __construct($wpdb)
+    public function __construct($wpdb, Log $log)
     {
+        $this->log = $log;
         $this->wpdb = $wpdb;
         $this->post_author = 6961;
         $this->comment_status = 'open';
@@ -45,7 +49,7 @@ class PostsHotel
 
     public function isModified() {
         if (!is_string($this->post_name)) {
-            error_log($this->post_name);
+            $this->log->error($this->post_name);
             throw new \Exception("post_name must be a string");
         }
 
@@ -55,7 +59,7 @@ class PostsHotel
         );
         $result = $this->wpdb->get_row($query);
 
-        error_log(print_r($result, true));
+        //error_log(print_r($result, true));
 
         if ($result) {
             $post_modified = $result->post_modified;
@@ -75,10 +79,11 @@ class PostsHotel
     public function create()
     {
         $hotel_id = $this->hotelExists();
-        error_log("found id: $hotel_id");
+        $this->log->info("found id: $hotel_id");
 
-        if ($hotel_id)
+        if ($hotel_id) {
             return $hotel_id;
+        }
 
         $data = [
             'post_author' => $this->post_author,
@@ -113,12 +118,16 @@ class PostsHotel
         try{
             $result = $this->wpdb->insert($this->wpdb->prefix . $this->table, $data, $format);
 
-            if ($this->wpdb->last_error)
+            if ($this->wpdb->last_error) {
+                $this->log->error($this->wpdb->last_error);
                 throw new \Exception($this->wpdb->last_error);
-            else
+            }
+            else {
                 return $this->wpdb->insert_id;
+            }
 
         }catch(\Exception $ex){
+            $this->log->error('Caught exception: ' .  $ex->getMessage());
             return 'Caught exception: ' .  $ex->getMessage() . "\n";
         }
     }
@@ -133,6 +142,7 @@ class PostsHotel
     // Update Post
     public function update()
     {
+        $this->log->info("Update: " . $this->id);
         $data = [
             'post_author' => $this->post_author,
             'post_content' => $this->post_content,
