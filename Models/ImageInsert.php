@@ -33,15 +33,18 @@ class ImageInserter {
             }
             foreach ($this->default_image as $img) {
                 $img_url = self::getImageUrl($img);
+                if($imgId = $this->imageUrlExists($img_url)){
+                    $post_image_array_ids .= $imgId . ',';
+                }
+                else{
+                    $this->image_guid = $img_url;
+                    $imgId = $this->insertPost();
+                    $post_image_array_ids .= $imgId . ',';
 
-                $this->image_guid = $img_url . '#'.uniqid();
-                $this->insertPost();
-                $post_image_array_ids .= $this->wpdb->insert_id . ',';
-
-                $photo_metadata = self::createPhotoMetadata($img_url);
-                $this->insertPostMeta($photo_metadata, $img_url);
+                    $photo_metadata = self::createPhotoMetadata($img_url);
+                    $this->insertPostMeta($photo_metadata, $img_url);
+                }
             }
-
             $post_image_array_ids = rtrim($post_image_array_ids, ',');
             $this->log->info("Finish Insert images.");
 
@@ -113,6 +116,7 @@ class ImageInserter {
                 'comment_count' => 0
             ]
         );
+        return $this->wpdb->insert_id;
     }
 
     private function createPhotoMetadata(string $img_url) {

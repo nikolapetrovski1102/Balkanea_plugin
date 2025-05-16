@@ -68,14 +68,15 @@ class St_Hotel
 
         try {
             $result = $this->wpdb->insert($this->wpdb->prefix . $this->table, $data, $format);
-
+            $hotelId = $this->wpdb->insert_id;
             if ($this->wpdb->last_error) {
+                $this->log->error($this->wpdb->last_error);
                 throw new \Exception($this->wpdb->last_error);
             } else {
-                echo '<br>Data for st_hotel inserted successfully<br>';
+                $this->log->info('Crate a row in ST hotel table: '.$hotelId);
             }
         } catch (\Exception $e) {
-            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            $this->log->error('Caught exception: ' . $e->getMessage() .$e->getTraceAsString());
         }
     }
 

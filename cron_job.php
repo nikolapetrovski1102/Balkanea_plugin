@@ -88,8 +88,8 @@ function logToRegionFile($message, $currentRegion = 'global', $logLevel = 'INFO'
 
 
 try {
-    /* $regionTotal = 0;
-     $allHotels = trackNextRegion();
+     $regionTotal = 0;
+   /*  $allHotels = trackNextRegion();
 
      $regionData = json_decode($allHotels, true);
 
@@ -126,6 +126,8 @@ try {
                 $log->info("_____________________________________________________________");
                 $log->info("Processing hotel with id: {$hotel['hid']}");
                 $log->info("Processing hotel : $i/$totalHotelsInRegion");
+                echo "\nProcessing hotel with id: {$hotel['hid']}";
+                echo "\nProcessing hotel : $i/$totalHotelsInRegion";
                 $posts_hotel = new PostsHotel($wpdb, $log);
                 $hotel_name = $hotel["id"];
                 $current_country_code = $hotel['region']['country_code'];
@@ -404,7 +406,7 @@ try {
                         $amenities = $amenities_model->getRoomAmenities();
                         clearWpDb();
 
-                        $hotel_room_model = new HotelRoom($wpdb);
+                        $hotel_room_model = new HotelRoom($wpdb, $log);
 
                         $hotel_room_model->post_id = $post_room_id;
                         $hotel_room_model->room_parent = $post_id;
@@ -430,7 +432,6 @@ try {
                             $hotel_room_update = $hotel_room_model->update();
                             clearWpDb();
                         } else {
-                            $log->info("Hotel room does not exist");
                             $hotel_room_create = $hotel_room_model->create();
                             clearWpDb();
                         }
@@ -458,6 +459,7 @@ try {
                 $st_hotel->map_lng = $longitude;
 
                 if ($st_hotel->get()) {
+                    $log->info('Update ST hotel table: ' . $post_id);
                     $st_hotel_update = $st_hotel->update();
                     clearWpDb();
                 } else {

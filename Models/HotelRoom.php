@@ -2,6 +2,8 @@
 
 namespace Models;
 
+use Log;
+
 class HotelRoom
 {
     private $wpdb;
@@ -35,9 +37,11 @@ class HotelRoom
     public float $adult_price;
     /** @var float */
     public float $child_price;
+    private $log;
 
-    public function __construct($wpdb)
+    public function __construct($wpdb, Log $log)
     {
+        $this->log = $log;
         $this->wpdb = $wpdb;
     }
 
@@ -95,10 +99,10 @@ class HotelRoom
                     'child_price' => 0,
                 )
             );
-
+            $this->log->info("Hotel room does not exist and is created: " . $this->wpdb->insert_id);
             return $result !== false;
         } catch (\Exception $ex) {
-            echo 'Caught exception: ', $ex->getMessage(), "\n";
+            $this->log->error('Caught exception: ' . $ex->getMessage() . $ex->getTraceAsString());
             return false;
         }
     }
@@ -141,9 +145,10 @@ class HotelRoom
             if ($this->wpdb->last_error) {
                 throw new \Exception($this->wpdb->last_error);
             }
+            $this->log->info("Hotel room is updated: " . $this->post_id);
             return $result !== false;
         } catch (\Exception $ex) {
-            echo 'Caught exception: ', $ex->getMessage(), "\n";
+            $this->log->error('Caught exception: ' . $ex->getMessage());
             return false;
         }
     }
@@ -174,11 +179,11 @@ class HotelRoom
             $this->room_parent
         );
         $result = $this->wpdb->get_row($query);
-    
+
         if ($this->wpdb->last_error) {
             throw new \Exception($this->wpdb->last_error);
         }
-    
+
         return $result;
     }
 

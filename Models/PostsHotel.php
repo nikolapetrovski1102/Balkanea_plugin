@@ -79,9 +79,8 @@ class PostsHotel
     public function create()
     {
         $hotel_id = $this->hotelExists();
-        $this->log->info("found id: $hotel_id");
-
         if ($hotel_id) {
+            $this->log->info("found id: $hotel_id");
             return $hotel_id;
         }
 
@@ -117,17 +116,19 @@ class PostsHotel
 
         try{
             $result = $this->wpdb->insert($this->wpdb->prefix . $this->table, $data, $format);
-
+            $hotelPostId = $this->wpdb->insert_id;
             if ($this->wpdb->last_error) {
                 $this->log->error($this->wpdb->last_error);
                 throw new \Exception($this->wpdb->last_error);
             }
             else {
+                $this->log->info("Create hotel in post table: " . $hotelPostId);
+
                 return $this->wpdb->insert_id;
             }
 
         }catch(\Exception $ex){
-            $this->log->error('Caught exception: ' .  $ex->getMessage());
+            $this->log->error('Caught exception: ' .  $ex->getMessage() . $ex->getTraceAsString());
             return 'Caught exception: ' .  $ex->getMessage() . "\n";
         }
     }
