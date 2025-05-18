@@ -187,15 +187,32 @@ if ($response === false) {
             $nights = (new DateTime($checkout))->diff(new DateTime($checkin))->days;
             $daily_room_price = $current_currency == "MKD" ? $room_price / intval($nights) : ($room_price / intval($nights));
     
+            $args = [
+                'post_type'      => 'attachment',
+                'post_name'           => "$url_hotel_id-$url_room",
+                'posts_per_page' => 1,
+                'post_status'    => 'inherit',
+            ];
+            
+            $attachments = get_posts($args);
+            // BAL-673 - START
+            if (!empty($attachments)) {
+                $attachment = $attachments[0];
+                $image_url = wp_get_attachment_url($attachment->ID);
+            }else continue; // Dont show the room, this means that the room is not fully inserted
+            // BAL-673 - END
+            
+            //Old image url show - START
             // Construct image URL and path
-            $image_url = "https://staging.balkanea.com/wp-content/uploads/RateHawk/$url_hotel_id/$url_room/{$url_room}-1.jpg";
-            $image_path = "{$_SERVER['DOCUMENT_ROOT']}/wp-content/uploads/RateHawk/$url_hotel_id/$url_room/{$url_room}-1.jpg";
+            // $image_url = "https://staging.balkanea.com/wp-content/uploads/RateHawk/$url_hotel_id/$url_room/{$url_room}-1.jpg";
+            // $image_path = "{$_SERVER['DOCUMENT_ROOT']}/wp-content/uploads/RateHawk/$url_hotel_id/$url_room/{$url_room}-1.jpg";
     
             // Skip if the image does not exist
-            if (!file_exists($image_path)) {
-                continue;
-            }
-    
+            // if (!file_exists($image_path)) {
+            //     continue;
+            // }
+            //Old image url show - END
+            
             // Retrieve cancellation penalties
             $cancellation_penalties = $room['payment_options']['payment_types'][0]['cancellation_penalties'] ?? null;
             

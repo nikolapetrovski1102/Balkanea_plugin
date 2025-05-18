@@ -3,6 +3,7 @@
 // Enable error reporting for debugging purposes
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
+define('WP_USE_THEMES', false);
 error_reporting(E_ALL);
 
 // Get the document root path
@@ -10,6 +11,8 @@ $path = $_SERVER['DOCUMENT_ROOT'];
 
 // Include WordPress core file for database access and other functionalities
 include_once $path . '/wp-load.php';
+// require_once dirname(__DIR__, 2) . '/wp-blog-header.php';
+// error_log(dirname(__DIR__, 2) . '/wp-blog-header.php');
 
 // Start a new session or resume the existing session
 session_start();
@@ -633,7 +636,11 @@ foreach ($hotels as $hotel) {
 
     if (isset($found_ids[$hotel['id']])) {
         $hotel['price'] = $found_ids[$hotel['id']]['price'];
-        $hotel['hotel_image'] = $found_ids[$hotel['id']]['hotel_image'];
+        // BAL-673 - START
+        if (post_type_supports(get_post_type($hotel['id']), 'thumbnail')) {
+            $hotel['hotel_image'] = get_the_post_thumbnail_url($hotel['id'], 'full');
+        }
+        // BAL-673 - END
     }else{
         continue;
     }
