@@ -38,7 +38,7 @@ class LocationNested {
         
         $this->calculateKeys();
 
-        $this->wpdb->query($query);
+        $this->fixOverlapingLocations();
         
         if ($this->wpdb->last_error)
             throw new \Exception($this->wpdb->last_error);
@@ -51,8 +51,9 @@ class LocationNested {
     
         // First query
         $query = $wpdb->prepare(
-            "SELECT * FROM {$wpdb->prefix}{$this->table} WHERE name = %s",
-            $this->name
+            "SELECT * FROM {$wpdb->prefix}{$this->table} WHERE name = %s AND location_country = %s",
+            $this->name,
+            $this->location_country
         );
     
         $query_result = $wpdb->get_row($query);
@@ -76,11 +77,7 @@ class LocationNested {
             $this->parent_id
         );
         
-        error_log("Executin query: " . print_r($query, true));
-        
         $query_result = $this->wpdb->get_row($query);
-        
-        error_log("Query results: " . print_r($query_result, true));
         
         if (!$query_result) {
             throw new Error('Parent location not found');
@@ -192,6 +189,7 @@ class LocationNested {
             $this->left_key = $parent->key_indicator;
             $this->right_key = $parent->key_indicator + 1;
             
+            // Adding the new location
             $query = $this->wpdb->prepare(
                 "INSERT INTO {$this->wpdb->prefix}{$this->table} (
                     location_id, 
@@ -238,8 +236,6 @@ class LocationNested {
             // Commit the transaction
             $this->wpdb->query('COMMIT');
             
-            $this->fixOverlapingLocations();
-            
         } catch (\Exception $e) {
             // Roll back on error
             $this->wpdb->query('ROLLBACK');
@@ -253,7 +249,10 @@ class LocationNested {
             $table = $wpdb->prefix . 'st_location_nested';
             $parentId = 1;
             
-            // Step 1: Find overlapping parent nodes under the same parent
+            /* 
+             * Step 1: Find overlapping parent nodes under the same parent, 
+             * Ex If greece is from 102-157 and the next country start from 157 all next countries and their children must be shifted
+            */
             $nodes = $wpdb->get_results("
                 SELECT 
                     DISTINCT a.*
@@ -267,6 +266,9 @@ class LocationNested {
                     AND a.status = 'publish' AND b.status = 'publish'
                 ORDER BY a.left_key ASC
             ");
+            
+            if (count($nodes) == 0)
+                return;
             
             for ($i = 0; $i < count($nodes) - 1; $i++) {
                 $current = $nodes[$i];
