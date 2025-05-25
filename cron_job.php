@@ -103,8 +103,8 @@ try {
 
 
     foreach ($regions as $region) {
-//            $hotelEntries = getHotelDetails($region, $headers);
-        $hotelEntries = getHotelDetailsLocal($region); //get data from test_data_hotels2.json
+            $hotelEntries = getHotelDetails($region, $headers);
+      //  $hotelEntries = getHotelDetailsLocal($region); //get data from test_data_hotels2.json
         $totalHotelsInRegion = count($hotelEntries);
         $log->info("Hotel entries gathered.");
         $log->info("Processing region: " . $region . " with " .$totalHotelsInRegion . " hotels");
@@ -291,11 +291,7 @@ try {
                         $posts_room->post_excerpt = $post_excerpt;
                         $posts_room->post_status = 'publish';
                         $posts_room->post_password = '';
-                        $posts_room->post_name = $post_id_name . '-' . str_replace(
-                                ' ',
-                                '-',
-                                $room['name']
-                            ) . '-' . $room['room_group_id'];
+                        $posts_room->post_name = sanitize_title($post_id_name . '-' . $room['name']);
                         $posts_room->to_ping = '';
                         $posts_room->pinged = '';
                         $posts_room->post_content_filtered = '';
@@ -363,6 +359,7 @@ try {
                         if ($posts_room_exsists) {
                             $post_room_id = $posts_room_exsists->ID;
                             $posts_room->id = $post_room_id;
+                            $posts_room->id = $post_room_id;
                             $post_meta->post_id = $post_room_id;
                             $post_images->post_id = $post_room_id;
 
@@ -422,6 +419,8 @@ try {
                         $hotel_room_model->status = 'draft';
                         $hotel_room_model->adult_price = 0;
                         $hotel_room_model->child_price = 0;
+                        $hotel_room_model->main_name = $room['name_struct']['main_name'];
+                        $hotel_room_model->main_name_slug = sanitize_title($room['name_struct']['main_name']);
 
                         $room_id = $post_room_id;
 
@@ -457,6 +456,12 @@ try {
                 $st_hotel->min_price = $price_min;
                 $st_hotel->map_lat = $latitude;
                 $st_hotel->map_lng = $longitude;
+                $st_hotel->external_hid = $hotel['hid'];
+                $st_hotel->external_id = $hotel['id'];
+                $st_hotel->check_in_time = substr($hotel['check_in_time'], 0, -3);
+                $st_hotel->check_out_time = substr($hotel['check_out_time'], 0, -3);
+                $st_hotel->policy_struct = json_encode($hotel['policy_struct']);
+                $st_hotel->metapolicy_struct = $metapolicy_struct;
 
                 if ($st_hotel->get()) {
                     $log->info('Update ST hotel table: ' . $post_id);
@@ -509,8 +514,8 @@ try {
                     'hotel_star' => $star_rating,
                     'is_auto_caculate' => 'on',
                     'allow_full_day' => 'on',
-                    'check_in_time' => substr($hotel['check_in_time'], 0, -3),
-                    'check_out_time' => substr($hotel['check_out_time'], 0, -3),
+                    'check_in_time' => substr($hotel['check_in_time'], 0, -3), //todo to be removed
+                    'check_out_time' => substr($hotel['check_out_time'], 0, -3),//todo to be removed
                     'hotel_booking_period' => 0,
                     'min_book_room' => 0,
                     'id_location' => '',
@@ -529,12 +534,12 @@ try {
                     'hotel_layout_style' => 5,
                     'hotel_policy' => 'a:1:{i:0;a:2:{s:5:"title";s:0:"";s:18:"policy_description";s:' . strlen(
                             $hotel['metapolicy_extra_info'] ?? ''
-                        ) . ':"' . $hotel['metapolicy_extra_info'] ?? '' . '";}}',
+                        ) . ':"' . $hotel['metapolicy_extra_info'] ?? '' . '";}}', //todo to be removed it is used in st_hotels
                     '_thumbnail_id' => $post_image_array_ids != null ? explode(",", $post_image_array_ids)[0] : '',
                     'gallery' => $post_image_array_ids ?? '',
                     '_wp_old_date' => date('YYYY-mm-dd'),
                     'provider' => 'RateHawk',
-                    'metapolicy_struct' => $metapolicy_struct
+                    'metapolicy_struct' => $metapolicy_struct //todo to be removed it is used in st_hotels
                 );
 
                 $meta_exists = $post_meta->getAll();

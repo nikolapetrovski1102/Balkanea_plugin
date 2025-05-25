@@ -6,6 +6,30 @@ use Log;
 
 class St_Hotel
 {
+    /**
+     * @var mixed
+     */
+    public $external_hid;
+    /**
+     * @var false|string
+     */
+    public $check_in_time;
+    /**
+     * @var false|string
+     */
+    public $check_out_time;
+    /**
+     * @var mixed
+     */
+    public $policy_struct;
+    /**
+     * @var false|string
+     */
+    public $metapolicy_struct;
+    /**
+     * @var mixed
+     */
+    public $external_id;
     private $wpdb;
     private $table;
 
@@ -58,12 +82,18 @@ class St_Hotel
             'map_lng' => $this->map_lng,
             'is_sale_schedule' => $this->is_sale_schedule,
             'post_origin' => $this->post_origin,
-            'is_featured' => $this->is_featured
+            'is_featured' => $this->is_featured,
+            'external_hid' => $this->external_hid,
+            'external_id' => $this->external_id,
+            'check_in_time' => $this->check_in_time,
+            'check_out_time' => $this->check_out_time,
+            'policy_struct' => $this->policy_struct,
+            'metapolicy_struct' => $this->metapolicy_struct,
         ];
 
         $format = [
             '%d', '%s', '%s', '%s', '%s', '%d', '%d', '%f', '%f', '%d',
-            '%f', '%f', '%s', '%s', '%s'
+            '%f', '%f', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s'
         ];
 
         try {
@@ -96,13 +126,19 @@ class St_Hotel
             'map_lng' => $this->map_lng,
             'is_sale_schedule' => $this->is_sale_schedule,
             'post_origin' => $this->post_origin,
-            'is_featured' => $this->is_featured
+            'is_featured' => $this->is_featured,
+            'external_hid' => $this->external_hid,
+            'external_id' => $this->external_id,
+            'check_in_time' => $this->check_in_time,
+            'check_out_time' => $this->check_out_time,
+            'policy_struct' => $this->policy_struct,
+            'metapolicy_struct' => $this->metapolicy_struct,
         ];
 
         $where = ['post_id' => (int)$this->post_id];
         $format = [
             '%s', '%s', '%s', '%s', '%d', '%d', '%f', '%f', '%d',
-            '%f', '%f', '%s', '%s', '%s'
+            '%f', '%f', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s'
         ];
         $where_format = ['%d'];
 

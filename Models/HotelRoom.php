@@ -39,6 +39,9 @@ class HotelRoom
     public float $child_price;
     private $log;
 
+    public string $main_name;
+    public string $main_name_slug;
+
     public function __construct($wpdb, Log $log)
     {
         $this->log = $log;
@@ -62,11 +65,13 @@ class HotelRoom
             'child_number' => $this->child_number,
             'status' => $this->status,
             'adult_price' => $this->adult_price,
-            'child_price' => $this->child_price
+            'child_price' => $this->child_price,
+            'main_name' => $this->main_name,
+            'main_name_slug' => $this->main_name_slug,
         ];
 
         $format = [
-            '%d', '%d', '%s', '%s', '%s', '%s', '%f', '%d', '%s', '%d', '%d', '%s', '%f', '%f'
+            '%d', '%d', '%s', '%s', '%s', '%s', '%f', '%d', '%s', '%d', '%d', '%s', '%f', '%f','%s', '%s'
         ];
 
         try {
@@ -76,6 +81,8 @@ class HotelRoom
                 throw new \Exception($this->wpdb->last_error);
             }
 
+            //todo this is not need to be inserted. need to be removed
+            //availability for the room is taken from ratehawk
             $this->wpdb->insert(
                 $this->wpdb->prefix . 'st_room_availability',
                 array(
@@ -97,6 +104,8 @@ class HotelRoom
                     'child_number' => 0,
                     'adult_price' => 0,
                     'child_price' => 0,
+               //     'main_name' => $this->main_name,
+              //      'main_name_slug' => $this->main_name_slug,
                 )
             );
             $this->log->info("Hotel room does not exist and is created: " . $this->wpdb->insert_id);
@@ -131,12 +140,14 @@ class HotelRoom
             'child_number' => $this->child_number,
             'status' => $this->status,
             'adult_price' => $this->adult_price,
-            'child_price' => $this->child_price
+            'child_price' => $this->child_price,
+            'main_name' => $this->main_name,
+            'main_name_slug' => $this->main_name_slug,
         ];
 
         $where = ['post_id' => $this->post_id];
         $format = [
-            '%d', '%d', '%s', '%s', '%s', '%s', '%f', '%d', '%s', '%d', '%d', '%s', '%f', '%f'
+            '%d', '%d', '%s', '%s', '%s', '%s', '%f', '%d', '%s', '%d', '%d', '%s', '%f', '%f','%s', '%s'
         ];
         $where_format = ['%d'];
 
