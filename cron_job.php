@@ -1,7 +1,7 @@
 <?php
 
-$region = $argv[1];//get from console
-$regions = [$region]; //make an array
+// $region = $argv[1];//get from console
+// $regions = [$region]; //make an array
 
 define('SHORTINIT', true);
 define('WP_CLI', true);
@@ -54,9 +54,6 @@ global $wpdb;
 $wpdb->show_errors();
 $prefix = $wpdb->prefix;
 
-//log
-$log = new Log($region);
-
 //auth
 $keyId = $config['api_key'];
 $apiKey = $config['api_password'];
@@ -89,20 +86,19 @@ function logToRegionFile($message, $currentRegion = 'global', $logLevel = 'INFO'
 
 try {
      $regionTotal = 0;
-   /*  $allHotels = trackNextRegion();
-
-     $regionData = json_decode($allHotels, true);
-
-     if ($regionData === null) {
-         logToRegionFile("JSON decode failed: " . json_last_error_msg() . " - Raw data: " . substr($allHotels, 0, 1000), "global", "ERROR");
-         throw new Exception("Invalid JSON: " . json_last_error_msg());
-     }
-
-     $country = $regionData['country'];
-     $regions = $regionData['regions'];*/
-
+     
+    $allHotels = trackNextRegion();
+    
+    $regionData = json_decode($allHotels, true);
+    if ($regionData === null) {
+        logToRegionFile("JSON decode failed: " . json_last_error_msg() . " - Raw data: " . substr($allHotels, 0, 1000), "global", "ERROR");
+        throw new Exception("Invalid JSON: " . json_last_error_msg());
+    }
+    $country = $regionData['country'];
+    $regions = $regionData['regions'];
 
     foreach ($regions as $region) {
+        $log = new Log($region);
             $hotelEntries = getHotelDetails($region, $headers);
       //  $hotelEntries = getHotelDetailsLocal($region); //get data from test_data_hotels2.json
         $totalHotelsInRegion = count($hotelEntries);
@@ -150,14 +146,13 @@ try {
                 $post_id_name = $hotel['id'];
                 $img_urls = '';
                 $hotel_location = $hotel['region'];
-                $hotel_country_code = $hotel['region'];
                 $metapolicy_struct = json_encode($hotel['metapolicy_struct']);
 
                 echo "\n{$hotel['id']}";
 
                 $location_nested = new LocationNested($wpdb);
                 $log->info("Country code: " . $current_country_code);
-                $location_nested->location_country = $hotel_country_code['country_code'];
+                $location_nested->location_country = $current_country_code;
 
                 // Execute query and store result before proceeding
                 $parent_location_exists_json = $location_nested->parentLocationExists();
@@ -577,12 +572,7 @@ try {
     }
     // End of foreach
 
-    $log->info(
-        "Successfully processed all hotels in Regions: " . implode(",", $regions) . " in " . number_format(
-            $regionTotal,
-            4
-        )
-    );
+    $log->info("Successfully processed all hotels");
 } catch (\Exception $ex) {
     $log->info("CRITICAL ERROR: " . $ex->getMessage());
     $log->info("Error stack trace: " . $ex->getTraceAsString());

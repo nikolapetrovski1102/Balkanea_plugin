@@ -88,18 +88,19 @@ class LocationNested {
     }
 
     private function mapCountryCode() {
-        if (!function_exists('add_action')) {
-            require_once('/home/balkanea/public_html/wp-load.php');
-        }
-    
-        if (function_exists('WC')) {
-            $this->name = WC()->countries->countries[$this->location_country] ?? 'Unknown';
+        $country_codes_file = __DIR__ . '/CountryCodes.php';
+        
+        if (file_exists($country_codes_file)) {
+            $country_map = require $country_codes_file;
+            
+            $this->name = $country_map[$this->location_country] ?? 'Unknown';
             $this->fullname = $this->name;
         } else {
             $this->name = 'Unknown';
             $this->fullname = 'Unknown';
         }
     }
+
 
     public function parentLocationExists() {
         $query = $this->wpdb->prepare(
